@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WeatherDataAnalysis</name>
+    </assembly>
+    <members>
+        <member name="T:WeatherDataAnalysis.App">
+            <summary>
+                Provides application-specific behavior to supplement the default Application class.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.#ctor">
+            <summary>
+                Initializes the singleton application object.  This is the first line of authored code
+                executed, and as such is the logical equivalent of main() or WinMain().
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.OnLaunched(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)">
+            <summary>
+                Invoked when the application is launched normally by the end user.  Other entry points
+                will be used such as when the application is launched to open a specific file.
+            </summary>
+            <param name="e">Details about the launch request and process.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.OnNavigationFailed(System.Object,Windows.UI.Xaml.Navigation.NavigationFailedEventArgs)">
+            <summary>
+                Invoked when Navigation to a certain page fails
+            </summary>
+            <param name="sender">The Frame which failed navigation</param>
+            <param name="e">Details about the navigation failure</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.OnSuspending(System.Object,Windows.ApplicationModel.SuspendingEventArgs)">
+            <summary>
+                Invoked when application execution is being suspended.  Application state is saved
+                without knowing whether the application will be terminated or resumed with the contents
+                of memory still intact.
+            </summary>
+            <param name="sender">The source of the suspend request.</param>
+            <param name="e">Details about the suspend request.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.MainPage">
+            <summary>
+                An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.MainPage.ApplicationHeight">
+            <summary>
+                The application height
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.MainPage.ApplicationWidth">
+            <summary>
+                The application width
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.MainPage" /> class.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.Model.DayTemperature">
+            <summary>
+            High and low teperature data for a specific day
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.DayTemperature.HighTemp">
+            <summary>
+            Gets or sets the high temperature.
+            </summary>
+            <value>
+            The high temperature.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.DayTemperature.LowTemp">
+            <summary>
+            Gets or sets the low temperature.
+            </summary>
+            <value>
+            The low temporary.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.DayTemperature.Date">
+            <summary>
+            Gets or sets the date.
+            </summary>
+            <value>
+            The date.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.DayTemperature.#ctor(System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="date"></param>
+            <param name="lowTemp"></param>
+            <param name="highTemp"></param>
+        </member>
+        <member name="T:WeatherDataAnalysis.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider">
+            <summary>
+            Main class for providing metadata for the app or library
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+    </members>
+</doc>
