@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DYODER2</Machine>
-    <WindowsUser>dyoder</WindowsUser>
+    <Machine>DESKTOP-9864H08</Machine>
+    <WindowsUser>Zachary LaVere</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>de33a4da-9a75-4202-99d4-9d3cf5257d74</PackageIdentityName>
     <PackageIdentityPublisher>CN=dyoder</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>E936567723871524532B603B84367FD2FD86631318F44183F7273C00A1B15DF3</RegisteredManifestChecksum>
+    <LayoutDir>F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>E1F097479C738B656A4B9E2EFC489C9258C35399E52C35CEFC5611EC0A960BD0</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>de33a4da-9a75-4202-99d4-9d3cf5257d74_1.0.0.0_x64__vpktpzvxd0r0j</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>de33a4da-9a75-4202-99d4-9d3cf5257d74_vpktpzvxd0r0j!App</RegisteredUserModeAppID>
     <RegisteredPackageID>de33a4da-9a75-4202-99d4-9d3cf5257d74</RegisteredPackageID>
@@ -28,16 +28,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-08-23T17:47:13.248</Modified>
+      <Modified>2018-08-27T01:59:05.905</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.exe">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.exe">
       <PackagePath>entrypoint\WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-08-23T17:47:12.613</Modified>
+      <Modified>2018-08-27T01:57:23.051</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.1.7\runtimes\win10-x64\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -695,68 +695,68 @@
       <PackagePath>netstandard.dll</PackagePath>
       <Modified>2018-07-20T14:48:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-08-20T14:12:40.546</Modified>
+      <Modified>2018-08-27T00:48:40.356</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2018-08-08T15:10:13.190</Modified>
+      <Modified>2018-08-27T00:48:40.299</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-08-08T15:10:13.190</Modified>
+      <Modified>2018-08-27T00:48:40.304</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-08-08T15:10:13.190</Modified>
+      <Modified>2018-08-27T00:48:40.309</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-08-08T15:10:13.190</Modified>
+      <Modified>2018-08-27T00:48:40.312</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-08-08T15:10:13.190</Modified>
+      <Modified>2018-08-27T00:48:40.317</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-08-08T15:10:13.190</Modified>
+      <Modified>2018-08-27T00:48:40.322</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-08-08T15:10:13.190</Modified>
+      <Modified>2018-08-27T00:48:40.328</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.xr.xml">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.xr.xml">
       <PackagePath>WeatherDataAnalysis.xr.xml</PackagePath>
-      <Modified>2018-08-23T15:21:17.596</Modified>
+      <Modified>2018-08-27T00:48:48.004</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-08-23T17:47:12.419</Modified>
+      <Modified>2018-08-27T01:59:04.508</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-08-23T17:47:12.420</Modified>
+      <Modified>2018-08-27T01:59:04.509</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-04-20T02:01:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-08-23T15:21:19.692</Modified>
+      <Modified>2018-08-27T01:59:05.342</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\dyoder\Dropbox\Classes\2018-19\CS3201\Assignments\A1\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\WeatherDataAnalysis.exe">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-08-23T17:47:13.240</Modified>
+      <Modified>2018-08-27T01:59:05.894</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
@@ -789,27 +789,27 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.26428.1</Version>
+      <Version>14.0.26726.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26726.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.26428.1</Version>
+      <Version>14.0.26726.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26726.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.26428.1</Version>
+      <Version>14.0.26726.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26428.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.26726.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
