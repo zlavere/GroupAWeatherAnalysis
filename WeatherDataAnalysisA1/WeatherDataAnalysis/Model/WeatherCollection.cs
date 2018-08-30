@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace WeatherDataAnalysis.Model
 {
@@ -7,6 +10,8 @@ namespace WeatherDataAnalysis.Model
         #region Properties
 
         public List<Weather> Collection { get; set; }
+        public List<int> HighTemps { get; set; }
+        public List<int> LowTemps { get; set; }
 
         #endregion
 
@@ -15,140 +20,58 @@ namespace WeatherDataAnalysis.Model
         public WeatherCollection(List<Weather> weatherCollection)
         {
             this.Collection = weatherCollection;
+
+            this.LowTemps = (from weather in this.Collection
+                             select weather.LowTemp).ToList();
+
+            this.HighTemps = (from weather in this.Collection
+                              select weather.HighTemp).ToList();
         }
 
         #endregion
 
         #region Methods
-        //TODO Create private methods to get highest and another to get lowest from List<int> pass List<int> generated from all high or low temps for the year to eliminate code reuse that way only one method is created for getting highest and getting lowest - keep names below for public methods.
-        //TODO Use linq dummy
-        public List<Weather> GetHighestTempDates()
+
+        public List<Weather> GetHighestTemps()
         {
-            var highestTemperatureDates = new List<Weather>();
-            Weather highest = null;
-
-            foreach (var current in this.Collection)
-            {
-                if (highest == null)
-                {
-                    highest = current;
-                    highestTemperatureDates.Add(current);
-                }
-                else if (highest.HighTemp == current.HighTemp)
-                {
-                    highestTemperatureDates.Add(current);
-                }
-                else if (highest.HighTemp < current.HighTemp && highestTemperatureDates.Count > 1)
-                {
-                    highestTemperatureDates.Clear();
-                    highestTemperatureDates.Add(current);
-                }
-                else if (highest.HighTemp < current.HighTemp)
-                {
-                    highestTemperatureDates.Remove(highest);
-                    highestTemperatureDates.Add(current);
-                    highest = current;
-                }
-            }
-
-            return highestTemperatureDates;
+            var highestTemps =
+                (this.Collection.Where(temp => temp.HighTemp == this.Collection.Max(weather => weather.HighTemp)))
+                .ToList();
+            return highestTemps;
         }
 
-
-        public List<Weather> GetHighestLowTempDates()
+        public List<Weather> GetHighestLowTemps()
         {
-            var highestLowTempDates = new List<Weather>();
-            Weather highest = null;
-
-            foreach (var current in this.Collection)
-            {
-                if (highest == null)
-                {
-                    highest = current;
-                    highestLowTempDates.Add(current);
-                }
-                else if (highest.LowTemp == current.LowTemp)
-                {
-                    highestLowTempDates.Add(current);
-                }
-                else if (highest.LowTemp < current.LowTemp && highestLowTempDates.Count > 1)
-                {
-                    highestLowTempDates.Clear();
-                    highestLowTempDates.Add(current);
-                }
-                else if (highest.LowTemp < current.LowTemp)
-                {
-                    highestLowTempDates.Remove(highest);
-                    highestLowTempDates.Add(current);
-                    highest = current;
-                }
-            }
-
-            return highestLowTempDates;
+            var highestTemps =
+                (this.Collection.Where(temp => temp.LowTemp == this.Collection.Max(weather => weather.LowTemp)))
+                .ToList();
+            return highestTemps;
         }
 
-        public List<Weather> GetLowestTempDates()
+        public List<Weather> GetLowestTemps()
         {
-            var lowestTempDates = new List<Weather>();
-            Weather lowest = null;
-
-            foreach (var current in this.Collection)
-            {
-                if (lowest == null)
-                {
-                    lowest = current;
-                    lowestTempDates.Add(current);
-                }
-                else if (lowest.LowTemp == current.LowTemp)
-                {
-                    lowestTempDates.Add(current);
-                }
-                else if (lowest.LowTemp > current.HighTemp && lowestTempDates.Count > 1)
-                {
-                    lowestTempDates.Clear();
-                    lowestTempDates.Add(current);
-                }
-                else if (lowest.LowTemp > current.HighTemp)
-                {
-                    lowestTempDates.Remove(lowest);
-                    lowestTempDates.Add(current);
-                    lowest = current;
-                }
-            }
-
-            return lowestTempDates;
+            var lowTemps =
+                (this.Collection.Where(temp => temp.LowTemp == this.Collection.Min(weather => weather.LowTemp)))
+                .ToList();
+            return lowTemps;
         }
 
-        public List<Weather> GetLowestHighTempDates()
+        public List<Weather> GetLowestHighTemps()
         {
-            var lowestHighTempDates = new List<Weather>();
-            Weather lowest = null;
+            var lowTemps =
+                (this.Collection.Where(temp => temp.HighTemp == this.Collection.Min(weather => weather.HighTemp)))
+                .ToList();
+            return lowTemps;
+        }
 
-            foreach (var current in this.Collection)
-            {
-                if (lowest == null)
-                {
-                    lowest = current;
-                    lowestHighTempDates.Add(current);
-                }
-                else if (lowest.HighTemp == current.HighTemp)
-                {
-                    lowestHighTempDates.Add(current);
-                }
-                else if (lowest.HighTemp > current.HighTemp && lowestHighTempDates.Count > 1)
-                {
-                    lowestHighTempDates.Clear();
-                    lowestHighTempDates.Add(current);
-                }
-                else if (lowest.HighTemp > current.HighTemp)
-                {
-                    lowestHighTempDates.Remove(lowest);
-                    lowestHighTempDates.Add(current);
-                    lowest = current;
-                }
-            }
+        public double GetAverageHighTemp()
+        {
+            return this.HighTemps.Average();
+        }
 
-            return lowestHighTempDates;
+        public double GetAverageLowTemp()
+        {
+            return this.LowTemps.Average();
         }
 
         #endregion
