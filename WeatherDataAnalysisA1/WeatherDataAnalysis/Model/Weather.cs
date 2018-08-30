@@ -5,7 +5,7 @@ namespace WeatherDataAnalysis.Model
     /// <summary>
     /// High and low temperature data for a specific day
     /// </summary>
-    public class DayTemperature
+    public class Weather
     {
         #region Properties
         /// <summary>
@@ -39,17 +39,23 @@ namespace WeatherDataAnalysis.Model
         /// <param name="date"></param>
         /// <param name="lowTemp"></param>
         /// <param name="highTemp"></param>
-        public DayTemperature(DateTime date, int highTemp, int lowTemp)
+        public Weather(DateTime date, int highTemp, int lowTemp)
         {
             this.Date = date;
             this.LowTemp = lowTemp;
             this.HighTemp = highTemp;
         }
         #endregion
+
         /// <summary>
-        /// Gets the difference between high low temperatures.
+        /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
-        /// <returns>the difference between high low temperatures</returns>
-        public int GetDifferenceHighLow() => this.HighTemp - this.LowTemp;
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public string ToString()
+        {
+            return $"Date = {this.Date} High = {this.HighTemp} Low = {this.LowTemp}";
+        }
     }
 }

@@ -43,6 +43,50 @@
             InitializeComponent()
             </summary>
         </member>
+        <member name="M:WeatherDataAnalysis.App.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.Format.TemperatureDataFormatter">
+            <summary>
+            Formats Temperature Data
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatSimpleString(WeatherDataAnalysis.Model.DayTemperature)">
+            <summary>
+            Formats the string.
+            </summary>
+            <param name="dayTemp">The data for the temperature on specified date.</param>
+            <returns>Formatted for simple display.</returns>
+        </member>
+        <member name="T:WeatherDataAnalysis.io.TemperatureParser">
+            <summary>
+            Parser for CSV set of Temperature Data where format is date, high, low.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.io.TemperatureParser.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WeatherDataAnalysis.io.TemperatureParser" /> class.
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.io.TemperatureParser.GetAllHighLowTempData">
+            <summary>
+            Gets all high low temperature data.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WeatherDataAnalysis.MainPage">
             <summary>
                 An empty page that can be used on its own or navigated to within a Frame.
@@ -66,6 +110,16 @@
         <member name="M:WeatherDataAnalysis.MainPage.InitializeComponent">
             <summary>
             InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
             </summary>
         </member>
         <member name="T:WeatherDataAnalysis.Model.DayTemperature">
@@ -111,9 +165,37 @@
             </summary>
             <returns>the difference between high low temperatures</returns>
         </member>
+        <member name="M:WeatherDataAnalysis.Model.DayTemperature.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
         <member name="T:WeatherDataAnalysis.Program">
             <summary>
             Program class
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider">
+            <summary>
+            Main class for providing metadata for the app or library
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
             </summary>
         </member>
     </members>

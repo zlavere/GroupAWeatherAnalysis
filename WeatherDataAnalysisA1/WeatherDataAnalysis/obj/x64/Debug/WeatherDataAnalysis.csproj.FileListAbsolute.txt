@@ -583,3 +583,4 @@ F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\Weat
 F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\qualifiers.txt.intermediate
 F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\ProjectArchitectures.txt
+F:\Google Drive Sync\school\201808\program-construction\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\WeatherDataAnalysis.csprojAssemblyReference.cache
