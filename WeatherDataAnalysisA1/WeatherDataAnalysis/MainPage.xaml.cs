@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Windows.Foundation;
 using Windows.Storage;
+using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Documents;
 using WeatherDataAnalysis.Format;
 using WeatherDataAnalysis.io;
 using WeatherDataAnalysis.Model;
@@ -33,6 +32,7 @@ namespace WeatherDataAnalysis
         public const int ApplicationWidth = 625;
 
         private WeatherCollection weatherCollection;
+
         #endregion
 
         #region Constructors
@@ -67,7 +67,7 @@ namespace WeatherDataAnalysis
                 var tempFormatter = new TemperatureDataFormatter();
                 var newWeatherCollection = new List<Weather>();
 
-                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
+                StorageApplicationPermissions.FutureAccessList.Add(file);
                 this.summaryTextBox.Text = string.Empty;
 
                 foreach (var current in tempParser.GetWeatherList(content))
@@ -75,6 +75,7 @@ namespace WeatherDataAnalysis
                     newWeatherCollection.Add(current);
                     this.summaryTextBox.Text += tempFormatter.FormatSimpleString(current) + Environment.NewLine;
                 }
+
                 this.weatherCollection = new WeatherCollection(newWeatherCollection);
             }
         }
@@ -88,6 +89,7 @@ namespace WeatherDataAnalysis
             filePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             return filePicker;
         }
+
         #endregion
     }
 }

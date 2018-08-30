@@ -3,59 +3,53 @@
 namespace WeatherDataAnalysis.Model
 {
     /// <summary>
-    /// High and low temperature data for a specific day
+    ///     High and low temperature data for a specific day
     /// </summary>
     public class Weather
     {
         #region Properties
+
         /// <summary>
-        /// Gets or sets the high temperature.
+        ///     Gets or sets the high temperature.
         /// </summary>
         /// <value>
-        /// The high temperature.
+        ///     The high temperature.
         /// </value>
         public int HighTemp { get; }
-        
+
         /// <summary>
-        /// Gets or sets the low temperature.
+        ///     Gets or sets the low temperature.
         /// </summary>
         /// <value>
-        /// The low temporary.
+        ///     The low temporary.
         /// </value>
-        public int LowTemp { get; }        
-        
+        public int LowTemp { get; }
+
         /// <summary>
-        /// Gets or sets the date.
+        ///     Gets or sets the date.
         /// </summary>
         /// <value>
-        /// The date.
+        ///     The date.
         /// </value>
         public DateTime Date { get; }
+
         #endregion
+
         #region Constructors
+
         /// <summary>
-        /// 
+        ///     Initializes a new instance of the <see cref="Weather" /> class.
         /// </summary>
-        /// <param name="date"></param>
-        /// <param name="lowTemp"></param>
-        /// <param name="highTemp"></param>
+        /// <param name="date">The date.</param>
+        /// <param name="highTemp">The high temporary.</param>
+        /// <param name="lowTemp">The low temporary.</param>
         public Weather(DateTime date, int highTemp, int lowTemp)
         {
             this.Date = date;
             this.LowTemp = lowTemp;
             this.HighTemp = highTemp;
         }
-        #endregion
 
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public string ToString()
-        {
-            return $"Date = {this.Date} High = {this.HighTemp} Low = {this.LowTemp}";
-        }
+        #endregion
     }
 }
