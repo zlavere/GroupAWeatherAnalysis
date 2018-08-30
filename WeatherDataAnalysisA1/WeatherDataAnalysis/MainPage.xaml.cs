@@ -70,7 +70,7 @@ namespace WeatherDataAnalysis
                 Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
                 this.summaryTextBox.Text = string.Empty;
 
-                foreach (var current in tempParser.GetDayTemperatureList(content))
+                foreach (var current in tempParser.GetWeatherList(content))
                 {
                     newWeatherCollection.Add(current);
                     this.summaryTextBox.Text += tempFormatter.FormatSimpleString(current) + Environment.NewLine;

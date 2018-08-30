@@ -34,33 +34,37 @@ namespace WeatherDataAnalysis.Model
 
         public List<Weather> GetHighestTemps()
         {
+            var highest = this.Collection.Max(weather => weather.HighTemp);
             var highestTemps =
-                (this.Collection.Where(temp => temp.HighTemp == this.Collection.Max(weather => weather.HighTemp)))
-                .ToList();
+                this.Collection.Where(temp => temp.HighTemp == highest)
+                    .ToList();
             return highestTemps;
         }
 
         public List<Weather> GetHighestLowTemps()
         {
+            var highest = this.Collection.Max(weather => weather.LowTemp);
             var highestTemps =
-                (this.Collection.Where(temp => temp.LowTemp == this.Collection.Max(weather => weather.LowTemp)))
-                .ToList();
+                this.Collection.Where(temp => temp.LowTemp == highest)
+                    .ToList();
             return highestTemps;
         }
 
         public List<Weather> GetLowestTemps()
         {
+            var lowest = this.Collection.Min(weather => weather.LowTemp);
             var lowTemps =
-                (this.Collection.Where(temp => temp.LowTemp == this.Collection.Min(weather => weather.LowTemp)))
-                .ToList();
+                this.Collection.Where(temp => temp.LowTemp == lowest)
+                    .ToList();
             return lowTemps;
         }
 
         public List<Weather> GetLowestHighTemps()
         {
+            var lowest = this.Collection.Min(weather => weather.HighTemp);
             var lowTemps =
-                (this.Collection.Where(temp => temp.HighTemp == this.Collection.Min(weather => weather.HighTemp)))
-                .ToList();
+                this.Collection.Where(temp => temp.HighTemp == lowest)
+                    .ToList();
             return lowTemps;
         }
 
