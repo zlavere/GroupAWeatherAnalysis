@@ -4,22 +4,42 @@ using System.Linq;
 namespace WeatherDataAnalysis.Model
 {
     /// <summary>
-    /// Provides analytic functions for sets of Weather objects.
+    ///     Provides analytic functions for sets of Weather objects.
     /// </summary>
-    internal class WeatherCollection
+    public class WeatherCollection
     {
         #region Properties
 
-        public List<Weather> Collection { get; set; }
-        public List<int> HighTemps { get; set; }
-        public List<int> LowTemps { get; set; }
+        /// <summary>
+        ///     Gets or sets the collection.
+        /// </summary>
+        /// <value>
+        ///     The collection.
+        /// </value>
+        private List<Weather> Collection { get; }
+
+        /// <summary>
+        ///     Gets or sets the high temps.
+        /// </summary>
+        /// <value>
+        ///     The high temps.
+        /// </value>
+        private List<int> HighTemps { get; }
+
+        /// <summary>
+        ///     Gets or sets the low temps.
+        /// </summary>
+        /// <value>
+        ///     The low temps.
+        /// </value>
+        private List<int> LowTemps { get; }
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WeatherCollection"/> class.
+        ///     Initializes a new instance of the <see cref="WeatherCollection" /> class.
         /// </summary>
         /// <param name="weatherCollection">The weather collection.</param>
         public WeatherCollection(List<Weather> weatherCollection)
@@ -38,7 +58,7 @@ namespace WeatherDataAnalysis.Model
         #region Methods
 
         /// <summary>
-        /// Gets the highest temps.
+        ///     Gets the highest temps.
         /// </summary>
         /// <returns>List of Weather with the highest temps.</returns>
         public List<Weather> GetHighestTemps()
@@ -51,9 +71,11 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Gets the highest low temps.
+        ///     Gets the highest low temps.
         /// </summary>
         /// <returns>List of Weather with the highest low temps.</returns>
+
+        //TODO WHY DOESN'T THIS WORK LIKE THE OTHERS!?!?!?!?!?!?!?!?
         public List<Weather> GetHighestLowTemps()
         {
             var highest = this.Collection.Max(weather => weather.LowTemp);
@@ -64,7 +86,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Gets the lowest temps.
+        ///     Gets the lowest temps.
         /// </summary>
         /// <returns>List of Weather with the lowest temps.</returns>
         public List<Weather> GetLowestTemps()
@@ -77,7 +99,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Gets the lowest high temps.
+        ///     Gets the lowest high temps.
         /// </summary>
         /// <returns>List of Weather with the lowest high temps.</returns>
         public List<Weather> GetLowestHighTemps()
@@ -90,7 +112,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Gets the average high temp.
+        ///     Gets the average high temp.
         /// </summary>
         /// <returns>The average high temp.</returns>
         public double GetAverageHighTemp()
@@ -99,7 +121,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Gets the average low temp.
+        ///     Gets the average low temp.
         /// </summary>
         /// <returns>The average low temp.</returns>
         public double GetAverageLowTemp()

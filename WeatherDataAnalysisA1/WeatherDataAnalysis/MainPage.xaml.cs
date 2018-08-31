@@ -24,12 +24,12 @@ namespace WeatherDataAnalysis
         /// <summary>
         ///     The application height
         /// </summary>
-        public const int ApplicationHeight = 355;
+        private const int ApplicationHeight = 355;
 
         /// <summary>
         ///     The application width
         /// </summary>
-        public const int ApplicationWidth = 625;
+        private const int ApplicationWidth = 625;
 
         private WeatherCollection weatherCollection;
 
@@ -57,30 +57,30 @@ namespace WeatherDataAnalysis
         {
             this.summaryTextBox.Text = "Load file was invoked.";
 
-            var filePicker = this.CreateNewFileOpenPicker();
+            var filePicker = this.createNewFileOpenPicker();
             var file = await filePicker.PickSingleFileAsync();
 
             if (file != null)
             {
                 var tempParser = new TemperatureParser();
                 var content = await FileIO.ReadLinesAsync(file);
-                var tempFormatter = new TemperatureDataFormatter();
+
                 var newWeatherCollection = new List<Weather>();
 
                 StorageApplicationPermissions.FutureAccessList.Add(file);
-                this.summaryTextBox.Text = string.Empty;
 
                 foreach (var current in tempParser.GetWeatherList(content))
                 {
                     newWeatherCollection.Add(current);
-                    this.summaryTextBox.Text += tempFormatter.FormatSimpleString(current) + Environment.NewLine;
                 }
 
+                //TODO Probably want a list of WeatherCollection (eg WeatherCollectionList and add newWeatherCollection to it. Maybe?)
                 this.weatherCollection = new WeatherCollection(newWeatherCollection);
+                this.setSummaryTextTemps(this.weatherCollection);
             }
         }
 
-        private FileOpenPicker CreateNewFileOpenPicker()
+        private FileOpenPicker createNewFileOpenPicker()
         {
             var filePicker = new FileOpenPicker();
             filePicker.FileTypeFilter.Add(".csv");
@@ -88,6 +88,21 @@ namespace WeatherDataAnalysis
             filePicker.ViewMode = PickerViewMode.Thumbnail;
             filePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             return filePicker;
+        }
+
+        private void setSummaryTextTemps(WeatherCollection outputWeatherCollection)
+        {
+            var tempFormatter = new TemperatureDataFormatter();
+            this.summaryTextBox.Text = string.Empty;
+            this.summaryTextBox.Text += tempFormatter.FormatAverageHighTemperature(outputWeatherCollection) +
+                                        Environment.NewLine;
+            this.summaryTextBox.Text +=
+                tempFormatter.FormatAverageLowTemperature(outputWeatherCollection) + Environment.NewLine;
+            this.summaryTextBox.Text += tempFormatter.FormatHighestTemps(outputWeatherCollection) + Environment.NewLine;
+            this.summaryTextBox.Text += tempFormatter.FormatLowestTemps(outputWeatherCollection) + Environment.NewLine;
+            this.summaryTextBox.Text +=
+                tempFormatter.FormatLowestHighTemps(outputWeatherCollection) + Environment.NewLine;
+            //this.summaryTextBox.Text += tempFormatter.FormatHighestLowTemps(outputWeatherCollection);
         }
 
         #endregion
