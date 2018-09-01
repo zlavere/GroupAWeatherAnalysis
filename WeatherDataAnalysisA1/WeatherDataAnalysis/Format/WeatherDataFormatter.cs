@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Windows.ApplicationModel.Store;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.Format
@@ -97,12 +98,16 @@ namespace WeatherDataAnalysis.Format
 
             foreach (var current in lowestHighTempsList)
             {
-                while (current != lowestHighTempsList.Last())
+                if (current != lowestHighTempsList.Last())
                 {
                     lowestHighTemps += $"{current.Date.ToShortDateString()}," + Environment.NewLine;
                 }
+                else
+                {
+                    lowestHighTemps += $"{current.Date.ToShortDateString()}";
+                }
 
-                lowestHighTemps += $"{current.Date.ToShortDateString()}";
+                
             }
             return lowestHighTemps;
         }
@@ -124,17 +129,60 @@ namespace WeatherDataAnalysis.Format
 
             foreach (var current in highestLowTempsList)
             {
-                while (current != highestLowTempsList.Last())
+                if (current != highestLowTempsList.Last())
                 {
-                    Console.WriteLine(current.LowTemp);
-                    highestLowTemps += $"{current.Date.ToShortDateString()}," + Environment.NewLine;
+                    highestLowTemps += $"{current.Date.ToShortDateString()}" + Environment.NewLine;
+                }
+                else
+                {
+                    highestLowTemps += $"{current.Date.ToShortDateString()}";
                 }
 
-                highestLowTemps += $"{current.Date.ToShortDateString()}";
+                
             }
             return highestLowTemps;
         }
 
+        public string FormatDaysAbove90(WeatherCollection weatherCollection)
+        {
+            var daysAbove90List = weatherCollection.GetDaysAbove90();
+
+            var daysAbove90 = "Date(s) with high above 90: " + Environment.NewLine;
+
+            foreach (var current in daysAbove90List)
+            {
+                if (current != daysAbove90List.Last())
+                {
+                    daysAbove90 += $"{current.HighTemp} on {current.Date.ToShortDateString()}" + Environment.NewLine;
+                }
+                else
+                {
+                    daysAbove90 += $"{current.HighTemp} on {current.Date.ToShortDateString()}";
+                }
+            }
+            return daysAbove90;
+        }
+
+        public string FormatDaysBelow32(WeatherCollection weatherCollection)
+        {
+            var daysBelow32List = weatherCollection.GetDaysBelow32();
+
+            var daysBelow32 = "Date(s) with low below 32: " + Environment.NewLine;
+
+            foreach (var current in daysBelow32List)
+            {
+                if (current != daysBelow32List.Last())
+                {
+                    daysBelow32 += $"{current.LowTemp} on {current.Date.ToShortDateString()}" + Environment.NewLine;
+                }
+                else
+                {
+                    daysBelow32 += $"{current.LowTemp} on {current.Date.ToShortDateString()}";
+                }
+            }
+
+            return daysBelow32;
+        }
 
         #endregion
     }

@@ -129,6 +129,18 @@ namespace WeatherDataAnalysis.Model
             return this.LowTemps.Average();
         }
 
+        public List<Weather> GetDaysAbove90()
+        {
+            return this.Collection.Where(weather => weather.HighTemp >= 90).ToList();
+        }
+
+        public List<Weather> GetDaysBelow32()
+        {
+            return this.Collection.Where(weather => weather.LowTemp <= 32).ToList();
+        }
+
+        
+
         #endregion
     }
 }
