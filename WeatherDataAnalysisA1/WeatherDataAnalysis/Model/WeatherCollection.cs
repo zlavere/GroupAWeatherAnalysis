@@ -144,7 +144,13 @@ namespace WeatherDataAnalysis.Model
         {
             return this.Collection.Where(weather => weather.LowTemp <= 32).ToList();
         }
-
+        
+        //TODO Complete Method docs
+        /// <summary>
+        /// Gets the highest in month.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns></returns>
         public List<Weather> GetHighestInMonth(int month)
         {
             var weatherByMonthList = this.Collection.Where(weather => weather.Date.Month == month).ToList();
@@ -156,6 +162,11 @@ namespace WeatherDataAnalysis.Model
             return weatherHigh;
         }
 
+        /// <summary>
+        /// Gets the lowest in month.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns></returns>
         public List<Weather> GetLowestInMonth(int month)
         {
             var weatherByMonthList = this.Collection.Where(weather => weather.Date.Month == month).ToList();
@@ -165,6 +176,40 @@ namespace WeatherDataAnalysis.Model
             var weatherLow = weatherByMonthList.Where(weather => weather.LowTemp == lowInMonth).ToList();
 
             return weatherLow;
+        }
+
+        /// <summary>
+        /// Gets the high average for month.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns></returns>
+        public double GetHighAverageForMonth(int month)
+        {
+            var weatherByMonthList = this.Collection.Where(weather => weather.Date.Month == month).ToList();
+      
+            var highTempsPerMonth = (from weather in weatherByMonthList
+                                     select weather.HighTemp).ToList();
+
+            var average = highTempsPerMonth.Average();
+
+            return average;
+        }
+
+        /// <summary>
+        /// Gets the low average for month.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns></returns>
+        public double GetLowAverageForMonth(int month)
+        {
+            var weatherByMonthList = this.Collection.Where(weather => weather.Date.Month == month).ToList();
+
+            var lowTempsPerMonth = (from weather in weatherByMonthList
+                                     select weather.LowTemp).ToList();
+
+            var average = lowTempsPerMonth.Average();
+
+            return average;
         }
 
         #endregion

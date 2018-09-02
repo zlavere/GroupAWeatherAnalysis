@@ -112,7 +112,9 @@ namespace WeatherDataAnalysis
             this.summaryTextBox.Text += tempFormatter.FormatDaysAbove90(outputWeatherCollection) + 
                                         Environment.NewLine;
             this.summaryTextBox.Text += tempFormatter.FormatDaysBelow32(outputWeatherCollection) + Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatHighPerMonth(outputWeatherCollection, 1);
+            this.summaryTextBox.Text += tempFormatter.FormatHighPerMonth(outputWeatherCollection, 1) + Environment.NewLine;
+            this.summaryTextBox.Text +=
+                tempFormatter.FormatLowPerMonth(outputWeatherCollection, 1) + Environment.NewLine;
         }
 
         #endregion
