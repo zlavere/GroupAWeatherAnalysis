@@ -261,6 +261,18 @@
             </summary>
             <returns>The average low temp.</returns>
         </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherCollection.GetDaysAbove90">
+            <summary>
+            Gets the days above 90.
+            </summary>
+            <returns>Weather objects where high above 90</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherCollection.GetDaysBelow32">
+            <summary>
+            Gets the days below32.
+            </summary>
+            <returns>Weather objects where high below 32</returns>
+        </member>
         <member name="T:WeatherDataAnalysis.Program">
             <summary>
             Program class

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using Windows.ApplicationModel.Store;
 using WeatherDataAnalysis.Model;
@@ -118,7 +119,6 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of highest low temp data.</returns>
-        //TODO FIGURE OUT WHY THIS IS BROKEN!
         public string FormatHighestLowTemps(WeatherCollection weatherCollection)
         {
             var highestLowTempsList = weatherCollection.GetHighestLowTemps();
@@ -182,6 +182,50 @@ namespace WeatherDataAnalysis.Format
             }
 
             return daysBelow32;
+        }
+
+        public string FormatHighPerMonth(WeatherCollection weatherCollection, int month)
+        {
+            var highestInMonthList = weatherCollection.GetHighestInMonth(month);
+            var highestInMonth =
+                $"Date(s) with the highest temperature of {highestInMonthList[0].HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {highestInMonthList[0].Date.Year}:" 
+                + Environment.NewLine;
+
+            foreach (var current in highestInMonthList)
+            {
+                if (current != highestInMonthList.Last())
+                {
+                    highestInMonth += $"{current.Date.ToShortDateString()}" + Environment.NewLine;
+                }
+                else
+                {
+                    highestInMonth += $"{current.Date.ToShortDateString()}";
+                }
+
+            }
+            return highestInMonth;
+        }
+
+        public string FormatLowPerMonth(WeatherCollection weatherCollection, int month)
+        {
+            var lowestInMonthList = weatherCollection.GetLowestInMonth(month);
+            var lowestInMonth =
+                $"Date(s) with the Lowest temperature of {lowestInMonthList[0].HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {lowestInMonthList[0].Date.Year}:"
+                + Environment.NewLine;
+            
+            foreach (var current in lowestInMonthList)
+            {
+                if (current != lowestInMonthList.Last())
+                {
+                    lowestInMonth += $"{current.Date.ToShortDateString()}" + Environment.NewLine;
+                }
+                else
+                {
+                    lowestInMonth += $"{current.Date.ToShortDateString()}";
+                }
+
+            }
+            return lowestInMonth;
         }
 
         #endregion

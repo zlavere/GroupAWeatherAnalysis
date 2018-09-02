@@ -19,7 +19,6 @@ namespace WeatherDataAnalysis.io
         /// <returns></returns>
         public List<Weather> GetWeatherList(IList<string> tempList)
         {
-            //TODO Change this to GetWeatherCollection returns WeatherCollection
             var tempDataList = new List<Weather>();
 
             foreach (var currentDateData in tempList)

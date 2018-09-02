@@ -97,17 +97,23 @@ namespace WeatherDataAnalysis
             this.summaryTextBox.Text += tempFormatter.FormatAverageHighTemperature(outputWeatherCollection) +
                                         Environment.NewLine;
             this.summaryTextBox.Text +=
-                tempFormatter.FormatAverageLowTemperature(outputWeatherCollection) + Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatHighestTemps(outputWeatherCollection) + Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatLowestTemps(outputWeatherCollection) + Environment.NewLine;
+                tempFormatter.FormatAverageLowTemperature(outputWeatherCollection) +
+                Environment.NewLine;
+            this.summaryTextBox.Text += tempFormatter.FormatHighestTemps(outputWeatherCollection) + 
+                                        Environment.NewLine;
+            this.summaryTextBox.Text += tempFormatter.FormatLowestTemps(outputWeatherCollection) + 
+                                        Environment.NewLine;
             this.summaryTextBox.Text +=
-                tempFormatter.FormatLowestHighTemps(outputWeatherCollection) + Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatHighestLowTemps(outputWeatherCollection) + Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatDaysAbove90(outputWeatherCollection) + Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatDaysBelow32(outputWeatherCollection);
+                tempFormatter.FormatLowestHighTemps(outputWeatherCollection) + 
+                Environment.NewLine;
+            this.summaryTextBox.Text +=
+                tempFormatter.FormatHighestLowTemps(outputWeatherCollection) + 
+                Environment.NewLine;
+            this.summaryTextBox.Text += tempFormatter.FormatDaysAbove90(outputWeatherCollection) + 
+                                        Environment.NewLine;
+            this.summaryTextBox.Text += tempFormatter.FormatDaysBelow32(outputWeatherCollection) + Environment.NewLine;
+            this.summaryTextBox.Text += tempFormatter.FormatHighPerMonth(outputWeatherCollection, 1);
         }
-
-        
 
         #endregion
     }

@@ -74,8 +74,6 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the highest low temps.
         /// </summary>
         /// <returns>List of Weather with the highest low temps.</returns>
-
-        //TODO WHY DOESN'T THIS WORK LIKE THE OTHERS!?!?!?!?!?!?!?!?
         public List<Weather> GetHighestLowTemps()
         {
             var highest = this.Collection.Max(weather => weather.LowTemp);
@@ -129,17 +127,45 @@ namespace WeatherDataAnalysis.Model
             return this.LowTemps.Average();
         }
 
+        /// <summary>
+        /// Gets the days above 90.
+        /// </summary>
+        /// <returns>Weather objects where high above 90</returns>
         public List<Weather> GetDaysAbove90()
         {
             return this.Collection.Where(weather => weather.HighTemp >= 90).ToList();
         }
 
+        /// <summary>
+        /// Gets the days below32.
+        /// </summary>
+        /// <returns>Weather objects where high below 32</returns>
         public List<Weather> GetDaysBelow32()
         {
             return this.Collection.Where(weather => weather.LowTemp <= 32).ToList();
         }
 
-        
+        public List<Weather> GetHighestInMonth(int month)
+        {
+            var weatherByMonthList = this.Collection.Where(weather => weather.Date.Month == month).ToList();
+
+            var highInMonth = weatherByMonthList.Max(weather => weather.HighTemp);
+
+            var weatherHigh = weatherByMonthList.Where(weather => weather.HighTemp == highInMonth).ToList();
+
+            return weatherHigh;
+        }
+
+        public List<Weather> GetLowestInMonth(int month)
+        {
+            var weatherByMonthList = this.Collection.Where(weather => weather.Date.Month == month).ToList();
+
+            var lowInMonth = weatherByMonthList.Min(weather => weather.LowTemp);
+
+            var weatherLow = weatherByMonthList.Where(weather => weather.LowTemp == lowInMonth).ToList();
+
+            return weatherLow;
+        }
 
         #endregion
     }
