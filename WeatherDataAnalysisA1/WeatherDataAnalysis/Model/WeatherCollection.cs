@@ -9,7 +9,6 @@ namespace WeatherDataAnalysis.Model
     public class WeatherCollection
     {
         #region Properties
-
         /// <summary>
         ///     Gets or sets the collection.
         /// </summary>
