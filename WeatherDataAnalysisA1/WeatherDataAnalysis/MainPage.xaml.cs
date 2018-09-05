@@ -31,7 +31,7 @@ namespace WeatherDataAnalysis
         /// </summary>
         private const int ApplicationWidth = 625;
 
-        private WeatherCollection weatherCollection;
+        private WeatherInfoCollection weatherCollection;
 
         #endregion
 
@@ -62,20 +62,19 @@ namespace WeatherDataAnalysis
 
             if (file != null)
             {
-                var tempParser = new TemperatureParser();
                 var content = await FileIO.ReadLinesAsync(file);
 
-                var newWeatherCollection = new List<Weather>();
+                var newWeatherCollection = new List<WeatherInfo>();
 
                 StorageApplicationPermissions.FutureAccessList.Add(file);
 
-                foreach (var current in tempParser.GetWeatherList(content))
+                foreach (var current in TemperatureParser.GetWeatherList(content))
                 {
                     newWeatherCollection.Add(current);
                 }
 
                 //TODO Probably want a list of WeatherCollection (eg WeatherCollectionList and add newWeatherCollection to it. Maybe?)
-                this.weatherCollection = new WeatherCollection(newWeatherCollection);
+                this.weatherCollection = new WeatherInfoCollection(newWeatherCollection);
                 this.setSummaryTextTemps(this.weatherCollection);
             }
         }
@@ -90,33 +89,45 @@ namespace WeatherDataAnalysis
             return filePicker;
         }
 
-        private void setSummaryTextTemps(WeatherCollection outputWeatherCollection)
+        //TODO Use List<string> to add all strings to this - maybe idictionary to create a map of data elements multi-select checkbox i want to see: 'x' 'y' 'z' elements
+        private void setSummaryTextTemps(WeatherInfoCollection outputCollection)
         {
             var tempFormatter = new TemperatureDataFormatter();
             this.summaryTextBox.Text = string.Empty;
-            this.summaryTextBox.Text += tempFormatter.FormatAverageHighTemperature(outputWeatherCollection) +
+            this.summaryTextBox.Text += tempFormatter.FormatAverageHighTemperature(outputCollection) +
                                         Environment.NewLine;
             this.summaryTextBox.Text +=
-                tempFormatter.FormatAverageLowTemperature(outputWeatherCollection) +
+                tempFormatter.FormatAverageLowTemperature(outputCollection) +
                 Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatHighestTemps(outputWeatherCollection) + 
+            this.summaryTextBox.Text += tempFormatter.FormatHighestTemps(outputCollection) + 
                                         Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatLowestTemps(outputWeatherCollection) + 
+            this.summaryTextBox.Text += tempFormatter.FormatLowestTemps(outputCollection) + 
                                         Environment.NewLine;
             this.summaryTextBox.Text +=
-                tempFormatter.FormatLowestHighTemps(outputWeatherCollection) + 
+                tempFormatter.FormatLowestHighTemps(outputCollection) + 
                 Environment.NewLine;
             this.summaryTextBox.Text +=
-                tempFormatter.FormatHighestLowTemps(outputWeatherCollection) + 
+                tempFormatter.FormatHighestLowTemps(outputCollection) + 
                 Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatDaysAbove90(outputWeatherCollection) + 
+            this.summaryTextBox.Text += tempFormatter.FormatDaysAbove90(outputCollection) + 
                                         Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatDaysBelow32(outputWeatherCollection) + Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatHighPerMonth(outputWeatherCollection, 1) + Environment.NewLine;
-            this.summaryTextBox.Text +=
-                tempFormatter.FormatLowPerMonth(outputWeatherCollection, 1) + Environment.NewLine;
+            this.summaryTextBox.Text += tempFormatter.FormatDaysBelow32(outputCollection) + Environment.NewLine;
+            this.summaryTextBox.Text += this.loadTemperaturesByMonth(outputCollection, 1);
+               
         }
 
+
+        private string loadTemperaturesByMonth(WeatherInfoCollection outputCollection, int month)
+        {
+            var output = "";
+            var tempDataParser = new TemperatureDataFormatter();
+            output += tempDataParser.FormatLowAveragePerMonth(outputCollection, month) + Environment.NewLine;
+            output += tempDataParser.FormatHighAveragePerMonth(outputCollection, month) + Environment.NewLine;
+            output += tempDataParser.FormatLowPerMonth(outputCollection, month) + Environment.NewLine;
+            output += tempDataParser.FormatHighPerMonth(outputCollection, month) + Environment.NewLine;
+            return output;
+
+        }
         #endregion
     }
 }

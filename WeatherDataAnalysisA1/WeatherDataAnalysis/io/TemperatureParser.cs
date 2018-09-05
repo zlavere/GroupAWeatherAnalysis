@@ -17,9 +17,9 @@ namespace WeatherDataAnalysis.io
         /// </summary>
         /// <param name="tempList">The temporary list.</param>
         /// <returns></returns>
-        public List<Weather> GetWeatherList(IList<string> tempList)
+        public static List<WeatherInfo> GetWeatherList(IList<string> tempList)
         {
-            var tempDataList = new List<Weather>();
+            var data = new List<WeatherInfo>();
 
             foreach (var currentDateData in tempList)
             {
@@ -28,10 +28,10 @@ namespace WeatherDataAnalysis.io
                 var highTemp = int.Parse(splitData[1]);
                 var lowTemp = int.Parse(splitData[2]);
 
-                tempDataList.Add(new Weather(date, highTemp, lowTemp));
+                data.Add(new WeatherInfo(date, highTemp, lowTemp));
             }
 
-            return tempDataList;
+            return data;
         }
 
         #endregion

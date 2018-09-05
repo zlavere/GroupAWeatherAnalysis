@@ -5,7 +5,7 @@ namespace WeatherDataAnalysis.Model
     /// <summary>
     ///     High and low temperature data for a specific day
     /// </summary>
-    public class Weather
+    public class TemperatureByDay
     {
         #region Properties
 
@@ -38,12 +38,12 @@ namespace WeatherDataAnalysis.Model
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Weather" /> class.
+        ///     Initializes a new instance of the <see cref="TemperatureByDay" /> class.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="highTemp">The high temporary.</param>
         /// <param name="lowTemp">The low temporary.</param>
-        public Weather(DateTime date, int highTemp, int lowTemp)
+        public TemperatureByDay(DateTime date, int highTemp, int lowTemp)
         {
             this.Date = date;
             this.LowTemp = lowTemp;

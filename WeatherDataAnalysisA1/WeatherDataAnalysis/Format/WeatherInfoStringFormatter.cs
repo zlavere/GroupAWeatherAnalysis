@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using Windows.ApplicationModel.Store;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.Format
@@ -18,7 +17,7 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         /// <param name="weatherCollection">The weather collection.</param>
         /// <returns></returns>
-        public string FormatAverageHighTemperature(WeatherCollection weatherCollection)
+        public string FormatAverageHighTemperature(WeatherInfoCollection weatherCollection)
         {
             return $"Average High Temp: {Math.Round(weatherCollection.GetAverageHighTemp(), 2)}";
         }
@@ -28,7 +27,7 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of Average Low temperature</returns>
-        public string FormatAverageLowTemperature(WeatherCollection weatherCollection)
+        public string FormatAverageLowTemperature(WeatherInfoCollection weatherCollection)
         {
             return $"Average Low Temp: {Math.Round(weatherCollection.GetAverageLowTemp(), 2)}";
         }
@@ -40,7 +39,7 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of highest temp data.</returns>
-        public string FormatHighestTemps(WeatherCollection weatherCollection)
+        public string FormatHighestTemps(WeatherInfoCollection weatherCollection)
         {
             var highestTempsList = weatherCollection.GetHighestTemps();
             var highestTemps = $"The highest temperature was: {highestTempsList[0].HighTemp}" +
@@ -64,7 +63,7 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of lowest temp data.</returns>
-        public string FormatLowestTemps(WeatherCollection weatherCollection)
+        public string FormatLowestTemps(WeatherInfoCollection weatherCollection)
         {
             var lowestTempsList = weatherCollection.GetLowestTemps();
 
@@ -89,7 +88,7 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of lowest high temp data.</returns>
-        public string FormatLowestHighTemps(WeatherCollection weatherCollection)
+        public string FormatLowestHighTemps(WeatherInfoCollection weatherCollection)
         {
             var lowestHighTempsList = weatherCollection.GetLowestHighTemps();
 
@@ -119,7 +118,7 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of highest low temp data.</returns>
-        public string FormatHighestLowTemps(WeatherCollection weatherCollection)
+        public string FormatHighestLowTemps(WeatherInfoCollection weatherCollection)
         {
             var highestLowTempsList = weatherCollection.GetHighestLowTemps();
 
@@ -143,7 +142,7 @@ namespace WeatherDataAnalysis.Format
             return highestLowTemps;
         }
 
-        public string FormatDaysAbove90(WeatherCollection weatherCollection)
+        public string FormatDaysAbove90(WeatherInfoCollection weatherCollection)
         {
             var daysAbove90List = weatherCollection.GetDaysAbove90();
 
@@ -163,7 +162,7 @@ namespace WeatherDataAnalysis.Format
             return daysAbove90;
         }
 
-        public string FormatDaysBelow32(WeatherCollection weatherCollection)
+        public string FormatDaysBelow32(WeatherInfoCollection weatherCollection)
         {
             var daysBelow32List = weatherCollection.GetDaysBelow32();
 
@@ -184,7 +183,7 @@ namespace WeatherDataAnalysis.Format
             return daysBelow32;
         }
 
-        public string FormatHighPerMonth(WeatherCollection weatherCollection, int month)
+        public string FormatHighPerMonth(WeatherInfoCollection weatherCollection, int month)
         {
             var highestInMonthList = weatherCollection.GetHighestInMonth(month);
             var highestInMonth =
@@ -206,7 +205,7 @@ namespace WeatherDataAnalysis.Format
             return highestInMonth;
         }
 
-        public string FormatLowPerMonth(WeatherCollection weatherCollection, int month)
+        public string FormatLowPerMonth(WeatherInfoCollection weatherCollection, int month)
         {
             var lowestInMonthList = weatherCollection.GetLowestInMonth(month);
             var lowestInMonth =
@@ -226,6 +225,16 @@ namespace WeatherDataAnalysis.Format
 
             }
             return lowestInMonth;
+        }
+
+        public string FormatLowAveragePerMonth(WeatherInfoCollection weatherCollection, int month)
+        {
+           return $"The average average low in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(weatherCollection.GetLowAverageForMonth(month), 2)}.";
+        }
+
+        public string FormatHighAveragePerMonth(WeatherInfoCollection weatherCollection, int month)
+        {
+            return $"The average average high in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(weatherCollection.GetHighAverageForMonth(month), 2)}.";
         }
 
         #endregion
