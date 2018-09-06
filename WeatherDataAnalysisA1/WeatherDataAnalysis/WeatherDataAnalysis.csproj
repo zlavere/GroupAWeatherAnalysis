@@ -98,7 +98,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Format\TemperatureDataFormatter.cs" />
-    <Compile Include="io\TemperatureParser.cs" />
+    <Compile Include="IO\CsvReader.cs" />
+    <Compile Include="IO\TemperatureParser.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

@@ -10,8 +10,11 @@ namespace WeatherDataAnalysis.io
     /// </summary>
     public class TemperatureParser
     {
-        #region Methods
+        private const int DateSegment = 0;
+        private const int HighTempSegment = 1;
+        private const int LowTempSegment = 2;
 
+        #region Methods
         /// <summary>
         ///     Gets the day temperature list.
         /// </summary>
@@ -24,16 +27,15 @@ namespace WeatherDataAnalysis.io
             foreach (var currentDateData in tempList)
             {
                 var splitData = currentDateData.Split(',');
-                var date = DateTime.ParseExact(splitData[0], "M/d/yyyy", CultureInfo.InvariantCulture);
-                var highTemp = int.Parse(splitData[1]);
-                var lowTemp = int.Parse(splitData[2]);
+                var date = DateTime.ParseExact(splitData[DateSegment], "M/d/yyyy", CultureInfo.InvariantCulture);
+                var highTemp = int.Parse(splitData[HighTempSegment]);
+                var lowTemp = int.Parse(splitData[LowTempSegment]);
 
                 data.Add(new WeatherInfo(date, highTemp, lowTemp));
             }
 
             return data;
         }
-
         #endregion
     }
 }

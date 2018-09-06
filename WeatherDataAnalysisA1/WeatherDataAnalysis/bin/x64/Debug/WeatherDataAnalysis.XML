@@ -100,6 +100,13 @@
             </summary>
             <returns>String representation of highest low temp data.</returns>
         </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighPerMonth(System.Int32)">
+            <summary>
+            Formats the high per month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns>Returns a string formatted for GUI of highest temperature for the month and date(s) it occurred on.</returns>
+        </member>
         <member name="T:WeatherDataAnalysis.io.TemperatureParser">
             <summary>
                 Parser for CSV set of Temperature Data where format is date, high, low.
@@ -239,7 +246,7 @@
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysBelow32">
             <summary>
-            Gets the days below32.
+            Gets the days below 32.
             </summary>
             <returns>Weather objects where high below 32</returns>
         </member>

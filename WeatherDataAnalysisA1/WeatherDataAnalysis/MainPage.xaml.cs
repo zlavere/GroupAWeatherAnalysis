@@ -61,7 +61,8 @@ namespace WeatherDataAnalysis
             if (file != null)
             {
                 StorageApplicationPermissions.FutureAccessList.Add(file);
-                var fileLines = await FileIO.ReadLinesAsync(file);
+                var csvReader = new CsvReader();
+                var fileLines = await csvReader.GetFileLines(file); 
                 this.setSummaryTextTemps(
                     this.createWeatherInfoCollection(fileLines)
                 );
