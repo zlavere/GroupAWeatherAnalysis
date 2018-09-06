@@ -759,6 +759,7 @@ C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WindowsBase.dll
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\mscorlib.dll
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\netstandard.dll
+C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\WeatherDataAnalysis.csprojAssemblyReference.cache
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\App.g.i.cs
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\App.g.cs
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\MainPage.g.i.cs
@@ -876,4 +877,3 @@ C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\qualifiers.txt.intermediate
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\ProjectArchitectures.txt
-C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\WeatherDataAnalysis.csprojAssemblyReference.cache

@@ -97,7 +97,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Format\WeatherInfoStringFormatter.cs" />
+    <Compile Include="Format\TemperatureDataFormatter.cs" />
     <Compile Include="io\TemperatureParser.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

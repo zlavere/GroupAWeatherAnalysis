@@ -63,47 +63,41 @@
                 Formats Temperature Data
             </summary>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageHighTemperature(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageHighTemperature">
             <summary>
             Formats the average high temperature.
             </summary>
-            <param name="weatherCollection">The weather collection.</param>
             <returns></returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageLowTemperature(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageLowTemperature">
             <summary>
             Formats the average low temperature.
             </summary>
-            <param name="weatherCollection">The weather collection.</param>
             <returns>String representation of Average Low temperature</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestTemps(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestTemps">
             <summary>
             Formats the highest temps.
             </summary>
-            <param name="weatherCollection">The weather collection.</param>
             <returns>String representation of highest temp data.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowestTemps(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowestTemps">
             <summary>
             Formats the lowest temps.
             </summary>
-            <param name="weatherCollection">The weather collection.</param>
             <returns>String representation of lowest temp data.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowestHighTemps(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowestHighTemps">
             <summary>
             Formats the lowest high temps.
             </summary>
-            <param name="weatherCollection">The weather collection.</param>
             <returns>String representation of lowest high temp data.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestLowTemps(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestLowTemps">
             <summary>
             Formats the highest low temps.
             BROKEN! WHY!?
             </summary>
-            <param name="weatherCollection">The weather collection.</param>
             <returns>String representation of highest low temp data.</returns>
         </member>
         <member name="T:WeatherDataAnalysis.io.TemperatureParser">
@@ -194,30 +188,6 @@
             <summary>
                 Provides analytic functions for sets of Weather objects.
             </summary>
-        </member>
-        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.Collection">
-            <summary>
-                Gets or sets the collection.
-            </summary>
-            <value>
-                The collection.
-            </value>
-        </member>
-        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.HighTemps">
-            <summary>
-                Gets or sets the high temps.
-            </summary>
-            <value>
-                The high temps.
-            </value>
-        </member>
-        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.LowTemps">
-            <summary>
-                Gets or sets the low temps.
-            </summary>
-            <value>
-                The low temps.
-            </value>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.#ctor(System.Collections.Generic.List{WeatherDataAnalysis.Model.WeatherInfo})">
             <summary>

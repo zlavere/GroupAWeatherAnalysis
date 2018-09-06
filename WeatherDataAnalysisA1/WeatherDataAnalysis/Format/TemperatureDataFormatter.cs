@@ -10,26 +10,32 @@ namespace WeatherDataAnalysis.Format
     /// </summary>
     public class TemperatureDataFormatter
     {
+
+        private WeatherInfoCollection weatherInfoCollection;
+        const int TwoPointFloatPrecision = 2;
+
+        public TemperatureDataFormatter(WeatherInfoCollection weatherInfoCollection)
+        {
+            this.weatherInfoCollection = weatherInfoCollection;
+        }
         #region Methods
 
         /// <summary>
         /// Formats the average high temperature.
         /// </summary>
-        /// <param name="weatherCollection">The weather collection.</param>
         /// <returns></returns>
-        public string FormatAverageHighTemperature(WeatherInfoCollection weatherCollection)
+        public string FormatAverageHighTemperature()
         {
-            return $"Average High Temp: {Math.Round(weatherCollection.GetAverageHighTemp(), 2)}";
+            return $"Average High Temp: {Math.Round(this.weatherInfoCollection.GetAverageHighTemp(), TwoPointFloatPrecision)}";
         }
 
         /// <summary>
         /// Formats the average low temperature.
         /// </summary>
-        /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of Average Low temperature</returns>
-        public string FormatAverageLowTemperature(WeatherInfoCollection weatherCollection)
+        public string FormatAverageLowTemperature()
         {
-            return $"Average Low Temp: {Math.Round(weatherCollection.GetAverageLowTemp(), 2)}";
+            return $"Average Low Temp: {Math.Round(this.weatherInfoCollection.GetAverageLowTemp(), TwoPointFloatPrecision)}";
         }
 
 
@@ -37,11 +43,10 @@ namespace WeatherDataAnalysis.Format
         /// <summary>
         /// Formats the highest temps.
         /// </summary>
-        /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of highest temp data.</returns>
-        public string FormatHighestTemps(WeatherInfoCollection weatherCollection)
+        public string FormatHighestTemps()
         {
-            var highestTempsList = weatherCollection.GetHighestTemps();
+            var highestTempsList = this.weatherInfoCollection.GetHighestTemps();
             var highestTemps = $"The highest temperature was: {highestTempsList[0].HighTemp}" +
                                Environment.NewLine +
                                "Date(s) with highest temperature: " + Environment.NewLine;
@@ -61,11 +66,10 @@ namespace WeatherDataAnalysis.Format
         /// <summary>
         /// Formats the lowest temps.
         /// </summary>
-        /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of lowest temp data.</returns>
-        public string FormatLowestTemps(WeatherInfoCollection weatherCollection)
+        public string FormatLowestTemps()
         {
-            var lowestTempsList = weatherCollection.GetLowestTemps();
+            var lowestTempsList = this.weatherInfoCollection.GetLowestTemps();
 
             var lowestTemps = $"The lowest temperature was: {lowestTempsList[0].LowTemp}" +
                                Environment.NewLine +
@@ -86,11 +90,10 @@ namespace WeatherDataAnalysis.Format
         /// <summary>
         /// Formats the lowest high temps.
         /// </summary>
-        /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of lowest high temp data.</returns>
-        public string FormatLowestHighTemps(WeatherInfoCollection weatherCollection)
+        public string FormatLowestHighTemps()
         {
-            var lowestHighTempsList = weatherCollection.GetLowestHighTemps();
+            var lowestHighTempsList = this.weatherInfoCollection.GetLowestHighTemps();
 
             var lowestHighTemps = $"The lowest high temperature was: {lowestHighTempsList[0].HighTemp}" +
                               Environment.NewLine +
@@ -116,11 +119,10 @@ namespace WeatherDataAnalysis.Format
         /// Formats the highest low temps.
         /// BROKEN! WHY!?
         /// </summary>
-        /// <param name="weatherCollection">The weather collection.</param>
         /// <returns>String representation of highest low temp data.</returns>
-        public string FormatHighestLowTemps(WeatherInfoCollection weatherCollection)
+        public string FormatHighestLowTemps()
         {
-            var highestLowTempsList = weatherCollection.GetHighestLowTemps();
+            var highestLowTempsList = this.weatherInfoCollection.GetHighestLowTemps();
 
             var highestLowTemps = $"The lowest high temperature was: {highestLowTempsList[0].LowTemp}" +
                                   Environment.NewLine +
@@ -142,9 +144,9 @@ namespace WeatherDataAnalysis.Format
             return highestLowTemps;
         }
 
-        public string FormatDaysAbove90(WeatherInfoCollection weatherCollection)
+        public string FormatDaysAbove90()
         {
-            var daysAbove90List = weatherCollection.GetDaysAbove90();
+            var daysAbove90List = this.weatherInfoCollection.GetDaysAbove90();
 
             var daysAbove90 = "Date(s) with high above 90: " + Environment.NewLine;
 
@@ -162,9 +164,9 @@ namespace WeatherDataAnalysis.Format
             return daysAbove90;
         }
 
-        public string FormatDaysBelow32(WeatherInfoCollection weatherCollection)
+        public string FormatDaysBelow32()
         {
-            var daysBelow32List = weatherCollection.GetDaysBelow32();
+            var daysBelow32List = this.weatherInfoCollection.GetDaysBelow32();
 
             var daysBelow32 = "Date(s) with low below 32: " + Environment.NewLine;
 
@@ -183,9 +185,9 @@ namespace WeatherDataAnalysis.Format
             return daysBelow32;
         }
 
-        public string FormatHighPerMonth(WeatherInfoCollection weatherCollection, int month)
+        public string FormatHighPerMonth(int month)
         {
-            var highestInMonthList = weatherCollection.GetHighestInMonth(month);
+            var highestInMonthList = this.weatherInfoCollection.GetHighestInMonth(month);
             var highestInMonth =
                 $"Date(s) with the highest temperature of {highestInMonthList[0].HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {highestInMonthList[0].Date.Year}:" 
                 + Environment.NewLine;
@@ -205,9 +207,9 @@ namespace WeatherDataAnalysis.Format
             return highestInMonth;
         }
 
-        public string FormatLowPerMonth(WeatherInfoCollection weatherCollection, int month)
+        public string FormatLowPerMonth(int month)
         {
-            var lowestInMonthList = weatherCollection.GetLowestInMonth(month);
+            var lowestInMonthList = this.weatherInfoCollection.GetLowestInMonth(month);
             var lowestInMonth =
                 $"Date(s) with the Lowest temperature of {lowestInMonthList[0].HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {lowestInMonthList[0].Date.Year}:"
                 + Environment.NewLine;
@@ -227,14 +229,14 @@ namespace WeatherDataAnalysis.Format
             return lowestInMonth;
         }
 
-        public string FormatLowAveragePerMonth(WeatherInfoCollection weatherCollection, int month)
+        public string FormatLowAveragePerMonth(int month)
         {
-           return $"The average average low in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(weatherCollection.GetLowAverageForMonth(month), 2)}.";
+           return $"The average average low in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(this.weatherInfoCollection.GetLowAverageForMonth(month), TwoPointFloatPrecision)}.";
         }
 
-        public string FormatHighAveragePerMonth(WeatherInfoCollection weatherCollection, int month)
+        public string FormatHighAveragePerMonth(int month)
         {
-            return $"The average average high in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(weatherCollection.GetHighAverageForMonth(month), 2)}.";
+            return $"The average average high in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(this.weatherInfoCollection.GetHighAverageForMonth(month), TwoPointFloatPrecision)}.";
         }
 
         #endregion

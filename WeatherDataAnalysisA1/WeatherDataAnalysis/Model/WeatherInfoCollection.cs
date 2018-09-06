@@ -127,6 +127,7 @@ namespace WeatherDataAnalysis.Model
             return this.Collection.Where(weather => weather.LowTemp <= 32).ToList();
         }
         
+        //TODO return statements docs
         /// <summary>
         /// Gets the highest in month.
         /// </summary>
