@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>CS1211W35</Machine>
-    <WindowsUser>csuser</WindowsUser>
+    <Machine>ITS-ZLAVERE-W1</Machine>
+    <WindowsUser>zlavere</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>de33a4da-9a75-4202-99d4-9d3cf5257d74</PackageIdentityName>
     <PackageIdentityPublisher>CN=dyoder</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\AppX</LayoutDir>
     <RegisteredManifestChecksum>E1F097479C738B656A4B9E2EFC489C9258C35399E52C35CEFC5611EC0A960BD0</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>de33a4da-9a75-4202-99d4-9d3cf5257d74_1.0.0.0_x64__vpktpzvxd0r0j</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>de33a4da-9a75-4202-99d4-9d3cf5257d74_vpktpzvxd0r0j!App</RegisteredUserModeAppID>
@@ -28,16 +28,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-06T19:11:21.010</Modified>
+      <Modified>2018-09-07T18:26:54.639</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.exe">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.exe">
       <PackagePath>entrypoint\WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-09-06T19:11:20.278</Modified>
+      <Modified>2018-09-07T18:26:52.908</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.1.7\runtimes\win10-x64\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -695,68 +695,68 @@
       <PackagePath>netstandard.dll</PackagePath>
       <Modified>2018-07-20T14:48:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-09-06T18:18:51.269</Modified>
+      <Modified>2018-08-24T21:10:28.646</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2018-09-06T18:18:51.043</Modified>
+      <Modified>2018-08-24T21:10:28.622</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-06T18:18:51.043</Modified>
+      <Modified>2018-08-24T21:10:28.624</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-06T18:18:51.043</Modified>
+      <Modified>2018-08-24T21:10:28.626</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-06T18:18:51.043</Modified>
+      <Modified>2018-08-24T21:10:28.627</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-06T18:18:51.043</Modified>
+      <Modified>2018-08-24T21:10:28.628</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-06T18:18:51.043</Modified>
+      <Modified>2018-08-24T21:10:28.629</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-06T18:18:51.059</Modified>
+      <Modified>2018-08-24T21:10:28.630</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.xr.xml">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.xr.xml">
       <PackagePath>WeatherDataAnalysis.xr.xml</PackagePath>
-      <Modified>2018-09-06T18:18:58.974</Modified>
+      <Modified>2018-08-24T21:10:30.539</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-09-06T19:11:20.102</Modified>
+      <Modified>2018-09-07T18:26:52.647</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-09-06T19:11:20.103</Modified>
+      <Modified>2018-09-07T18:26:52.650</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-04-20T02:01:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-06T18:42:48.109</Modified>
+      <Modified>2018-09-07T18:26:54.026</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\WeatherDataAnalysis.exe">
+    <AppxPackagedFile Include="C:\Users\zlavere\Desktop\school\201808\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-09-06T19:11:21.000</Modified>
+      <Modified>2018-09-07T18:26:54.592</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

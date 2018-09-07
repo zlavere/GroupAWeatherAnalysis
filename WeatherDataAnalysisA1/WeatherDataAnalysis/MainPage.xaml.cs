@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.Foundation;
-using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.UI.ViewManagement;
@@ -62,7 +61,7 @@ namespace WeatherDataAnalysis
             {
                 StorageApplicationPermissions.FutureAccessList.Add(file);
                 var csvReader = new CsvReader();
-                var fileLines = await csvReader.GetFileLines(file); 
+                var fileLines = await csvReader.GetFileLines(file);
                 this.setSummaryTextTemps(
                     this.createWeatherInfoCollection(fileLines)
                 );

@@ -1,0 +1,13 @@
+{
+  "User": {
+    "Id": 96,
+    "Username": "zlavere",
+    "Name": "Zachary Lavere",
+    "Email": "zlavere@westga.edu",
+    "AvatarUrl": "https://secure.gravatar.com/avatar/130526a7e7439d3b1110c1da89493717?s=80&d=identicon",
+    "PrivateToken": "f2da9be92b1642016ecef2888315e09d5c0ca7cc436120db52df542d22376027",
+    "Host": "https://code.westga.edu/",
+    "TwoFactorEnabled": false,
+    "ApiVersion": 3
+  }
+}

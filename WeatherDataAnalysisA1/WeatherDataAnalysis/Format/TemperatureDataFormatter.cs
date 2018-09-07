@@ -47,20 +47,21 @@ namespace WeatherDataAnalysis.Format
         /// <returns>String representation of highest temp data.</returns>
         public string FormatHighestTemps()
         {
-            var highestTempsList = this.weatherInfoCollection.GetHighestTemps();
-            var highestTemps = $"The highest temperature was: {highestTempsList[0].HighTemp}" +
+            var weatherInfosWithHighestTemp = this.weatherInfoCollection.GetHighestTemps();
+            var highestTemp = weatherInfosWithHighestTemp[0].HighTemp;
+            var highestTemps = $"The highest temperature was: {highestTemp}" +
                                Environment.NewLine +
                                "Date(s) with highest temperature: " + Environment.NewLine;
 
-            foreach (var current in highestTempsList)
+            foreach (var current in weatherInfosWithHighestTemp)
             {
-                if (current != highestTempsList.Last())
+                if (current != weatherInfosWithHighestTemp.Last())
                 {
-                    highestTemps += $"{current.Date.ToShortDateString()}," + Environment.NewLine;
+                    highestTemps += $"{this.GetDateString(current.Date)}," + Environment.NewLine;
                 }
                 else
                 {
-                    highestTemps += $"{current.Date.ToShortDateString()}";
+                    highestTemps += $"{this.GetDateString(current.Date)}";
                 }
             }
 
@@ -83,11 +84,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != lowestTempsList.Last())
                 {
-                    lowestTemps += $"{current.Date.ToShortDateString()}," + Environment.NewLine;
+                    lowestTemps += $"{this.GetDateString(current.Date)}," + Environment.NewLine;
                 }
                 else
                 {
-                    lowestTemps += $"{current.Date.ToShortDateString()}";
+                    lowestTemps += $"{this.GetDateString(current.Date)}";
                 }
             }
 
@@ -110,11 +111,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != lowestHighTempsList.Last())
                 {
-                    lowestHighTemps += $"{current.Date.ToShortDateString()}," + Environment.NewLine;
+                    lowestHighTemps += $"{this.GetDateString(current.Date)}," + Environment.NewLine;
                 }
                 else
                 {
-                    lowestHighTemps += $"{current.Date.ToShortDateString()}";
+                    lowestHighTemps += $"{this.GetDateString(current.Date)}";
                 }
             }
 
@@ -123,7 +124,6 @@ namespace WeatherDataAnalysis.Format
 
         /// <summary>
         /// Formats the highest low temps.
-        /// BROKEN! WHY!?
         /// </summary>
         /// <returns>String representation of highest low temp data.</returns>
         public string FormatHighestLowTemps()
@@ -138,11 +138,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != highestLowTempsList.Last())
                 {
-                    highestLowTemps += $"{current.Date.ToShortDateString()}" + Environment.NewLine;
+                    highestLowTemps += $"{this.GetDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    highestLowTemps += $"{current.Date.ToShortDateString()}";
+                    highestLowTemps += $"{this.GetDateString(current.Date)}";
                 }
             }
 
@@ -159,11 +159,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != daysAbove90List.Last())
                 {
-                    daysAbove90 += $"{current.HighTemp} on {current.Date.ToShortDateString()}" + Environment.NewLine;
+                    daysAbove90 += $"{current.HighTemp} on {this.GetDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    daysAbove90 += $"{current.HighTemp} on {current.Date.ToShortDateString()}";
+                    daysAbove90 += $"{current.HighTemp} on {this.GetDateString(current.Date)}";
                 }
             }
 
@@ -180,11 +180,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != daysBelow32List.Last())
                 {
-                    daysBelow32 += $"{current.LowTemp} on {current.Date.ToShortDateString()}" + Environment.NewLine;
+                    daysBelow32 += $"{current.LowTemp} on {this.GetDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    daysBelow32 += $"{current.LowTemp} on {current.Date.ToShortDateString()}";
+                    daysBelow32 += $"{current.LowTemp} on {this.GetDateString(current.Date)}";
                 }
             }
 
@@ -207,11 +207,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != highestInMonthList.Last())
                 {
-                    highestInMonth += $"{current.Date.ToShortDateString()}" + Environment.NewLine;
+                    highestInMonth += $"{this.GetDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    highestInMonth += $"{current.Date.ToShortDateString()}";
+                    highestInMonth += $"{this.GetDateString(current.Date)}";
                 }
             }
 
@@ -229,11 +229,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != lowestInMonthList.Last())
                 {
-                    lowestInMonth += $"{current.Date.ToShortDateString()}" + Environment.NewLine;
+                    lowestInMonth += $"{this.GetDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    lowestInMonth += $"{current.Date.ToShortDateString()}";
+                    lowestInMonth += $"{this.GetDateString(current.Date)}";
                 }
             }
 
@@ -250,6 +250,42 @@ namespace WeatherDataAnalysis.Format
         {
             return
                 $"The average average high in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(this.weatherInfoCollection.GetHighAverageForMonth(month), TwoPointFloatPrecision)}.";
+        }
+
+        private string GetDateString(DateTime date)
+        {
+            var month = DateTimeFormatInfo.CurrentInfo.GetMonthName(date.Month);
+            var ordinalDay = this.GetOrdinal(date.Day);
+            return $"{month} {ordinalDay}, {date.Year}";
+        }
+
+        private string GetOrdinal(int day)
+        {
+            var ordinalDay = string.Empty;
+            if (day == 11 || day == 12 || day == 13)
+            {
+                ordinalDay = day + "th";
+            }
+            else
+            {
+                switch (day % 10)
+                {
+                    case 1:
+                        ordinalDay = day + "st";
+                        break;
+                    case 2:
+                        ordinalDay = day + "nd";
+                        break;
+                    case 3:
+                        ordinalDay = day + "rd";
+                        break;
+                    default:
+                        ordinalDay = day + "th";
+                        break;
+                }
+            }
+
+            return ordinalDay;
         }
 
         #endregion

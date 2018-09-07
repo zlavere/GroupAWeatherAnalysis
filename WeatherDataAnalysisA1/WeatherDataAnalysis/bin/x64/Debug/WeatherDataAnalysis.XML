@@ -169,15 +169,15 @@
         </member>
         <member name="P:WeatherDataAnalysis.Model.WeatherInfo.LowTemp">
             <summary>
-                Gets or sets the low temperature.
+                Gets the low temperature.
             </summary>
             <value>
-                The low temporary.
+                The low temperature.
             </value>
         </member>
         <member name="P:WeatherDataAnalysis.Model.WeatherInfo.Date">
             <summary>
-                Gets or sets the date.
+                Gets the date.
             </summary>
             <value>
                 The date.
@@ -188,12 +188,12 @@
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.WeatherInfo" /> class.
             </summary>
             <param name="date">The date.</param>
-            <param name="highTemp">The high temporary.</param>
-            <param name="lowTemp">The low temporary.</param>
+            <param name="highTemp">The high temperature.</param>
+            <param name="lowTemp">The low temperature.</param>
         </member>
         <member name="T:WeatherDataAnalysis.Model.WeatherInfoCollection">
             <summary>
-                Provides analytic functions for sets of Weather objects.
+                Provides analytic functions for collections of WeatherInfo.
             </summary>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.#ctor(System.Collections.Generic.List{WeatherDataAnalysis.Model.WeatherInfo})">

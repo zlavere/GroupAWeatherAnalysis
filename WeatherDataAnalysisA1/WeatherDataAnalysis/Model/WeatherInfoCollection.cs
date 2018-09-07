@@ -4,17 +4,17 @@ using System.Linq;
 namespace WeatherDataAnalysis.Model
 {
     /// <summary>
-    ///     Provides analytic functions for sets of Weather objects.
+    ///     Provides analytic functions for collections of WeatherInfo.
     /// </summary>
     public class WeatherInfoCollection
     {
         #region Properties
 
-        private List<WeatherInfo> Collection { get; }
+        public List<WeatherInfo> Collection { get; }
 
-        private List<int> HighTemps { get; }
+        public List<int> HighTemps { get; }
 
-        private List<int> LowTemps { get; }
+        public List<int> LowTemps { get; }
 
         #endregion
 
