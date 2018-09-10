@@ -10,8 +10,8 @@ namespace WeatherDataAnalysis.Format
     /// </summary>
     public class TemperatureDataFormatter
     {
-        private WeatherInfoCollection weatherInfoCollection;
-        const int TwoPointFloatPrecision = 2;
+        private readonly WeatherInfoCollection weatherInfoCollection;
+        private const int TwoPointFloatPrecision = 2;
 
         public TemperatureDataFormatter(WeatherInfoCollection weatherInfoCollection)
         {

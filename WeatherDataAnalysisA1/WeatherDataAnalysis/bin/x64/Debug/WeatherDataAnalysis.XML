@@ -96,7 +96,6 @@
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestLowTemps">
             <summary>
             Formats the highest low temps.
-            BROKEN! WHY!?
             </summary>
             <returns>String representation of highest low temp data.</returns>
         </member>
