@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.Foundation;
-using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.UI.ViewManagement;
@@ -30,8 +29,6 @@ namespace WeatherDataAnalysis
         ///     The application width
         /// </summary>
         private const int ApplicationWidth = 625;
-
-        private WeatherCollection weatherCollection;
 
         #endregion
 
@@ -62,21 +59,12 @@ namespace WeatherDataAnalysis
 
             if (file != null)
             {
-                var tempParser = new TemperatureParser();
-                var content = await FileIO.ReadLinesAsync(file);
-
-                var newWeatherCollection = new List<Weather>();
-
                 StorageApplicationPermissions.FutureAccessList.Add(file);
-
-                foreach (var current in tempParser.GetWeatherList(content))
-                {
-                    newWeatherCollection.Add(current);
-                }
-
-                //TODO Probably want a list of WeatherCollection (eg WeatherCollectionList and add newWeatherCollection to it. Maybe?)
-                this.weatherCollection = new WeatherCollection(newWeatherCollection);
-                this.setSummaryTextTemps(this.weatherCollection);
+                var csvReader = new CsvReader();
+                var fileLines = await csvReader.GetFileLines(file);
+                this.setSummaryTextTemps(
+                    this.createWeatherInfoCollection(fileLines)
+                );
             }
         }
 
@@ -90,31 +78,62 @@ namespace WeatherDataAnalysis
             return filePicker;
         }
 
-        private void setSummaryTextTemps(WeatherCollection outputWeatherCollection)
+        private WeatherInfoCollection createWeatherInfoCollection(IList<string> openedFileLines)
         {
-            var tempFormatter = new TemperatureDataFormatter();
+            var newWeatherCollection = new List<WeatherInfo>();
+
+            foreach (var current in TemperatureParser.GetWeatherList(openedFileLines))
+            {
+                newWeatherCollection.Add(current);
+            }
+
+            //TODO Probably want a List of WeatherInfoCollection (eg WeatherInfoCollectionList and add newWeatherInfoCollection to it. Maybe?)
+            var weatherInfoCollection = new WeatherInfoCollection(newWeatherCollection);
+            return weatherInfoCollection;
+        }
+
+        //TODO Use List<string> to add all strings to this - maybe idictionary to create a map of data elements multi-select checkbox i want to see: 'x' 'y' 'z' elements
+        private void setSummaryTextTemps(WeatherInfoCollection outputCollection)
+        {
             this.summaryTextBox.Text = string.Empty;
-            this.summaryTextBox.Text += tempFormatter.FormatAverageHighTemperature(outputWeatherCollection) +
-                                        Environment.NewLine;
-            this.summaryTextBox.Text +=
-                tempFormatter.FormatAverageLowTemperature(outputWeatherCollection) +
+            this.summaryTextBox.Text += this.loadTemperaturesByYear(outputCollection);
+            this.summaryTextBox.Text += this.loadTemperaturesByMonth(outputCollection, 1);
+        }
+
+        private string loadTemperaturesByYear(WeatherInfoCollection outputCollection)
+        {
+            var tempFormatter = new TemperatureDataFormatter(outputCollection);
+
+            var output = tempFormatter.FormatAverageHighTemperature() +
+                         Environment.NewLine;
+            output +=
+                tempFormatter.FormatAverageLowTemperature() +
                 Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatHighestTemps(outputWeatherCollection) + 
-                                        Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatLowestTemps(outputWeatherCollection) + 
-                                        Environment.NewLine;
-            this.summaryTextBox.Text +=
-                tempFormatter.FormatLowestHighTemps(outputWeatherCollection) + 
+            output += tempFormatter.FormatHighestTemps() +
+                      Environment.NewLine;
+            output += tempFormatter.FormatLowestTemps() +
+                      Environment.NewLine;
+            output +=
+                tempFormatter.FormatLowestHighTemps() +
                 Environment.NewLine;
-            this.summaryTextBox.Text +=
-                tempFormatter.FormatHighestLowTemps(outputWeatherCollection) + 
+            output +=
+                tempFormatter.FormatHighestLowTemps() +
                 Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatDaysAbove90(outputWeatherCollection) + 
-                                        Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatDaysBelow32(outputWeatherCollection) + Environment.NewLine;
-            this.summaryTextBox.Text += tempFormatter.FormatHighPerMonth(outputWeatherCollection, 1) + Environment.NewLine;
-            this.summaryTextBox.Text +=
-                tempFormatter.FormatLowPerMonth(outputWeatherCollection, 1) + Environment.NewLine;
+            output += tempFormatter.FormatDaysAbove90() +
+                      Environment.NewLine;
+            output += tempFormatter.FormatDaysBelow32() + Environment.NewLine;
+            output += this.loadTemperaturesByMonth(outputCollection, 1);
+            return output;
+        }
+
+        private string loadTemperaturesByMonth(WeatherInfoCollection outputCollection, int month)
+        {
+            var tempDataParser = new TemperatureDataFormatter(outputCollection);
+            var output = tempDataParser.FormatLowAveragePerMonth(month) + Environment.NewLine;
+            output += tempDataParser.FormatHighAveragePerMonth(month) + Environment.NewLine;
+            output += tempDataParser.FormatLowPerMonth(month) + Environment.NewLine;
+            output += tempDataParser.FormatHighPerMonth(month) + Environment.NewLine;
+            return output;
         }
 
         #endregion

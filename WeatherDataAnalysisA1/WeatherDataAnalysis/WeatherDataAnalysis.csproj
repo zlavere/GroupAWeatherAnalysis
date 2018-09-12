@@ -97,13 +97,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Format\WeatherDataFormatter.cs" />
-    <Compile Include="io\TemperatureParser.cs" />
+    <Compile Include="Format\TemperatureDataFormatter.cs" />
+    <Compile Include="IO\CsvReader.cs" />
+    <Compile Include="IO\TemperatureParser.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Weather.cs" />
-    <Compile Include="Model\WeatherCollection.cs" />
+    <Compile Include="Model\WeatherInfo.cs" />
+    <Compile Include="Model\WeatherInfoCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,10 +139,7 @@
       <Version>6.1.7</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

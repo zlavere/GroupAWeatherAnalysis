@@ -5,7 +5,7 @@ namespace WeatherDataAnalysis.Model
     /// <summary>
     ///     High and low temperature data for a specific day
     /// </summary>
-    public class Weather
+    public class WeatherInfo
     {
         #region Properties
 
@@ -18,15 +18,15 @@ namespace WeatherDataAnalysis.Model
         public int HighTemp { get; }
 
         /// <summary>
-        ///     Gets or sets the low temperature.
+        ///     Gets the low temperature.
         /// </summary>
         /// <value>
-        ///     The low temporary.
+        ///     The low temperature.
         /// </value>
         public int LowTemp { get; }
 
         /// <summary>
-        ///     Gets or sets the date.
+        ///     Gets the date.
         /// </summary>
         /// <value>
         ///     The date.
@@ -38,12 +38,12 @@ namespace WeatherDataAnalysis.Model
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Weather" /> class.
+        ///     Initializes a new instance of the <see cref="WeatherInfo" /> class.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="highTemp">The high temporary.</param>
-        /// <param name="lowTemp">The low temporary.</param>
-        public Weather(DateTime date, int highTemp, int lowTemp)
+        /// <param name="highTemp">The high temperature.</param>
+        /// <param name="lowTemp">The low temperature.</param>
+        public WeatherInfo(DateTime date, int highTemp, int lowTemp)
         {
             this.Date = date;
             this.LowTemp = lowTemp;
