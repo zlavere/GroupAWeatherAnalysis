@@ -92,7 +92,7 @@ namespace WeatherDataAnalysis
             return weatherInfoCollection;
         }
 
-        //TODO Use List<string> to add all strings to this - maybe idictionary to create a map of data elements multi-select checkbox i want to see: 'x' 'y' 'z' elements
+        //TODO Use List<string> to add all strings to this - maybe iDictionary to create a map of data elements multi-select checkbox i want to see: 'x' 'y' 'z' elements
         private void setSummaryTextTemps(WeatherInfoCollection outputCollection)
         {
             this.summaryTextBox.Text = string.Empty;
