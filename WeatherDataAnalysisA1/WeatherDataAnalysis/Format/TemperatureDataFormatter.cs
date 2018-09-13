@@ -23,7 +23,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         #region Methods
-
+        //TODO Find a way to refactor these to avoid suspect code reuse.
         /// <summary>
         /// Formats the average high temperature.
         /// </summary>
@@ -44,7 +44,6 @@ namespace WeatherDataAnalysis.Format
                 $"Average Low Temp: {Math.Round(this.weatherInfoCollection.GetAverageLowTemp(), TwoPointFloatPrecision)}";
         }
 
-        //TODO Find a way to refactor these to avoid suspect code reuse.
         /// <summary>
         /// Formats the highest temps.
         /// </summary>
@@ -52,7 +51,7 @@ namespace WeatherDataAnalysis.Format
         public string FormatHighestTemps()
         {
             var weatherInfosWithHighestTemp = this.weatherInfoCollection.GetHighestTemps();
-            var highestTemp = weatherInfosWithHighestTemp[0].HighTemp;
+            var highestTemp = weatherInfosWithHighestTemp.First().HighTemp;
             var highestTemps = $"The highest temperature was: {highestTemp}" +
                                Environment.NewLine +
                                "Date(s) with highest temperature: " + Environment.NewLine;
@@ -80,7 +79,7 @@ namespace WeatherDataAnalysis.Format
         {
             var lowestTempsList = this.weatherInfoCollection.GetLowestTemps();
 
-            var lowestTemps = $"The lowest temperature was: {lowestTempsList[0].LowTemp}" +
+            var lowestTemps = $"The lowest temperature was: {lowestTempsList.First().LowTemp}" +
                               Environment.NewLine +
                               "Date(s) with lowest temperature: " + Environment.NewLine;
 
@@ -107,7 +106,7 @@ namespace WeatherDataAnalysis.Format
         {
             var lowestHighTempsList = this.weatherInfoCollection.GetLowestHighTemps();
 
-            var lowestHighTemps = $"The lowest high temperature was: {lowestHighTempsList[0].HighTemp}" +
+            var lowestHighTemps = $"The lowest high temperature was: {lowestHighTempsList.First().HighTemp}" +
                                   Environment.NewLine +
                                   "Date(s) with lowest high temperature: " + Environment.NewLine;
 
@@ -133,7 +132,7 @@ namespace WeatherDataAnalysis.Format
         public string FormatHighestLowTemps()
         {
             var highestLowTempsList = this.weatherInfoCollection.GetHighestLowTemps();
-            var highestLow = highestLowTempsList[0].LowTemp;
+            var highestLow = highestLowTempsList.First().LowTemp;
             var highestLowTemps = $"The highest low temperature was: {highestLow}" +
                                   Environment.NewLine +
                                   "Date(s) with lowest high temperature: " + Environment.NewLine;
@@ -215,7 +214,7 @@ namespace WeatherDataAnalysis.Format
         {
             var highestInMonthList = this.weatherInfoCollection.GetHighestInMonth(month);
             var highestInMonth =
-                $"Date(s) with the highest temperature of {highestInMonthList[0].HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {highestInMonthList[0].Date.Year}:"
+                $"Date(s) with the highest temperature of {highestInMonthList.First().HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {highestInMonthList.First().Date.Year}:"
                 + Environment.NewLine;
 
             foreach (var current in highestInMonthList)
@@ -242,7 +241,7 @@ namespace WeatherDataAnalysis.Format
         {
             var lowestInMonthList = this.weatherInfoCollection.GetLowestInMonth(month);
             var lowestInMonth =
-                $"Date(s) with the Lowest temperature of {lowestInMonthList[0].HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {lowestInMonthList[0].Date.Year}:"
+                $"Date(s) with the Lowest temperature of {lowestInMonthList.First().HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {lowestInMonthList.First().Date.Year}:"
                 + Environment.NewLine;
 
             foreach (var current in lowestInMonthList)
@@ -291,7 +290,8 @@ namespace WeatherDataAnalysis.Format
 
         private string getOrdinal(int day)
         {
-            var ordinalDay = string.Empty; //BUG Resharper claims this is not used in any path
+            //ReSharper claims this is not used in any path
+            var ordinalDay = string.Empty; 
             if (day == 11 || day == 12 || day == 13)
             {
                 ordinalDay = day + "th";
