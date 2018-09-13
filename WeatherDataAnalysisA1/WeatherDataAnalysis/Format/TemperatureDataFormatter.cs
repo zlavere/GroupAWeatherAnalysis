@@ -13,6 +13,10 @@ namespace WeatherDataAnalysis.Format
         private readonly WeatherInfoCollection weatherInfoCollection;
         private const int TwoPointFloatPrecision = 2;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TemperatureDataFormatter"/> class.
+        /// </summary>
+        /// <param name="weatherInfoCollection">The WeatherInfoCollection.</param>
         public TemperatureDataFormatter(WeatherInfoCollection weatherInfoCollection)
         {
             this.weatherInfoCollection = weatherInfoCollection;
@@ -57,11 +61,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != weatherInfosWithHighestTemp.Last())
                 {
-                    highestTemps += $"{this.GetDateString(current.Date)}," + Environment.NewLine;
+                    highestTemps += $"{this.getDateString(current.Date)}," + Environment.NewLine;
                 }
                 else
                 {
-                    highestTemps += $"{this.GetDateString(current.Date)}";
+                    highestTemps += $"{this.getDateString(current.Date)}";
                 }
             }
 
@@ -84,11 +88,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != lowestTempsList.Last())
                 {
-                    lowestTemps += $"{this.GetDateString(current.Date)}," + Environment.NewLine;
+                    lowestTemps += $"{this.getDateString(current.Date)}," + Environment.NewLine;
                 }
                 else
                 {
-                    lowestTemps += $"{this.GetDateString(current.Date)}";
+                    lowestTemps += $"{this.getDateString(current.Date)}";
                 }
             }
 
@@ -111,11 +115,11 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != lowestHighTempsList.Last())
                 {
-                    lowestHighTemps += $"{this.GetDateString(current.Date)}," + Environment.NewLine;
+                    lowestHighTemps += $"{this.getDateString(current.Date)}," + Environment.NewLine;
                 }
                 else
                 {
-                    lowestHighTemps += $"{this.GetDateString(current.Date)}";
+                    lowestHighTemps += $"{this.getDateString(current.Date)}";
                 }
             }
 
@@ -138,57 +142,68 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != highestLowTempsList.Last())
                 {
-                    highestLowTemps += $"{this.GetDateString(current.Date)}" + Environment.NewLine;
+                    highestLowTemps += $"{this.getDateString(current.Date)}" + Environment.NewLine;
                 }
+
                 else
                 {
-                    highestLowTemps += $"{this.GetDateString(current.Date)}";
+                    highestLowTemps += $"{this.getDateString(current.Date)}";
                 }
             }
 
             return highestLowTemps;
         }
 
-        public string FormatDaysAbove90()
+        /// <summary>
+        /// Formats string for GUI for the days above given temperature.
+        /// </summary>
+        /// <param name="temp">The temperature that WeatherInfos HighTemp must be above.</param>
+        /// <returns>Formatted string for GUI with information about days above given temp</returns>
+        public string FormatDaysAbove(int temp)
         {
-            var daysAbove90List = this.weatherInfoCollection.GetDaysAbove90();
+            var weatherInfos = this.weatherInfoCollection.FindDaysAbove(90);
 
-            var daysAbove90 = "Date(s) with high above 90: " + Environment.NewLine;
+            var output = $"Date(s) with high above {temp}: " + Environment.NewLine;
 
-            foreach (var current in daysAbove90List)
+            foreach (var current in weatherInfos)
             {
-                if (current != daysAbove90List.Last())
+                if (current != weatherInfos.Last())
                 {
-                    daysAbove90 += $"{current.HighTemp} on {this.GetDateString(current.Date)}" + Environment.NewLine;
+                    output += $"{current.HighTemp} on {this.getDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    daysAbove90 += $"{current.HighTemp} on {this.GetDateString(current.Date)}";
+                    output += $"{current.HighTemp} on {this.getDateString(current.Date)}";
                 }
             }
 
-            return daysAbove90;
+            return output;
         }
 
-        public string FormatDaysBelow32()
+        /// <summary>
+        /// Formats string for GUI for the days below given temperature.
+        /// </summary>
+        /// <param name="temp">The temperature that WeatherInfos LowTemp must be below.</param>
+        /// <returns>Formatted string for GUI with information about days below given temp</returns>
+        public string FormatDaysBelow(int temp)
         {
-            var daysBelow32List = this.weatherInfoCollection.GetDaysBelow32();
+            var weatherInfos = this.weatherInfoCollection.FindDaysBelow(temp);
 
-            var daysBelow32 = "Date(s) with low below 32: " + Environment.NewLine;
+            var output = $"Date(s) with low below {temp}: " + Environment.NewLine;
 
-            foreach (var current in daysBelow32List)
+            foreach (var current in weatherInfos)
             {
-                if (current != daysBelow32List.Last())
+                if (current != weatherInfos.Last())
                 {
-                    daysBelow32 += $"{current.LowTemp} on {this.GetDateString(current.Date)}" + Environment.NewLine;
+                    output += $"{current.LowTemp} on {this.getDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    daysBelow32 += $"{current.LowTemp} on {this.GetDateString(current.Date)}";
+                    output += $"{current.LowTemp} on {this.getDateString(current.Date)}";
                 }
             }
 
-            return daysBelow32;
+            return output;
         }
 
         /// <summary>
@@ -207,17 +222,22 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != highestInMonthList.Last())
                 {
-                    highestInMonth += $"{this.GetDateString(current.Date)}" + Environment.NewLine;
+                    highestInMonth += $"{this.getDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    highestInMonth += $"{this.GetDateString(current.Date)}";
+                    highestInMonth += $"{this.getDateString(current.Date)}";
                 }
             }
 
             return highestInMonth;
         }
 
+        /// <summary>
+        /// Formats the low per month.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns>Formatted string for given month with date(s) reaching lowest temperature</returns>
         public string FormatLowPerMonth(int month)
         {
             var lowestInMonthList = this.weatherInfoCollection.GetLowestInMonth(month);
@@ -229,39 +249,49 @@ namespace WeatherDataAnalysis.Format
             {
                 if (current != lowestInMonthList.Last())
                 {
-                    lowestInMonth += $"{this.GetDateString(current.Date)}" + Environment.NewLine;
+                    lowestInMonth += $"{this.getDateString(current.Date)}" + Environment.NewLine;
                 }
                 else
                 {
-                    lowestInMonth += $"{this.GetDateString(current.Date)}";
+                    lowestInMonth += $"{this.getDateString(current.Date)}";
                 }
             }
 
             return lowestInMonth;
         }
 
+        /// <summary>
+        /// Formats the low average per month.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns>Formatted string for average low temperature in given month</returns>
         public string FormatLowAveragePerMonth(int month)
         {
             return
                 $"The average average low in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(this.weatherInfoCollection.GetLowAverageForMonth(month), TwoPointFloatPrecision)}.";
         }
 
+        /// <summary>
+        /// Formats the high average per month.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns>Formatted string for average high temperature in given month</returns>
         public string FormatHighAveragePerMonth(int month)
         {
             return
                 $"The average average high in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(this.weatherInfoCollection.GetHighAverageForMonth(month), TwoPointFloatPrecision)}.";
         }
 
-        private string GetDateString(DateTime date)
+        private string getDateString(DateTime date)
         {
             var month = DateTimeFormatInfo.CurrentInfo.GetMonthName(date.Month);
-            var ordinalDay = this.GetOrdinal(date.Day);
+            var ordinalDay = this.getOrdinal(date.Day);
             return $"{month} {ordinalDay}, {date.Year}";
         }
 
-        private string GetOrdinal(int day)
+        private string getOrdinal(int day)
         {
-            var ordinalDay = string.Empty;
+            var ordinalDay = string.Empty; //BUG Resharper claims this is not used in any path
             if (day == 11 || day == 12 || day == 13)
             {
                 ordinalDay = day + "th";

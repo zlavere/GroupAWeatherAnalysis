@@ -119,9 +119,10 @@ namespace WeatherDataAnalysis
             output +=
                 tempFormatter.FormatHighestLowTemps() +
                 Environment.NewLine;
-            output += tempFormatter.FormatDaysAbove90() +
+            output += tempFormatter.FormatDaysAbove(90) +
                       Environment.NewLine;
-            output += tempFormatter.FormatDaysBelow32() + Environment.NewLine;
+            //TODO Change to get user input when relevant to assignment.
+            output += tempFormatter.FormatDaysBelow(32) + Environment.NewLine;
             output += this.loadTemperaturesByMonth(outputCollection, 1);
             return output;
         }

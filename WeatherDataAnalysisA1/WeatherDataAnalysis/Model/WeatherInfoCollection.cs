@@ -105,24 +105,23 @@ namespace WeatherDataAnalysis.Model
 
         //TODO add parameter for temp greater than <temperature> 
         /// <summary>
-        /// Gets the days above 90.
+        /// Finds WeatherInfos with high temps above temp parameter
         /// </summary>
-        /// <returns>Weather objects where high above 90</returns>
-        public List<WeatherInfo> GetDaysAbove90()
+        /// <returns>WeatherInfo collection where high above temp</returns>
+        public List<WeatherInfo> FindDaysAbove(int temp)
         {
-            return this.weatherInfoCollection.Where(weather => weather.HighTemp >= 90).ToList();
+            return this.weatherInfoCollection.Where(weather => weather.HighTemp >= temp).ToList();
         }
 
-        //TODO add parameter for temp less than <temperature> 
         /// <summary>
-        /// Gets the days below 32.
+        /// Find below temp parameter.
         /// </summary>
-        /// <returns>Weather objects where high below 32</returns>
-        public List<WeatherInfo> GetDaysBelow32()
+        /// <returns>WeatherInfo collection where low below temp parameter</returns>
+        public List<WeatherInfo> FindDaysBelow(int temp)
         {
-            return this.weatherInfoCollection.Where(weather => weather.LowTemp <= 32).ToList();
+            return this.weatherInfoCollection.Where(weather => weather.LowTemp <= temp).ToList();
         }
-        
+
         //TODO return statements docs
         /// <summary>
         /// Gets the highest in month.
