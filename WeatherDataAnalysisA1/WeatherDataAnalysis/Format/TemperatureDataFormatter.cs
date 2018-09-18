@@ -23,7 +23,7 @@ namespace WeatherDataAnalysis.Format
         public string FormatAverageHighTemperature()
         {
             return
-                $"Average High Temp: {Math.Round(this.WeatherInfoCollection.GetAverageHighTemp(), TwoPointFloatPrecision)}";
+                $"Average High Temp: {Math.Round(this.WeatherInfoCollection.GetAverageHigh(), TwoPointFloatPrecision)}";
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace WeatherDataAnalysis.Format
         public string FormatAverageLowTemperature()
         {
             return
-                $"Average Low Temp: {Math.Round(this.WeatherInfoCollection.GetAverageLowTemp(), TwoPointFloatPrecision)}";
+                $"Average Low Temp: {Math.Round(this.WeatherInfoCollection.GetAverageLow(), TwoPointFloatPrecision)}";
         }
 
         //TODO Find a way to refactor these to avoid suspect code reuse.
