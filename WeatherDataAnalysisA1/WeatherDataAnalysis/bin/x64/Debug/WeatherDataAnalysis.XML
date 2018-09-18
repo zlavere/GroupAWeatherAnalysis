@@ -63,6 +63,12 @@
                 Formats Temperature Data
             </summary>
         </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.#ctor(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Format.TemperatureDataFormatter"/> class.
+            </summary>
+            <param name="weatherInfoCollection">The weather information collection.</param>
+        </member>
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageHighTemperature">
             <summary>
             Formats the average high temperature.
@@ -99,12 +105,45 @@
             </summary>
             <returns>String representation of highest low temp data.</returns>
         </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatDaysAbove(System.Int32)">
+            <summary>
+            Formats the days above90.
+            </summary>
+            <returns>Formatted String for Days above 90</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatDaysBelow(System.Int32)">
+            <summary>
+            Formats the days below32.
+            </summary>
+            <returns>String for dates that reached 32 or lower</returns>
+        </member>
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighPerMonth(System.Int32)">
             <summary>
             Formats the high per month.
             </summary>
             <param name="month">The month.</param>
             <returns>Returns a string formatted for GUI of highest temperature for the month and date(s) it occurred on.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowPerMonth(System.Int32)">
+            <summary>
+            Formats the low per month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns>String for the Lowest Temperature in a given month and Dates that reached that low.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowAveragePerMonth(System.Int32)">
+            <summary>
+            Formats the low average per month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns>String for Average Low in given month.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighAveragePerMonth(System.Int32)">
+            <summary>
+            Formats the high average per month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns>String for Average High in given month.</returns>
         </member>
         <member name="T:WeatherDataAnalysis.io.TemperatureParser">
             <summary>
@@ -237,42 +276,43 @@
             </summary>
             <returns>The average low temp.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysAbove90">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysAbove(System.Int32)">
             <summary>
-            Gets the days above 90.
+                Gets the days above 90.
             </summary>
+            <param name="highTemp"></param>
             <returns>Weather objects where high above 90</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysBelow32">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysBelow(System.Int32)">
             <summary>
-            Gets the days below 32.
+                Gets the days below 32.
             </summary>
             <returns>Weather objects where high below 32</returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetHighestInMonth(System.Int32)">
             <summary>
-            Gets the highest in month.
+                Gets the highest in month.
             </summary>
             <param name="month">The month.</param>
             <returns></returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowestInMonth(System.Int32)">
             <summary>
-            Gets the lowest in month.
+                Gets the lowest in month.
             </summary>
             <param name="month">The month.</param>
             <returns></returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetHighAverageForMonth(System.Int32)">
             <summary>
-            Gets the high average for month.
+                Gets the high average for month.
             </summary>
             <param name="month">The month.</param>
             <returns></returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowAverageForMonth(System.Int32)">
             <summary>
-            Gets the low average for month.
+                Gets the low average for month.
             </summary>
             <param name="month">The month.</param>
             <returns></returns>
