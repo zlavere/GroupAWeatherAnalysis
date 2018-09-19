@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
@@ -103,7 +104,7 @@ namespace WeatherDataAnalysis
         }
 
         //TODO Move to controller
-        //TODO Use List<string> to add all strings to this - maybe idictionary to create a map of data elements multi-select checkbox i want to see: 'x' 'y' 'z' elements
+        //TODO Use List<string> to add all strings to this - maybe IDictionary to create a map of data elements multi-select checkbox i want to see: 'x' 'y' 'z' elements
         private void setSummaryTextTemps(WeatherInfoCollection outputCollection)
         {
             this.summaryTextBox.Text = string.Empty;
@@ -114,7 +115,7 @@ namespace WeatherDataAnalysis
         private string loadTemperaturesByYear(WeatherInfoCollection outputCollection)
         {
             var tempFormatter = this.dataFormatter.TemperatureDataFormatter;
-
+            tempFormatter.WeatherInfoCollection = outputCollection;
             var output = tempFormatter.FormatAverageHighTemperature() +
                          Environment.NewLine;
             output +=
@@ -138,11 +139,12 @@ namespace WeatherDataAnalysis
 
         private string loadTemperaturesByMonth(WeatherInfoCollection outputCollection, int month)
         {
-            var tempDataParser = this.dataFormatter.TemperatureDataFormatter;
-            var output = tempDataParser.FormatLowAveragePerMonth(month) + Environment.NewLine;
-            output += tempDataParser.FormatHighAveragePerMonth(month) + Environment.NewLine;
-            output += tempDataParser.FormatLowPerMonth(month) + Environment.NewLine;
-            output += tempDataParser.FormatHighPerMonth(month) + Environment.NewLine;
+            var tempDataFormatter= this.dataFormatter.TemperatureDataFormatter;
+            tempDataFormatter.WeatherInfoCollection = outputCollection;
+            var output = tempDataFormatter.FormatLowAveragePerMonth(month) + Environment.NewLine;
+            output += tempDataFormatter.FormatHighAveragePerMonth(month) + Environment.NewLine;
+            output += tempDataFormatter.FormatLowPerMonth(month) + Environment.NewLine;
+            output += tempDataFormatter.FormatHighPerMonth(month) + Environment.NewLine;
             return output;
         }
 
