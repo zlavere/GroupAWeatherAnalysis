@@ -21,11 +21,16 @@ namespace WeatherDataAnalysis.ViewModel
         /// </value>
         public List<WeatherInfoCollection> WeatherInfoCollections { get; set; }
 
+
+        public WeatherInfoCollectionsBinding()
+        {
+            this.WeatherInfoCollections = new List<WeatherInfoCollection>();
+        }
         /// <summary>
         /// Adds the specified weather information collection.
         /// </summary>
         /// <param name="weatherInfoCollection">The weather information collection.</param>
-        public void Add(WeatherInfoCollection weatherInfoCollection)
+        public async void Add(WeatherInfoCollection weatherInfoCollection)
         {
             this.WeatherInfoCollections.Add(weatherInfoCollection);
         }

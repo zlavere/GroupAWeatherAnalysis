@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WeatherDataAnalysis</name>
+    </assembly>
+    <members>
+        <member name="T:WeatherDataAnalysis.App">
+            <summary>
+                Provides application-specific behavior to supplement the default Application class.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.#ctor">
+            <summary>
+                Initializes the singleton application object.  This is the first line of authored code
+                executed, and as such is the logical equivalent of main() or WinMain().
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.OnLaunched(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)">
+            <summary>
+                Invoked when the application is launched normally by the end user.  Other entry points
+                will be used such as when the application is launched to open a specific file.
+            </summary>
+            <param name="e">Details about the launch request and process.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.onNavigationFailed(System.Object,Windows.UI.Xaml.Navigation.NavigationFailedEventArgs)">
+            <summary>
+                Invoked when Navigation to a certain page fails
+            </summary>
+            <param name="sender">The Frame which failed navigation</param>
+            <param name="e">Details about the navigation failure</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.onSuspending(System.Object,Windows.ApplicationModel.SuspendingEventArgs)">
+            <summary>
+                Invoked when application execution is being suspended.  Application state is saved
+                without knowing whether the application will be terminated or resumed with the contents
+                of memory still intact.
+            </summary>
+            <param name="sender">The source of the suspend request.</param>
+            <param name="e">Details about the suspend request.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.App.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.Format.TemperatureDataFormatter">
+            <summary>
+                Formats Temperature Data
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageHighTemperature">
+            <summary>
+            Formats the average high temperature.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageLowTemperature">
+            <summary>
+            Formats the average low temperature.
+            </summary>
+            <returns>String representation of Average Low temperature</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestTemps">
+            <summary>
+            Formats the highest temps.
+            </summary>
+            <returns>String representation of highest temp data.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowestTemps">
+            <summary>
+            Formats the lowest temps.
+            </summary>
+            <returns>String representation of lowest temp data.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowestHighTemps">
+            <summary>
+            Formats the lowest high temps.
+            </summary>
+            <returns>String representation of lowest high temp data.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestLowTemps">
+            <summary>
+            Formats the highest low temps.
+            </summary>
+            <returns>String representation of highest low temp data.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatDaysAbove(System.Int32)">
+            <summary>
+            Formats the days above90.
+            </summary>
+            <returns>Formatted String for Days above 90</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatDaysBelow(System.Int32)">
+            <summary>
+            Formats the days below32.
+            </summary>
+            <returns>String for dates that reached 32 or lower</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighPerMonth(System.Int32)">
+            <summary>
+            Formats the high per month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns>Returns a string formatted for GUI of highest temperature for the month and date(s) it occurred on.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowPerMonth(System.Int32)">
+            <summary>
+            Formats the low per month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns>String for the Lowest Temperature in a given month and Dates that reached that low.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowAveragePerMonth(System.Int32)">
+            <summary>
+            Formats the low average per month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns>String for Average Low in given month.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighAveragePerMonth(System.Int32)">
+            <summary>
+            Formats the high average per month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns>String for Average High in given month.</returns>
+        </member>
+        <member name="T:WeatherDataAnalysis.io.TemperatureParser">
+            <summary>
+                Parser for CSV set of Temperature Data where format is date, high, low.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.io.TemperatureParser.GetWeatherList(System.Collections.Generic.IList{System.String})">
+            <summary>
+                Gets the day temperature list.
+            </summary>
+            <param name="tempList">The temporary list.</param>
+            <returns></returns>
+        </member>
+        <member name="T:WeatherDataAnalysis.MainPage">
+            <summary>
+                An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.MainPage.ApplicationHeight">
+            <summary>
+                The application height
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.MainPage.ApplicationWidth">
+            <summary>
+                The application width
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.#ctor">
+            <inheritdoc />
+            <summary>
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.MainPage" /> class.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.MainPage.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.Model.WeatherInfo">
+            <summary>
+                High and low temperature data for a specific day
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfo.HighTemp">
+            <summary>
+                Gets or sets the high temperature.
+            </summary>
+            <value>
+                The high temperature.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfo.LowTemp">
+            <summary>
+                Gets the low temperature.
+            </summary>
+            <value>
+                The low temperature.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfo.Date">
+            <summary>
+                Gets the date.
+            </summary>
+            <value>
+                The date.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfo.#ctor(System.DateTime,System.Int32,System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.WeatherInfo" /> class.
+            </summary>
+            <param name="date">The date.</param>
+            <param name="highTemp">The high temperature.</param>
+            <param name="lowTemp">The low temperature.</param>
+        </member>
+        <member name="T:WeatherDataAnalysis.Model.WeatherInfoCollection">
+            <summary>
+                Provides analytic functions for collections of WeatherInfo.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.#ctor(System.Collections.Generic.List{WeatherDataAnalysis.Model.WeatherInfo})">
+            <summary>
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection" /> class.
+            </summary>
+            <param name="weatherWeatherInfoCollection">The weather collection.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetHighestTemps">
+            <summary>
+                Gets the highest temps.
+            </summary>
+            <returns>List of Weather with the highest temps.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetHighestLowTemps">
+            <summary>
+                Gets the highest low temps.
+            </summary>
+            <returns>List of Weather with the highest low temps.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowestTemps">
+            <summary>
+                Gets the lowest temps.
+            </summary>
+            <returns>List of Weather with the lowest temps.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowestHighTemps">
+            <summary>
+                Gets the lowest high temps.
+            </summary>
+            <returns>List of Weather with the lowest high temps.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysAbove(System.Int32)">
+            <summary>
+                Gets the days above 90.
+            </summary>
+            <param name="highTemp"></param>
+            <returns>Weather objects where high above 90</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysBelow(System.Int32)">
+            <summary>
+                Gets the days below 32.
+            </summary>
+            <returns>Weather objects where high below 32</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindDaysAbove(System.Int32)">
+            <summary>
+             Finds WeatherInfos with high temps above temp parameter
+             </summary>
+             <returns>WeatherInfo collection where high above temp</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindDaysBelow(System.Int32)">
+            <summary>
+            Find below temp parameter.
+            </summary>
+            <returns>WeatherInfo collection where low below temp parameter</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetHighestInMonth(System.Int32)">
+            <summary>
+                Gets the highest in month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowestInMonth(System.Int32)">
+            <summary>
+                Gets the lowest in month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetHighAverageForMonth(System.Int32)">
+            <summary>
+                Gets the high average for month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowAverageForMonth(System.Int32)">
+            <summary>
+                Gets the low average for month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns></returns>
+        </member>
+        <member name="T:WeatherDataAnalysis.ViewModel.DataFormatter">
+            <summary>
+            All Formatters for WeatherInfo
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.DataFormatter.TemperatureDataFormatter">
+            <summary>
+            Gets or sets the temperature data formatter.
+            </summary>
+            <value>
+            The temperature data formatter.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.ViewModel.DataFormatter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WeatherDataAnalysis.ViewModel.DataFormatter"/> class.
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding">
+            <summary>
+            Binding for weather info collections
+            TODO Consider turning this into a mapping of some kind where imported collections have a key/value pair, where key can be something like city and year. 
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.WeatherInfoCollections">
+            <summary>
+            Gets or sets the weather information collections.
+            </summary>
+            <value>
+            The weather information collections.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.Add(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+            <summary>
+            Adds the specified weather information collection.
+            </summary>
+            <param name="weatherInfoCollection">The weather information collection.</param>
+        </member>
+        <member name="T:WeatherDataAnalysis.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider">
+            <summary>
+            Main class for providing metadata for the app or library
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+    </members>
+</doc>

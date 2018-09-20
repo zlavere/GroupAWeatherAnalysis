@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+
 namespace WeatherDataAnalysis.Model
 {
     /// <summary>
@@ -81,6 +82,16 @@ namespace WeatherDataAnalysis.Model
             var lowTemps =
                 this.weatherInfoCollection.Where(temp => temp.LowTemp == lowest).ToList();
             return lowTemps;
+        }
+
+        public double GetAverageHigh()
+        {
+            return this.weatherInfoCollection.Average(weather => weather.HighTemp);
+        }
+
+        public double GetAverageLow()
+        {
+            return this.weatherInfoCollection.Average(weather => weather.LowTemp);
         }
 
         /// <summary>
