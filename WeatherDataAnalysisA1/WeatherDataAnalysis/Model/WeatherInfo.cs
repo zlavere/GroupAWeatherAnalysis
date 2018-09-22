@@ -5,7 +5,7 @@ namespace WeatherDataAnalysis.Model
     /// <summary>
     ///     High and low temperature data for a specific day
     /// </summary>
-    public class WeatherInfo
+    public class WeatherInfo : IComparable<WeatherInfo>
     {
         #region Properties
 
@@ -48,6 +48,15 @@ namespace WeatherDataAnalysis.Model
             this.Date = date;
             this.LowTemp = lowTemp;
             this.HighTemp = highTemp;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public int CompareTo(WeatherInfo other)
+        {
+            return this.Date.CompareTo(other.Date);
         }
 
         #endregion

@@ -43,8 +43,8 @@ namespace WeatherDataAnalysis.Format
         /// <returns>String representation of highest temp data.</returns>
         public string FormatHighestTemps()
         {
-            var weatherInfosWithHighestTemp = this.WeatherInfoCollection.GetHighestTemps();
-            var highestTemp = weatherInfosWithHighestTemp[0].HighTemp;
+            var weatherInfosWithHighestTemp = this.WeatherInfoCollection.FindWithHighest();
+            var highestTemp = weatherInfosWithHighestTemp.First().HighTemp;
             var highestTemps = $"The highest temperature was: {highestTemp}" +
                                Environment.NewLine +
                                "Date(s) with highest temperature: " + Environment.NewLine;
@@ -72,7 +72,7 @@ namespace WeatherDataAnalysis.Format
         {
             var lowestTempsList = this.WeatherInfoCollection.GetLowestTemps();
 
-            var lowestTemps = $"The lowest temperature was: {lowestTempsList[0].LowTemp}" +
+            var lowestTemps = $"The lowest temperature was: {lowestTempsList.First().LowTemp}" +
                               Environment.NewLine +
                               "Date(s) with lowest temperature: " + Environment.NewLine;
 
@@ -99,7 +99,7 @@ namespace WeatherDataAnalysis.Format
         {
             var lowestHighTempsList = this.WeatherInfoCollection.GetLowestHighTemps();
 
-            var lowestHighTemps = $"The lowest high temperature was: {lowestHighTempsList[0].HighTemp}" +
+            var lowestHighTemps = $"The lowest high temperature was: {lowestHighTempsList.First().HighTemp}" +
                                   Environment.NewLine +
                                   "Date(s) with lowest high temperature: " + Environment.NewLine;
 
@@ -124,8 +124,8 @@ namespace WeatherDataAnalysis.Format
         /// <returns>String representation of highest low temp data.</returns>
         public string FormatHighestLowTemps()
         {
-            var highestLowTempsList = this.WeatherInfoCollection.GetHighestLowTemps();
-            var highestLow = highestLowTempsList[0].LowTemp;
+            var highestLowTempsList = this.WeatherInfoCollection.FindWithHighestLow();
+            var highestLow = highestLowTempsList.First().LowTemp;
             var highestLowTemps = $"The highest low temperature was: {highestLow}" +
                                   Environment.NewLine +
                                   "Date(s) with lowest high temperature: " + Environment.NewLine;
@@ -204,7 +204,7 @@ namespace WeatherDataAnalysis.Format
         {
             var highestInMonthList = this.WeatherInfoCollection.GetHighestInMonth(month);
             var highestInMonth =
-                $"Date(s) with the highest temperature of {highestInMonthList[0].HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {highestInMonthList[0].Date.Year}:"
+                $"Date(s) with the highest temperature of {highestInMonthList.First().HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {highestInMonthList[0].Date.Year}:"
                 + Environment.NewLine;
 
             foreach (var current in highestInMonthList)
@@ -231,7 +231,7 @@ namespace WeatherDataAnalysis.Format
         {
             var lowestInMonthList = this.WeatherInfoCollection.GetLowestInMonth(month);
             var lowestInMonth =
-                $"Date(s) with the Lowest temperature of {lowestInMonthList[0].HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {lowestInMonthList[0].Date.Year}:"
+                $"Date(s) with the Lowest temperature of {lowestInMonthList.First().HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {lowestInMonthList[0].Date.Year}:"
                 + Environment.NewLine;
 
             foreach (var current in lowestInMonthList)

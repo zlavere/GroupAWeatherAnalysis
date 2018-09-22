@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace WeatherDataAnalysis.io
 {
-    class CsvReader
+    /// <summary>
+    /// Reads CSV file lines
+    /// </summary>
+    public class CsvReader
     {
         public async Task<IList<string>> GetFileLines(IStorageFile file)
         {
@@ -14,4 +17,3 @@ namespace WeatherDataAnalysis.io
         }
     }
 }
-    

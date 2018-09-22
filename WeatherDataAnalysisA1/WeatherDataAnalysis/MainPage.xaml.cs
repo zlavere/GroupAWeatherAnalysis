@@ -67,11 +67,9 @@ namespace WeatherDataAnalysis
             if (file != null)
             {
                 StorageApplicationPermissions.FutureAccessList.Add(file);
-                var csvReader = new CsvReader();
-                var fileLines = await csvReader.GetFileLines(file);
-                var newWeatherInfoCollection = this.createWeatherInfoCollection(fileLines);
-                this.addWeatherInfoCollection(newWeatherInfoCollection);
-                this.setSummaryTextTemps(newWeatherInfoCollection);
+                var weatherInfoCollection = await this.weatherInfoCollections.CreateNewFromFile(file);
+                this.weatherInfoCollections.Active = weatherInfoCollection;
+                this.setSummaryTextTemps(weatherInfoCollection);
             }
         }
 
@@ -83,24 +81,6 @@ namespace WeatherDataAnalysis
             filePicker.ViewMode = PickerViewMode.Thumbnail;
             filePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             return filePicker;
-        }
-
-        private WeatherInfoCollection createWeatherInfoCollection(IList<string> openedFileLines)
-        {
-            var newWeatherCollection = new List<WeatherInfo>();
-
-            foreach (var current in TemperatureParser.GetWeatherList(openedFileLines))
-            {
-                newWeatherCollection.Add(current);
-            }
-
-            var weatherInfoCollection = new WeatherInfoCollection(newWeatherCollection);
-            return weatherInfoCollection;
-        }
-
-        private void addWeatherInfoCollection(WeatherInfoCollection weatherInfoCollection)
-        {
-            this.weatherInfoCollections.Add(weatherInfoCollection);
         }
 
         //TODO Move to controller

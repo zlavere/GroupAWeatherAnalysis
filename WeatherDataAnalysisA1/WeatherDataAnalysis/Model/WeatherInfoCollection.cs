@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -7,36 +8,36 @@ namespace WeatherDataAnalysis.Model
     /// <summary>
     ///     Provides analytic functions for collections of WeatherInfo.
     /// </summary>
-    public class WeatherInfoCollection
+    public class WeatherInfoCollection:ICollection<WeatherInfo>
     {
         #region Properties
 
+        public int Count => this.WeatherInfos.Count;
 
-        private readonly List<WeatherInfo> weatherInfoCollection;
+        public bool IsReadOnly => ((ICollection<WeatherInfo>)this.WeatherInfos).IsReadOnly;
 
-        private readonly List<int> HighTemps;
+        private List<WeatherInfo> WeatherInfos { get; set; }
 
-        private List<int> LowTemps { get; }
+        private IEnumerable<int> HighTemps { get; set; }
 
+        private IEnumerable<int> LowTemps { get; }
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="WeatherInfoCollection" /> class.
+        ///     Initializes a new instance of the <see cref="Model.WeatherInfoCollection" /> class.
         /// </summary>
 
-        /// <param name="weatherWeatherInfoCollection">The weather collection.</param>
-        public WeatherInfoCollection(List<WeatherInfo> weatherWeatherInfoCollection)
+        /// <param name="weatherInfos">The collection of weather information.</param>
+        public WeatherInfoCollection(IEnumerable<WeatherInfo> weatherInfos)
         {
-            this.weatherInfoCollection = weatherWeatherInfoCollection;
+            this.WeatherInfos = (List<WeatherInfo>)weatherInfos;
 
-            this.LowTemps = (from weather in this.weatherInfoCollection
-                             select weather.LowTemp).ToList();
+            this.LowTemps = this.WeatherInfos.Select(temps => temps.LowTemp);
 
-            this.HighTemps = (from weather in this.weatherInfoCollection
-                              select weather.HighTemp).ToList();
+            this.HighTemps = this.WeatherInfos.Select(temps => temps.HighTemp);
         }
 
         #endregion
@@ -47,26 +48,24 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the highest temps.
         /// </summary>
         /// <returns>List of Weather with the highest temps.</returns>
-        public List<WeatherInfo> GetHighestTemps()
+        public List<WeatherInfo> FindWithHighest()
         {
+            var highest = this.WeatherInfos.Max(weather => weather.HighTemp);
 
-            var highest = this.weatherInfoCollection.Max(weather => weather.HighTemp);
-            var highestTemps =
-                this.weatherInfoCollection.Where(temp => temp.HighTemp == highest)
+            return this.WeatherInfos.Where(temp => temp.HighTemp == highest)
                     .ToList();
-            return highestTemps;
         }
 
         /// <summary>
         ///     Gets the highest low temps.
         /// </summary>
         /// <returns>List of Weather with the highest low temps.</returns>
-        public List<WeatherInfo> GetHighestLowTemps()
+        public List<WeatherInfo> FindWithHighestLow()
         {
 
-            var highest = this.weatherInfoCollection.Max(weather => weather.LowTemp);
+            var highest = this.WeatherInfos.Max(weather => weather.LowTemp);
             var highestTemps =
-                this.weatherInfoCollection.Where(temp => temp.LowTemp == highest).ToList();
+                this.WeatherInfos.Where(temp => temp.LowTemp == highest).ToList();
 
             return highestTemps;
         }
@@ -78,20 +77,20 @@ namespace WeatherDataAnalysis.Model
         public List<WeatherInfo> GetLowestTemps()
         {
 
-            var lowest = this.weatherInfoCollection.Min(weather => weather.LowTemp);
+            var lowest = this.WeatherInfos.Min(weather => weather.LowTemp);
             var lowTemps =
-                this.weatherInfoCollection.Where(temp => temp.LowTemp == lowest).ToList();
+                this.WeatherInfos.Where(temp => temp.LowTemp == lowest).ToList();
             return lowTemps;
         }
 
         public double GetAverageHigh()
         {
-            return this.weatherInfoCollection.Average(weather => weather.HighTemp);
+            return this.WeatherInfos.Average(weather => weather.HighTemp);
         }
 
         public double GetAverageLow()
         {
-            return this.weatherInfoCollection.Average(weather => weather.LowTemp);
+            return this.WeatherInfos.Average(weather => weather.LowTemp);
         }
 
         /// <summary>
@@ -100,10 +99,10 @@ namespace WeatherDataAnalysis.Model
         /// <returns>List of Weather with the lowest high temps.</returns>
         public List<WeatherInfo> GetLowestHighTemps()
         {
-
-            var lowest = this.weatherInfoCollection.Min(weather => weather.HighTemp);
+            var lowest = this.WeatherInfos.Min(weather => weather.HighTemp);
             var lowTemps =
-                this.weatherInfoCollection.Where(temp => temp.HighTemp == lowest).ToList();
+                this.WeatherInfos.Where(temp => temp.HighTemp == lowest).ToList();
+
             return lowTemps;
         }
 
@@ -115,7 +114,7 @@ namespace WeatherDataAnalysis.Model
         /// <returns>Weather objects where high above 90</returns>
         public List<WeatherInfo> GetDaysAbove(int highTemp)
         {
-            return this.weatherInfoCollection.Where(weather => weather.HighTemp >= highTemp).ToList();
+            return this.WeatherInfos.Where(weather => weather.HighTemp >= highTemp).ToList();
         }
 
         /// <summary>
@@ -124,25 +123,24 @@ namespace WeatherDataAnalysis.Model
         /// <returns>Weather objects where high below 32</returns>
         public List<WeatherInfo> GetDaysBelow(int lowTemp)
         {
-            return this.weatherInfoCollection.Where(weather => weather.LowTemp <= lowTemp).ToList();
+            return this.WeatherInfos.Where(weather => weather.LowTemp <= lowTemp).ToList();
         }
         ///<summary>
         /// Finds WeatherInfos with high temps above temp parameter
         /// </summary>
         /// <returns>WeatherInfo collection where high above temp</returns>
-        public List<WeatherInfo> FindDaysAbove(int temp)
+        public IEnumerable<WeatherInfo> FindDaysAbove(int temp)
         {
-            return this.weatherInfoCollection.Where(weather => weather.HighTemp >= temp).ToList();
+            return this.WeatherInfos.Where(weather => weather.HighTemp >= temp).ToList();
         }
 
         /// <summary>
         /// Find below temp parameter.
         /// </summary>
         /// <returns>WeatherInfo collection where low below temp parameter</returns>
-        public List<WeatherInfo> FindDaysBelow(int temp)
+        public IEnumerable<WeatherInfo> FindDaysBelow(int temp)
         {
-            return this.weatherInfoCollection.Where(weather => weather.LowTemp <= temp).ToList();
-
+            return this.WeatherInfos.Where(weather => weather.LowTemp <= temp).ToList();
         }
 
         //TODO return statements docs
@@ -154,12 +152,10 @@ namespace WeatherDataAnalysis.Model
         public List<WeatherInfo> GetHighestInMonth(int month)
         {
 
-            var weatherByMonthList = this.weatherInfoCollection.Where(weather => weather.Date.Month == month).ToList();
-
+            var weatherByMonthList = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
             var highInMonth = weatherByMonthList.Max(weather => weather.HighTemp);
-            var highTempWeatherInfos = weatherByMonthList.Where(weather => weather.HighTemp == highInMonth).ToList();
 
-            return highTempWeatherInfos;
+            return weatherByMonthList.Where(weather => weather.HighTemp == highInMonth).ToList();
         }
 
         /// <summary>
@@ -169,12 +165,10 @@ namespace WeatherDataAnalysis.Model
         /// <returns></returns>
         public List<WeatherInfo> GetLowestInMonth(int month)
         {
-            var weatherByMonthList = this.weatherInfoCollection.Where(weather => weather.Date.Month == month).ToList();
-
+            var weatherByMonthList = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
             var lowInMonth = weatherByMonthList.Min(weather => weather.LowTemp);
-            var weatherLow = weatherByMonthList.Where(weather => weather.LowTemp == lowInMonth).ToList();
 
-            return weatherLow;
+            return weatherByMonthList.Where(weather => weather.LowTemp == lowInMonth).ToList();
         }
 
         /// <summary>
@@ -184,14 +178,9 @@ namespace WeatherDataAnalysis.Model
         /// <returns></returns>
         public double GetHighAverageForMonth(int month)
         {
-            var weatherByMonthList = this.weatherInfoCollection.Where(weather => weather.Date.Month == month).ToList();
-      
-            var highTempsPerMonth = (from weather in weatherByMonthList
-                                     select weather.HighTemp).ToList();
+            var weatherByMonthList = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
 
-            var average = highTempsPerMonth.Average();
-
-            return average;
+            return weatherByMonthList.Average(weather => weather.HighTemp);
         }
 
         /// <summary>
@@ -201,15 +190,44 @@ namespace WeatherDataAnalysis.Model
         /// <returns></returns>
         public double GetLowAverageForMonth(int month)
         {
-            var weatherByMonth = this.weatherInfoCollection.Where(weather => weather.Date.Month == month).ToList();
+            var weatherByMonth = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
 
+            return weatherByMonth.Average(weather => weather.LowTemp);
+        }
 
-            var lowTempsPerMonth = (from weather in weatherByMonth
-                                    select weather.LowTemp).ToList();
+        public void Add(WeatherInfo item)
+        {
+            this.WeatherInfos.Add(item);
+        }
 
-            var average = lowTempsPerMonth.Average();
+        public void Clear()
+        {
+            this.WeatherInfos.Clear();
+        }
 
-            return average;
+        public bool Contains(WeatherInfo item)
+        {
+            return this.WeatherInfos.Contains(item);
+        }
+
+        public void CopyTo(WeatherInfo[] array, int arrayIndex)
+        {
+            this.WeatherInfos.CopyTo(array, arrayIndex);
+        }
+
+        public bool Remove(WeatherInfo item)
+        {
+            return this.WeatherInfos.Remove(item);
+        }
+
+        public IEnumerator<WeatherInfo> GetEnumerator()
+        {
+            return ((ICollection<WeatherInfo>)this.WeatherInfos).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((ICollection<WeatherInfo>)this.WeatherInfos).GetEnumerator();
         }
 
         #endregion

@@ -20,11 +20,10 @@ namespace WeatherDataAnalysis.io
         /// </summary>
         /// <param name="tempList">The temporary list.</param>
         /// <returns></returns>
-        public static List<WeatherInfo> GetWeatherList(IList<string> tempList)
+        public WeatherInfoCollection GetWeatherInfoCollection(IList<string> weatherList)
         {
             var data = new List<WeatherInfo>();
-
-            foreach (var currentDateData in tempList)
+            foreach (var currentDateData in weatherList)
             {
                 var splitData = currentDateData.Split(',');
                 var date = DateTime.ParseExact(splitData[DateSegment], "M/d/yyyy", CultureInfo.InvariantCulture);
@@ -34,8 +33,9 @@ namespace WeatherDataAnalysis.io
                 data.Add(new WeatherInfo(date, highTemp, lowTemp));
             }
 
-            return data;
+            return new WeatherInfoCollection(data);
         }
+
         #endregion
     }
 }
