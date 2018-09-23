@@ -10,14 +10,28 @@ namespace WeatherDataAnalysis.Format
     /// </summary>
     public class TemperatureDataFormatter
     {
-        public WeatherInfoCollection WeatherInfoCollection { get; set; }
+        #region Data members
+
         private const int TwoPointFloatPrecision = 2;
 
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the weather information collection.
+        /// </summary>
+        /// <value>
+        /// The weather information collection.
+        /// </value>
+        public WeatherInfoCollection WeatherInfoCollection { private get; set; }
+
+        #endregion
 
         #region Methods
 
         /// <summary>
-        /// Formats the average high temperature.
+        ///     Formats the average high temperature.
         /// </summary>
         /// <returns></returns>
         public string FormatAverageHighTemperature()
@@ -27,7 +41,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the average low temperature.
+        ///     Formats the average low temperature.
         /// </summary>
         /// <returns>String representation of Average Low temperature</returns>
         public string FormatAverageLowTemperature()
@@ -38,7 +52,7 @@ namespace WeatherDataAnalysis.Format
 
         //TODO Find a way to refactor these to avoid suspect code reuse.
         /// <summary>
-        /// Formats the highest temps.
+        ///     Formats the highest temps.
         /// </summary>
         /// <returns>String representation of highest temp data.</returns>
         public string FormatHighestTemps()
@@ -65,7 +79,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the lowest temps.
+        ///     Formats the lowest temps.
         /// </summary>
         /// <returns>String representation of lowest temp data.</returns>
         public string FormatLowestTemps()
@@ -92,7 +106,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the lowest high temps.
+        ///     Formats the lowest high temps.
         /// </summary>
         /// <returns>String representation of lowest high temp data.</returns>
         public string FormatLowestHighTemps()
@@ -119,7 +133,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the highest low temps.
+        ///     Formats the highest low temps.
         /// </summary>
         /// <returns>String representation of highest low temp data.</returns>
         public string FormatHighestLowTemps()
@@ -146,18 +160,19 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the days above90.
+        ///     Formats the days above90.
         /// </summary>
         /// <returns>Formatted String for Days above 90</returns>
         public string FormatDaysAbove(int highTemp)
         {
-            var daysAbove90List = this.WeatherInfoCollection.GetDaysAbove(highTemp);
+            var daysAbove90List = this.WeatherInfoCollection.FindDaysAbove(highTemp);
 
             var daysAbove90 = "Date(s) with high above 90: " + Environment.NewLine;
 
-            foreach (var current in daysAbove90List)
+            var weatherInfos = daysAbove90List.ToList();
+            foreach (var current in weatherInfos)
             {
-                if (current != daysAbove90List.Last())
+                if (current != weatherInfos.Last())
                 {
                     daysAbove90 += $"{current.HighTemp} on {this.getDateString(current.Date)}" + Environment.NewLine;
                 }
@@ -171,18 +186,19 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the days below32.
+        ///     Formats the days below32.
         /// </summary>
         /// <returns>String for dates that reached 32 or lower</returns>
         public string FormatDaysBelow(int lowTemp)
         {
-            var daysBelow32List = this.WeatherInfoCollection.GetDaysBelow(lowTemp);
+            var daysBelow32List = this.WeatherInfoCollection.FindDaysBelow(lowTemp);
 
             var daysBelow32 = "Date(s) with low below 32: " + Environment.NewLine;
 
-            foreach (var current in daysBelow32List)
+            var weatherInfos = daysBelow32List.ToList();
+            foreach (var current in weatherInfos)
             {
-                if (current != daysBelow32List.Last())
+                if (current != weatherInfos.Last())
                 {
                     daysBelow32 += $"{current.LowTemp} on {this.getDateString(current.Date)}" + Environment.NewLine;
                 }
@@ -196,7 +212,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the high per month.
+        ///     Formats the high per month.
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns>Returns a string formatted for GUI of highest temperature for the month and date(s) it occurred on.</returns>
@@ -223,7 +239,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the low per month.
+        ///     Formats the low per month.
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns>String for the Lowest Temperature in a given month and Dates that reached that low.</returns>
@@ -250,7 +266,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the low average per month.
+        ///     Formats the low average per month.
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns>String for Average Low in given month.</returns>
@@ -261,7 +277,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        /// Formats the high average per month.
+        ///     Formats the high average per month.
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns>String for Average High in given month.</returns>
@@ -280,7 +296,7 @@ namespace WeatherDataAnalysis.Format
 
         private string getOrdinal(int day)
         {
-            var ordinalDay = string.Empty;
+            string ordinalDay;
             if (day == 11 || day == 12 || day == 13)
             {
                 ordinalDay = day + "th";

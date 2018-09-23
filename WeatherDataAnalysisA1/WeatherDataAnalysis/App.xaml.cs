@@ -11,7 +11,7 @@ namespace WeatherDataAnalysis
     ///     Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     // ReSharper disable once UnusedMember.Global
-    public sealed partial class App 
+    public sealed partial class App
     {
         #region Constructors
 

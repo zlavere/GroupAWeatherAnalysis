@@ -54,6 +54,11 @@ namespace WeatherDataAnalysis.Model
 
         #region Methods
 
+        /// <summary>
+        /// Compares to.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns></returns>
         public int CompareTo(WeatherInfo other)
         {
             return this.Date.CompareTo(other.Date);

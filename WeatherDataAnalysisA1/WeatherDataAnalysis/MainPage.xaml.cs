@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
-using WeatherDataAnalysis.io;
-using WeatherDataAnalysis.Model;
+using Windows.UI.Xaml.Controls;
+using WeatherDataAnalysis.View;
 using WeatherDataAnalysis.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -63,13 +61,21 @@ namespace WeatherDataAnalysis
 
             var filePicker = createNewFileOpenPicker();
             var file = await filePicker.PickSingleFileAsync();
+            var importDialog = new ImportDialog();
+            var importDialogResults = await importDialog.ShowAsync();
+
+            if (importDialogResults.Equals(ContentDialogResult.Secondary))
+            {
+                return;
+            }
 
             if (file != null)
             {
                 StorageApplicationPermissions.FutureAccessList.Add(file);
-                var weatherInfoCollection = await this.weatherInfoCollections.CreateNewFromFile(file);
+                var weatherInfoCollection =
+                    await this.weatherInfoCollections.CreateNewFromFile(file, importDialog.Name);
                 this.weatherInfoCollections.Active = weatherInfoCollection;
-                this.setSummaryTextTemps(weatherInfoCollection);
+                this.setSummaryTextTemps();
             }
         }
 
@@ -85,17 +91,17 @@ namespace WeatherDataAnalysis
 
         //TODO Move to controller
         //TODO Use List<string> to add all strings to this - maybe IDictionary to create a map of data elements multi-select checkbox i want to see: 'x' 'y' 'z' elements
-        private void setSummaryTextTemps(WeatherInfoCollection outputCollection)
+        private void setSummaryTextTemps()
         {
             this.summaryTextBox.Text = string.Empty;
-            this.summaryTextBox.Text += this.loadTemperaturesByYear(outputCollection);
-            this.summaryTextBox.Text += this.loadTemperaturesByMonth(outputCollection, 1);
+            this.summaryTextBox.Text += this.loadTemperaturesByYear();
+            this.summaryTextBox.Text += this.loadTemperaturesByMonth(1);
         }
 
-        private string loadTemperaturesByYear(WeatherInfoCollection outputCollection)
+        private string loadTemperaturesByYear()
         {
             var tempFormatter = this.dataFormatter.TemperatureDataFormatter;
-            tempFormatter.WeatherInfoCollection = outputCollection;
+            tempFormatter.WeatherInfoCollection = this.weatherInfoCollections.Active;
             var output = tempFormatter.FormatAverageHighTemperature() +
                          Environment.NewLine;
             output +=
@@ -117,10 +123,10 @@ namespace WeatherDataAnalysis
             return output;
         }
 
-        private string loadTemperaturesByMonth(WeatherInfoCollection outputCollection, int month)
+        private string loadTemperaturesByMonth(int month)
         {
-            var tempDataFormatter= this.dataFormatter.TemperatureDataFormatter;
-            tempDataFormatter.WeatherInfoCollection = outputCollection;
+            var tempDataFormatter = this.dataFormatter.TemperatureDataFormatter;
+            tempDataFormatter.WeatherInfoCollection = this.weatherInfoCollections.Active;
             var output = tempDataFormatter.FormatLowAveragePerMonth(month) + Environment.NewLine;
             output += tempDataFormatter.FormatHighAveragePerMonth(month) + Environment.NewLine;
             output += tempDataFormatter.FormatLowPerMonth(month) + Environment.NewLine;
