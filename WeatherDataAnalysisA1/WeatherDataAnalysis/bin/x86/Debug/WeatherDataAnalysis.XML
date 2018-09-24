@@ -58,58 +58,115 @@
             GetXmlnsDefinitions()
             </summary>
         </member>
+        <member name="T:WeatherDataAnalysis.Controller.Import">
+            <summary>
+                Controller for the Import processes.
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.Controller.Import.Type">
+            <summary>
+                Gets the type.
+            </summary>
+            <value>
+                The type.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Controller.Import.tempFormatter">
+            <summary>
+            Gets the temporary formatter.
+            </summary>
+            <value>
+            The temporary formatter.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.Controller.Import.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Controller.Import" /> class.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.Controller.Import.#ctor(WeatherDataAnalysis.Model.Enums.ImportType)">
+            <summary>
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Controller.Import" /> class.
+            </summary>
+            <param name="type">The type of import process to execute.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.Controller.Import.ExecuteImport">
+            <summary>
+                Executes the import.
+            </summary>
+            <returns>True if new WeatherInfoCollection is added.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Controller.Import.GenerateOutput">
+            <summary>
+                Generates the output.
+            </summary>
+            <returns>Generates output for the Active WeatherInfoCollection</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Controller.Import.GenerateOutput(System.Int32)">
+            <summary>
+                Generates the output with additional analytic functions for month
+            </summary>
+            <param name="month">The month to analyze</param>
+            <returns></returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Controller.Import.loadTemperaturesByMonth(System.Int32)">
+            <summary>
+            Loads the temperatures by month.
+            </summary>
+            <param name="month">The month.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Controller.Import.SetHighTempThreshold(System.Int32)">
+            <summary>
+            Sets the high temporary threshold.
+            </summary>
+            <param name="parse">The parse.</param>
+        </member>
         <member name="T:WeatherDataAnalysis.Format.TemperatureDataFormatter">
             <summary>
                 Formats Temperature Data
             </summary>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageHighTemperature">
+        <member name="P:WeatherDataAnalysis.Format.TemperatureDataFormatter.WeatherInfoCollection">
             <summary>
-                Formats the average high temperature.
+                Gets or sets the weather information collection.
+            </summary>
+            <value>
+                The weather information collection.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Format.TemperatureDataFormatter.LowTempThreshold">
+            <summary>
+            Gets or sets the low temporary threshold.
+            </summary>
+            <value>
+            The low temporary threshold.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Format.TemperatureDataFormatter.HighTempThreshold">
+            <summary>
+            Gets or sets the high temporary threshold.
+            </summary>
+            <value>
+            The high temporary threshold.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Format.TemperatureDataFormatter"/> class.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.GetOutput">
+            <summary>
+                Generates the grouped weather information collections.
+            </summary>
+            <returns>Analytic output of weather data grouped by Month.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.generateYearOverview">
+            <summary>
+            Generates the year overview.
             </summary>
             <returns></returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatAverageLowTemperature">
-            <summary>
-                Formats the average low temperature.
-            </summary>
-            <returns>String representation of Average Low temperature</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestTemps">
-            <summary>
-                Formats the highest temps.
-            </summary>
-            <returns>String representation of highest temp data.</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowestTemps">
-            <summary>
-                Formats the lowest temps.
-            </summary>
-            <returns>String representation of lowest temp data.</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatLowestHighTemps">
-            <summary>
-                Formats the lowest high temps.
-            </summary>
-            <returns>String representation of lowest high temp data.</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighestLowTemps">
-            <summary>
-                Formats the highest low temps.
-            </summary>
-            <returns>String representation of highest low temp data.</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatDaysAbove(System.Int32)">
-            <summary>
-                Formats the days above90.
-            </summary>
-            <returns>Formatted String for Days above 90</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatDaysBelow(System.Int32)">
-            <summary>
-                Formats the days below32.
-            </summary>
-            <returns>String for dates that reached 32 or lower</returns>
         </member>
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.FormatHighPerMonth(System.Int32)">
             <summary>
@@ -144,15 +201,36 @@
                 Reads CSV file lines
             </summary>
         </member>
+        <member name="M:WeatherDataAnalysis.io.CsvReader.GetFileLines(Windows.Storage.IStorageFile)">
+            <summary>
+            Gets the file lines.
+            </summary>
+            <param name="file">The file.</param>
+            <returns></returns>
+        </member>
         <member name="T:WeatherDataAnalysis.io.TemperatureParser">
             <summary>
                 Parser for CSV set of Temperature Data where format is date, high, low.
             </summary>
         </member>
+        <member name="P:WeatherDataAnalysis.io.TemperatureParser.ErrorMessages">
+            <summary>
+            Gets or sets the error messages.
+            </summary>
+            <value>
+            The error messages.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.io.TemperatureParser.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WeatherDataAnalysis.io.TemperatureParser"/> class.
+            </summary>
+        </member>
         <member name="M:WeatherDataAnalysis.io.TemperatureParser.GetWeatherInfoCollection(System.String,System.Collections.Generic.IList{System.String})">
             <summary>
-                Gets the day temperature list.
+            Gets the day temperature list.
             </summary>
+            <param name="name">The name.</param>
             <param name="weatherInfoList">The temporary list.</param>
             <returns></returns>
         </member>
@@ -192,6 +270,56 @@
             GetBindingConnector(int connectionId, object target)
             </summary>
         </member>
+        <member name="T:WeatherDataAnalysis.Model.Enums.ImportType">
+            <summary>
+            Enum for ImportTypes
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.Model.Enums.ImportType.Merge">
+            <summary>
+            Indicates that the import should utilize a merging process.
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.Model.Enums.ImportType.Overwrite">
+            <summary>
+            Indicates that the import should utilize an overwrite process.
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection">
+            <summary>
+                Creates a series of grouped collections.
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection.MasterCollection">
+            <summary>
+                Gets or sets the master collection.
+            </summary>
+            <value>
+                The master collection.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection.GroupedByMonth">
+            <summary>
+                Gets the grouped collections.
+            </summary>
+            <value>
+                The grouped collections.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection.GroupedByYear">
+            <summary>
+            Gets the grouped by year.
+            </summary>
+            <value>
+            The grouped by year.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection.#ctor(WeatherDataAnalysis.Model.WeatherInfoCollection)">
+            <summary>
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection" /> class.
+            </summary>
+            <param name="masterCollection">The master collection.</param>
+        </member>
         <member name="T:WeatherDataAnalysis.Model.WeatherInfo">
             <summary>
                 High and low temperature data for a specific day
@@ -229,17 +357,116 @@
             <param name="highTemp">The high temperature.</param>
             <param name="lowTemp">The low temperature.</param>
         </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfo.CompareTo(WeatherDataAnalysis.Model.WeatherInfo)">
+            <summary>
+            Compares to.
+            </summary>
+            <param name="other">The other.</param>
+            <returns></returns>
+        </member>
         <member name="T:WeatherDataAnalysis.Model.WeatherInfoCollection">
             <summary>
                 Provides analytic functions for collections of WeatherInfo.
             </summary>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.#ctor(System.String,System.Collections.Generic.IEnumerable{WeatherDataAnalysis.Model.WeatherInfo})">
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.Count">
+            <summary>
+                Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>
+                The name.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.KeyValuePair">
+            <summary>
+                Gets or sets the key value pair.
+            </summary>
+            <value>
+                The key value pair.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.IsReadOnly">
+            <summary>
+                Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.#ctor(System.String,System.Collections.Generic.ICollection{WeatherDataAnalysis.Model.WeatherInfo})">
             <summary>
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection" /> class.
             </summary>
             <param name="name"></param>
             <param name="weatherInfos">The collection of weather information.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.Add(WeatherDataAnalysis.Model.WeatherInfo)">
+            <summary>
+                Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.Clear">
+            <summary>
+                Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.Contains(WeatherDataAnalysis.Model.WeatherInfo)">
+            <summary>
+                Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> contains a specific value.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+            <returns>
+                true if item is found in the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.CopyTo(WeatherDataAnalysis.Model.WeatherInfo[],System.Int32)">
+            <summary>
+                Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"></see> to an
+                <see cref="T:System.Array"></see>, starting at a particular <see cref="T:System.Array"></see> index.
+            </summary>
+            <param name="array">
+                The one-dimensional <see cref="T:System.Array"></see> that is the destination of the elements
+                copied from <see cref="T:System.Collections.Generic.ICollection`1"></see>. The <see cref="T:System.Array"></see>
+                must have zero-based indexing.
+            </param>
+            <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.Remove(WeatherDataAnalysis.Model.WeatherInfo)">
+            <summary>
+                Removes the first occurrence of a specific object from the
+                <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+            <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+            <returns>
+                true if item was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"></see>;
+                otherwise, false. This method also returns false if item is not found in the original
+                <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetEnumerator">
+            <summary>
+                Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+                An enumerator that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+                Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+                An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GroupByMonth">
+            <summary>
+            Groups the by month.
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithHighest">
             <summary>
@@ -247,17 +474,17 @@
             </summary>
             <returns>List of Weather with the highest temps.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithHighestLow">
-            <summary>
-                Gets the highest low temps.
-            </summary>
-            <returns>List of Weather with the highest low temps.</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowestTemps">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithLowest">
             <summary>
                 Gets the lowest temps.
             </summary>
             <returns>List of Weather with the lowest temps.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindHighestLow">
+            <summary>
+                Gets the highest low temps.
+            </summary>
+            <returns>List of Weather with the highest low temps.</returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowestHighTemps">
             <summary>
@@ -265,30 +492,17 @@
             </summary>
             <returns>List of Weather with the lowest high temps.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysAbove(System.Int32)">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetAverageHigh">
             <summary>
-                Gets the days above 90.
+                Gets the average high.
             </summary>
-            <param name="highTemp"></param>
-            <returns>Weather objects where high above 90</returns>
+            <returns>Average High Temperature for WeatherInfoCollection</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetDaysBelow(System.Int32)">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetAverageLow">
             <summary>
-                Gets the days below 32.
+                Gets the average low.
             </summary>
-            <returns>Weather objects where high below 32</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindDaysAbove(System.Int32)">
-            <summary>
-                Finds WeatherInfos with high temps above temp parameter
-            </summary>
-            <returns>WeatherInfo collection where high above temp</returns>
-        </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindDaysBelow(System.Int32)">
-            <summary>
-                Find below temp parameter.
-            </summary>
-            <returns>WeatherInfo collection where low below temp parameter</returns>
+            <returns>Average High Temperature for WeatherInfoCollection</returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetHighestInMonth(System.Int32)">
             <summary>
@@ -357,6 +571,36 @@
             <value>
                 The current.
             </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.Keys">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the keys of the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.Values">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the values in the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
+            </summary>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection"/> with the specified key.
+            </summary>
+            <value>
+            The <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection"/>.
+            </value>
+            <param name="key">The key.</param>
+            <returns></returns>
         </member>
         <member name="M:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.#ctor">
             <summary>
@@ -497,12 +741,34 @@
                 An enumerator that can be used to iterate through the collection.
             </returns>
         </member>
-        <member name="M:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding.CreateNewFromFile(Windows.Storage.StorageFile,System.String)">
+        <member name="T:WeatherDataAnalysis.View.ImportDialog">
             <summary>
-                Creates the new WeatherInfoCollection from file.
+            Dialog to collect user input for the file selected for import.
             </summary>
-            <param name="file">The file.</param>
-            <returns></returns>
+            <seealso cref="T:Windows.UI.Xaml.Controls.ContentDialog" />
+            <seealso cref="T:Windows.UI.Xaml.Markup.IComponentConnector" />
+            <seealso cref="T:Windows.UI.Xaml.Markup.IComponentConnector2" />
+        </member>
+        <member name="P:WeatherDataAnalysis.View.ImportDialog.CollectionName">
+            <summary>
+            Gets the name of the collection.
+            </summary>
+            <value>
+            The name of the collection.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.View.ImportDialog.ImportType">
+            <summary>
+            Gets the type of the import.
+            </summary>
+            <value>
+            The type of the import.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.View.ImportDialog.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WeatherDataAnalysis.View.ImportDialog"/> class.
+            </summary>
         </member>
         <member name="M:WeatherDataAnalysis.View.ImportDialog.InitializeComponent">
             <summary>

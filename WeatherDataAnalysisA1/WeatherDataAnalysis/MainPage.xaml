@@ -14,14 +14,18 @@
             </CommandBar.Content>
             <AppBarButton Icon="OpenFile" Label="Load File" Click="loadFile_Click" />
         </CommandBar>
-        <TextBox x:Name="summaryTextBox" HorizontalAlignment="Left" Margin="225,95,0,0" VerticalAlignment="Top"
+        <TextBox x:Name="summaryTextBox" HorizontalAlignment="Left" Margin="234,98,0,0" VerticalAlignment="Top"
                  TextWrapping="Wrap" Text="Summary" Height="276" Width="600" IsReadOnly="True"
                  AutomationProperties.Name="summaryTextBlock" />
         <TextBlock HorizontalAlignment="Left" Margin="12,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
             <Run Text="Weather Analysis" /><LineBreak /><Run /><LineBreak /><Run />
         </TextBlock>
-        <TextBlock x:Name="averageHighTemperatureLabel" HorizontalAlignment="Left" Margin="18,93,0,0"
-                   Text="Average High Temperature" TextWrapping="Wrap" VerticalAlignment="Top" />
+        <TextBlock x:Name="MonthLabel" HorizontalAlignment="Left" Margin="25,84,0,0" Text="Month" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="MonthInput" HorizontalAlignment="Left" Margin="25,104,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Month to analyze" Width="156"/>
+        <TextBlock x:Name="HighTempLabel" HorizontalAlignment="Left" Margin="24,148,0,0" Text="High Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="HighTempInput" HorizontalAlignment="Left" Margin="24,170,0,0" VerticalAlignment="Top" PlaceholderText="High Temp" Width="93"/>
+        <TextBlock x:Name="LowTempLabel" HorizontalAlignment="Left" Margin="26,218,0,0" Text="Low Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="lowTempInput" HorizontalAlignment="Left" Margin="25,239,0,0" VerticalAlignment="Top" PlaceholderText="Low Temp" Width="93"/>
 
     </Grid>
 </Page>

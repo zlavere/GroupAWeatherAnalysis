@@ -26,7 +26,7 @@ namespace WeatherDataAnalysis.io
         /// <value>
         /// The error messages.
         /// </value>
-        public ICollection<string> ErrorMessages { get; }
+        private ICollection<string> ErrorMessages { get; }
 
         #endregion
 
@@ -114,8 +114,7 @@ namespace WeatherDataAnalysis.io
             bool isValid;
             try
             {
-                
-                DateTime.ParseExact(date, "M/d/yyyy", CultureInfo.InvariantCulture);
+                var dateTime = DateTime.ParseExact(date, "M/d/yyyy", CultureInfo.InvariantCulture);
                 isValid = true;
             }
             catch (ArgumentNullException e)
@@ -141,7 +140,7 @@ namespace WeatherDataAnalysis.io
 
             try
             {
-                int.Parse(temp);
+                var i = int.Parse(temp);
                 isValid = true;
             }
             catch (ArgumentNullException e)

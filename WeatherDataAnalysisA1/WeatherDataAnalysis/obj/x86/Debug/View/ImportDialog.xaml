@@ -2,10 +2,8 @@
     x:Class="WeatherDataAnalysis.View.ImportDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WeatherDataAnalysis.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:forms="using:System.Windows.Forms"
     mc:Ignorable="d"
     Title="Import Dialog"
     PrimaryButtonText="Start"
@@ -15,17 +13,17 @@
 
     <Grid HorizontalAlignment="Stretch" Margin="0,0,0,-5" VerticalAlignment="Stretch">
 
-        <TextBlock x:ConnectionId='2' x:Name="ImportTypeLabel" HorizontalAlignment="Left" Margin="20,74,0,0"
+        <TextBlock x:ConnectionId='2' x:Name="importTypeLabel" HorizontalAlignment="Left" Margin="20,74,0,0"
                    Text="Would you like to overwrite the active collection or merge?" TextWrapping="Wrap"
                    VerticalAlignment="Top" />
-        <RadioButton x:ConnectionId='3' x:Name="OverwriteButton" Content="Overwrite" HorizontalAlignment="Left" Margin="20,98,0,0"
+        <RadioButton x:ConnectionId='3' x:Name="overwriteButton" Content="Overwrite" HorizontalAlignment="Left" Margin="20,98,0,0"
                      VerticalAlignment="Top" GroupName="ImportTypeGroup"                            />
-        <RadioButton x:ConnectionId='4' x:Name="MergeButton" Content="Merge" HorizontalAlignment="Left" Margin="125,98,0,0"
+        <RadioButton x:ConnectionId='4' x:Name="mergeButton" Content="Merge" HorizontalAlignment="Left" Margin="125,98,0,0"
                      VerticalAlignment="Top" GroupName="ImportTypeGroup"                        />
-        <TextBox x:ConnectionId='5' x:Name="CollectionNameInput" HorizontalAlignment="Left" Margin="19,34,0,0" Text=""
+        <TextBox x:ConnectionId='5' x:Name="collectionNameInput" HorizontalAlignment="Left" Margin="19,34,0,0" Text=""
                  VerticalAlignment="Top" PlaceholderText="Weather Info Collection Name" Width="238" InputScope="Text"
                                                      />
-        <TextBlock x:ConnectionId='6' x:Name="CollectionNameLabel" HorizontalAlignment="Left" Margin="20,9,20,0"
+        <TextBlock x:ConnectionId='6' x:Name="collectionNameLabel" HorizontalAlignment="Left" Margin="20,9,20,0"
                    Text="Provide a name for the weather info collection contained in this file." TextWrapping="Wrap"
                    VerticalAlignment="Top" />
     </Grid>

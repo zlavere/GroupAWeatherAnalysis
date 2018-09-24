@@ -1,8 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Windows.Storage;
-using WeatherDataAnalysis.io;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
@@ -22,7 +19,7 @@ namespace WeatherDataAnalysis.ViewModel
         /// <value>
         ///     The weather information collections.
         /// </value>
-        public IDictionary<string, WeatherInfoCollection> WeatherInfoCollections { get; }
+        private IDictionary<string, WeatherInfoCollection> WeatherInfoCollections { get; }
 
         /// <summary>
         ///     Gets or sets the active collection.
@@ -266,23 +263,6 @@ namespace WeatherDataAnalysis.ViewModel
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.WeatherInfoCollections.GetEnumerator();
-        }
-
-        /// <summary>
-        /// Creates the new WeatherInfoCollection from file.
-        /// </summary>
-        /// <param name="file">The file.</param>
-        /// <param name="collectionName">Name of the collection.</param>
-        /// <returns></returns>
-        public async Task<WeatherInfoCollection> CreateNewFromFile(StorageFile file, string collectionName)
-        {
-            var csvFileReader = new CsvReader();
-            var temperatureParser = new TemperatureParser();
-            var fileLines = await csvFileReader.GetFileLines(file);
-            var newWeatherInfoCollection = temperatureParser.GetWeatherInfoCollection(collectionName, fileLines);
-            this.Add(collectionName, newWeatherInfoCollection);
-            this.Active = newWeatherInfoCollection;
-            return newWeatherInfoCollection;
         }
 
         #endregion

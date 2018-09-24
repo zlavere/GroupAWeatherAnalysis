@@ -12,32 +12,32 @@ namespace WeatherDataAnalysis.Model
         #region Properties
 
         /// <summary>
-        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        ///     Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
         public int Count => this.WeatherInfos.Count;
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the name.
         /// </summary>
         /// <value>
-        /// The name.
+        ///     The name.
         /// </value>
         public string Name { get; }
 
         /// <summary>
-        /// Gets or sets the key value pair.
+        ///     Gets or sets the key value pair.
         /// </summary>
         /// <value>
-        /// The key value pair.
+        ///     The key value pair.
         /// </value>
-        public KeyValuePair<string, WeatherInfoCollection> KeyValuePair { get; set; }
+        private KeyValuePair<string, WeatherInfoCollection> KeyValuePair { get; }
 
         /// <summary>
-        /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
+        ///     Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
         /// </summary>
-        public bool IsReadOnly => ((ICollection<WeatherInfo>) this.WeatherInfos).IsReadOnly;
+        public bool IsReadOnly => this.WeatherInfos.IsReadOnly;
 
-        private List<WeatherInfo> WeatherInfos { get; }
+        public ICollection<WeatherInfo> WeatherInfos { get; }
 
         private IEnumerable<int> HighTemps { get; }
 
@@ -52,7 +52,7 @@ namespace WeatherDataAnalysis.Model
         /// </summary>
         /// <param name="name"></param>
         /// <param name="weatherInfos">The collection of weather information.</param>
-        public WeatherInfoCollection(string name, IEnumerable<WeatherInfo> weatherInfos)
+        public WeatherInfoCollection(string name, ICollection<WeatherInfo> weatherInfos)
         {
             this.WeatherInfos = (List<WeatherInfo>) weatherInfos;
             this.LowTemps = this.WeatherInfos.Select(temps => temps.LowTemp);
@@ -66,7 +66,7 @@ namespace WeatherDataAnalysis.Model
         #region Methods
 
         /// <summary>
-        /// Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        ///     Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
         /// <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
         public void Add(WeatherInfo item)
@@ -75,7 +75,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        ///     Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
         public void Clear()
         {
@@ -83,11 +83,11 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> contains a specific value.
+        ///     Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> contains a specific value.
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
         /// <returns>
-        /// true if item is found in the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false.
+        ///     true if item is found in the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false.
         /// </returns>
         public bool Contains(WeatherInfo item)
         {
@@ -95,9 +95,14 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"></see> to an <see cref="T:System.Array"></see>, starting at a particular <see cref="T:System.Array"></see> index.
+        ///     Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"></see> to an
+        ///     <see cref="T:System.Array"></see>, starting at a particular <see cref="T:System.Array"></see> index.
         /// </summary>
-        /// <param name="array">The one-dimensional <see cref="T:System.Array"></see> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"></see>. The <see cref="T:System.Array"></see> must have zero-based indexing.</param>
+        /// <param name="array">
+        ///     The one-dimensional <see cref="T:System.Array"></see> that is the destination of the elements
+        ///     copied from <see cref="T:System.Collections.Generic.ICollection`1"></see>. The <see cref="T:System.Array"></see>
+        ///     must have zero-based indexing.
+        /// </param>
         /// <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
         public void CopyTo(WeatherInfo[] array, int arrayIndex)
         {
@@ -105,11 +110,14 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        ///     Removes the first occurrence of a specific object from the
+        ///     <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
         /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
         /// <returns>
-        /// true if item was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false. This method also returns false if item is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        ///     true if item was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"></see>;
+        ///     otherwise, false. This method also returns false if item is not found in the original
+        ///     <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </returns>
         public bool Remove(WeatherInfo item)
         {
@@ -117,25 +125,74 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through the collection.
+        ///     Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>
-        /// An enumerator that can be used to iterate through the collection.
+        ///     An enumerator that can be used to iterate through the collection.
         /// </returns>
         public IEnumerator<WeatherInfo> GetEnumerator()
         {
-            return ((ICollection<WeatherInfo>) this.WeatherInfos).GetEnumerator();
+            return this.WeatherInfos.GetEnumerator();
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through a collection.
+        ///     Returns an enumerator that iterates through a collection.
         /// </summary>
         /// <returns>
-        /// An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.
+        ///     An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.
         /// </returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((ICollection<WeatherInfo>) this.WeatherInfos).GetEnumerator();
+            return this.WeatherInfos.GetEnumerator();
+        }
+
+        //TODO Move grouping methods to a new 'Grouper' class - not like the fish, but something that generates grouped WeatherInfoCollections
+        private IDictionary<int, List<WeatherInfo>> groupByYear()
+        {
+            var years = this.WeatherInfos.Select(weather => weather.Date.Year).Distinct().ToList();
+            var dictionary = new Dictionary<int, List<WeatherInfo>>();
+            foreach (var current in years)
+            {
+                var currentList = this.WeatherInfos.Where(weather => weather.Date.Year == current).ToList();
+                dictionary.Add(current, currentList);
+            }
+
+            return dictionary;
+        }
+
+        /// <summary>
+        /// Groups the by month.
+        /// </summary>
+        /// <returns></returns>
+        public IDictionary<int, IDictionary<int, List<WeatherInfo>>> GroupByMonth()
+        {
+            var groupedByYear = (Dictionary<int, List<WeatherInfo>>) this.groupByYear();
+
+            var dictionary = new Dictionary<int, IDictionary<int, List<WeatherInfo>>>();
+
+            foreach (var year in groupedByYear.Keys)
+            {
+                var monthDictionary = this.monthDictionary(year);
+
+                dictionary.Add(year, monthDictionary);
+            }
+
+            return dictionary;
+        }
+
+        private Dictionary<int, List<WeatherInfo>> monthDictionary(int year)
+        {
+            var monthDictionary = new Dictionary<int, List<WeatherInfo>>();
+            for (var month = 1; month <= 12; month++)
+            {
+                var weatherInfoForMonth = this.WeatherInfos
+                                              .Where(weather =>
+                                                  weather.Date.Year == year && weather.Date.Month == month)
+                                              .ToList();
+                monthDictionary.Add(month, weatherInfoForMonth);
+            }
+
+            return monthDictionary;
         }
 
         /// <summary>
@@ -151,23 +208,10 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        ///     Gets the highest low temps.
-        /// </summary>
-        /// <returns>List of Weather with the highest low temps.</returns>
-        public List<WeatherInfo> FindWithHighestLow()
-        {
-            var highest = this.WeatherInfos.Max(weather => weather.LowTemp);
-            var highestTemps =
-                this.WeatherInfos.Where(temp => temp.LowTemp == highest).ToList();
-
-            return highestTemps;
-        }
-
-        /// <summary>
         ///     Gets the lowest temps.
         /// </summary>
         /// <returns>List of Weather with the lowest temps.</returns>
-        public List<WeatherInfo> GetLowestTemps()
+        public List<WeatherInfo> FindWithLowest()
         {
             var lowest = this.WeatherInfos.Min(weather => weather.LowTemp);
             var lowTemps =
@@ -176,22 +220,16 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Gets the average high.
+        ///     Gets the highest low temps.
         /// </summary>
-        /// <returns>Average High Temperature for WeatherInfoCollection</returns>
-        public double GetAverageHigh()
+        /// <returns>List of Weather with the highest low temps.</returns>
+        public List<WeatherInfo> FindHighestLow()
         {
-            var averageHigh = this.WeatherInfos.Average(weather => weather.HighTemp);
-            return averageHigh;
-        }
+            var highest = this.WeatherInfos.Max(weather => weather.LowTemp);
+            var highestTemps =
+                this.WeatherInfos.Where(temp => temp.LowTemp == highest).ToList();
 
-        /// <summary>
-        /// Gets the average low.
-        /// </summary>
-        /// <returns>Average High Temperature for WeatherInfoCollection</returns>
-        public double GetAverageLow()
-        {
-            return this.WeatherInfos.Average(weather => weather.LowTemp);
+            return highestTemps;
         }
 
         /// <summary>
@@ -208,21 +246,22 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        ///     Finds WeatherInfos with high temps above temp parameter
+        ///     Gets the average high.
         /// </summary>
-        /// <returns>WeatherInfo collection where high above temp</returns>
-        public IEnumerable<WeatherInfo> FindDaysAbove(int temp)
+        /// <returns>Average High Temperature for WeatherInfoCollection</returns>
+        public double GetAverageHigh()
         {
-            return this.WeatherInfos.Where(weather => weather.HighTemp >= temp).ToList();
+            var averageHigh = this.WeatherInfos.Average(weather => weather.HighTemp);
+            return averageHigh;
         }
 
         /// <summary>
-        ///     Find below temp parameter.
+        ///     Gets the average low.
         /// </summary>
-        /// <returns>WeatherInfo collection where low below temp parameter</returns>
-        public IEnumerable<WeatherInfo> FindDaysBelow(int temp)
+        /// <returns>Average High Temperature for WeatherInfoCollection</returns>
+        public double GetAverageLow()
         {
-            return this.WeatherInfos.Where(weather => weather.LowTemp <= temp).ToList();
+            return this.WeatherInfos.Average(weather => weather.LowTemp);
         }
 
         //TODO return statements docs

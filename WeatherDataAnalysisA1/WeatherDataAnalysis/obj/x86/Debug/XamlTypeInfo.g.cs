@@ -189,7 +189,7 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[11];
+            _typeNameTable = new string[7];
             _typeNameTable[0] = "WeatherDataAnalysis.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
@@ -197,12 +197,8 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             _typeNameTable[4] = "Windows.UI.Xaml.Controls.ContentDialog";
             _typeNameTable[5] = "Windows.UI.Xaml.Controls.ContentControl";
             _typeNameTable[6] = "String";
-            _typeNameTable[7] = "WeatherDataAnalysis.Model.Enums.ImportType";
-            _typeNameTable[8] = "System.Enum";
-            _typeNameTable[9] = "System.ValueType";
-            _typeNameTable[10] = "Object";
 
-            _typeTable = new global::System.Type[11];
+            _typeTable = new global::System.Type[7];
             _typeTable[0] = typeof(global::WeatherDataAnalysis.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
@@ -210,10 +206,6 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.ContentDialog);
             _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
             _typeTable[6] = typeof(global::System.String);
-            _typeTable[7] = typeof(global::WeatherDataAnalysis.Model.Enums.ImportType);
-            _typeTable[8] = typeof(global::System.Enum);
-            _typeTable[9] = typeof(global::System.ValueType);
-            _typeTable[10] = typeof(global::System.Object);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -279,8 +271,7 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             case 3:   //  WeatherDataAnalysis.View.ImportDialog
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
                 userType.Activator = Activate_3_ImportDialog;
-                userType.AddMemberName("collectionName");
-                userType.AddMemberName("ImportType");
+                userType.AddMemberName("CollectionName");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -296,42 +287,15 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             case 6:   //  String
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
-
-            case 7:   //  WeatherDataAnalysis.Model.Enums.ImportType
-                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.AddEnumValue("Merge", global::WeatherDataAnalysis.Model.Enums.ImportType.Merge);
-                userType.AddEnumValue("Overwrite", global::WeatherDataAnalysis.Model.Enums.ImportType.Overwrite);
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 8:   //  System.Enum
-                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
-                xamlType = userType;
-                break;
-
-            case 9:   //  System.ValueType
-                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                xamlType = userType;
-                break;
-
-            case 10:   //  Object
-                xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
             }
             return xamlType;
         }
 
 
-        private object get_0_ImportDialog_collectionName(object instance)
+        private object get_0_ImportDialog_CollectionName(object instance)
         {
             var that = (global::WeatherDataAnalysis.View.ImportDialog)instance;
             return that.CollectionName;
-        }
-        private object get_1_ImportDialog_ImportType(object instance)
-        {
-            var that = (global::WeatherDataAnalysis.View.ImportDialog)instance;
-            return that.ImportType;
         }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
@@ -341,16 +305,10 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
 
             switch (longMemberName)
             {
-            case "WeatherDataAnalysis.View.ImportDialog.collectionName":
+            case "WeatherDataAnalysis.View.ImportDialog.CollectionName":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.ImportDialog");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "collectionName", "String");
-                xamlMember.Getter = get_0_ImportDialog_collectionName;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "WeatherDataAnalysis.View.ImportDialog.ImportType":
-                userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.ImportDialog");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "ImportType", "WeatherDataAnalysis.Model.Enums.ImportType");
-                xamlMember.Getter = get_1_ImportDialog_ImportType;
+                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "CollectionName", "String");
+                xamlMember.Getter = get_0_ImportDialog_CollectionName;
                 xamlMember.SetIsReadOnly();
                 break;
             }

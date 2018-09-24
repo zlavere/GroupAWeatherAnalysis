@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using WeatherDataAnalysis.Model;
@@ -19,197 +20,174 @@ namespace WeatherDataAnalysis.Format
         #region Properties
 
         /// <summary>
-        /// Gets or sets the weather information collection.
+        ///     Gets or sets the weather information collection.
         /// </summary>
         /// <value>
-        /// The weather information collection.
+        ///     The weather information collection.
         /// </value>
         public WeatherInfoCollection WeatherInfoCollection { private get; set; }
 
+        private FactoryWeatherInfoCollection GroupedWeatherInfoCollection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the low temporary threshold.
+        /// </summary>
+        /// <value>
+        /// The low temporary threshold.
+        /// </value>
+        public int LowTempThreshold { private get; set; }
+
+        /// <summary>
+        /// Gets or sets the high temporary threshold.
+        /// </summary>
+        /// <value>
+        /// The high temporary threshold.
+        /// </value>
+        public int HighTempThreshold { private get; set; }
+
         #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TemperatureDataFormatter"/> class.
+        /// </summary>
+        public TemperatureDataFormatter()
+        {
+            this.LowTempThreshold = int.MinValue;
+            this.HighTempThreshold = int.MaxValue;
+        }
 
         #region Methods
 
         /// <summary>
-        ///     Formats the average high temperature.
+        ///     Generates the grouped weather information collections.
+        /// </summary>
+        /// <returns>Analytic output of weather data grouped by Month.</returns>
+        public string GetOutput()
+        {
+            this.GroupedWeatherInfoCollection = new FactoryWeatherInfoCollection(this.WeatherInfoCollection);
+
+            var output = this.generateYearOverview();
+
+            return output;
+        }
+
+        /// <summary>
+        /// Generates the year overview.
         /// </summary>
         /// <returns></returns>
-        public string FormatAverageHighTemperature()
+        private string generateYearOverview()
         {
-            return
-                $"Average High Temp: {Math.Round(this.WeatherInfoCollection.GetAverageHigh(), TwoPointFloatPrecision)}";
-        }
+            var masterCollection = this.GroupedWeatherInfoCollection.MasterCollection;
+            var years = masterCollection.Select(year => year.Date.Year).ToList().OrderByDescending(year => year)
+                                        .Distinct();
 
-        /// <summary>
-        ///     Formats the average low temperature.
-        /// </summary>
-        /// <returns>String representation of Average Low temperature</returns>
-        public string FormatAverageLowTemperature()
-        {
-            return
-                $"Average Low Temp: {Math.Round(this.WeatherInfoCollection.GetAverageLow(), TwoPointFloatPrecision)}";
-        }
+            var output = string.Empty;
 
-        //TODO Find a way to refactor these to avoid suspect code reuse.
-        /// <summary>
-        ///     Formats the highest temps.
-        /// </summary>
-        /// <returns>String representation of highest temp data.</returns>
-        public string FormatHighestTemps()
-        {
-            var weatherInfosWithHighestTemp = this.WeatherInfoCollection.FindWithHighest();
-            var highestTemp = weatherInfosWithHighestTemp.First().HighTemp;
-            var highestTemps = $"The highest temperature was: {highestTemp}" +
-                               Environment.NewLine +
-                               "Date(s) with highest temperature: " + Environment.NewLine;
-
-            foreach (var current in weatherInfosWithHighestTemp)
+            foreach (var current in years)
             {
-                if (current != weatherInfosWithHighestTemp.Last())
+                output += $"{current}{Environment.NewLine}";
+                var collection = new WeatherInfoCollection($"{current}",
+                    masterCollection.Where(year => year.Date.Year == current).ToList());
+                output +=
+                    $"Average High Temperature in {current}: {Math.Round(collection.GetAverageHigh(), TwoPointFloatPrecision)}{Environment.NewLine}";
+                output +=
+                    $"Average Low Temperature in {current}: {Math.Round(collection.GetAverageLow(), TwoPointFloatPrecision)}{Environment.NewLine}";
+                output +=
+                    $"The Highest Temperature in {current} was {collection.Max(temp => temp.HighTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getHighestTemps(collection)}";
+                output +=
+                    $"The Lowest High Temperature in {current} was {collection.Min(temp => temp.HighTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getLowestHighTemps(collection)}";
+                output +=
+                    $"The Highest Low Temperature in {current} was {collection.Max(temp => temp.LowTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getHighestLowTemps(collection)}";
+                if (this.LowTempThreshold != int.MinValue)
                 {
-                    highestTemps += $"{this.getDateString(current.Date)}," + Environment.NewLine;
+                    output += $"Dates with temperatures below {this.LowTempThreshold}{Environment.NewLine}";
+                    output += $"{this.getTempsBelow(collection)}";
                 }
-                else
+
+                if (this.HighTempThreshold != int.MaxValue)
                 {
-                    highestTemps += $"{this.getDateString(current.Date)}";
+                    output += $"Dates with temperatures above {this.HighTempThreshold}{Environment.NewLine}";
+                    output += this.getTempsAbove(collection);
                 }
+                
             }
 
-            return highestTemps;
+            output += Environment.NewLine;
+            return output;
         }
 
-        /// <summary>
-        ///     Formats the lowest temps.
-        /// </summary>
-        /// <returns>String representation of lowest temp data.</returns>
-        public string FormatLowestTemps()
+        private string getHighestTemps(WeatherInfoCollection collection)
         {
-            var lowestTempsList = this.WeatherInfoCollection.GetLowestTemps();
-
-            var lowestTemps = $"The lowest temperature was: {lowestTempsList.First().LowTemp}" +
-                              Environment.NewLine +
-                              "Date(s) with lowest temperature: " + Environment.NewLine;
-
-            foreach (var current in lowestTempsList)
+            var highest = collection.Max(temp => temp.HighTemp);
+            var output = string.Empty;
+            foreach (var current in collection.Where(temp => temp.HighTemp == highest))
             {
-                if (current != lowestTempsList.Last())
-                {
-                    lowestTemps += $"{this.getDateString(current.Date)}," + Environment.NewLine;
-                }
-                else
-                {
-                    lowestTemps += $"{this.getDateString(current.Date)}";
-                }
+                output += $"{this.getDateString(current.Date)} {Environment.NewLine}";
             }
 
-            return lowestTemps;
+            return output;
         }
 
-        /// <summary>
-        ///     Formats the lowest high temps.
-        /// </summary>
-        /// <returns>String representation of lowest high temp data.</returns>
-        public string FormatLowestHighTemps()
+        private string getLowestHighTemps(WeatherInfoCollection collection)
         {
-            var lowestHighTempsList = this.WeatherInfoCollection.GetLowestHighTemps();
-
-            var lowestHighTemps = $"The lowest high temperature was: {lowestHighTempsList.First().HighTemp}" +
-                                  Environment.NewLine +
-                                  "Date(s) with lowest high temperature: " + Environment.NewLine;
-
-            foreach (var current in lowestHighTempsList)
+            var lowest = collection.Min(temp => temp.HighTemp);
+            var output = string.Empty;
+            foreach (var current in collection.Where(temp => temp.HighTemp == lowest))
             {
-                if (current != lowestHighTempsList.Last())
-                {
-                    lowestHighTemps += $"{this.getDateString(current.Date)}," + Environment.NewLine;
-                }
-                else
-                {
-                    lowestHighTemps += $"{this.getDateString(current.Date)}";
-                }
+                output += $"{this.getDateString(current.Date)}{Environment.NewLine}";
             }
 
-            return lowestHighTemps;
+            return output;
         }
 
-        /// <summary>
-        ///     Formats the highest low temps.
-        /// </summary>
-        /// <returns>String representation of highest low temp data.</returns>
-        public string FormatHighestLowTemps()
+        private string getHighestLowTemps(WeatherInfoCollection collection)
         {
-            var highestLowTempsList = this.WeatherInfoCollection.FindWithHighestLow();
-            var highestLow = highestLowTempsList.First().LowTemp;
-            var highestLowTemps = $"The highest low temperature was: {highestLow}" +
-                                  Environment.NewLine +
-                                  "Date(s) with lowest high temperature: " + Environment.NewLine;
-
-            foreach (var current in highestLowTempsList)
+            var highest = collection.Max(temp => temp.LowTemp);
+            var output = string.Empty;
+            foreach (var current in collection.Where(temp => temp.LowTemp >= highest))
             {
-                if (current != highestLowTempsList.Last())
-                {
-                    highestLowTemps += $"{this.getDateString(current.Date)}" + Environment.NewLine;
-                }
-                else
-                {
-                    highestLowTemps += $"{this.getDateString(current.Date)}";
-                }
+                output += $"{this.getDateString(current.Date)}{Environment.NewLine}";
             }
 
-            return highestLowTemps;
+            return output;
         }
 
-        /// <summary>
-        ///     Formats the days above90.
-        /// </summary>
-        /// <returns>Formatted String for Days above 90</returns>
-        public string FormatDaysAbove(int highTemp)
+        private WeatherInfoCollection getCollectionsByYear(int year)
         {
-            var daysAbove90List = this.WeatherInfoCollection.FindDaysAbove(highTemp);
+            var listByYear = new List<WeatherInfo>();
 
-            var daysAbove90 = "Date(s) with high above 90: " + Environment.NewLine;
-
-            var weatherInfos = daysAbove90List.ToList();
-            foreach (var current in weatherInfos)
+            foreach (var current in this.GroupedWeatherInfoCollection.GroupedByYear.Values)
             {
-                if (current != weatherInfos.Last())
-                {
-                    daysAbove90 += $"{current.HighTemp} on {this.getDateString(current.Date)}" + Environment.NewLine;
-                }
-                else
-                {
-                    daysAbove90 += $"{current.HighTemp} on {this.getDateString(current.Date)}";
-                }
+                listByYear = (List<WeatherInfo>) current.Where(currentYear => currentYear.Date.Year == year);
             }
 
-            return daysAbove90;
+            var collection = new WeatherInfoCollection($"{year}", listByYear);
+            return collection;
         }
 
-        /// <summary>
-        ///     Formats the days below32.
-        /// </summary>
-        /// <returns>String for dates that reached 32 or lower</returns>
-        public string FormatDaysBelow(int lowTemp)
+        private string getTempsBelow(WeatherInfoCollection collection)
         {
-            var daysBelow32List = this.WeatherInfoCollection.FindDaysBelow(lowTemp);
-
-            var daysBelow32 = "Date(s) with low below 32: " + Environment.NewLine;
-
-            var weatherInfos = daysBelow32List.ToList();
-            foreach (var current in weatherInfos)
+            var output = string.Empty;
+            foreach(var current in collection.Where(weather => weather.LowTemp <= this.LowTempThreshold))
             {
-                if (current != weatherInfos.Last())
-                {
-                    daysBelow32 += $"{current.LowTemp} on {this.getDateString(current.Date)}" + Environment.NewLine;
-                }
-                else
-                {
-                    daysBelow32 += $"{current.LowTemp} on {this.getDateString(current.Date)}";
-                }
+                output += $"{this.getDateString(current.Date)}{Environment.NewLine}";
             }
 
-            return daysBelow32;
+            return output;
         }
+
+        private string getTempsAbove(WeatherInfoCollection collection)
+        {
+            var output = string.Empty;
+            foreach (var current in collection.Where(weather => weather.HighTemp >= this.HighTempThreshold))
+            {
+                output += $"{this.getDateString(current.Date)}{Environment.NewLine}";
+            }
+
+            return output;
+        }
+
+
 
         /// <summary>
         ///     Formats the high per month.
