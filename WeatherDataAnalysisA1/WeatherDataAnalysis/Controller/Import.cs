@@ -40,12 +40,7 @@ namespace WeatherDataAnalysis.Controller
 
         private WeatherInfoCollectionsBinding WeatherInfoCollections { get; }
 
-        /// <summary>
-        /// Gets the temporary formatter.
-        /// </summary>
-        /// <value>
-        /// The temporary formatter.
-        /// </value>
+
         private TemperatureDataFormatter tempFormatter { get;  }
 
         #endregion
@@ -144,6 +139,8 @@ namespace WeatherDataAnalysis.Controller
             this.tempFormatter.WeatherInfoCollection = this.WeatherInfoCollections.Active;
 
             var output = this.tempFormatter.GetOutput();
+            output += $"{this.tempFormatter.HighTempThreshold} {Environment.NewLine}";
+            output += $"{this.tempFormatter.LowTempThreshold} {Environment.NewLine}";
             return output;
         }
 
@@ -179,15 +176,20 @@ namespace WeatherDataAnalysis.Controller
         /// <summary>
         /// Sets the high temporary threshold.
         /// </summary>
-        /// <param name="parse">The parse.</param>
-        public void SetHighTempThreshold(int parse)
+        /// <param name="highTemp">The highTemp.</param>
+        public void SetHighTempThreshold(int highTemp)
         {
-            this.tempFormatter.HighTempThreshold = parse;
+            this.tempFormatter.HighTempThreshold = highTemp;
         }
 
-        public void SetLowTempThreshold(int parse)
+        public void SetLowTempThreshold(int lowTemp)
         {
-            this.tempFormatter.LowTempThreshold = parse;
+            this.tempFormatter.LowTempThreshold = lowTemp;
+        }
+
+        public void SetMonth(int month)
+        {
+            this.tempFormatter.Month = month;
         }
 
         #endregion

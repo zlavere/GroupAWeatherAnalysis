@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.io
@@ -65,7 +66,10 @@ namespace WeatherDataAnalysis.io
                 }
             }
 
-            return new WeatherInfoCollection(name, data);
+                var newCollection = new WeatherInfoCollection(name, data);
+
+
+            return newCollection;
         }
 
         private WeatherInfo ParseLine(IReadOnlyList<string> line)

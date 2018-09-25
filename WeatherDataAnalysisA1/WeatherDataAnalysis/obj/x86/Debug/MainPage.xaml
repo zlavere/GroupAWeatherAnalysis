@@ -23,7 +23,7 @@
         <TextBlock x:ConnectionId='3' x:Name="MonthLabel" HorizontalAlignment="Left" Margin="25,84,0,0" Text="Month" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:ConnectionId='4' x:Name="MonthInput" HorizontalAlignment="Left" Margin="25,104,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Month to analyze" Width="156"/>
         <TextBlock x:ConnectionId='5' x:Name="HighTempLabel" HorizontalAlignment="Left" Margin="24,148,0,0" Text="High Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:ConnectionId='6' x:Name="HighTempInput" HorizontalAlignment="Left" Margin="24,170,0,0" VerticalAlignment="Top" PlaceholderText="High Temp" Width="93"/>
+        <TextBox x:ConnectionId='6' x:Name="highTempInput" HorizontalAlignment="Left" Margin="24,170,0,0" VerticalAlignment="Top" PlaceholderText="High Temp" Width="93"/>
         <TextBlock x:ConnectionId='7' x:Name="LowTempLabel" HorizontalAlignment="Left" Margin="26,218,0,0" Text="Low Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:ConnectionId='8' x:Name="lowTempInput" HorizontalAlignment="Left" Margin="25,239,0,0" VerticalAlignment="Top" PlaceholderText="Low Temp" Width="93"/>
 

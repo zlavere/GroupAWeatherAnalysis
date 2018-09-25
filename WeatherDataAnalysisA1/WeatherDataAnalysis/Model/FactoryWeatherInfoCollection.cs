@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 
 namespace WeatherDataAnalysis.Model
 {
@@ -69,16 +68,6 @@ namespace WeatherDataAnalysis.Model
                     var key = $"{keyMonth} {keyYear}";
                     this.GroupedByMonth.Add(new WeatherInfoCollection(key, currentMonths.Value));
                 }
-            }
-        }
-
-        private void GroupByYear()
-        {
-            var groupByYear = this.MasterCollection.GroupBy(weather => weather.Date.Year);
-
-            foreach (var current in groupByYear)
-            {
-                this.GroupedByYear.Add(current.Key, new WeatherInfoCollection($"{current.Key}", current.ToList()));
             }
         }
 

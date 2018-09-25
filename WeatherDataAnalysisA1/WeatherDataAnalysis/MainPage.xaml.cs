@@ -1,4 +1,5 @@
-﻿using Windows.Foundation;
+﻿using System;
+using Windows.Foundation;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using WeatherDataAnalysis.Controller;
@@ -52,27 +53,43 @@ namespace WeatherDataAnalysis
         {
             this.summaryTextBox.Text = "Load file was invoked.";
 
-            var importExecution = await this.import.ExecuteImport();
-
-            if (importExecution)
+            try
             {
-                this.setSummaryText();
+                var importExecution = await this.import.ExecuteImport();
+
+                if (this.highTempInput.Text.Length > 0)
+                {
+                    this.import.SetHighTempThreshold(int.Parse(this.highTempInput.Text));
+                }
+
+                if (this.lowTempInput.Text.Length > 0)
+                {
+                    this.import.SetLowTempThreshold(int.Parse(this.lowTempInput.Text));
+                }
+
+                if (this.MonthInput.MaxLength > 0)
+                {
+                    this.import.SetMonth(int.Parse(this.MonthInput.Text));
+                }
+
+                if (importExecution)
+                {
+                    this.setSummaryText();
+                }
+
+
+            }  catch (ArgumentException ae)
+            {
+                this.summaryTextBox.Text =
+                    $"{ae.Message}{Environment.NewLine}A collection with this name already exists. Please try again with another name";
             }
 
-            if (!this.HighTempInput.Text.Equals(string.Empty))
-            {
-                this.import.SetHighTempThreshold(int.Parse(this.HighTempInput.Text));
-            }
-
-            if (!this.lowTempInput.Text.Equals(string.Empty))
-            {
-                this.import.SetLowTempThreshold(int.Parse(this.lowTempInput.Text));
-            }
         }
 
         private void setSummaryText()
         {
             var getImportResults = string.Empty;
+
             if (this.MonthInput.Text.Equals(string.Empty))
             {
                 getImportResults = this.import.GenerateOutput();

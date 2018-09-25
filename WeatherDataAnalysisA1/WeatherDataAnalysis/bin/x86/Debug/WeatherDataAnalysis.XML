@@ -71,14 +71,6 @@
                 The type.
             </value>
         </member>
-        <member name="P:WeatherDataAnalysis.Controller.Import.tempFormatter">
-            <summary>
-            Gets the temporary formatter.
-            </summary>
-            <value>
-            The temporary formatter.
-            </value>
-        </member>
         <member name="M:WeatherDataAnalysis.Controller.Import.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Controller.Import" /> class.
@@ -120,7 +112,7 @@
             <summary>
             Sets the high temporary threshold.
             </summary>
-            <param name="parse">The parse.</param>
+            <param name="highTemp">The highTemp.</param>
         </member>
         <member name="T:WeatherDataAnalysis.Format.TemperatureDataFormatter">
             <summary>
@@ -137,23 +129,23 @@
         </member>
         <member name="P:WeatherDataAnalysis.Format.TemperatureDataFormatter.LowTempThreshold">
             <summary>
-            Gets or sets the low temporary threshold.
+                Gets or sets the low temporary threshold.
             </summary>
             <value>
-            The low temporary threshold.
+                The low temporary threshold.
             </value>
         </member>
         <member name="P:WeatherDataAnalysis.Format.TemperatureDataFormatter.HighTempThreshold">
             <summary>
-            Gets or sets the high temporary threshold.
+                Gets or sets the high temporary threshold.
             </summary>
             <value>
-            The high temporary threshold.
+                The high temporary threshold.
             </value>
         </member>
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Format.TemperatureDataFormatter"/> class.
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Format.TemperatureDataFormatter" /> class.
             </summary>
         </member>
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.GetOutput">
@@ -164,7 +156,7 @@
         </member>
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.generateYearOverview">
             <summary>
-            Generates the year overview.
+                Generates the year overview.
             </summary>
             <returns></returns>
         </member>
@@ -195,6 +187,20 @@
             </summary>
             <param name="month">The month.</param>
             <returns>String for Average High in given month.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.CreateHighHistogram">
+            <summary>
+                Creates the high Temperatures histogram.
+            </summary>
+            <param name="collection">The collection.</param>
+            <returns>String representation of a histogram for High Temperatures</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.CreateLowHistogram">
+            <summary>
+                Creates the low temperature histogram.
+            </summary>
+            <param name="collection">The collection.</param>
+            <returns>String Representation of the Low Temperature Histogram</returns>
         </member>
         <member name="T:WeatherDataAnalysis.io.CsvReader">
             <summary>
