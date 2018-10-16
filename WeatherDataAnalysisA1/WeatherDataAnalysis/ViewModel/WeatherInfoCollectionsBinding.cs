@@ -4,6 +4,7 @@ using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
 {
+    //TODO Rework this class to be a static class. This will make it so we don't have to pass this class around as a parameter.
     /// <summary>
     ///     Binding for weather info collections
     ///     can be something like city and year.
@@ -264,7 +265,6 @@ namespace WeatherDataAnalysis.ViewModel
         {
             return this.WeatherInfoCollections.GetEnumerator();
         }
-
         #endregion
     }
 }

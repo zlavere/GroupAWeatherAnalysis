@@ -27,7 +27,7 @@ namespace WeatherDataAnalysis.Format
         /// </value>
         public WeatherInfoCollection WeatherInfoCollection { private get; set; }
 
-        private FactoryWeatherInfoCollection GroupedWeatherInfoCollection { get; set; }
+        private FactoryWeatherInfoCollection FactoryWeatherInfoCollection { get; set; }
 
         /// <summary>
         ///     Gets or sets the low temporary threshold.
@@ -56,6 +56,8 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         public TemperatureDataFormatter()
         {
+            //BUG This is where we'll fix the bug by pointing it to the static weatherinfocollectionsbinding class.
+            this.FactoryWeatherInfoCollection = new FactoryWeatherInfoCollection();
             this.LowTempThreshold = int.MinValue;
             this.HighTempThreshold = int.MaxValue;
             this.Month = -1;
@@ -90,7 +92,7 @@ namespace WeatherDataAnalysis.Format
 
             foreach (var current in years)
             {
-                this.WeatherInfoCollection = this.GroupedWeatherInfoCollection.MasterCollection;
+                this.WeatherInfoCollection = this.FactoryWeatherInfoCollection.MasterCollection;
                 output += $"{current}{Environment.NewLine}";
 
                 output +=
@@ -135,7 +137,8 @@ namespace WeatherDataAnalysis.Format
             var output = string.Empty;
             for (var currentMonth = 1; currentMonth <= 12; currentMonth++)
             {
-                this.WeatherInfoCollection = this.GroupedWeatherInfoCollection.MasterCollection;
+                //BUG this is where the bug happens.
+                this.WeatherInfoCollection = this.FactoryWeatherInfoCollection.MasterCollection;
                 var collection = this.WeatherInfoCollection.Where(weather =>
                                          weather.Date.Month == currentMonth && weather.Date.Year == current)
                                      .ToList();
@@ -227,7 +230,7 @@ namespace WeatherDataAnalysis.Format
         {
             var listByYear = new List<WeatherInfo>();
 
-            foreach (var current in this.GroupedWeatherInfoCollection.GroupedByYear.Values)
+            foreach (var current in this.FactoryWeatherInfoCollection.GroupedByYear.Values)
             {
                 listByYear = (List<WeatherInfo>) current.Where(currentYear => currentYear.Date.Year == year);
             }

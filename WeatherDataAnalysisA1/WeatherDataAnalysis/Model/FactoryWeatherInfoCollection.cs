@@ -44,6 +44,7 @@ namespace WeatherDataAnalysis.Model
         /// <param name="masterCollection">The master collection.</param>
         public FactoryWeatherInfoCollection(WeatherInfoCollection masterCollection)
         {
+            
             this.MasterCollection = masterCollection;
             this.GroupedByMonth = new List<ICollection<WeatherInfo>>();
             this.GroupedByYear = new Dictionary<int, WeatherInfoCollection>();
