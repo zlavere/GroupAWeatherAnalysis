@@ -589,3 +589,12 @@ C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\ob
 C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\ProjectArchitectures.txt
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\App.g.i.cs
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\App.g.cs
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\App.xaml
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\MainPage.xaml
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\View\ImportDialog.xaml
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\App.xbf
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\MainPage.xbf
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\View\ImportDialog.xbf
+F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\XamlSaveStateFile.xml

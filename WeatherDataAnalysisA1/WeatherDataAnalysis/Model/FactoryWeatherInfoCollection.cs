@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection.Metadata.Ecma335;
 using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.Model
 {
     /// <summary>
-    ///     Creates a series of grouped collections.
+    ///     Factory to create WeatherInfoCollection with common groupings.
     /// </summary>
     public class FactoryWeatherInfoCollection
     {

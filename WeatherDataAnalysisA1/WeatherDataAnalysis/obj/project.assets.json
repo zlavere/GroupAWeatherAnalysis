@@ -7011,11 +7011,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Google Drive Sync\\school\\201808\\program-construction\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\WeatherDataAnalysis.csproj",
+      "projectUniqueName": "F:\\Google Drive Sync\\school\\201808\\program-construction\\migration\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\WeatherDataAnalysis.csproj",
       "projectName": "WeatherDataAnalysis",
-      "projectPath": "F:\\Google Drive Sync\\school\\201808\\program-construction\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\WeatherDataAnalysis.csproj",
+      "projectPath": "F:\\Google Drive Sync\\school\\201808\\program-construction\\migration\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\WeatherDataAnalysis.csproj",
       "packagesPath": "C:\\Users\\zach0\\.nuget\\packages\\",
-      "outputPath": "F:\\Google Drive Sync\\school\\201808\\program-construction\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\obj\\",
+      "outputPath": "F:\\Google Drive Sync\\school\\201808\\program-construction\\migration\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
