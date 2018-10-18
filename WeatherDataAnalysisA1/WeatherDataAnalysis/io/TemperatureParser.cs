@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection.Metadata.Ecma335;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.io
@@ -113,6 +112,8 @@ namespace WeatherDataAnalysis.io
             return isValid;
         }
 
+
+        //TODO Display this
         private bool isValidDate(string date, int lineNumber)
         {
             bool isValid;
@@ -121,13 +122,13 @@ namespace WeatherDataAnalysis.io
                 var dateTime = DateTime.ParseExact(date, "M/d/yyyy", CultureInfo.InvariantCulture);
                 isValid = true;
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException)
             {
                 var message = $"Error at ln{lineNumber}: A record contained no date and was skipped.";
                 this.ErrorMessages.Add(message);
                 isValid = false;
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 var message = $"Error at ln{lineNumber}: {date} is not a valid date format. This record was skipped.";
                 this.ErrorMessages.Add(message);
@@ -147,15 +148,7 @@ namespace WeatherDataAnalysis.io
                 var i = int.Parse(temp);
                 isValid = true;
             }
-            catch (ArgumentNullException e)
-            {
-                isValid = false;
-            }
-            catch (FormatException e)
-            {
-                isValid = false;
-            }
-            catch (OverflowException e)
+            catch (Exception)
             {
                 isValid = false;
             }

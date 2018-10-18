@@ -7,14 +7,11 @@ namespace WeatherDataAnalysis.Model
     /// <summary>
     ///     Provides analytic functions for collections of WeatherInfo.
     /// </summary>
-    public class WeatherInfoCollection : ICollection<WeatherInfo>
+    public class WeatherInfoCollection : IList<WeatherInfo>
     {
         #region Properties
 
-        /// <summary>
-        ///     Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
-        /// </summary>
-        public int Count => this.WeatherInfos.Count;
+        private IList<WeatherInfo> WeatherInfos { get; }
 
         /// <summary>
         ///     Gets or sets the name.
@@ -30,18 +27,21 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The key value pair.
         /// </value>
-        private KeyValuePair<string, WeatherInfoCollection> KeyValuePair { get; }
+        private KeyValuePair<string, WeatherInfoCollection> NameCollectionPair { get; }
 
-        /// <summary>
-        ///     Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
-        /// </summary>
+        public List<int> LowestTempWeatherInfos { get; }
+
+        public List<int> HighestTempWeatherInfos { get; }
+
+        public int Count => this.WeatherInfos.Count;
+
         public bool IsReadOnly => this.WeatherInfos.IsReadOnly;
 
-        public ICollection<WeatherInfo> WeatherInfos { get; }
-
-        private IEnumerable<int> HighTemps { get; }
-
-        private IEnumerable<int> LowTemps { get; }
+        public WeatherInfo this[int index]
+        {
+            get => this.WeatherInfos[index];
+            set => this.WeatherInfos[index] = value;
+        }
 
         #endregion
 
@@ -52,13 +52,13 @@ namespace WeatherDataAnalysis.Model
         /// </summary>
         /// <param name="name"></param>
         /// <param name="weatherInfos">The collection of weather information.</param>
-        public WeatherInfoCollection(string name, ICollection<WeatherInfo> weatherInfos)
+        public WeatherInfoCollection(string name, IList<WeatherInfo> weatherInfos)
         {
-            this.WeatherInfos = (List<WeatherInfo>) weatherInfos;
-            this.LowTemps = this.WeatherInfos.Select(temps => temps.LowTemp);
-            this.HighTemps = this.WeatherInfos.Select(temps => temps.HighTemp);
+            this.WeatherInfos = weatherInfos;
+            this.LowestTempWeatherInfos = this.WeatherInfos.Select(temps => temps.LowTemp).ToList();
+            this.HighestTempWeatherInfos = this.WeatherInfos.Select(temps => temps.HighTemp).ToList();
             this.Name = name;
-            this.KeyValuePair = new KeyValuePair<string, WeatherInfoCollection>(this.Name, this);
+            this.NameCollectionPair = new KeyValuePair<string, WeatherInfoCollection>(this.Name, this);
         }
 
         #endregion
@@ -146,7 +146,22 @@ namespace WeatherDataAnalysis.Model
             return this.WeatherInfos.GetEnumerator();
         }
 
-        //TODO Move grouping methods to a new 'Grouper' class - not like the fish, but something that generates grouped WeatherInfoCollections
+        public int IndexOf(WeatherInfo item)
+        {
+            return this.WeatherInfos.IndexOf(item);
+        }
+
+        public void Insert(int index, WeatherInfo item)
+        {
+            this.WeatherInfos.Insert(index, item);
+        }
+
+        public void RemoveAt(int index)
+        {
+            this.WeatherInfos.RemoveAt(index);
+        }
+
+        //TODO Use Factory to generate groupings
         private IDictionary<int, List<WeatherInfo>> groupByYear()
         {
             var years = this.WeatherInfos.Select(weather => weather.Date.Year).Distinct().ToList();
@@ -161,7 +176,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Groups the by month.
+        ///     Groups the by month.
         /// </summary>
         /// <returns></returns>
         public IDictionary<int, IDictionary<int, List<WeatherInfo>>> GroupByMonth()
@@ -195,11 +210,12 @@ namespace WeatherDataAnalysis.Model
             return monthDictionary;
         }
 
+        //TODO Remove or change these to return WeatherInfoCollections - duplicated methods?
         /// <summary>
         ///     Gets the highest temps.
         /// </summary>
         /// <returns>List of Weather with the highest temps.</returns>
-        public List<WeatherInfo> FindWithHighest()
+        public ICollection<WeatherInfo> FindWithHighest()
         {
             var highest = this.WeatherInfos.Max(weather => weather.HighTemp);
 
@@ -211,7 +227,7 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the lowest temps.
         /// </summary>
         /// <returns>List of Weather with the lowest temps.</returns>
-        public List<WeatherInfo> FindWithLowest()
+        public ICollection<WeatherInfo> FindWithLowest()
         {
             var lowest = this.WeatherInfos.Min(weather => weather.LowTemp);
             var lowTemps =
@@ -223,7 +239,7 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the highest low temps.
         /// </summary>
         /// <returns>List of Weather with the highest low temps.</returns>
-        public List<WeatherInfo> FindHighestLow()
+        public ICollection<WeatherInfo> FindHighestLow()
         {
             var highest = this.WeatherInfos.Max(weather => weather.LowTemp);
             var highestTemps =
@@ -270,7 +286,7 @@ namespace WeatherDataAnalysis.Model
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns></returns>
-        public List<WeatherInfo> GetHighestInMonth(int month)
+        public ICollection<WeatherInfo> GetHighestInMonth(int month)
         {
             var weatherByMonthList = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
             var highInMonth = weatherByMonthList.Max(weather => weather.HighTemp);
@@ -283,7 +299,7 @@ namespace WeatherDataAnalysis.Model
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns></returns>
-        public List<WeatherInfo> GetLowestInMonth(int month)
+        public ICollection<WeatherInfo> GetLowestInMonth(int month)
         {
             var weatherByMonthList = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
             var lowInMonth = weatherByMonthList.Min(weather => weather.LowTemp);

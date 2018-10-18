@@ -109,6 +109,7 @@
     <Compile Include="Model\WeatherInfo.cs" />
     <Compile Include="Model\WeatherInfoCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ActiveWeatherInfoCollection.cs" />
     <Compile Include="ViewModel\DataFormatter.cs" />
     <Compile Include="ViewModel\WeatherInfoCollectionsBinding.cs" />
     <Compile Include="View\ImportDialog.xaml.cs">

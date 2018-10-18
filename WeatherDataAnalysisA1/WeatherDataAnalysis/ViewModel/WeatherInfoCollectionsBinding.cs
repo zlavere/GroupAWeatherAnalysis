@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
 {
-    //TODO Rework this class to be a static class. This will make it so we don't have to pass this class around as a parameter.
     /// <summary>
     ///     Binding for weather info collections
     ///     can be something like city and year.
@@ -21,14 +21,6 @@ namespace WeatherDataAnalysis.ViewModel
         ///     The weather information collections.
         /// </value>
         private IDictionary<string, WeatherInfoCollection> WeatherInfoCollections { get; }
-
-        /// <summary>
-        ///     Gets or sets the active collection.
-        /// </summary>
-        /// <value>
-        ///     The current.
-        /// </value>
-        public WeatherInfoCollection Active { get; set; }
 
         /// <summary>
         /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the keys of the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
@@ -145,6 +137,7 @@ namespace WeatherDataAnalysis.ViewModel
         public void Add(string key, WeatherInfoCollection value)
         {
             this.WeatherInfoCollections.Add(value.Name, value);
+            ActiveWeatherInfoCollection.Active = value;
         }
 
         /// <summary>
@@ -265,6 +258,8 @@ namespace WeatherDataAnalysis.ViewModel
         {
             return this.WeatherInfoCollections.GetEnumerator();
         }
+
+
         #endregion
     }
 }

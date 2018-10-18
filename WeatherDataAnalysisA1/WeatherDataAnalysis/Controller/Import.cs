@@ -19,7 +19,7 @@ namespace WeatherDataAnalysis.Controller
     {
         #region Data members
 
-        private readonly DataFormatter dataFormatter;
+        private DataFormatter DataFormatter { get; set; }
 
         #endregion
 
@@ -37,11 +37,8 @@ namespace WeatherDataAnalysis.Controller
         private StorageFile File { get; set; }
         private ImportDialog ImportDialog { get; set; }
         private ContentDialogResult ImportDialogResults { get; set; }
-
         private WeatherInfoCollectionsBinding WeatherInfoCollections { get; }
-
-
-        private TemperatureDataFormatter tempFormatter { get;  }
+        private TemperatureDataFormatter TempFormatter { get; set; }
 
         #endregion
 
@@ -53,8 +50,6 @@ namespace WeatherDataAnalysis.Controller
         public Import()
         {
             this.WeatherInfoCollections = new WeatherInfoCollectionsBinding();
-            this.dataFormatter = new DataFormatter();
-            this.tempFormatter = this.dataFormatter.TemperatureDataFormatter;
         }
 
         /// <summary>
@@ -83,18 +78,24 @@ namespace WeatherDataAnalysis.Controller
             this.ImportDialog = new ImportDialog();
             this.ImportDialogResults = await this.ImportDialog.ShowAsync();
 
-            if (this.ImportDialogResults == ContentDialogResult.Secondary)
-            {
-                executionSuccess = false;
-            }
-
             if (this.File != null)
             {
                 await this.createNewFromFile();
+                this.setUpFormatter();
                 executionSuccess = true;
             }
 
             return executionSuccess;
+        }
+
+        private void setUpFormatter()
+        {
+            if (this.DataFormatter == null)
+            {
+                this.DataFormatter = new DataFormatter();
+                this.TempFormatter = this.DataFormatter.TemperatureDataFormatter;
+            }
+            
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace WeatherDataAnalysis.Controller
         /// <returns>Generates output for the Active WeatherInfoCollection</returns>
         public string GenerateOutput()
         {
-            var results = this.WeatherInfoCollections.Active.Name + Environment.NewLine +
+            var results = ActiveWeatherInfoCollection.Active.Name + Environment.NewLine +
                           this.loadTemperaturesByYear();
 
             return results;
@@ -136,11 +137,11 @@ namespace WeatherDataAnalysis.Controller
         private string loadTemperaturesByYear()
         {
             
-            this.tempFormatter.WeatherInfoCollection = this.WeatherInfoCollections.Active;
+            this.TempFormatter.WeatherInfoCollection = ActiveWeatherInfoCollection.Active;
 
-            var output = this.tempFormatter.GetOutput();
-            output += $"{this.tempFormatter.HighTempThreshold} {Environment.NewLine}";
-            output += $"{this.tempFormatter.LowTempThreshold} {Environment.NewLine}";
+            var output = this.TempFormatter.GetOutput();
+            output += $"{this.TempFormatter.HighTempThreshold} {Environment.NewLine}";
+            output += $"{this.TempFormatter.LowTempThreshold} {Environment.NewLine}";
             return output;
         }
 
@@ -153,11 +154,11 @@ namespace WeatherDataAnalysis.Controller
         {
             
 
-            this.tempFormatter.WeatherInfoCollection = this.WeatherInfoCollections.Active;
-            var output = this.tempFormatter.FormatLowAveragePerMonth(month) + Environment.NewLine;
-            output += this.tempFormatter.FormatHighAveragePerMonth(month) + Environment.NewLine;
-            output += this.tempFormatter.FormatLowPerMonth(month) + Environment.NewLine;
-            output += this.tempFormatter.FormatHighPerMonth(month) + Environment.NewLine;
+            this.TempFormatter.WeatherInfoCollection = ActiveWeatherInfoCollection.Active;
+            var output = this.TempFormatter.FormatLowAveragePerMonth(month) + Environment.NewLine;
+            output += this.TempFormatter.FormatHighAveragePerMonth(month) + Environment.NewLine;
+            output += this.TempFormatter.FormatLowPerMonth(month) + Environment.NewLine;
+            output += this.TempFormatter.FormatHighPerMonth(month) + Environment.NewLine;
             return output;
         }
 
@@ -169,7 +170,7 @@ namespace WeatherDataAnalysis.Controller
             var newWeatherInfoCollection =
                 temperatureParser.GetWeatherInfoCollection(this.ImportDialog.CollectionName, fileLines);
             this.WeatherInfoCollections.Add(this.ImportDialog.CollectionName, newWeatherInfoCollection);
-            this.WeatherInfoCollections.Active = newWeatherInfoCollection;
+            ActiveWeatherInfoCollection.Active = newWeatherInfoCollection;
             return newWeatherInfoCollection;
         }
 
@@ -179,17 +180,17 @@ namespace WeatherDataAnalysis.Controller
         /// <param name="highTemp">The highTemp.</param>
         public void SetHighTempThreshold(int highTemp)
         {
-            this.tempFormatter.HighTempThreshold = highTemp;
+            this.TempFormatter.HighTempThreshold = highTemp;
         }
 
         public void SetLowTempThreshold(int lowTemp)
         {
-            this.tempFormatter.LowTempThreshold = lowTemp;
+            this.TempFormatter.LowTempThreshold = lowTemp;
         }
 
         public void SetMonth(int month)
         {
-            this.tempFormatter.Month = month;
+            this.TempFormatter.Month = month;
         }
 
         #endregion

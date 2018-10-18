@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using WeatherDataAnalysis.Model;
+using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.Format
 {
@@ -11,12 +11,6 @@ namespace WeatherDataAnalysis.Format
     /// </summary>
     public class TemperatureDataFormatter
     {
-        #region Data members
-
-        private const int TwoPointFloatPrecision = 2;
-
-        #endregion
-
         #region Properties
 
         /// <summary>
@@ -27,7 +21,7 @@ namespace WeatherDataAnalysis.Format
         /// </value>
         public WeatherInfoCollection WeatherInfoCollection { private get; set; }
 
-        private FactoryWeatherInfoCollection FactoryWeatherInfoCollection { get; set; }
+        private FactoryWeatherInfoCollection FactoryWeatherInfoCollection { get; }
 
         /// <summary>
         ///     Gets or sets the low temporary threshold.
@@ -56,7 +50,6 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         public TemperatureDataFormatter()
         {
-            //BUG This is where we'll fix the bug by pointing it to the static weatherinfocollectionsbinding class.
             this.FactoryWeatherInfoCollection = new FactoryWeatherInfoCollection();
             this.LowTempThreshold = int.MinValue;
             this.HighTempThreshold = int.MaxValue;
@@ -73,7 +66,6 @@ namespace WeatherDataAnalysis.Format
         /// <returns>Analytic output of weather data grouped by Month.</returns>
         public string GetOutput()
         {
-            
             var output = this.generateYearOverview();
             return output;
         }
@@ -92,19 +84,24 @@ namespace WeatherDataAnalysis.Format
 
             foreach (var current in years)
             {
-                this.WeatherInfoCollection = this.FactoryWeatherInfoCollection.MasterCollection;
-                output += $"{current}{Environment.NewLine}";
+                this.WeatherInfoCollection = ActiveWeatherInfoCollection.Active;
+                
+                output +=
+                    $"Average High Temperature in {current}: " +
+                    $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2)}{Environment.NewLine}";
+                output +=
+                    $"Average Low Temperature in {current}: " +
+                    $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2)}{Environment.NewLine}";
+                output +=
+                    $"The Highest Temperature in {current} was " +
+                    $"{this.WeatherInfoCollection.Max(temp => temp.HighTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getHighestTemps()}";
+                output +=
+                    $"The Lowest High Temperature in {current} was " +
+                    $"{this.WeatherInfoCollection.Min(temp => temp.HighTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getLowestHighTemps()}";
+                output +=
+                    $"The Highest Low Temperature in {current} was " +
+                    $"{this.WeatherInfoCollection.Max(temp => temp.LowTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getHighestLowTemps()}";
 
-                output +=
-                    $"Average High Temperature in {current}: {Math.Round(this.WeatherInfoCollection.GetAverageHigh(), TwoPointFloatPrecision)}{Environment.NewLine}";
-                output +=
-                    $"Average Low Temperature in {current}: {Math.Round(this.WeatherInfoCollection.GetAverageLow(), TwoPointFloatPrecision)}{Environment.NewLine}";
-                output +=
-                    $"The Highest Temperature in {current} was {this.WeatherInfoCollection.Max(temp => temp.HighTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getHighestTemps()}";
-                output +=
-                    $"The Lowest High Temperature in {current} was {this.WeatherInfoCollection.Min(temp => temp.HighTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getLowestHighTemps()}";
-                output +=
-                    $"The Highest Low Temperature in {current} was {this.WeatherInfoCollection.Max(temp => temp.LowTemp)}{Environment.NewLine}Occured on:{Environment.NewLine} {this.getHighestLowTemps()}";
                 if (this.LowTempThreshold != int.MinValue)
                 {
                     output += $"Dates with temperatures below {this.LowTempThreshold}{Environment.NewLine}";
@@ -117,14 +114,15 @@ namespace WeatherDataAnalysis.Format
                     output += this.getTempsAbove();
                 }
 
-                output += this.CreateHighHistogram();
-                output += this.CreateLowHistogram();
+                output += this.createHighHistogram();
+                output += this.createLowHistogram();
                 try
                 {
                     output += this.monthOutput(current);
                 }
-                catch (InvalidOperationException e)
+                catch (InvalidOperationException)
                 {
+                    //ignored
                 }
             }
 
@@ -137,8 +135,7 @@ namespace WeatherDataAnalysis.Format
             var output = string.Empty;
             for (var currentMonth = 1; currentMonth <= 12; currentMonth++)
             {
-                //BUG this is where the bug happens.
-                this.WeatherInfoCollection = this.FactoryWeatherInfoCollection.MasterCollection;
+                this.WeatherInfoCollection = ActiveWeatherInfoCollection.Active;
                 var collection = this.WeatherInfoCollection.Where(weather =>
                                          weather.Date.Month == currentMonth && weather.Date.Year == current)
                                      .ToList();
@@ -152,30 +149,35 @@ namespace WeatherDataAnalysis.Format
                     output += $"{this.WeatherInfoCollection.Name}{Environment.NewLine}";
 
                     output +=
-                        $"Average High Temperature in {this.WeatherInfoCollection.Name}: {Math.Round(this.WeatherInfoCollection.GetAverageHigh(), TwoPointFloatPrecision)}{Environment.NewLine}";
+                        $"Average High Temperature in {this.WeatherInfoCollection.Name}: " + 
+                        $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2)}{Environment.NewLine}";
                     output +=
-                        $"Average Low Temperature in {this.WeatherInfoCollection.Name}: {Math.Round(this.WeatherInfoCollection.GetAverageLow(), TwoPointFloatPrecision)}{Environment.NewLine}";
+                        $"Average Low Temperature in {this.WeatherInfoCollection.Name}: " +
+                        $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2)}{Environment.NewLine}";
                     output +=
-                        $"The Highest Temperature in {this.WeatherInfoCollection.Name} was {this.WeatherInfoCollection.Max(temp => temp.HighTemp)}{Environment.NewLine} Occured on:{Environment.NewLine}  {this.getHighestTemps()}";
+                        $"The Highest Temperature in {this.WeatherInfoCollection.Name} was " +
+                        $"{this.WeatherInfoCollection.Max(temp => temp.HighTemp)}" + 
+                        $"{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestTemps()}";
                     output +=
-                        $"The Lowest Temperature in {this.WeatherInfoCollection.Name} was {this.WeatherInfoCollection.Min(temp => temp.LowTemp)}{Environment.NewLine} Occurred on:{Environment.NewLine}  {this.getLowestTemps()}";
+                        $"The Lowest Temperature in {this.WeatherInfoCollection.Name} was " +
+                        $"{this.WeatherInfoCollection.Min(temp => temp.LowTemp)}" +
+                        $"{Environment.NewLine}Occurred on:{Environment.NewLine}{this.getLowestTemps()}";
                     output +=
-                        $"The Lowest High Temperature in {this.WeatherInfoCollection.Name} was {this.WeatherInfoCollection.Min(temp => temp.HighTemp)}{Environment.NewLine} Occured on:{Environment.NewLine}  {this.getLowestHighTemps()}";
+                        $"The Lowest High Temperature in {this.WeatherInfoCollection.Name} was " +
+                        $"{this.WeatherInfoCollection.Min(temp => temp.HighTemp)}" +
+                        $"{Environment.NewLine}Occured on:{Environment.NewLine}{this.getLowestHighTemps()}";
                     output +=
-                        $"The Highest Low Temperature in {this.WeatherInfoCollection.Name} was {this.WeatherInfoCollection.Max(temp => temp.LowTemp)}{Environment.NewLine} Occured on:{Environment.NewLine}  {this.getHighestLowTemps()}";
+                        $"The Highest Low Temperature in {this.WeatherInfoCollection.Name} was " +
+                        $"{this.WeatherInfoCollection.Max(temp => temp.LowTemp)}" +
+                        $"{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestLowTemps()}";
                 }
-                catch (InvalidOperationException e)
+                catch (InvalidOperationException)
                 {
+                    //ignored
                 }
             }
 
             return output;
-        }
-
-        private void setWeatherInfoCollectionForMonthOverview()
-        {
-            this.WeatherInfoCollection = new WeatherInfoCollection($"{this.Month}",
-                this.WeatherInfoCollection.Where(weather => weather.Date.Month == this.Month).ToList());
         }
 
         private string getHighestTemps()
@@ -226,19 +228,6 @@ namespace WeatherDataAnalysis.Format
             return output;
         }
 
-        private WeatherInfoCollection getCollectionsByYear(int year)
-        {
-            var listByYear = new List<WeatherInfo>();
-
-            foreach (var current in this.FactoryWeatherInfoCollection.GroupedByYear.Values)
-            {
-                listByYear = (List<WeatherInfo>) current.Where(currentYear => currentYear.Date.Year == year);
-            }
-
-            var collection = new WeatherInfoCollection($"{year}", listByYear);
-            return collection;
-        }
-
         private string getTempsBelow()
         {
             var output = string.Empty;
@@ -270,9 +259,10 @@ namespace WeatherDataAnalysis.Format
         /// <returns>Returns a string formatted for GUI of highest temperature for the month and date(s) it occurred on.</returns>
         public string FormatHighPerMonth(int month)
         {
-            var highestInMonthList = this.WeatherInfoCollection.GetHighestInMonth(month);
+            var highestInMonthList = (WeatherInfoCollection)this.WeatherInfoCollection.GetHighestInMonth(month);
             var highestInMonth =
-                $"Date(s) with the highest temperature of {highestInMonthList.First().HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {highestInMonthList[0].Date.Year}:"
+                $"Date(s) with the highest temperature of {highestInMonthList.First().HighTemp} in " +
+                $"{DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {highestInMonthList[0].Date.Year}:"
                 + Environment.NewLine;
 
             foreach (var current in highestInMonthList)
@@ -299,7 +289,8 @@ namespace WeatherDataAnalysis.Format
         {
             var lowestInMonthList = this.WeatherInfoCollection.GetLowestInMonth(month);
             var lowestInMonth =
-                $"Date(s) with the Lowest temperature of {lowestInMonthList.First().HighTemp} in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {lowestInMonthList[0].Date.Year}:"
+                $"Date(s) with the Lowest temperature of {lowestInMonthList.First().HighTemp} in " +
+                $"{DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} {lowestInMonthList[0].Date.Year}:"
                 + Environment.NewLine;
 
             foreach (var current in lowestInMonthList)
@@ -325,7 +316,8 @@ namespace WeatherDataAnalysis.Format
         public string FormatLowAveragePerMonth(int month)
         {
             return
-                $"The average average low in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(this.WeatherInfoCollection.GetLowAverageForMonth(month), TwoPointFloatPrecision)}.";
+                $"The average average low in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} " +
+                $"was {Math.Round(this.WeatherInfoCollection.GetLowAverageForMonth(month), 2)}.";
         }
 
         /// <summary>
@@ -336,15 +328,15 @@ namespace WeatherDataAnalysis.Format
         public string FormatHighAveragePerMonth(int month)
         {
             return
-                $"The average average high in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was {Math.Round(this.WeatherInfoCollection.GetHighAverageForMonth(month), TwoPointFloatPrecision)}.";
+                $"The average average high in {DateTimeFormatInfo.CurrentInfo.GetMonthName(month)} was " +
+                $"{Math.Round(this.WeatherInfoCollection.GetHighAverageForMonth(month), 2)}.";
         }
 
         /// <summary>
         ///     Creates the high Temperatures histogram.
         /// </summary>
-        /// <param name="collection">The collection.</param>
         /// <returns>String representation of a histogram for High Temperatures</returns>
-        public string CreateHighHistogram()
+        private string createHighHistogram()
         {
             var lowest = this.WeatherInfoCollection.Min(temp => temp.HighTemp);
             var highest = this.WeatherInfoCollection.Max(temp => temp.HighTemp);
@@ -360,27 +352,26 @@ namespace WeatherDataAnalysis.Format
                 highest = highest + 10 - highest % 10;
             }
 
-            var bottomBound = lowest;
+            var lowerBound = lowest;
             var output = $"High Temperature Histogram {Environment.NewLine}";
-            while (bottomBound < highest)
+            while (lowerBound < highest)
             {
-                var topBound = bottomBound + 9;
+                var upperBound = lowerBound + 9;
 
-                var count = temps.Count(temp => temp >= bottomBound && temp <= topBound);
-                output += $"{bottomBound}-{topBound}: {count}{Environment.NewLine}";
+                var count = temps.Count(temp => temp >= lowerBound && temp <= upperBound);
+                output += $"{lowerBound}-{upperBound}: {count}{Environment.NewLine}";
 
-                bottomBound = topBound + 1;
+                lowerBound = upperBound + 1;
             }
 
             return output;
         }
 
         /// <summary>
-        ///     Creates the low temperature histogram.
+        /// Creates the low temperature histogram.
         /// </summary>
-        /// <param name="collection">The collection.</param>
         /// <returns>String Representation of the Low Temperature Histogram</returns>
-        public string CreateLowHistogram()
+        private string createLowHistogram()
         {
             var lowest = this.WeatherInfoCollection.Min(temp => temp.LowTemp);
             var highest = this.WeatherInfoCollection.Max(temp => temp.LowTemp);
@@ -396,16 +387,16 @@ namespace WeatherDataAnalysis.Format
                 highest = highest + 10 - highest % 10;
             }
 
-            var bottomBound = lowest;
+            var lowerBound = lowest;
             var output = $"Low Temperature Histogram {Environment.NewLine}";
-            while (bottomBound < highest)
+            while (lowerBound < highest)
             {
-                var topBound = bottomBound + 9;
+                var topBound = lowerBound + 9;
                 var enumerable = temps.ToList();
-                var count = enumerable.Count(temp => temp >= bottomBound && temp <= topBound);
-                output += $"{bottomBound}-{topBound}: {count}{Environment.NewLine}";
+                var count = enumerable.Count(temp => temp >= lowerBound && temp <= topBound);
+                output += $"{lowerBound}-{topBound}: {count}{Environment.NewLine}";
 
-                bottomBound = topBound + 1;
+                lowerBound = topBound + 1;
             }
 
             return output;

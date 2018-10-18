@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
+using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.Model
 {
@@ -9,14 +12,6 @@ namespace WeatherDataAnalysis.Model
     public class FactoryWeatherInfoCollection
     {
         #region Properties
-
-        /// <summary>
-        ///     Gets or sets the master collection.
-        /// </summary>
-        /// <value>
-        ///     The master collection.
-        /// </value>
-        public WeatherInfoCollection MasterCollection { get; }
 
         /// <summary>
         ///     Gets the grouped collections.
@@ -32,7 +27,7 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         /// The grouped by year.
         /// </value>
-        public IDictionary<int, WeatherInfoCollection> GroupedByYear { get; }
+        private IDictionary<int, WeatherInfoCollection> GroupedByYear { get; }
 
         #endregion
 
@@ -42,10 +37,8 @@ namespace WeatherDataAnalysis.Model
         ///     Initializes a new instance of the <see cref="FactoryWeatherInfoCollection" /> class.
         /// </summary>
         /// <param name="masterCollection">The master collection.</param>
-        public FactoryWeatherInfoCollection(WeatherInfoCollection masterCollection)
+        public FactoryWeatherInfoCollection()
         {
-            
-            this.MasterCollection = masterCollection;
             this.GroupedByMonth = new List<ICollection<WeatherInfo>>();
             this.GroupedByYear = new Dictionary<int, WeatherInfoCollection>();
             this.factoryWeatherInfoCollection();
@@ -57,18 +50,25 @@ namespace WeatherDataAnalysis.Model
 
         private void factoryWeatherInfoCollection()
         {
-            var grouped = this.MasterCollection.GroupByMonth();
-
-            foreach (var current in grouped)
+            try
             {
-                var keyYear = $"{current.Key}";
-
-                foreach (var currentMonths in current.Value)
+                var grouped = ActiveWeatherInfoCollection.Active.GroupByMonth();
+                foreach (var current in grouped)
                 {
-                    var keyMonth = $"{DateTimeFormatInfo.CurrentInfo.GetMonthName(currentMonths.Key)}";
-                    var key = $"{keyMonth} {keyYear}";
-                    this.GroupedByMonth.Add(new WeatherInfoCollection(key, currentMonths.Value));
+                    var keyYear = $"{current.Key}";
+
+                    foreach (var currentMonths in current.Value)
+                    {
+                        var keyMonth = $"{DateTimeFormatInfo.CurrentInfo.GetMonthName(currentMonths.Key)}";
+                        var key = $"{keyMonth} {keyYear}";
+                        this.GroupedByMonth.Add(new WeatherInfoCollection(key, currentMonths.Value));
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                //TODO Fix this such that user notified of error
+                //ignored
             }
         }
 

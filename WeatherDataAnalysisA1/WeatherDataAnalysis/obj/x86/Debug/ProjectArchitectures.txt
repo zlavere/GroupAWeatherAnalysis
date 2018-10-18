@@ -1,1 +1,0 @@
-C:\Users\csuser\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\WeatherDataAnalysis.csproj;x86
