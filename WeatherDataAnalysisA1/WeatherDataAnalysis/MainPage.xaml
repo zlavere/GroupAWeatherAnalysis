@@ -23,9 +23,9 @@
         <TextBlock x:Name="MonthLabel" HorizontalAlignment="Left" Margin="25,84,0,0" Text="Month" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="MonthInput" HorizontalAlignment="Left" Margin="25,104,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Month to analyze" Width="156"/>
         <TextBlock x:Name="HighTempLabel" HorizontalAlignment="Left" Margin="24,148,0,0" Text="High Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="highTempInput" HorizontalAlignment="Left" Margin="24,170,0,0" VerticalAlignment="Top" PlaceholderText="High Temp" Width="93"/>
+        <TextBox x:Name="highTempInput" HorizontalAlignment="Left" Margin="24,170,0,0" VerticalAlignment="Top" PlaceholderText="High Temp" Width="93" Text="90" LosingFocus="lostFocus_UpdateHighTempThreshold"/>
         <TextBlock x:Name="LowTempLabel" HorizontalAlignment="Left" Margin="26,218,0,0" Text="Low Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="lowTempInput" HorizontalAlignment="Left" Margin="25,239,0,0" VerticalAlignment="Top" PlaceholderText="Low Temp" Width="93"/>
+        <TextBox x:Name="lowTempInput" HorizontalAlignment="Left" Margin="25,239,0,0" VerticalAlignment="Top" PlaceholderText="Low Temp" Width="93" Text="32" LosingFocus="lostFocus_UpdateLowTempThreshold"/>
 
     </Grid>
 </Page>

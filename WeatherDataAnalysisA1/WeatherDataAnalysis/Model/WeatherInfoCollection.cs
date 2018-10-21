@@ -257,7 +257,7 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the lowest high temps.
         /// </summary>
         /// <returns>List of Weather with the lowest high temps.</returns>
-        public List<WeatherInfo> GetLowestHighTemps()
+        public List<WeatherInfo> FindLowestHighTemps()
         {
             var lowest = this.WeatherInfos.Min(weather => weather.HighTemp);
             var lowTemps =
@@ -334,6 +334,17 @@ namespace WeatherDataAnalysis.Model
             var weatherByMonth = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
 
             return weatherByMonth.Average(weather => weather.LowTemp);
+        }
+
+        public IList<WeatherInfo> FindAllAboveHighTempThreshold(int highThreshold)
+        {
+           return this.WeatherInfos.Where(weatherInfo => weatherInfo.HighTemp >= highThreshold).ToList();
+        }
+
+        public IList<WeatherInfo> FindAllBelowLowTempThreshold(int lowTempThreshold)
+        {
+            return  this.WeatherInfos.Where(weatherInfo =>
+                weatherInfo.LowTemp <= lowTempThreshold).ToList();
         }
 
         #endregion

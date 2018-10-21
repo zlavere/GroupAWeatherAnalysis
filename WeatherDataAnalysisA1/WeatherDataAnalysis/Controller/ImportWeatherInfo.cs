@@ -60,8 +60,7 @@ namespace WeatherDataAnalysis.Controller
             {
                 this.DataFormatter = new DataFormatter();
                 this.TempFormatter = this.DataFormatter.TemperatureDataFormatter;
-            }
-            
+            } 
         }
 
         /// <summary>
@@ -81,7 +80,6 @@ namespace WeatherDataAnalysis.Controller
         /// <param name="month">The month to analyze</param>
         /// <returns></returns>
         public string GenerateOutput(int month)
-
         {
             var results = this.GenerateOutput();
             results += this.loadTemperaturesByMonth(month);
@@ -97,8 +95,6 @@ namespace WeatherDataAnalysis.Controller
             this.TempFormatter.WeatherInfoCollection = ActiveWeatherInfoCollection.Active;
 
             var output = this.TempFormatter.GetOutput();
-            output += $"{this.TempFormatter.HighTempThreshold} {Environment.NewLine}";
-            output += $"{this.TempFormatter.LowTempThreshold} {Environment.NewLine}";
             return output;
         }
 

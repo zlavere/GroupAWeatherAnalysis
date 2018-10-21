@@ -34,6 +34,7 @@
       <RootProperty Name="IsReadOnly" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="InputScope" />
+      <RootEvent Name="LosingFocus" />
       <RootEvent Name="KeyUp" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Automation.AutomationProperties">

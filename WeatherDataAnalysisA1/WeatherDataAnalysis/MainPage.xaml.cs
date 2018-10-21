@@ -8,6 +8,7 @@ using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.View;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
+using WeatherDataAnalysis.Model.Enums;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -37,6 +38,9 @@ namespace WeatherDataAnalysis
         public ImportDialog ImportDialog { get; private set; }
         public ContentDialogResult ImportDialogResults { get; private set; }
 
+        private int HighTempThreshold { get; set; }
+        private int LowTempThreshold { get; set; }
+
         #endregion
 
         #region Constructors
@@ -49,6 +53,9 @@ namespace WeatherDataAnalysis
         {
             this.InitializeComponent();
             this.import = new ImportWeatherInfo();
+
+            this.HighTempThreshold = (int) Temperature.HighWarningThreshold;
+            this.LowTempThreshold = (int) Temperature.FreezingFahrenheit;
 
             ApplicationView.PreferredLaunchViewSize = new Size {Width = ApplicationWidth, Height = ApplicationHeight};
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
@@ -67,16 +74,6 @@ namespace WeatherDataAnalysis
             {
                 var importExecution = await this.ExecuteImport();
 
-                if (this.highTempInput.Text.Length > 0)
-                {
-                    this.import.SetHighTempThreshold(int.Parse(this.highTempInput.Text));
-                }
-
-                if (this.lowTempInput.Text.Length > 0)
-                {
-                    this.import.SetLowTempThreshold(int.Parse(this.lowTempInput.Text));
-                }
-
                 if (this.MonthInput.MaxLength > 0)
                 {
                     this.import.SetMonth(int.Parse(this.MonthInput.Text));
@@ -88,7 +85,8 @@ namespace WeatherDataAnalysis
                 }
 
 
-            }  catch (ArgumentException ae)
+            }
+            catch (ArgumentException ae)
             {
                 this.summaryTextBox.Text =
                     $"{ae.Message}{Environment.NewLine}A collection with this name already exists. Please try again with another name";
@@ -99,10 +97,12 @@ namespace WeatherDataAnalysis
         private void setSummaryText()
         {
             var getImportResults = string.Empty;
-
+            this.import.SetHighTempThreshold(this.HighTempThreshold);
+            this.import.SetLowTempThreshold(this.LowTempThreshold);
             if (this.MonthInput.Text.Equals(string.Empty))
             {
                 getImportResults = this.import.GenerateOutput();
+                
             }
             else if (int.TryParse(this.MonthInput.Text, out _))
             {
@@ -147,5 +147,33 @@ namespace WeatherDataAnalysis
         }
 
         #endregion
+
+        private void lostFocus_UpdateHighTempThreshold(UIElement sender, Windows.UI.Xaml.Input.LosingFocusEventArgs args)
+        {
+            if (this.highTempInput.Text.Length > 0)
+            {
+                this.HighTempThreshold = int.Parse(this.highTempInput.Text);
+                System.Diagnostics.Debug.WriteLine(this.HighTempThreshold);
+            }
+            else
+            {
+                this.HighTempThreshold = (int)Temperature.HighWarningThreshold;
+            }
+        }
+
+
+        private void lostFocus_UpdateLowTempThreshold(UIElement sender, Windows.UI.Xaml.Input.LosingFocusEventArgs args)
+        {
+            if (this.lowTempInput.Text.Length > 0)
+            {
+                this.LowTempThreshold = int.Parse(this.lowTempInput.Text);
+            }
+            else
+            {
+                this.LowTempThreshold = (int)Temperature.FreezingFahrenheit;
+            }
+        }
     }
 }
+
+    

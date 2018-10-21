@@ -96,6 +96,14 @@
             <param name="month">The month.</param>
             <returns></returns>
         </member>
+        <member name="M:WeatherDataAnalysis.Controller.ImportWeatherInfo.CreateNewFromFile(Windows.Storage.StorageFile,WeatherDataAnalysis.View.ImportDialog)">
+            <summary>
+            Creates the new WeatherInfoCollection from selected file asynchronously.
+            </summary>
+            <param name="file">The file selected by user.</param>
+            <param name="importDialog">The import dialog.</param>
+            <returns>Asynchronously returns a new WeatherInfoCollection from file data based on user selected preferences.</returns>
+        </member>
         <member name="M:WeatherDataAnalysis.Controller.ImportWeatherInfo.SetHighTempThreshold(System.Int32)">
             <summary>
             Sets the high temporary threshold.
@@ -184,7 +192,7 @@
         </member>
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.createLowHistogram">
             <summary>
-            Creates the low temperature histogram.
+                Creates the low temperature histogram.
             </summary>
             <returns>String Representation of the Low Temperature Histogram</returns>
         </member>
@@ -281,6 +289,21 @@
         <member name="F:WeatherDataAnalysis.Model.Enums.ImportType.Overwrite">
             <summary>
             Indicates that the import should utilize an overwrite process.
+            </summary>
+        </member>
+        <member name="T:WeatherDataAnalysis.Model.Enums.Temperature">
+            <summary>
+            Enum for important temperature values.
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.Model.Enums.Temperature.FreezingFahrenheit">
+            <summary>
+            The freezing point fahrenheit
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.Model.Enums.Temperature.HighWarningThreshold">
+            <summary>
+            The high temperature warning threshold
             </summary>
         </member>
         <member name="T:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection">
@@ -457,7 +480,7 @@
             </summary>
             <returns>List of Weather with the highest low temps.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GetLowestHighTemps">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindLowestHighTemps">
             <summary>
                 Gets the lowest high temps.
             </summary>

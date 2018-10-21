@@ -31,13 +31,13 @@
     <AppXManifest Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-21T03:48:52.237</Modified>
+      <Modified>2018-10-21T15:56:25.654</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.exe">
       <PackagePath>entrypoint\WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-10-21T03:48:51.409</Modified>
+      <Modified>2018-10-21T15:56:25.098</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zach0\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.7\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -735,23 +735,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.xr.xml">
       <PackagePath>WeatherDataAnalysis.xr.xml</PackagePath>
-      <Modified>2018-10-20T19:56:39.903</Modified>
+      <Modified>2018-10-21T15:11:23.296</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-10-21T03:48:51.043</Modified>
+      <Modified>2018-10-21T15:56:24.789</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-10-21T03:48:51.043</Modified>
+      <Modified>2018-10-21T15:56:24.789</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\ImportDialog.xbf">
       <PackagePath>View\ImportDialog.xbf</PackagePath>
-      <Modified>2018-10-21T03:48:51.044</Modified>
+      <Modified>2018-10-21T15:56:24.790</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\MergeMatchDialog.xbf">
       <PackagePath>View\MergeMatchDialog.xbf</PackagePath>
-      <Modified>2018-10-21T03:48:51.044</Modified>
+      <Modified>2018-10-21T15:56:24.790</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -760,11 +760,11 @@
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-20T19:56:41.390</Modified>
+      <Modified>2018-10-21T15:46:02.145</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-10-21T03:48:52.223</Modified>
+      <Modified>2018-10-21T15:56:25.645</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
