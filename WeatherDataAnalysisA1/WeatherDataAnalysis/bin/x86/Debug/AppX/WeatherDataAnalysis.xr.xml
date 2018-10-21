@@ -12,6 +12,12 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="RowDefinitions" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="Content" />
@@ -41,6 +47,7 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Inlines" />
       <RootProperty Name="Text" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Documents.Run">
       <RootProperty Name="Text" />
@@ -70,5 +77,12 @@
       <RootEvent Name="Checked" />
     </RootType>
     <RootType FullName="WeatherDataAnalysis.View.ImportDialog" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
+      <RootProperty Name="Width" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
+      <RootProperty Name="Height" />
+    </RootType>
+    <RootType FullName="WeatherDataAnalysis.View.MergeMatchDialog" />
   </Roots.RootTypes>
 </Roots>

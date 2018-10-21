@@ -19,15 +19,6 @@ namespace WeatherDataAnalysis.Model
         ///     The grouped collections.
         /// </value>
         private ICollection<ICollection<WeatherInfo>> GroupedByMonth { get; }
-
-        /// <summary>
-        /// Gets the grouped by year.
-        /// </summary>
-        /// <value>
-        /// The grouped by year.
-        /// </value>
-        private IDictionary<int, WeatherInfoCollection> GroupedByYear { get; }
-
         #endregion
 
         #region Constructors
@@ -35,19 +26,17 @@ namespace WeatherDataAnalysis.Model
         /// <summary>
         ///     Initializes a new instance of the <see cref="FactoryWeatherInfoCollection" /> class.
         /// </summary>
-        /// <param name="masterCollection">The master collection.</param>
         public FactoryWeatherInfoCollection()
         {
             this.GroupedByMonth = new List<ICollection<WeatherInfo>>();
-            this.GroupedByYear = new Dictionary<int, WeatherInfoCollection>();
-            this.factoryWeatherInfoCollection();
+            this.groupCollectionsByMonth();
         }
 
         #endregion
 
         #region Methods
 
-        private void factoryWeatherInfoCollection()
+        private void groupCollectionsByMonth()
         {
             try
             {

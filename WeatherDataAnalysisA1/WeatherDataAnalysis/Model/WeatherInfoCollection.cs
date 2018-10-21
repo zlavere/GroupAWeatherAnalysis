@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,10 +30,6 @@ namespace WeatherDataAnalysis.Model
         /// </value>
         private KeyValuePair<string, WeatherInfoCollection> NameCollectionPair { get; }
 
-        public List<int> LowestTempWeatherInfos { get; }
-
-        public List<int> HighestTempWeatherInfos { get; }
-
         public int Count => this.WeatherInfos.Count;
 
         public bool IsReadOnly => this.WeatherInfos.IsReadOnly;
@@ -41,6 +38,16 @@ namespace WeatherDataAnalysis.Model
         {
             get => this.WeatherInfos[index];
             set => this.WeatherInfos[index] = value;
+        }
+
+        public int HighestTemp
+        {
+            get => this.WeatherInfos.Max(temp => temp.HighTemp);
+        }
+
+        public int LowestTemp
+        {
+            get => this.WeatherInfos.Min(temp => temp.LowTemp);
         }
 
         #endregion
@@ -55,8 +62,6 @@ namespace WeatherDataAnalysis.Model
         public WeatherInfoCollection(string name, IList<WeatherInfo> weatherInfos)
         {
             this.WeatherInfos = weatherInfos;
-            this.LowestTempWeatherInfos = this.WeatherInfos.Select(temps => temps.LowTemp).ToList();
-            this.HighestTempWeatherInfos = this.WeatherInfos.Select(temps => temps.HighTemp).ToList();
             this.Name = name;
             this.NameCollectionPair = new KeyValuePair<string, WeatherInfoCollection>(this.Name, this);
         }
@@ -73,7 +78,7 @@ namespace WeatherDataAnalysis.Model
         {
             this.WeatherInfos.Add(item);
         }
-
+        
         /// <summary>
         ///     Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
@@ -224,7 +229,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        ///     Gets the lowest temps.
+        /// Gets the lowest temps.
         /// </summary>
         /// <returns>List of Weather with the lowest temps.</returns>
         public ICollection<WeatherInfo> FindWithLowest()
@@ -299,7 +304,7 @@ namespace WeatherDataAnalysis.Model
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns></returns>
-        public ICollection<WeatherInfo> GetLowestInMonth(int month)
+        public IList<WeatherInfo> GetLowestInMonth(int month)
         {
             var weatherByMonthList = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
             var lowInMonth = weatherByMonthList.Min(weather => weather.LowTemp);

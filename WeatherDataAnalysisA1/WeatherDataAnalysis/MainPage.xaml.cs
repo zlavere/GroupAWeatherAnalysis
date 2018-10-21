@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.Storage.Pickers;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using WeatherDataAnalysis.Controller;
+using WeatherDataAnalysis.View;
+using Windows.Storage;
+using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,7 +30,12 @@ namespace WeatherDataAnalysis
         /// </summary>
         private const int ApplicationWidth = 1080;
 
-        private readonly Import import;
+        private readonly ImportWeatherInfo import;
+
+        public FileOpenPicker FilePicker { get; private set; }
+        public StorageFile File { get; private set; }
+        public ImportDialog ImportDialog { get; private set; }
+        public ContentDialogResult ImportDialogResults { get; private set; }
 
         #endregion
 
@@ -38,7 +48,7 @@ namespace WeatherDataAnalysis
         public MainPage()
         {
             this.InitializeComponent();
-            this.import = new Import();
+            this.import = new ImportWeatherInfo();
 
             ApplicationView.PreferredLaunchViewSize = new Size {Width = ApplicationWidth, Height = ApplicationHeight};
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
@@ -55,7 +65,7 @@ namespace WeatherDataAnalysis
 
             try
             {
-                var importExecution = await this.import.ExecuteImport();
+                var importExecution = await this.ExecuteImport();
 
                 if (this.highTempInput.Text.Length > 0)
                 {
@@ -100,6 +110,40 @@ namespace WeatherDataAnalysis
             }
 
             this.summaryTextBox.Text = getImportResults;
+        }
+
+        private FileOpenPicker createNewFileOpenPicker()
+        {
+            var filePicker = new FileOpenPicker();
+            filePicker.FileTypeFilter.Add(".csv");
+            filePicker.FileTypeFilter.Add(".txt");
+            filePicker.ViewMode = PickerViewMode.Thumbnail;
+            filePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            return filePicker;
+        }
+
+        /// <summary>
+        ///     Executes the import.
+        /// </summary>
+        /// <returns>True if new WeatherInfoCollection is added.</returns>
+        public async Task<bool> ExecuteImport()
+        {
+            var executionSuccess = false;
+
+            this.FilePicker = this.createNewFileOpenPicker();
+            this.File = await this.FilePicker.PickSingleFileAsync();
+            Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(this.File);
+            this.ImportDialog = new ImportDialog();
+            this.ImportDialogResults = await this.ImportDialog.ShowAsync();
+
+            if (this.File != null)
+            {
+                await this.import.CreateNewFromFile(this.File, this.ImportDialog);
+                this.import.SetUpFormatter();
+                executionSuccess = true;
+            }
+
+            return executionSuccess;
         }
 
         #endregion

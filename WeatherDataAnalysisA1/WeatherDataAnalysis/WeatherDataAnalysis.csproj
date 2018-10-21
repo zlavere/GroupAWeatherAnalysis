@@ -97,7 +97,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controller\Import.cs" />
+    <Compile Include="Controller\ImportWeatherInfo.cs" />
     <Compile Include="Format\TemperatureDataFormatter.cs" />
     <Compile Include="IO\CsvReader.cs" />
     <Compile Include="IO\TemperatureParser.cs" />
@@ -114,6 +114,9 @@
     <Compile Include="ViewModel\WeatherInfoCollectionsBinding.cs" />
     <Compile Include="View\ImportDialog.xaml.cs">
       <DependentUpon>ImportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MergeMatchDialog.xaml.cs">
+      <DependentUpon>MergeMatchDialog.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +146,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ImportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MergeMatchDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

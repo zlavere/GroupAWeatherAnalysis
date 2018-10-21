@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -15,7 +17,7 @@ namespace WeatherDataAnalysis.Controller
     /// <summary>
     ///     Controller for the Import processes.
     /// </summary>
-    public class Import
+    public class ImportWeatherInfo
     {
         #region Data members
 
@@ -32,11 +34,7 @@ namespace WeatherDataAnalysis.Controller
         ///     The type.
         /// </value>
         private ImportType Type { get; }
-
-        private FileOpenPicker FilePicker { get; set; }
         private StorageFile File { get; set; }
-        private ImportDialog ImportDialog { get; set; }
-        private ContentDialogResult ImportDialogResults { get; set; }
         private WeatherInfoCollectionsBinding WeatherInfoCollections { get; }
         private TemperatureDataFormatter TempFormatter { get; set; }
 
@@ -45,50 +43,18 @@ namespace WeatherDataAnalysis.Controller
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Import" /> class.
+        ///     Initializes a new instance of the <see cref="ImportWeatherInfo" /> class.
         /// </summary>
-        public Import()
+        public ImportWeatherInfo()
         {
             this.WeatherInfoCollections = new WeatherInfoCollectionsBinding();
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Import" /> class.
-        /// </summary>
-        /// <param name="type">The type of import process to execute.</param>
-        public Import(ImportType type) : this()
-        {
-            this.Type = type;
         }
 
         #endregion
 
         #region Methods
 
-        /// <summary>
-        ///     Executes the import.
-        /// </summary>
-        /// <returns>True if new WeatherInfoCollection is added.</returns>
-        public async Task<bool> ExecuteImport()
-        {
-            var executionSuccess = false;
-
-            this.FilePicker = this.createNewFileOpenPicker();
-            this.File = await this.FilePicker.PickSingleFileAsync();
-            this.ImportDialog = new ImportDialog();
-            this.ImportDialogResults = await this.ImportDialog.ShowAsync();
-
-            if (this.File != null)
-            {
-                await this.createNewFromFile();
-                this.setUpFormatter();
-                executionSuccess = true;
-            }
-
-            return executionSuccess;
-        }
-
-        private void setUpFormatter()
+        public void SetUpFormatter()
         {
             if (this.DataFormatter == null)
             {
@@ -106,7 +72,6 @@ namespace WeatherDataAnalysis.Controller
         {
             var results = ActiveWeatherInfoCollection.Active.Name + Environment.NewLine +
                           this.loadTemperaturesByYear();
-
             return results;
         }
 
@@ -123,15 +88,7 @@ namespace WeatherDataAnalysis.Controller
             return results;
         }
 
-        private FileOpenPicker createNewFileOpenPicker()
-        {
-            var filePicker = new FileOpenPicker();
-            filePicker.FileTypeFilter.Add(".csv");
-            filePicker.FileTypeFilter.Add(".txt");
-            filePicker.ViewMode = PickerViewMode.Thumbnail;
-            filePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            return filePicker;
-        }
+
 
         //TODO IDictionary<> to create a map of data elements multi-select checkbox. User input, checkboxes for analytic functions to run.
         private string loadTemperaturesByYear()
@@ -162,16 +119,82 @@ namespace WeatherDataAnalysis.Controller
             return output;
         }
 
-        private async Task<WeatherInfoCollection> createNewFromFile()
+        /// <summary>
+        /// Creates the new WeatherInfoCollection from selected file asynchronously.
+        /// </summary>
+        /// <param name="file">The file selected by user.</param>
+        /// <param name="importDialog">The import dialog.</param>
+        /// <returns>Asynchronously returns a new WeatherInfoCollection from file data based on user selected preferences.</returns>
+        public async Task<WeatherInfoCollection> CreateNewFromFile(StorageFile file, ImportDialog importDialog)
         {
+            this.File = file;
             var csvFileReader = new CsvReader();
             var temperatureParser = new TemperatureParser();
             var fileLines = await csvFileReader.GetFileLines(this.File);
-            var newWeatherInfoCollection =
-                temperatureParser.GetWeatherInfoCollection(this.ImportDialog.CollectionName, fileLines);
-            this.WeatherInfoCollections.Add(this.ImportDialog.CollectionName, newWeatherInfoCollection);
-            ActiveWeatherInfoCollection.Active = newWeatherInfoCollection;
+            var newWeatherInfoCollection = temperatureParser.GetWeatherInfoCollection(importDialog.CollectionName, fileLines); ;
+
+            if (importDialog.ImportType == ImportType.Merge && ActiveWeatherInfoCollection.Active.Count > 0)
+            {
+                newWeatherInfoCollection = await this.performMergeTypeImportAsync(newWeatherInfoCollection);
+            }
+            else
+            {
+                this.WeatherInfoCollections.Add(importDialog.CollectionName, newWeatherInfoCollection);
+                ActiveWeatherInfoCollection.Active = newWeatherInfoCollection;
+            }
+
             return newWeatherInfoCollection;
+        }
+
+        private async Task<WeatherInfoCollection> performMergeTypeImportAsync(WeatherInfoCollection newWeatherInfoCollection)
+        {
+            var matchedDates = newWeatherInfoCollection.Where(weatherInfo =>
+                ActiveWeatherInfoCollection.Active.Any(activeWeatherInfo => activeWeatherInfo.Date == weatherInfo.Date));
+            var unmatchedDates = newWeatherInfoCollection.Where(weatherInfo =>
+                ActiveWeatherInfoCollection.Active.All(activeWeatherInfo =>
+                    activeWeatherInfo.Date != weatherInfo.Date));
+            foreach (var current in unmatchedDates)
+            {
+                ActiveWeatherInfoCollection.Active.Add(current);
+            }
+
+            await this.RequestUserMergePreference(matchedDates);
+            return ActiveWeatherInfoCollection.Active;
+        }
+
+        private async Task<bool> RequestUserMergePreference(IEnumerable<WeatherInfo> matchedDates)
+        {
+            //var mergeResult = new WeatherInfoCollection("Merge Result", new List<WeatherInfo>());
+            foreach (var currentNew in matchedDates)
+            {
+                var matchingInfo = ActiveWeatherInfoCollection.Active.First(weatherInfo => weatherInfo.Date == currentNew.Date);
+                var mergeMatchDialog = new MergeMatchDialog();
+                var matchingInfoDate = matchingInfo.Date.ToShortDateString();
+                var matchingInfoHigh = matchingInfo.HighTemp.ToString();
+                var matchingInfoLow = matchingInfo.LowTemp.ToString();
+                var currentNewDate = currentNew.Date.ToShortDateString();
+                var currentNewHigh = currentNew.HighTemp.ToString();
+                var currentNewLow = currentNew.LowTemp.ToString();
+
+                var data = new string[] {
+                    matchingInfoDate,
+                    matchingInfoHigh,
+                    matchingInfoLow,
+                    currentNewDate,
+                    currentNewHigh,
+                    currentNewLow
+                };
+                
+                var mergeMatchResult = await mergeMatchDialog.ShowDialog(data);
+                if (mergeMatchResult == MergeMatchDialog.Replace)
+                {
+
+                    ActiveWeatherInfoCollection.Active.Remove(matchingInfo);
+                    ActiveWeatherInfoCollection.Active.Add(currentNew);
+                }
+            }
+
+            return true;
         }
 
         /// <summary>

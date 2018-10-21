@@ -30,7 +30,7 @@ namespace WeatherDataAnalysis.View
         /// <value>
         /// The type of the import.
         /// </value>
-        private ImportType ImportType { get; set; }
+        public ImportType ImportType { get; set; }
 
         #endregion
 
@@ -57,11 +57,12 @@ namespace WeatherDataAnalysis.View
 
         private void setImportType()
         {
-            if (this.overwriteButton.IsChecked != null)
+
+            if (this.isOverwriteChecked())
             {
                 this.ImportType = ImportType.Overwrite;
             }
-            else if (this.mergeButton.IsChecked != null)
+            else if (this.isMergeChecked())
             {
                 this.ImportType = ImportType.Merge;
             }
@@ -81,12 +82,7 @@ namespace WeatherDataAnalysis.View
                 hasName = true;
             }
 
-            var overwriteButtonIsChecked = this.overwriteButton.IsChecked;
-            var overwriteChecked = overwriteButtonIsChecked != null && (bool)overwriteButtonIsChecked;
-            var mergeButtonIsChecked = this.mergeButton.IsChecked;
-            var mergeChecked = mergeButtonIsChecked != null && (bool)mergeButtonIsChecked;
-
-            if (overwriteChecked || mergeChecked)
+            if (this.isOverwriteChecked() || this.isMergeChecked())
             {
                 hasImportType = true;
             }
@@ -96,6 +92,20 @@ namespace WeatherDataAnalysis.View
             }
 
             return dataAvailable;
+        }
+
+        private bool isMergeChecked()
+        {
+            var mergeButtonIsChecked = this.mergeButton.IsChecked;
+            var mergeChecked = mergeButtonIsChecked != null && (bool) mergeButtonIsChecked;
+            return mergeChecked;
+        }
+
+        private bool isOverwriteChecked()
+        {
+            var overwriteButtonIsChecked = this.overwriteButton.IsChecked;
+            var overwriteChecked = overwriteButtonIsChecked != null && (bool) overwriteButtonIsChecked;
+            return overwriteChecked;
         }
 
         private void overwriteChecked(object sender, RoutedEventArgs e)
