@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.Storage;
+using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
-using WeatherDataAnalysis.Controller;
-using WeatherDataAnalysis.View;
-using Windows.Storage;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.Model.Enums;
+using WeatherDataAnalysis.View;
+using WeatherDataAnalysis.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -32,6 +36,10 @@ namespace WeatherDataAnalysis
         private const int ApplicationWidth = 1080;
 
         private readonly ImportWeatherInfo import;
+
+        #endregion
+
+        #region Properties
 
         public FileOpenPicker FilePicker { get; private set; }
         public StorageFile File { get; private set; }
@@ -72,7 +80,7 @@ namespace WeatherDataAnalysis
 
             try
             {
-                var importExecution = await this.ExecuteImport();
+                var importExecution = await this.executeImport();
 
                 if (this.MonthInput.MaxLength > 0)
                 {
@@ -83,15 +91,16 @@ namespace WeatherDataAnalysis
                 {
                     this.setSummaryText();
                 }
-
-
             }
             catch (ArgumentException ae)
             {
                 this.summaryTextBox.Text =
-                    $"{ae.Message}{Environment.NewLine}A collection with this name already exists. Please try again with another name";
+                    $"{ae.Message}{Environment.NewLine}A collection with this name may already exist. Please try again with another name";
             }
-
+            catch (Exception)
+            {
+                //ignored
+            }
         }
 
         private void setSummaryText()
@@ -102,7 +111,6 @@ namespace WeatherDataAnalysis
             if (this.MonthInput.Text.Equals(string.Empty))
             {
                 getImportResults = this.import.GenerateOutput();
-                
             }
             else if (int.TryParse(this.MonthInput.Text, out _))
             {
@@ -126,13 +134,13 @@ namespace WeatherDataAnalysis
         ///     Executes the import.
         /// </summary>
         /// <returns>True if new WeatherInfoCollection is added.</returns>
-        public async Task<bool> ExecuteImport()
+        private async Task<bool> executeImport()
         {
             var executionSuccess = false;
 
             this.FilePicker = this.createNewFileOpenPicker();
             this.File = await this.FilePicker.PickSingleFileAsync();
-            Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(this.File);
+            StorageApplicationPermissions.FutureAccessList.Add(this.File);
             this.ImportDialog = new ImportDialog();
             this.ImportDialogResults = await this.ImportDialog.ShowAsync();
 
@@ -146,23 +154,20 @@ namespace WeatherDataAnalysis
             return executionSuccess;
         }
 
-        #endregion
-
-        private void lostFocus_UpdateHighTempThreshold(UIElement sender, Windows.UI.Xaml.Input.LosingFocusEventArgs args)
+        private void lostFocus_UpdateHighTempThreshold(UIElement sender, LosingFocusEventArgs args)
         {
             if (this.highTempInput.Text.Length > 0)
             {
                 this.HighTempThreshold = int.Parse(this.highTempInput.Text);
-                System.Diagnostics.Debug.WriteLine(this.HighTempThreshold);
+                Debug.WriteLine(this.HighTempThreshold);
             }
             else
             {
-                this.HighTempThreshold = (int)Temperature.HighWarningThreshold;
+                this.HighTempThreshold = (int) Temperature.HighWarningThreshold;
             }
         }
 
-
-        private void lostFocus_UpdateLowTempThreshold(UIElement sender, Windows.UI.Xaml.Input.LosingFocusEventArgs args)
+        private void lostFocus_UpdateLowTempThreshold(UIElement sender, LosingFocusEventArgs args)
         {
             if (this.lowTempInput.Text.Length > 0)
             {
@@ -170,10 +175,44 @@ namespace WeatherDataAnalysis
             }
             else
             {
-                this.LowTempThreshold = (int)Temperature.FreezingFahrenheit;
+                this.LowTempThreshold = (int) Temperature.FreezingFahrenheit;
             }
+        }
+
+        private void c_ClearData(object sender, RoutedEventArgs e)
+        {
+            this.summaryTextBox.Text = @"Data has been cleared.";
+
+            if (ActiveWeatherInfoCollection.Active != null)
+            {
+                ActiveWeatherInfoCollection.Active.Clear();
+            }
+        }
+
+        private async void c_CreateWeatherInfo(object sender, RoutedEventArgs e)
+        {
+            var addWeatherInfo = new AddWeatherInfo();
+            var successfullyCreated = await addWeatherInfo.StartDialog();
+
+            if (successfullyCreated)
+            {
+                this.summaryTextBox.Text = $"Created New Weather Information Entry{Environment.NewLine}" +
+                                           $"Date: {addWeatherInfo.CreatedWeatherInfo.Date}{Environment.NewLine}" +
+                                           $"High Temperature: {addWeatherInfo.CreatedWeatherInfo.HighTemp}{Environment.NewLine}" +
+                                           $"Low Temperature: {addWeatherInfo.CreatedWeatherInfo.LowTemp}{Environment.NewLine}";
+                this.RefreshButton.IsEnabled = true;
+            }
+            else
+            {
+                this.summaryTextBox.Text = "Failed to create a new Weather Information Entry";
+            }
+        }
+
+        #endregion
+
+        private void c_Refresh(object sender, RoutedEventArgs e)
+        {
+            this.setSummaryText();
         }
     }
 }
-
-    

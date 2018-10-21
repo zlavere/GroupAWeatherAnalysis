@@ -21,10 +21,10 @@ namespace WeatherDataAnalysis.io
         #region Properties
 
         /// <summary>
-        /// Gets or sets the error messages.
+        ///     Gets or sets the error messages.
         /// </summary>
         /// <value>
-        /// The error messages.
+        ///     The error messages.
         /// </value>
         public ICollection<string> ErrorMessages { get; }
 
@@ -33,7 +33,7 @@ namespace WeatherDataAnalysis.io
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TemperatureParser"/> class.
+        ///     Initializes a new instance of the <see cref="TemperatureParser" /> class.
         /// </summary>
         public TemperatureParser()
         {
@@ -45,7 +45,7 @@ namespace WeatherDataAnalysis.io
         #region Methods
 
         /// <summary>
-        /// Gets the day temperature list.
+        ///     Gets the day temperature list.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="weatherInfoList">The temporary list.</param>
@@ -61,17 +61,16 @@ namespace WeatherDataAnalysis.io
 
                 if (this.isValidData(splitLine, currentIndex))
                 {
-                    data.Add(this.ParseLine(splitLine));
+                    data.Add(this.parseLine(splitLine));
                 }
             }
 
-                var newCollection = new WeatherInfoCollection(name, data);
-
+            var newCollection = new WeatherInfoCollection(name, data);
 
             return newCollection;
         }
 
-        private WeatherInfo ParseLine(IReadOnlyList<string> line)
+        private WeatherInfo parseLine(IReadOnlyList<string> line)
         {
             var date = DateTime.ParseExact(line[DateSegment], "M/d/yyyy", CultureInfo.InvariantCulture);
             var highTemp = int.Parse(line[HighTempSegment]);
@@ -89,8 +88,9 @@ namespace WeatherDataAnalysis.io
 
             if (!this.isValidDate(date, lineNumber))
             {
-                var message = $"Error at ln{lineNumber}: {this.getLineString(date, highTemp, lowTemp)}{Environment.NewLine}" +
-                              $"{date} is not a valid date. Record Skipped";
+                var message =
+                    $"Error at ln{lineNumber}: {this.getLineString(date, highTemp, lowTemp)}{Environment.NewLine}" +
+                    $"{date} is not a valid date. Record Skipped";
                 this.ErrorMessages.Add(message);
             }
             else if (!this.isValidTemp(highTemp))
@@ -106,7 +106,6 @@ namespace WeatherDataAnalysis.io
                     $"Error at ln{lineNumber}: {this.getLineString(date, highTemp, lowTemp)}{Environment.NewLine}" +
                     $"{lowTemp} is not a valid Low Temperature. Record Skipped.";
                 this.ErrorMessages.Add(message);
-                
             }
             else
             {
@@ -120,8 +119,6 @@ namespace WeatherDataAnalysis.io
         {
             return $"'{date},{highTemp},{lowTemp}'";
         }
-
-
 
         //TODO Display this
         private bool isValidDate(string date, int lineNumber)

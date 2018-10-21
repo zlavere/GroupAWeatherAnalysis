@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Linq;
 using WeatherDataAnalysis.Model;
-using WeatherDataAnalysis.Model.Enums;
 using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.Format

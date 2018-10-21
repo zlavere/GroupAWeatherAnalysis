@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.UI.Xaml.Controls;
 using WeatherDataAnalysis.Format;
 using WeatherDataAnalysis.io;
 using WeatherDataAnalysis.Model;
@@ -71,8 +69,10 @@ namespace WeatherDataAnalysis.Controller
         {
             var results = ActiveWeatherInfoCollection.Active.Name + Environment.NewLine +
                           this.loadTemperaturesByYear();
-            System.Diagnostics.Debug.WriteLine(this.getErrorMessages());
-            results += this.getErrorMessages();
+            if (this.File != null)
+            {
+                results += this.getErrorMessages();
+            }
             return results;
         }
 
@@ -85,13 +85,15 @@ namespace WeatherDataAnalysis.Controller
         {
             var results = this.GenerateOutput();
             results += this.loadTemperaturesByMonth(month);
-            results += this.getErrorMessages();
+            if (this.File != null)
+            {
+                results += this.getErrorMessages();
+            }
             return results;
         }
 
         private string getErrorMessages()
         {
-            
             var result = $"{Environment.NewLine} The following errors occurred on import from {this.File.Name}:" +
                          $"{Environment.NewLine}";
 
@@ -113,7 +115,6 @@ namespace WeatherDataAnalysis.Controller
         //TODO IDictionary<> to create a map of data elements multi-select checkbox. User input, checkboxes for analytic functions to run.
         private string loadTemperaturesByYear()
         {
-            
             this.TempFormatter.WeatherInfoCollection = ActiveWeatherInfoCollection.Active;
 
             var output = this.TempFormatter.GetOutput();
@@ -127,8 +128,6 @@ namespace WeatherDataAnalysis.Controller
         /// <returns></returns>
         private string loadTemperaturesByMonth(int month)
         {
-            
-
             this.TempFormatter.WeatherInfoCollection = ActiveWeatherInfoCollection.Active;
             var output = this.TempFormatter.FormatLowAveragePerMonth(month) + Environment.NewLine;
             output += this.TempFormatter.FormatHighAveragePerMonth(month) + Environment.NewLine;
@@ -195,11 +194,11 @@ namespace WeatherDataAnalysis.Controller
                 ActiveWeatherInfoCollection.Active.Add(current);
             }
 
-            await this.RequestUserMergePreference(matchedDates);
+            await this.requestUserMergePreference(matchedDates);
             return ActiveWeatherInfoCollection.Active;
         }
 
-        private async Task<bool> RequestUserMergePreference(IEnumerable<WeatherInfo> matchedDates)
+        private async Task<bool> requestUserMergePreference(IEnumerable<WeatherInfo> matchedDates)
         {
             //var mergeResult = new WeatherInfoCollection("Merge Result", new List<WeatherInfo>());
             foreach (var currentNew in matchedDates)
@@ -240,11 +239,14 @@ namespace WeatherDataAnalysis.Controller
         /// <param name="highTemp">The highTemp.</param>
         public void SetHighTempThreshold(int highTemp)
         {
+            //TODO This is why import should not be responsible for building output. Remove this if-statement and move building output to the output classes
+            this.SetUpFormatter();
             this.TempFormatter.HighTempThreshold = highTemp;
         }
 
         public void SetLowTempThreshold(int lowTemp)
         {
+            
             this.TempFormatter.LowTempThreshold = lowTemp;
         }
 
