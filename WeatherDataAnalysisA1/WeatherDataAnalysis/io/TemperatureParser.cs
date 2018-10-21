@@ -26,7 +26,7 @@ namespace WeatherDataAnalysis.io
         /// <value>
         /// The error messages.
         /// </value>
-        private ICollection<string> ErrorMessages { get; }
+        public ICollection<string> ErrorMessages { get; }
 
         #endregion
 
@@ -80,7 +80,6 @@ namespace WeatherDataAnalysis.io
             return new WeatherInfo(date, highTemp, lowTemp);
         }
 
-        //TODO Should consider a construct error messages for GUI class.
         private bool isValidData(IReadOnlyList<string> line, int lineNumber)
         {
             var isValid = false;
@@ -90,17 +89,22 @@ namespace WeatherDataAnalysis.io
 
             if (!this.isValidDate(date, lineNumber))
             {
+                var message = $"Error at ln{lineNumber}: {this.getLineString(date, highTemp, lowTemp)}{Environment.NewLine}" +
+                              $"{date} is not a valid date. Record Skipped";
+                this.ErrorMessages.Add(message);
             }
             else if (!this.isValidTemp(highTemp))
             {
                 var message =
-                    $"Error at ln{lineNumber}: {highTemp} is not a valid High Temperature. {date}, {highTemp}, {lowTemp} record skipped.";
+                    $"Error at ln{lineNumber}: {this.getLineString(date, highTemp, lowTemp)}{Environment.NewLine}" +
+                    $"{highTemp} is not a valid High Temperature. Record Skipped.";
                 this.ErrorMessages.Add(message);
             }
             else if (!this.isValidTemp(lowTemp))
             {
                 var message =
-                    $"Error at ln{lineNumber}: {lowTemp} is not a valid Low Temperature. {date}, {highTemp}, {lowTemp} record skipped.";
+                    $"Error at ln{lineNumber}: {this.getLineString(date, highTemp, lowTemp)}{Environment.NewLine}" +
+                    $"{lowTemp} is not a valid Low Temperature. Record Skipped.";
                 this.ErrorMessages.Add(message);
                 
             }
@@ -112,6 +116,12 @@ namespace WeatherDataAnalysis.io
             return isValid;
         }
 
+        private string getLineString(string date, string highTemp, string lowTemp)
+        {
+            return $"'{date},{highTemp},{lowTemp}'";
+        }
+
+
 
         //TODO Display this
         private bool isValidDate(string date, int lineNumber)
@@ -122,16 +132,8 @@ namespace WeatherDataAnalysis.io
                 var dateTime = DateTime.ParseExact(date, "M/d/yyyy", CultureInfo.InvariantCulture);
                 isValid = true;
             }
-            catch (ArgumentNullException)
+            catch (Exception)
             {
-                var message = $"Error at ln{lineNumber}: A record contained no date and was skipped.";
-                this.ErrorMessages.Add(message);
-                isValid = false;
-            }
-            catch (FormatException)
-            {
-                var message = $"Error at ln{lineNumber}: {date} is not a valid date format. This record was skipped.";
-                this.ErrorMessages.Add(message);
                 isValid = false;
             }
 

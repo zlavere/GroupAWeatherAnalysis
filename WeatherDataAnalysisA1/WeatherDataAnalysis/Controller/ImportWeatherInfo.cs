@@ -37,7 +37,7 @@ namespace WeatherDataAnalysis.Controller
         private StorageFile File { get; set; }
         private WeatherInfoCollectionsBinding WeatherInfoCollections { get; }
         private TemperatureDataFormatter TempFormatter { get; set; }
-
+        public ICollection<string> Errors { get; set; }
         #endregion
 
         #region Constructors
@@ -71,6 +71,8 @@ namespace WeatherDataAnalysis.Controller
         {
             var results = ActiveWeatherInfoCollection.Active.Name + Environment.NewLine +
                           this.loadTemperaturesByYear();
+            System.Diagnostics.Debug.WriteLine(this.getErrorMessages());
+            results += this.getErrorMessages();
             return results;
         }
 
@@ -83,10 +85,30 @@ namespace WeatherDataAnalysis.Controller
         {
             var results = this.GenerateOutput();
             results += this.loadTemperaturesByMonth(month);
+            results += this.getErrorMessages();
             return results;
         }
 
+        private string getErrorMessages()
+        {
+            
+            var result = $"{Environment.NewLine} The following errors occurred on import from {this.File.Name}:" +
+                         $"{Environment.NewLine}";
 
+            foreach (var current in this.Errors)
+            {
+                if (current != this.Errors.Last())
+                {
+                    result += $"{current}{Environment.NewLine}";
+                }
+                else
+                {
+                    result += current;
+                }
+            }
+
+            return result;
+        }
 
         //TODO IDictionary<> to create a map of data elements multi-select checkbox. User input, checkboxes for analytic functions to run.
         private string loadTemperaturesByYear()
@@ -139,7 +161,26 @@ namespace WeatherDataAnalysis.Controller
                 ActiveWeatherInfoCollection.Active = newWeatherInfoCollection;
             }
 
+            this.clearAndAddErrorMessages(temperatureParser);
+
             return newWeatherInfoCollection;
+        }
+
+        private void clearAndAddErrorMessages(TemperatureParser temperatureParser)
+        {
+            if (this.Errors == null)
+            {
+                this.Errors = new List<string>();
+            }
+            else
+            {
+                this.Errors.Clear();
+            }
+            
+            foreach (var current in temperatureParser.ErrorMessages)
+            {
+                this.Errors.Add(current);
+            }
         }
 
         private async Task<WeatherInfoCollection> performMergeTypeImportAsync(WeatherInfoCollection newWeatherInfoCollection)
