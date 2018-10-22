@@ -219,12 +219,13 @@ namespace WeatherDataAnalysis.Controller
             var unmatchedDates = newWeatherInfoCollection.Where(weatherInfo =>
                 ActiveWeatherInfoCollection.Active.All(activeWeatherInfo =>
                     activeWeatherInfo.Date != weatherInfo.Date));
+
+            await this.requestUserMergePreference(matchedDates);
+
             foreach (var current in unmatchedDates)
             {
                 ActiveWeatherInfoCollection.Active.Add(current);
             }
-
-            await this.requestUserMergePreference(matchedDates);
             return ActiveWeatherInfoCollection.Active;
         }
 
