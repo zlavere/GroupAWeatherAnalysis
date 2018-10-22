@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+//TODO Remove this and references to this.
+/*using System;
 using System.Collections.Generic;
 using System.Globalization;
 using WeatherDataAnalysis.ViewModel;
@@ -62,4 +64,4 @@ namespace WeatherDataAnalysis.Model
 
         #endregion
     }
-}
+}*/

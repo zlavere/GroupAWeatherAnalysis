@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-22T13:38:15.980</Modified>
+      <Modified>2018-10-22T15:25:01.396</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.exe">
       <PackagePath>entrypoint\WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-10-22T13:38:15.482</Modified>
+      <Modified>2018-10-22T15:25:00.896</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zlavere\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.7\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -739,23 +739,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-10-22T13:38:15.233</Modified>
+      <Modified>2018-10-22T15:25:00.631</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-10-22T13:38:15.234</Modified>
+      <Modified>2018-10-22T15:25:00.632</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\ImportDialog.xbf">
       <PackagePath>View\ImportDialog.xbf</PackagePath>
-      <Modified>2018-10-22T13:38:15.235</Modified>
+      <Modified>2018-10-22T15:25:00.633</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\MergeMatchDialog.xbf">
       <PackagePath>View\MergeMatchDialog.xbf</PackagePath>
-      <Modified>2018-10-22T13:38:15.236</Modified>
+      <Modified>2018-10-22T15:25:00.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\NewWeatherInfoDialog.xbf">
       <PackagePath>View\NewWeatherInfoDialog.xbf</PackagePath>
-      <Modified>2018-10-22T13:38:15.238</Modified>
+      <Modified>2018-10-22T15:25:00.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -764,11 +764,11 @@
     <AppxPackagedFile Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-22T12:45:07.179</Modified>
+      <Modified>2018-10-22T15:23:42.015</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-10-22T13:38:15.974</Modified>
+      <Modified>2018-10-22T15:25:01.389</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

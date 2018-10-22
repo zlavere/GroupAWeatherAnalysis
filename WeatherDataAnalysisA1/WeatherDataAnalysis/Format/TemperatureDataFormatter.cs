@@ -22,7 +22,7 @@ namespace WeatherDataAnalysis.Format
         /// </value>
         public WeatherInfoCollection WeatherInfoCollection { private get; set; }
 
-        private FactoryWeatherInfoCollection FactoryWeatherInfoCollection { get; }
+        //private FactoryWeatherInfoCollection FactoryWeatherInfoCollection { get; }
 
         private WeatherHistogramGenerator HistogramGenerator { get; }
 
@@ -59,7 +59,7 @@ namespace WeatherDataAnalysis.Format
         /// </summary>
         public TemperatureDataFormatter()
         {
-            this.FactoryWeatherInfoCollection = new FactoryWeatherInfoCollection();
+            //this.FactoryWeatherInfoCollection = new FactoryWeatherInfoCollection();
             this.HistogramGenerator = new WeatherHistogramGenerator();
             this.Month = -1;
         }

@@ -402,24 +402,6 @@
             The high temperature warning threshold
             </summary>
         </member>
-        <member name="T:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection">
-            <summary>
-                Factory to create WeatherInfoCollection with common groupings.
-            </summary>
-        </member>
-        <member name="P:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection.GroupedByMonth">
-            <summary>
-                Gets the grouped collections.
-            </summary>
-            <value>
-                The grouped collections.
-            </value>
-        </member>
-        <member name="M:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.FactoryWeatherInfoCollection" /> class.
-            </summary>
-        </member>
         <member name="T:WeatherDataAnalysis.Model.WeatherInfo">
             <summary>
                 High and low temperature data for a specific day

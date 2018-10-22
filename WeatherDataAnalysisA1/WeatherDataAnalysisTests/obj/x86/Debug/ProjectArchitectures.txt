@@ -1,2 +1,0 @@
-C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\WeatherDataAnalysis.csproj;x86
-C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\WeatherDataAnalysisTests.csproj;x86
