@@ -291,7 +291,17 @@ namespace WeatherDataAnalysis.Model
         /// <returns>Average High Temperature for WeatherInfoCollection</returns>
         public double GetAverageLow()
         {
-            return this.WeatherInfos.Average(weather => weather.LowTemp);
+            var result = double.MinValue;
+            try
+            {
+                result = this.WeatherInfos.Average(weather => weather.LowTemp);
+            }
+            catch (Exception)
+            {
+                //ignored
+            }
+
+            return result;
         }
 
         //TODO return statements docs

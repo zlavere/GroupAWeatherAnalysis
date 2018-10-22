@@ -100,7 +100,9 @@
       <DependentUpon>UnitTestApp.xaml</DependentUpon>
     </Compile>
     <Compile Include="WeatherInfoCollection\FindWithHighest.cs" />
+    <Compile Include="WeatherInfoCollection\FindWithLowest.cs" />
     <Compile Include="WeatherInfoCollection\GetAverageHigh.cs" />
+    <Compile Include="WeatherInfoCollection\GetAverageLow.cs" />
     <Compile Include="WeatherInfo\WeatherInfoTest.cs" />
   </ItemGroup>
   <ItemGroup>
