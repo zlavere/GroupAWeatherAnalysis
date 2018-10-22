@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Storage;
@@ -35,12 +37,13 @@ namespace WeatherDataAnalysis
         /// </summary>
         private const int ApplicationWidth = 1080;
 
-        private readonly ImportWeatherInfo import;
+        private readonly MainPageController MainPageController;
 
         #endregion
 
         #region Properties
 
+        private const int defaultBucketSize = 10;
         public FileOpenPicker FilePicker { get; private set; }
         public StorageFile File { get; private set; }
         public ImportDialog ImportDialog { get; private set; }
@@ -48,6 +51,9 @@ namespace WeatherDataAnalysis
 
         private int HighTempThreshold { get; set; }
         private int LowTempThreshold { get; set; }
+        private List<HistogramBucketSize> HistogramBucketSizes { get; set; }
+
+        private ComboBoxBindings ComboBoxBindings { get; }
 
         #endregion
 
@@ -59,9 +65,10 @@ namespace WeatherDataAnalysis
         /// </summary>
         public MainPage()
         {
+            this.ComboBoxBindings = new ComboBoxBindings();
             this.InitializeComponent();
-            this.import = new ImportWeatherInfo();
-
+            this.MainPageController = new MainPageController();
+            
             this.HighTempThreshold = (int) Temperature.HighWarningThreshold;
             this.LowTempThreshold = (int) Temperature.FreezingFahrenheit;
 
@@ -69,6 +76,8 @@ namespace WeatherDataAnalysis
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(ApplicationWidth, ApplicationHeight));
         }
+
+
 
         #endregion
 
@@ -84,7 +93,7 @@ namespace WeatherDataAnalysis
 
                 if (this.MonthInput.MaxLength > 0)
                 {
-                    this.import.SetMonth(int.Parse(this.MonthInput.Text));
+                    this.MainPageController.SetMonth(int.Parse(this.MonthInput.Text));
                 }
 
                 if (importExecution)
@@ -106,15 +115,15 @@ namespace WeatherDataAnalysis
         private void setSummaryText()
         {
             var getImportResults = string.Empty;
-            this.import.SetHighTempThreshold(this.HighTempThreshold);
-            this.import.SetLowTempThreshold(this.LowTempThreshold);
+            this.MainPageController.SetHighTempThreshold(this.HighTempThreshold);
+            this.MainPageController.SetLowTempThreshold(this.LowTempThreshold);
             if (this.MonthInput.Text.Equals(string.Empty))
             {
-                getImportResults = this.import.GenerateOutput();
+                getImportResults = this.MainPageController.GenerateOutput();
             }
             else if (int.TryParse(this.MonthInput.Text, out _))
             {
-                getImportResults = this.import.GenerateOutput(int.Parse(this.MonthInput.Text));
+                getImportResults = this.MainPageController.GenerateOutput(int.Parse(this.MonthInput.Text));
             }
 
             this.summaryTextBox.Text = getImportResults;
@@ -131,7 +140,7 @@ namespace WeatherDataAnalysis
         }
 
         /// <summary>
-        ///     Executes the import.
+        ///     Executes the MainPageController.
         /// </summary>
         /// <returns>True if new WeatherInfoCollection is added.</returns>
         private async Task<bool> executeImport()
@@ -146,8 +155,8 @@ namespace WeatherDataAnalysis
 
             if (this.File != null)
             {
-                await this.import.CreateNewFromFile(this.File, this.ImportDialog);
-                this.import.SetUpFormatter();
+                await this.MainPageController.CreateNewFromFile(this.File, this.ImportDialog);
+                this.MainPageController.SetUpFormatter();
                 executionSuccess = true;
             }
 
@@ -208,11 +217,24 @@ namespace WeatherDataAnalysis
             }
         }
 
-        #endregion
-
         private void c_Refresh(object sender, RoutedEventArgs e)
         {
             this.setSummaryText();
+            this.RefreshButton.IsEnabled = false;
         }
+
+        private void change_BucketSize(object sender, SelectionChangedEventArgs e)
+        {
+           var selection = this.ComboBoxBindings.Sizes[this.BucketSizeComboBox.SelectedIndex];
+           this.MainPageController.SetHistogramBucketSize(selection);
+            if (ActiveWeatherInfoCollection.Active != null)
+            {
+                this.RefreshButton.IsEnabled = true;
+            } 
+        }
+
+        #endregion
+
+
     }
 }

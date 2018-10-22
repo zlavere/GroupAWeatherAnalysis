@@ -31,13 +31,13 @@
     <AppXManifest Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-21T22:11:28.084</Modified>
+      <Modified>2018-10-22T03:47:51.583</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.exe">
       <PackagePath>entrypoint\WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-10-21T22:11:27.523</Modified>
+      <Modified>2018-10-22T03:47:51.018</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zach0\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.7\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -735,27 +735,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.xr.xml">
       <PackagePath>WeatherDataAnalysis.xr.xml</PackagePath>
-      <Modified>2018-10-21T22:04:29.021</Modified>
+      <Modified>2018-10-22T02:42:08.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-10-21T22:11:27.180</Modified>
+      <Modified>2018-10-22T03:47:50.688</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-10-21T22:11:27.181</Modified>
+      <Modified>2018-10-22T03:47:50.689</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\ImportDialog.xbf">
       <PackagePath>View\ImportDialog.xbf</PackagePath>
-      <Modified>2018-10-21T22:11:27.181</Modified>
+      <Modified>2018-10-22T03:47:50.689</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\MergeMatchDialog.xbf">
       <PackagePath>View\MergeMatchDialog.xbf</PackagePath>
-      <Modified>2018-10-21T22:11:27.182</Modified>
+      <Modified>2018-10-22T03:47:50.690</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\NewWeatherInfoDialog.xbf">
       <PackagePath>View\NewWeatherInfoDialog.xbf</PackagePath>
-      <Modified>2018-10-21T22:11:27.182</Modified>
+      <Modified>2018-10-22T03:47:50.691</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -764,11 +764,11 @@
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-21T19:53:26.167</Modified>
+      <Modified>2018-10-22T02:28:29.972</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-10-21T22:11:28.075</Modified>
+      <Modified>2018-10-22T03:47:51.575</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

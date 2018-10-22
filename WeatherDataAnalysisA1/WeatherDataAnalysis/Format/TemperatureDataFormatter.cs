@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using WeatherDataAnalysis.Model;
@@ -22,6 +23,8 @@ namespace WeatherDataAnalysis.Format
         public WeatherInfoCollection WeatherInfoCollection { private get; set; }
 
         private FactoryWeatherInfoCollection FactoryWeatherInfoCollection { get; }
+
+        public WeatherHistogramGenerator HistogramGenerator { get; private set; }
 
         /// <summary>
         ///     Gets or sets the low temporary threshold.
@@ -51,6 +54,7 @@ namespace WeatherDataAnalysis.Format
         public TemperatureDataFormatter()
         {
             this.FactoryWeatherInfoCollection = new FactoryWeatherInfoCollection();
+            this.HistogramGenerator = new WeatherHistogramGenerator();
             this.Month = -1;
         }
 
@@ -85,8 +89,9 @@ namespace WeatherDataAnalysis.Format
                 var queryYearInActiveCollection =
                     ActiveWeatherInfoCollection.Active.Where(weatherInfo => weatherInfo.Date.Year == currentYear);
 
+                var yearInActiveCollection = queryYearInActiveCollection.ToList();
                 this.WeatherInfoCollection =
-                    new WeatherInfoCollection($"{currentYear}", queryYearInActiveCollection.ToList());
+                    new WeatherInfoCollection($"{currentYear}", yearInActiveCollection.ToList());
 
                 output += $"{currentYear} Data: ({this.WeatherInfoCollection.Count} Days of Data){Environment.NewLine}";
                 output +=
@@ -114,8 +119,7 @@ namespace WeatherDataAnalysis.Format
                 output += $"Dates with temperatures above {this.HighTempThreshold}{Environment.NewLine}";
                 output += this.getTempsAbove();
 
-                output += this.createHighHistogram();
-                output += this.createLowHistogram();
+                output += this.createHistograms(this.WeatherInfoCollection);
                 output += Environment.NewLine;
                 try
                 {
@@ -333,71 +337,16 @@ namespace WeatherDataAnalysis.Format
         ///     Creates the high Temperatures histogram.
         /// </summary>
         /// <returns>String representation of a histogram for High Temperatures</returns>
-        private string createHighHistogram()
+        private string createHistograms(IEnumerable<WeatherInfo> weatherInfoCollection)
         {
-            var lowest = this.WeatherInfoCollection.Min(temp => temp.HighTemp);
-            var highest = this.WeatherInfoCollection.Max(temp => temp.HighTemp);
-            var temps = this.WeatherInfoCollection.Select(temp => temp.HighTemp).ToList();
-
-            if (lowest % 10 != 0)
-            {
-                lowest = lowest - lowest % 10;
-            }
-
-            if (highest % 10 != 0)
-            {
-                highest = highest + 10 - highest % 10;
-            }
-
-            var lowerBound = lowest;
-            var output = $"High Temperature Histogram {Environment.NewLine}";
-            while (lowerBound < highest)
-            {
-                var upperBound = lowerBound + 9;
-
-                var count = temps.Count(temp => temp >= lowerBound && temp <= upperBound);
-                output += $"{lowerBound}-{upperBound}: {count}{Environment.NewLine}";
-
-                lowerBound = upperBound + 1;
-            }
-
-            return output;
+            
+            return this.HistogramGenerator.CreateHistogram(weatherInfoCollection); 
         }
 
         /// <summary>
         ///     Creates the low temperature histogram.
         /// </summary>
         /// <returns>String Representation of the Low Temperature Histogram</returns>
-        private string createLowHistogram()
-        {
-            var lowest = this.WeatherInfoCollection.Min(temp => temp.LowTemp);
-            var highest = this.WeatherInfoCollection.Max(temp => temp.LowTemp);
-            var temps = this.WeatherInfoCollection.Select(temp => temp.LowTemp).ToList();
-
-            if (lowest % 10 != 0)
-            {
-                lowest = lowest - lowest % 10;
-            }
-
-            if (highest % 10 != 0)
-            {
-                highest = highest + 10 - highest % 10;
-            }
-
-            var lowerBound = lowest;
-            var output = $"Low Temperature Histogram {Environment.NewLine}";
-            while (lowerBound < highest)
-            {
-                var topBound = lowerBound + 9;
-                var enumerable = temps.ToList();
-                var count = enumerable.Count(temp => temp >= lowerBound && temp <= topBound);
-                output += $"{lowerBound}-{topBound}: {count}{Environment.NewLine}";
-
-                lowerBound = topBound + 1;
-            }
-
-            return output;
-        }
 
         private string getDateString(DateTime date)
         {

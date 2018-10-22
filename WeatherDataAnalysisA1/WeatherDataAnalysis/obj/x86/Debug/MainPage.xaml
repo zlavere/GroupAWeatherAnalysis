@@ -1,9 +1,11 @@
-﻿<Page
-    x:Class="WeatherDataAnalysis.MainPage"
+﻿<Page x:ConnectionId='1'
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:WeatherDataAnalysis.ViewModel"
+    xmlns:dataAnnotations="using:System.ComponentModel.DataAnnotations"
+    x:Class="WeatherDataAnalysis.MainPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -12,15 +14,13 @@
             <CommandBar.Content>
                 <Grid />
             </CommandBar.Content>
-            <AppBarButton x:ConnectionId='11' HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Center"                            />
-            <AppBarButton x:ConnectionId='12' Icon="OpenFile" Label="Load File"                        />
+            <AppBarButton x:ConnectionId='13' HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Center"                            />
+            <AppBarButton x:ConnectionId='14' Icon="OpenFile" Label="Load File"                        />
         </CommandBar>
         <TextBox x:ConnectionId='2' x:Name="summaryTextBox" HorizontalAlignment="Left" Margin="234,98,0,0" VerticalAlignment="Top"
                  TextWrapping="Wrap" Text="Summary" Height="276" Width="600" IsReadOnly="True"
                  AutomationProperties.Name="summaryTextBlock" />
-        <TextBlock HorizontalAlignment="Left" Margin="23,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" >
-            <Run Text="Weather Analysis" /><Run /><Run />
-        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="23,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" ><Run Text="Weather Analysis" /><Run /><Run /></TextBlock>
         <TextBlock x:ConnectionId='3' x:Name="MonthLabel" HorizontalAlignment="Left" Margin="25,131,0,0" Text="Month" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:ConnectionId='4' x:Name="MonthInput" HorizontalAlignment="Left" Margin="25,151,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Month to analyze" Width="156"/>
         <TextBlock x:ConnectionId='5' x:Name="HighTempLabel" HorizontalAlignment="Left" Margin="24,195,0,0" Text="High Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -29,6 +29,8 @@
         <TextBox x:ConnectionId='8' x:Name="lowTempInput" HorizontalAlignment="Left" Margin="25,286,0,0" VerticalAlignment="Top" PlaceholderText="Low Temp" Width="93" Text="32"                                               />
         <Button x:ConnectionId='9' x:Name="ClearButton" Content="Clear Data" HorizontalAlignment="Left" Margin="744,58,0,0" VerticalAlignment="Top"                    />
         <Button x:ConnectionId='10' x:Name="RefreshButton" Content="RefreshOutput" HorizontalAlignment="Left" Margin="607,58,0,0" VerticalAlignment="Top" IsEnabled="False"                  />
+        <ComboBox x:ConnectionId='11' x:Name="BucketSizeComboBox"                                          HorizontalAlignment="Left" Margin="29,356,0,0" VerticalAlignment="Top" Width="112"                                       />
+        <TextBlock x:ConnectionId='12' x:Name="BucketSizeLabel" HorizontalAlignment="Left" Margin="31,332,0,0" Text="Histogram Bucket Size" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
 
     </Grid>

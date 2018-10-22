@@ -24,7 +24,7 @@
         <TextBlock x:ConnectionId='6' x:Name="HighTemperatureLabel" HorizontalAlignment="Left" Margin="0,63,0,0" Text="High Temperature on this date" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="202"/>
         <TextBlock x:ConnectionId='7' x:Name="LowTemperatureLabel" HorizontalAlignment="Left" Margin="0,127,0,0" Text="Low Temperature on this date" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="197"/>
         <CheckBox x:ConnectionId='8' x:Name="OverwriteCheckBox" Content="I would like to overwrite any existing data for this date." HorizontalAlignment="Left" Margin="0,188,0,0" VerticalAlignment="Top" Height="32" Width="390"/>
-        <TextBox x:ConnectionId='9' x:Name="NameInput" HorizontalAlignment="Left" Margin="0,245,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Collection Name" Visibility="Collapsed"/>
+        <TextBox x:ConnectionId='9' x:Name="NameInput" HorizontalAlignment="Left" Margin="0,245,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Collection Name" Visibility="Collapsed"                                 />
         <TextBlock x:ConnectionId='10' x:Name="NoCollectionLabel" HorizontalAlignment="Left" Margin="0,221,0,0" Text="Please provide a name for the new weather data set." TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
     </Grid>
 </ContentDialog>

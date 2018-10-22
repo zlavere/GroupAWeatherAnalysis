@@ -77,12 +77,12 @@
             </summary>
             <returns>Returns true if the data element is created successfully.</returns>
         </member>
-        <member name="T:WeatherDataAnalysis.Controller.ImportWeatherInfo">
+        <member name="T:WeatherDataAnalysis.Controller.MainPageController">
             <summary>
                 Controller for the Import processes.
             </summary>
         </member>
-        <member name="P:WeatherDataAnalysis.Controller.ImportWeatherInfo.Type">
+        <member name="P:WeatherDataAnalysis.Controller.MainPageController.Type">
             <summary>
                 Gets the type.
             </summary>
@@ -90,32 +90,32 @@
                 The type.
             </value>
         </member>
-        <member name="M:WeatherDataAnalysis.Controller.ImportWeatherInfo.#ctor">
+        <member name="M:WeatherDataAnalysis.Controller.MainPageController.#ctor">
             <summary>
-                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Controller.ImportWeatherInfo" /> class.
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Controller.MainPageController" /> class.
             </summary>
         </member>
-        <member name="M:WeatherDataAnalysis.Controller.ImportWeatherInfo.GenerateOutput">
+        <member name="M:WeatherDataAnalysis.Controller.MainPageController.GenerateOutput">
             <summary>
                 Generates the output.
             </summary>
             <returns>Generates output for the Active WeatherInfoCollection</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Controller.ImportWeatherInfo.GenerateOutput(System.Int32)">
+        <member name="M:WeatherDataAnalysis.Controller.MainPageController.GenerateOutput(System.Int32)">
             <summary>
                 Generates the output with additional analytic functions for month
             </summary>
             <param name="month">The month to analyze</param>
             <returns></returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Controller.ImportWeatherInfo.loadTemperaturesByMonth(System.Int32)">
+        <member name="M:WeatherDataAnalysis.Controller.MainPageController.loadTemperaturesByMonth(System.Int32)">
             <summary>
             Loads the temperatures by month.
             </summary>
             <param name="month">The month.</param>
             <returns></returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Controller.ImportWeatherInfo.CreateNewFromFile(Windows.Storage.StorageFile,WeatherDataAnalysis.View.ImportDialog)">
+        <member name="M:WeatherDataAnalysis.Controller.MainPageController.CreateNewFromFile(Windows.Storage.StorageFile,WeatherDataAnalysis.View.ImportDialog)">
             <summary>
             Creates the new WeatherInfoCollection from selected file asynchronously.
             </summary>
@@ -123,7 +123,7 @@
             <param name="importDialog">The import dialog.</param>
             <returns>Asynchronously returns a new WeatherInfoCollection from file data based on user selected preferences.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Controller.ImportWeatherInfo.SetHighTempThreshold(System.Int32)">
+        <member name="M:WeatherDataAnalysis.Controller.MainPageController.SetHighTempThreshold(System.Int32)">
             <summary>
             Sets the high temporary threshold.
             </summary>
@@ -203,13 +203,13 @@
             <param name="month">The month.</param>
             <returns>String for Average High in given month.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.createHighHistogram">
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.createHistograms(System.Collections.Generic.IEnumerable{WeatherDataAnalysis.Model.WeatherInfo})">
             <summary>
                 Creates the high Temperatures histogram.
             </summary>
             <returns>String representation of a histogram for High Temperatures</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.createLowHistogram">
+        <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.getDateString(System.DateTime)">
             <summary>
                 Creates the low temperature histogram.
             </summary>
@@ -276,7 +276,7 @@
         </member>
         <member name="M:WeatherDataAnalysis.MainPage.executeImport">
             <summary>
-                Executes the import.
+                Executes the MainPageController.
             </summary>
             <returns>True if new WeatherInfoCollection is added.</returns>
         </member>
