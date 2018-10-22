@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace WeatherDataAnalysis.Model
 {
@@ -40,11 +41,22 @@ namespace WeatherDataAnalysis.Model
         /// <summary>
         ///     Initializes a new instance of the <see cref="WeatherInfo" /> class.
         /// </summary>
+        /// <precondition>High Temp Must be >= lowTemp</precondition>
+        /// <precondition>Date Must be on or before today.</precondition>
         /// <param name="date">The date.</param>
         /// <param name="highTemp">The high temperature.</param>
         /// <param name="lowTemp">The low temperature.</param>
         public WeatherInfo(DateTime date, int highTemp, int lowTemp)
         {
+            if (highTemp < lowTemp)
+            {
+                throw new ArgumentException("highTemp must be >= lowTemp.");
+            }
+
+            if (date > DateTime.Today)
+            {
+                throw new ArgumentException("Date must be on or before Today.");
+            }
             this.Date = date;
             this.LowTemp = lowTemp;
             this.HighTemp = highTemp;

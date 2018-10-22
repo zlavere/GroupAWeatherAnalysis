@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>de33a4da-9a75-4202-99d4-9d3cf5257d74</PackageIdentityName>
     <PackageIdentityPublisher>CN=dyoder</PackageIdentityPublisher>
-    <IntermediateOutputPath>F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\AppX</LayoutDir>
     <RegisteredManifestChecksum>1227F3D811200962329EC70B259DA60B69E6D8D1060571E93D62D8B26DCC830E</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>de33a4da-9a75-4202-99d4-9d3cf5257d74_1.0.0.0_x86__vpktpzvxd0r0j</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>de33a4da-9a75-4202-99d4-9d3cf5257d74_vpktpzvxd0r0j!App</RegisteredUserModeAppID>
@@ -28,16 +28,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-22T05:35:02.457</Modified>
+      <Modified>2018-10-22T07:14:41.400</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.exe">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.exe">
       <PackagePath>entrypoint\WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-10-22T05:35:01.858</Modified>
+      <Modified>2018-10-22T07:14:39.171</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zach0\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.7\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -695,80 +695,80 @@
       <PackagePath>netstandard.dll</PackagePath>
       <Modified>2018-07-20T14:48:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-10-18T17:07:39.479</Modified>
+      <Modified>2018-10-22T07:09:24.473</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2018-10-18T17:07:39.464</Modified>
+      <Modified>2018-10-22T07:09:24.451</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-18T17:07:39.464</Modified>
+      <Modified>2018-10-22T07:09:24.452</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-18T17:07:39.465</Modified>
+      <Modified>2018-10-22T07:09:24.453</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-18T17:07:39.466</Modified>
+      <Modified>2018-10-22T07:09:24.454</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-18T17:07:39.467</Modified>
+      <Modified>2018-10-22T07:09:24.454</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-18T17:07:39.467</Modified>
+      <Modified>2018-10-22T07:09:24.455</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-18T17:07:39.468</Modified>
+      <Modified>2018-10-22T07:09:24.456</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.xr.xml">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\WeatherDataAnalysis.xr.xml">
       <PackagePath>WeatherDataAnalysis.xr.xml</PackagePath>
-      <Modified>2018-10-22T02:42:08.968</Modified>
+      <Modified>2018-10-22T07:09:26.878</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-10-22T05:35:01.534</Modified>
+      <Modified>2018-10-22T07:14:38.803</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-10-22T05:35:01.535</Modified>
+      <Modified>2018-10-22T07:14:38.803</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\ImportDialog.xbf">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\ImportDialog.xbf">
       <PackagePath>View\ImportDialog.xbf</PackagePath>
-      <Modified>2018-10-22T05:35:01.535</Modified>
+      <Modified>2018-10-22T07:14:38.819</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\MergeMatchDialog.xbf">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\MergeMatchDialog.xbf">
       <PackagePath>View\MergeMatchDialog.xbf</PackagePath>
-      <Modified>2018-10-22T05:35:01.536</Modified>
+      <Modified>2018-10-22T07:14:38.821</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\NewWeatherInfoDialog.xbf">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\View\NewWeatherInfoDialog.xbf">
       <PackagePath>View\NewWeatherInfoDialog.xbf</PackagePath>
-      <Modified>2018-10-22T05:35:01.536</Modified>
+      <Modified>2018-10-22T07:14:38.821</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-04-20T02:01:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-22T04:59:49.188</Modified>
+      <Modified>2018-10-22T07:14:40.659</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Google Drive Sync\school\201808\program-construction\migration\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\WeatherDataAnalysis.exe">
+    <AppxPackagedFile Include="F:\Google Drive Sync\school\project\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x86\Debug\Core\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-10-22T05:35:02.446</Modified>
+      <Modified>2018-10-22T07:14:41.388</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

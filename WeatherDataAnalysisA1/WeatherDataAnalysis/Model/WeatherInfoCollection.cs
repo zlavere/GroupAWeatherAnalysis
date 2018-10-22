@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -268,10 +269,19 @@ namespace WeatherDataAnalysis.Model
         /// <summary>
         ///     Gets the average high.
         /// </summary>
-        /// <returns>Average High Temperature for WeatherInfoCollection</returns>
+        /// <returns>Average High Temperature for WeatherInfoCollection. Returns Max Integer Value on Error.</returns>
         public double GetAverageHigh()
         {
-            var averageHigh = this.WeatherInfos.Average(weather => weather.HighTemp);
+            var averageHigh = 0.00;
+            try
+            {
+               averageHigh  = this.WeatherInfos.Average(weather => weather.HighTemp);
+            }
+            catch (Exception)
+            {
+                averageHigh = int.MaxValue;
+            }
+            
             return averageHigh;
         }
 
