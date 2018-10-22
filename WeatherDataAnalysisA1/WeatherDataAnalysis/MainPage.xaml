@@ -3,8 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Custom="using:WeatherDataAnalysis.ViewModel"
-    xmlns:dataAnnotations="using:System.ComponentModel.DataAnnotations"
     x:Class="WeatherDataAnalysis.MainPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -22,16 +20,16 @@
                  TextWrapping="Wrap" Text="Summary" Height="276" Width="600" IsReadOnly="True"
                  AutomationProperties.Name="summaryTextBlock" />
         <TextBlock HorizontalAlignment="Left" Margin="20,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" ><Run Text="Weather Analysis" /><Run /><Run /></TextBlock>
-        <TextBlock x:Name="MonthLabel" HorizontalAlignment="Left" Margin="20,131,0,0" Text="Month" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="MonthInput" HorizontalAlignment="Left" Margin="20,151,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Month to analyze" Width="156"/>
-        <TextBlock x:Name="HighTempLabel" HorizontalAlignment="Left" Margin="20,195,0,0" Text="High Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="monthLabel" HorizontalAlignment="Left" Margin="20,131,0,0" Text="Month" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="monthInput" HorizontalAlignment="Left" Margin="20,151,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Month to analyze" Width="156"/>
+        <TextBlock x:Name="highTempLabel" HorizontalAlignment="Left" Margin="20,195,0,0" Text="High Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="highTempInput" HorizontalAlignment="Left" Margin="20,217,0,0" VerticalAlignment="Top" PlaceholderText="High Temp" Width="93" Text="90" LosingFocus="lostFocus_UpdateHighTempThreshold"/>
-        <TextBlock x:Name="LowTempLabel" HorizontalAlignment="Left" Margin="20,265,0,0" Text="Low Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lowTempLabel" HorizontalAlignment="Left" Margin="20,265,0,0" Text="Low Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="lowTempInput" HorizontalAlignment="Left" Margin="20,286,0,0" VerticalAlignment="Top" PlaceholderText="Low Temp" Width="93" Text="32" LosingFocus="lostFocus_UpdateLowTempThreshold"/>
-        <Button x:Name="ClearButton" Content="Clear Data" HorizontalAlignment="Left" Margin="744,58,0,0" VerticalAlignment="Top" Click="c_ClearData"/>
-        <Button x:Name="RefreshButton" Content="RefreshOutput" HorizontalAlignment="Left" Margin="607,58,0,0" VerticalAlignment="Top" IsEnabled="False" Click="c_Refresh"/>
-        <ComboBox x:Name="BucketSizeComboBox" ItemsSource="{x:Bind ComboBoxBindings}"  HorizontalAlignment="Left" Margin="20,356,0,0" VerticalAlignment="Top" Width="112" SelectionChanged="change_BucketSize"  />
-        <TextBlock x:Name="BucketSizeLabel" HorizontalAlignment="Left" Margin="20,332,0,0" Text="Histogram Bucket Size" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="clearButton" Content="Clear Data" HorizontalAlignment="Left" Margin="744,58,0,0" VerticalAlignment="Top" Click="c_ClearData"/>
+        <Button x:Name="refreshButton" Content="RefreshOutput" HorizontalAlignment="Left" Margin="607,58,0,0" VerticalAlignment="Top" IsEnabled="False" Click="c_Refresh"/>
+        <ComboBox x:Name="bucketSizeComboBox" ItemsSource="{x:Bind HistogramSizeComboBoxBindings}"  HorizontalAlignment="Left" Margin="20,356,0,0" VerticalAlignment="Top" Width="112" SelectionChanged="change_BucketSize"  />
+        <TextBlock x:Name="bucketSizeLabel" HorizontalAlignment="Left" Margin="20,332,0,0" Text="Histogram Bucket Size" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
 
     </Grid>

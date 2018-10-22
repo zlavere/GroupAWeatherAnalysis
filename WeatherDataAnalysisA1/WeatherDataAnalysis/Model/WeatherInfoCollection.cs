@@ -30,25 +30,45 @@ namespace WeatherDataAnalysis.Model
         /// </value>
         private KeyValuePair<string, WeatherInfoCollection> NameCollectionPair { get; }
 
+        /// <summary>
+        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        /// </summary>
         public int Count => this.WeatherInfos.Count;
 
+        /// <summary>
+        /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
+        /// </summary>
         public bool IsReadOnly => this.WeatherInfos.IsReadOnly;
 
+        /// <summary>
+        /// Gets or sets the <see cref="WeatherInfo"/> at the specified index.
+        /// </summary>
+        /// <value>
+        /// The <see cref="WeatherInfo"/>.
+        /// </value>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         public WeatherInfo this[int index]
         {
             get => this.WeatherInfos[index];
             set => this.WeatherInfos[index] = value;
         }
 
-        public int HighestTemp
-        {
-            get => this.WeatherInfos.Max(temp => temp.HighTemp);
-        }
+        /// <summary>
+        /// Gets the highest temperature.
+        /// </summary>
+        /// <value>
+        /// The highest temperature.
+        /// </value>
+        public int HighestTemp => this.WeatherInfos.Max(temp => temp.HighTemp);
 
-        public int LowestTemp
-        {
-            get => this.WeatherInfos.Min(temp => temp.LowTemp);
-        }
+        /// <summary>
+        /// Gets the lowest temperature.
+        /// </summary>
+        /// <value>
+        /// The lowest temperature.
+        /// </value>
+        public int LowestTemp => this.WeatherInfos.Min(temp => temp.LowTemp);
 
         #endregion
 
@@ -151,22 +171,37 @@ namespace WeatherDataAnalysis.Model
             return this.WeatherInfos.GetEnumerator();
         }
 
+        /// <summary>
+        /// Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"></see>.
+        /// </summary>
+        /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1"></see>.</param>
+        /// <returns>
+        /// The index of item if found in the list; otherwise, -1.
+        /// </returns>
         public int IndexOf(WeatherInfo item)
         {
             return this.WeatherInfos.IndexOf(item);
         }
 
+        /// <summary>
+        /// Inserts an item to the <see cref="T:System.Collections.Generic.IList`1"></see> at the specified index.
+        /// </summary>
+        /// <param name="index">The zero-based index at which item should be inserted.</param>
+        /// <param name="item">The object to insert into the <see cref="T:System.Collections.Generic.IList`1"></see>.</param>
         public void Insert(int index, WeatherInfo item)
         {
             this.WeatherInfos.Insert(index, item);
         }
 
+        /// <summary>
+        /// Removes the <see cref="T:System.Collections.Generic.IList`1"></see> item at the specified index.
+        /// </summary>
+        /// <param name="index">The zero-based index of the item to remove.</param>
         public void RemoveAt(int index)
         {
             this.WeatherInfos.RemoveAt(index);
         }
 
-        //TODO Use Factory to generate groupings
         private IDictionary<int, List<WeatherInfo>> groupByYear()
         {
             var years = this.WeatherInfos.Select(weather => weather.Date.Year).Distinct().ToList();
@@ -272,7 +307,7 @@ namespace WeatherDataAnalysis.Model
         /// <returns>Average High Temperature for WeatherInfoCollection. Returns Max Integer Value on Error.</returns>
         public double GetAverageHigh()
         {
-            var averageHigh = 0.00;
+            double averageHigh;
             try
             {
                averageHigh  = this.WeatherInfos.Average(weather => weather.HighTemp);
@@ -355,11 +390,21 @@ namespace WeatherDataAnalysis.Model
             return weatherByMonth.Average(weather => weather.LowTemp);
         }
 
+        /// <summary>
+        /// Finds all above high temperature threshold.
+        /// </summary>
+        /// <param name="highThreshold">The high threshold.</param>
+        /// <returns></returns>
         public IList<WeatherInfo> FindAllAboveHighTempThreshold(int highThreshold)
         {
            return this.WeatherInfos.Where(weatherInfo => weatherInfo.HighTemp >= highThreshold).ToList();
         }
 
+        /// <summary>
+        /// Finds all below low temperature threshold.
+        /// </summary>
+        /// <param name="lowTempThreshold">The low temperature threshold.</param>
+        /// <returns></returns>
         public IList<WeatherInfo> FindAllBelowLowTempThreshold(int lowTempThreshold)
         {
             return  this.WeatherInfos.Where(weatherInfo =>

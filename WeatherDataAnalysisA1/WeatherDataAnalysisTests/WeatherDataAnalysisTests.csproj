@@ -103,7 +103,7 @@
     <Compile Include="WeatherInfoCollection\FindWithLowest.cs" />
     <Compile Include="WeatherInfoCollection\GetAverageHigh.cs" />
     <Compile Include="WeatherInfoCollection\GetAverageLow.cs" />
-    <Compile Include="WeatherInfo\WeatherInfoTest.cs" />
+    <Compile Include="WeatherInfoTests\WeatherInfoTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="UnitTestApp.xaml">

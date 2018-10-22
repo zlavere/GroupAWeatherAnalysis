@@ -26,17 +26,10 @@ namespace WeatherDataAnalysis.Controller
 
         #region Properties
 
-        /// <summary>
-        ///     Gets the type.
-        /// </summary>
-        /// <value>
-        ///     The type.
-        /// </value>
-        private ImportType Type { get; }
         private StorageFile File { get; set; }
         private WeatherInfoCollectionsBinding WeatherInfoCollections { get; }
         private TemperatureDataFormatter TempFormatter { get; set; }
-        public ICollection<string> Errors { get; set; }
+        private ICollection<string> Errors { get; set; }
         #endregion
 
         #region Constructors
@@ -49,18 +42,25 @@ namespace WeatherDataAnalysis.Controller
             this.WeatherInfoCollections = new WeatherInfoCollectionsBinding();
         }
 
-      
+
 
         #endregion
 
         #region Methods
 
+        /// <summary>
+        /// Writes the active information to file.
+        /// </summary>
+        /// <param name="directory">The directory.</param>
         public void WriteActiveInfoToFile(StorageFolder directory)
         {
             var output = new OutputWeatherDataCsv();
             output.WriteActiveDataToCsv(directory);
         }
 
+        /// <summary>
+        /// Sets up TemperatureDataFormatter.
+        /// </summary>
         public void SetUpFormatter()
         {
             if (this.DataFormatter == null)
@@ -70,19 +70,23 @@ namespace WeatherDataAnalysis.Controller
             } 
         }
 
+        /// <summary>
+        /// Sets the size of the histogram bucket.
+        /// </summary>
+        /// <param name="size">The size.</param>
         public void SetHistogramBucketSize(int size)
         {
             this.SetUpFormatter();
             switch (size)
             {
                 case 5:
-                    ComboBoxBindings.ActiveSelection = 5;
+                    HistogramSizeComboBoxBindings.ActiveSelection = 5;
                     break;
                 case 10:
-                    ComboBoxBindings.ActiveSelection = 10;
+                    HistogramSizeComboBoxBindings.ActiveSelection = 10;
                     break;
                 case 20:
-                    ComboBoxBindings.ActiveSelection = 20;
+                    HistogramSizeComboBoxBindings.ActiveSelection = 20;
                     break;
             }
         }
@@ -174,7 +178,7 @@ namespace WeatherDataAnalysis.Controller
             var csvFileReader = new CsvReader();
             var temperatureParser = new TemperatureParser();
             var fileLines = await csvFileReader.GetFileLines(this.File);
-            var newWeatherInfoCollection = temperatureParser.GetWeatherInfoCollection(importDialog.CollectionName, fileLines); ;
+            var newWeatherInfoCollection = temperatureParser.GetWeatherInfoCollection(importDialog.CollectionName, fileLines);
 
             if (importDialog.ImportType == ImportType.Merge && ActiveWeatherInfoCollection.Active.Count > 0)
             {
@@ -238,7 +242,7 @@ namespace WeatherDataAnalysis.Controller
                 var currentNewHigh = currentNew.HighTemp.ToString();
                 var currentNewLow = currentNew.LowTemp.ToString();
 
-                var data = new string[] {
+                var data = new[] {
                     matchingInfoDate,
                     matchingInfoHigh,
                     matchingInfoLow,
@@ -270,12 +274,20 @@ namespace WeatherDataAnalysis.Controller
             this.TempFormatter.HighTempThreshold = highTemp;
         }
 
+        /// <summary>
+        /// Sets the low temperature threshold.
+        /// </summary>
+        /// <param name="lowTemp">The low temperature.</param>
         public void SetLowTempThreshold(int lowTemp)
         {
             
             this.TempFormatter.LowTempThreshold = lowTemp;
         }
 
+        /// <summary>
+        /// Sets the month to run analysis on.
+        /// </summary>
+        /// <param name="month">The month.</param>
         public void SetMonth(int month)
         {
             this.TempFormatter.Month = month;

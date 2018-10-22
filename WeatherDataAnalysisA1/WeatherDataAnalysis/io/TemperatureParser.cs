@@ -86,7 +86,7 @@ namespace WeatherDataAnalysis.io
             var highTemp = line[HighTempSegment];
             var lowTemp = line[LowTempSegment];
 
-            if (!this.isValidDate(date, lineNumber))
+            if (!this.isValidDate(date))
             {
                 var message =
                     $"Error at ln{lineNumber}: {this.getLineString(date, highTemp, lowTemp)}{Environment.NewLine}" +
@@ -121,7 +121,7 @@ namespace WeatherDataAnalysis.io
         }
 
         //TODO Display this
-        private bool isValidDate(string date, int lineNumber)
+        private bool isValidDate(string date)
         {
             bool isValid;
             try

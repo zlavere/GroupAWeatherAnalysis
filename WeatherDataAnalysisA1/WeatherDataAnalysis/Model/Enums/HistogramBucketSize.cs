@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WeatherDataAnalysis.Model.Enums
+﻿namespace WeatherDataAnalysis.Model.Enums
 {
-    public enum HistogramBucketSize: int
+    /// <summary>
+    /// Enum for the various bucket sizes that histogram can be.
+    /// </summary>
+    public enum HistogramBucketSize
     {
-           Five = 5,
-           Ten = 10,
-           Twenty = 20
+        /// <summary>
+        /// 5 degrees per bucket.
+        /// </summary>
+        Five = 5,
+        /// <summary>
+        /// 10 degrees per bucket
+        /// </summary>
+        Ten = 10,
+        /// <summary>
+        /// 20 degrees per bucket
+        /// </summary>
+        Twenty = 20
     }
 }

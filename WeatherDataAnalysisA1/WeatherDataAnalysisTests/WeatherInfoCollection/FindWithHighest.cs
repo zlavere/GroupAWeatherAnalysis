@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WeatherDataAnalysis.Model;
 
@@ -12,7 +10,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
     /// Test Cases
     /// Find Highest from one WeatherInfo in collection
     /// Find Highest from more than one WeatherInfo in collection
-    /// Find Highest in collection of 0 WeatherInfo, throws InvalidOperationException
+    /// Find Highest in collection of 0 WeatherInfo
     /// </summary>
     [TestClass]
     public class FindWithHighest

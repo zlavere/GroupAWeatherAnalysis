@@ -30,9 +30,8 @@ namespace WeatherDataAnalysis.View
         /// <value>
         /// The type of the import.
         /// </value>
-        public ImportType ImportType { get; set; }
+        public ImportType ImportType { get; private set; }
 
-        public string OriginFileName { get; set; }
 
         #endregion
 

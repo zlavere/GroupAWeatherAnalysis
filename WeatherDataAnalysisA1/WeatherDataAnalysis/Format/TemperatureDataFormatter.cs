@@ -24,7 +24,7 @@ namespace WeatherDataAnalysis.Format
 
         private FactoryWeatherInfoCollection FactoryWeatherInfoCollection { get; }
 
-        public WeatherHistogramGenerator HistogramGenerator { get; private set; }
+        private WeatherHistogramGenerator HistogramGenerator { get; }
 
         /// <summary>
         ///     Gets or sets the low temporary threshold.
@@ -32,7 +32,7 @@ namespace WeatherDataAnalysis.Format
         /// <value>
         ///     The low temporary threshold.
         /// </value>
-        public int LowTempThreshold { get; set; }
+        public int LowTempThreshold { private get; set; }
 
         /// <summary>
         ///     Gets or sets the high temporary threshold.
@@ -40,8 +40,14 @@ namespace WeatherDataAnalysis.Format
         /// <value>
         ///     The high temporary threshold.
         /// </value>
-        public int HighTempThreshold { get; set; }
+        public int HighTempThreshold { private get; set; }
 
+        /// <summary>
+        /// Gets or sets the month.
+        /// </summary>
+        /// <value>
+        /// The month.
+        /// </value>
         public int Month { private get; set; }
 
         #endregion

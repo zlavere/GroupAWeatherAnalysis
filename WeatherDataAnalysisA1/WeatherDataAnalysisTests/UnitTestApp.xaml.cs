@@ -10,7 +10,7 @@ namespace WeatherDataAnalysisTests
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    sealed partial class App
     {
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -19,7 +19,7 @@ namespace WeatherDataAnalysisTests
         public App()
         {
             this.InitializeComponent();
-            this.Suspending += this.onSuspending;
+            Suspending += this.onSuspending;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace WeatherDataAnalysisTests
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+                DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
 

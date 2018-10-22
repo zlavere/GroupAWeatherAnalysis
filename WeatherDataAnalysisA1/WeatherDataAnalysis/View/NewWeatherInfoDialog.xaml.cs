@@ -8,30 +8,72 @@ using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.View
 {
-    public sealed partial class NewWeatherInfoDialog : ContentDialog
+    /// <summary>
+    /// Prompt for a specific day's weather information
+    /// </summary>
+    /// <seealso cref="Windows.UI.Xaml.Controls.ContentDialog" />
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector" />
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
+    public sealed partial class NewWeatherInfoDialog
     {
+        /// <summary>
+        /// Submit Button
+        /// </summary>
         public const ContentDialogResult Submit = ContentDialogResult.Primary;
-        public const ContentDialogResult Cancel = ContentDialogResult.Secondary; 
 
+        private const ContentDialogResult Cancel = ContentDialogResult.Secondary;
+
+        /// <summary>
+        /// Gets the high temporary.
+        /// </summary>
+        /// <value>
+        /// The high temporary.
+        /// </value>
         public int HighTemp { get; private set; }
+        /// <summary>
+        /// Gets the low temporary.
+        /// </summary>
+        /// <value>
+        /// The low temporary.
+        /// </value>
         public int LowTemp { get; private set; }
+        /// <summary>
+        /// Gets the date.
+        /// </summary>
+        /// <value>
+        /// The date.
+        /// </value>
         public DateTime Date { get; private set; }
 
-        public ContentDialogResult InputResult { get; private set; }
+        private ContentDialogResult InputResult { get; set; }
+        
+        /// <summary>
+        /// Gets the name of the collection.
+        /// </summary>
+        /// <value>
+        /// The name of the collection.
+        /// </value>
         public string CollectionName { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewWeatherInfoDialog"/> class.
+        /// </summary>
         public NewWeatherInfoDialog()
         {
             this.InitializeComponent();
             
         }
 
+        /// <summary>
+        /// Shows the dialog.
+        /// </summary>
+        /// <returns>ContentDialogResult asynchronously</returns>
         public async Task<ContentDialogResult> ShowDialog()
         {
             if (ActiveWeatherInfoCollection.Active == null)
             {
-                this.NoCollectionLabel.Visibility = Visibility.Visible;
-                this.NameInput.Visibility = Visibility.Visible;
+                this.noCollectionLabel.Visibility = Visibility.Visible;
+                this.nameInput.Visibility = Visibility.Visible;
             }
             var inputResults = await ShowAsync();
             this.InputResult = inputResults;
@@ -56,9 +98,9 @@ namespace WeatherDataAnalysis.View
         private bool isCollectionNameValid()
         {
             var result = false;
-            if (this.NameInput.Text.Length > 0)
+            if (this.nameInput.Text.Length > 0)
             {
-                this.CollectionName = this.NameInput.Text;
+                this.CollectionName = this.nameInput.Text;
                 result = true;
             } else if (ActiveWeatherInfoCollection.Active != null)
             {
@@ -71,7 +113,7 @@ namespace WeatherDataAnalysis.View
         {
             var result = false;
 
-            if (int.TryParse(this.LowTempInput.Text, out var lowTempResult))
+            if (int.TryParse(this.lowTempInput.Text, out var lowTempResult))
             {
                 this.LowTemp = lowTempResult;
                 result = true;
@@ -84,7 +126,7 @@ namespace WeatherDataAnalysis.View
         {
             var result = false;
 
-            if (int.TryParse(this.HighTempInput.Text, out var highTempResult))
+            if (int.TryParse(this.highTempInput.Text, out var highTempResult))
             {
                 this.HighTemp = highTempResult;
                 result = true;
@@ -97,9 +139,9 @@ namespace WeatherDataAnalysis.View
         {
             var result = false;
 
-            if (this.DateInput.Date.Date <= DateTime.Now)
+            if (this.dateInput.Date.Date <= DateTime.Now)
             {
-                this.Date = this.DateInput.Date.Date;
+                this.Date = this.dateInput.Date.Date;
                 result = true;
             }
 
@@ -114,9 +156,15 @@ namespace WeatherDataAnalysis.View
             }
         }
 
+        /// <summary>
+        /// Determines whether [is overwrite allowed].
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if [is overwrite allowed]; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsOverwriteAllowed()
         {
-            var isChecked = this.OverwriteCheckBox.IsChecked;
+            var isChecked = this.overwriteCheckBox.IsChecked;
 
             return isChecked != null && (bool)isChecked;
         }

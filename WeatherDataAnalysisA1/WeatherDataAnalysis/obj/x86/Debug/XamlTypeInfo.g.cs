@@ -189,45 +189,39 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[18];
+            _typeNameTable = new string[15];
             _typeNameTable[0] = "WeatherDataAnalysis.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "Windows.Storage.Pickers.FileOpenPicker";
-            _typeNameTable[4] = "Object";
-            _typeNameTable[5] = "Windows.Storage.StorageFile";
-            _typeNameTable[6] = "WeatherDataAnalysis.View.ImportDialog";
-            _typeNameTable[7] = "Windows.UI.Xaml.Controls.ContentDialog";
-            _typeNameTable[8] = "Windows.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[9] = "Windows.UI.Xaml.Controls.ContentDialogResult";
-            _typeNameTable[10] = "String";
-            _typeNameTable[11] = "WeatherDataAnalysis.Model.Enums.ImportType";
-            _typeNameTable[12] = "System.Enum";
-            _typeNameTable[13] = "System.ValueType";
-            _typeNameTable[14] = "WeatherDataAnalysis.View.MergeMatchDialog";
-            _typeNameTable[15] = "WeatherDataAnalysis.View.NewWeatherInfoDialog";
-            _typeNameTable[16] = "Int32";
-            _typeNameTable[17] = "System.DateTime";
+            _typeNameTable[3] = "WeatherDataAnalysis.View.ImportDialog";
+            _typeNameTable[4] = "Windows.UI.Xaml.Controls.ContentDialog";
+            _typeNameTable[5] = "Windows.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[6] = "String";
+            _typeNameTable[7] = "WeatherDataAnalysis.Model.Enums.ImportType";
+            _typeNameTable[8] = "System.Enum";
+            _typeNameTable[9] = "System.ValueType";
+            _typeNameTable[10] = "Object";
+            _typeNameTable[11] = "WeatherDataAnalysis.View.MergeMatchDialog";
+            _typeNameTable[12] = "WeatherDataAnalysis.View.NewWeatherInfoDialog";
+            _typeNameTable[13] = "Int32";
+            _typeNameTable[14] = "System.DateTime";
 
-            _typeTable = new global::System.Type[18];
+            _typeTable = new global::System.Type[15];
             _typeTable[0] = typeof(global::WeatherDataAnalysis.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::Windows.Storage.Pickers.FileOpenPicker);
-            _typeTable[4] = typeof(global::System.Object);
-            _typeTable[5] = typeof(global::Windows.Storage.StorageFile);
-            _typeTable[6] = typeof(global::WeatherDataAnalysis.View.ImportDialog);
-            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.ContentDialog);
-            _typeTable[8] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
-            _typeTable[9] = typeof(global::Windows.UI.Xaml.Controls.ContentDialogResult);
-            _typeTable[10] = typeof(global::System.String);
-            _typeTable[11] = typeof(global::WeatherDataAnalysis.Model.Enums.ImportType);
-            _typeTable[12] = typeof(global::System.Enum);
-            _typeTable[13] = typeof(global::System.ValueType);
-            _typeTable[14] = typeof(global::WeatherDataAnalysis.View.MergeMatchDialog);
-            _typeTable[15] = typeof(global::WeatherDataAnalysis.View.NewWeatherInfoDialog);
-            _typeTable[16] = typeof(global::System.Int32);
-            _typeTable[17] = typeof(global::System.DateTime);
+            _typeTable[3] = typeof(global::WeatherDataAnalysis.View.ImportDialog);
+            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.ContentDialog);
+            _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
+            _typeTable[6] = typeof(global::System.String);
+            _typeTable[7] = typeof(global::WeatherDataAnalysis.Model.Enums.ImportType);
+            _typeTable[8] = typeof(global::System.Enum);
+            _typeTable[9] = typeof(global::System.ValueType);
+            _typeTable[10] = typeof(global::System.Object);
+            _typeTable[11] = typeof(global::WeatherDataAnalysis.View.MergeMatchDialog);
+            _typeTable[12] = typeof(global::WeatherDataAnalysis.View.NewWeatherInfoDialog);
+            _typeTable[13] = typeof(global::System.Int32);
+            _typeTable[14] = typeof(global::System.DateTime);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -263,10 +257,9 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
         }
 
         private object Activate_0_MainPage() { return new global::WeatherDataAnalysis.MainPage(); }
-        private object Activate_3_FileOpenPicker() { return new global::Windows.Storage.Pickers.FileOpenPicker(); }
-        private object Activate_6_ImportDialog() { return new global::WeatherDataAnalysis.View.ImportDialog(); }
-        private object Activate_14_MergeMatchDialog() { return new global::WeatherDataAnalysis.View.MergeMatchDialog(); }
-        private object Activate_15_NewWeatherInfoDialog() { return new global::WeatherDataAnalysis.View.NewWeatherInfoDialog(); }
+        private object Activate_3_ImportDialog() { return new global::WeatherDataAnalysis.View.ImportDialog(); }
+        private object Activate_11_MergeMatchDialog() { return new global::WeatherDataAnalysis.View.MergeMatchDialog(); }
+        private object Activate_12_NewWeatherInfoDialog() { return new global::WeatherDataAnalysis.View.NewWeatherInfoDialog(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -281,10 +274,6 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             case 0:   //  WeatherDataAnalysis.MainPage
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_MainPage;
-                userType.AddMemberName("FilePicker");
-                userType.AddMemberName("File");
-                userType.AddMemberName("ImportDialog");
-                userType.AddMemberName("ImportDialogResults");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -297,49 +286,28 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  Windows.Storage.Pickers.FileOpenPicker
-                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 4:   //  Object
-                xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 5:   //  Windows.Storage.StorageFile
-                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 6:   //  WeatherDataAnalysis.View.ImportDialog
+            case 3:   //  WeatherDataAnalysis.View.ImportDialog
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_6_ImportDialog;
+                userType.Activator = Activate_3_ImportDialog;
                 userType.AddMemberName("CollectionName");
                 userType.AddMemberName("ImportType");
-                userType.AddMemberName("OriginFileName");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 7:   //  Windows.UI.Xaml.Controls.ContentDialog
+            case 4:   //  Windows.UI.Xaml.Controls.ContentDialog
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 8:   //  Windows.UI.Xaml.Controls.ContentControl
+            case 5:   //  Windows.UI.Xaml.Controls.ContentControl
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 9:   //  Windows.UI.Xaml.Controls.ContentDialogResult
+            case 6:   //  String
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  String
-                xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 11:   //  WeatherDataAnalysis.Model.Enums.ImportType
+            case 7:   //  WeatherDataAnalysis.Model.Enums.ImportType
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Merge", global::WeatherDataAnalysis.Model.Enums.ImportType.Merge);
                 userType.AddEnumValue("Overwrite", global::WeatherDataAnalysis.Model.Enums.ImportType.Overwrite);
@@ -347,41 +315,43 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 12:   //  System.Enum
+            case 8:   //  System.Enum
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 xamlType = userType;
                 break;
 
-            case 13:   //  System.ValueType
+            case 9:   //  System.ValueType
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 14:   //  WeatherDataAnalysis.View.MergeMatchDialog
+            case 10:   //  Object
+                xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 11:   //  WeatherDataAnalysis.View.MergeMatchDialog
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_14_MergeMatchDialog;
-                userType.AddMemberName("InputResult");
+                userType.Activator = Activate_11_MergeMatchDialog;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 15:   //  WeatherDataAnalysis.View.NewWeatherInfoDialog
+            case 12:   //  WeatherDataAnalysis.View.NewWeatherInfoDialog
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_15_NewWeatherInfoDialog;
+                userType.Activator = Activate_12_NewWeatherInfoDialog;
                 userType.AddMemberName("HighTemp");
                 userType.AddMemberName("LowTemp");
                 userType.AddMemberName("Date");
-                userType.AddMemberName("InputResult");
                 userType.AddMemberName("CollectionName");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  Int32
+            case 13:   //  Int32
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 17:   //  System.DateTime
+            case 14:   //  System.DateTime
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
@@ -391,77 +361,32 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
         }
 
 
-        private object get_0_MainPage_FilePicker(object instance)
-        {
-            var that = (global::WeatherDataAnalysis.MainPage)instance;
-            return that.FilePicker;
-        }
-        private object get_1_MainPage_File(object instance)
-        {
-            var that = (global::WeatherDataAnalysis.MainPage)instance;
-            return that.File;
-        }
-        private object get_2_MainPage_ImportDialog(object instance)
-        {
-            var that = (global::WeatherDataAnalysis.MainPage)instance;
-            return that.ImportDialog;
-        }
-        private object get_3_MainPage_ImportDialogResults(object instance)
-        {
-            var that = (global::WeatherDataAnalysis.MainPage)instance;
-            return that.ImportDialogResults;
-        }
-        private object get_4_ImportDialog_CollectionName(object instance)
+        private object get_0_ImportDialog_CollectionName(object instance)
         {
             var that = (global::WeatherDataAnalysis.View.ImportDialog)instance;
             return that.CollectionName;
         }
-        private object get_5_ImportDialog_ImportType(object instance)
+        private object get_1_ImportDialog_ImportType(object instance)
         {
             var that = (global::WeatherDataAnalysis.View.ImportDialog)instance;
             return that.ImportType;
         }
-        private void set_5_ImportDialog_ImportType(object instance, object Value)
-        {
-            var that = (global::WeatherDataAnalysis.View.ImportDialog)instance;
-            that.ImportType = (global::WeatherDataAnalysis.Model.Enums.ImportType)Value;
-        }
-        private object get_6_ImportDialog_OriginFileName(object instance)
-        {
-            var that = (global::WeatherDataAnalysis.View.ImportDialog)instance;
-            return that.OriginFileName;
-        }
-        private void set_6_ImportDialog_OriginFileName(object instance, object Value)
-        {
-            var that = (global::WeatherDataAnalysis.View.ImportDialog)instance;
-            that.OriginFileName = (global::System.String)Value;
-        }
-        private object get_7_MergeMatchDialog_InputResult(object instance)
-        {
-            var that = (global::WeatherDataAnalysis.View.MergeMatchDialog)instance;
-            return that.InputResult;
-        }
-        private object get_8_NewWeatherInfoDialog_HighTemp(object instance)
+        private object get_2_NewWeatherInfoDialog_HighTemp(object instance)
         {
             var that = (global::WeatherDataAnalysis.View.NewWeatherInfoDialog)instance;
             return that.HighTemp;
         }
-        private object get_9_NewWeatherInfoDialog_LowTemp(object instance)
+        private object get_3_NewWeatherInfoDialog_LowTemp(object instance)
         {
             var that = (global::WeatherDataAnalysis.View.NewWeatherInfoDialog)instance;
             return that.LowTemp;
         }
-        private object get_10_NewWeatherInfoDialog_Date(object instance)
+        private object get_4_NewWeatherInfoDialog_Date(object instance)
         {
             var that = (global::WeatherDataAnalysis.View.NewWeatherInfoDialog)instance;
             return that.Date;
         }
-        private object get_11_NewWeatherInfoDialog_InputResult(object instance)
-        {
-            var that = (global::WeatherDataAnalysis.View.NewWeatherInfoDialog)instance;
-            return that.InputResult;
-        }
-        private object get_12_NewWeatherInfoDialog_CollectionName(object instance)
+        private object get_5_NewWeatherInfoDialog_CollectionName(object instance)
         {
             var that = (global::WeatherDataAnalysis.View.NewWeatherInfoDialog)instance;
             return that.CollectionName;
@@ -474,82 +399,40 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
 
             switch (longMemberName)
             {
-            case "WeatherDataAnalysis.MainPage.FilePicker":
-                userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.MainPage");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "FilePicker", "Windows.Storage.Pickers.FileOpenPicker");
-                xamlMember.Getter = get_0_MainPage_FilePicker;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "WeatherDataAnalysis.MainPage.File":
-                userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.MainPage");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "File", "Windows.Storage.StorageFile");
-                xamlMember.Getter = get_1_MainPage_File;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "WeatherDataAnalysis.MainPage.ImportDialog":
-                userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.MainPage");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "ImportDialog", "WeatherDataAnalysis.View.ImportDialog");
-                xamlMember.Getter = get_2_MainPage_ImportDialog;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "WeatherDataAnalysis.MainPage.ImportDialogResults":
-                userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.MainPage");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "ImportDialogResults", "Windows.UI.Xaml.Controls.ContentDialogResult");
-                xamlMember.Getter = get_3_MainPage_ImportDialogResults;
-                xamlMember.SetIsReadOnly();
-                break;
             case "WeatherDataAnalysis.View.ImportDialog.CollectionName":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.ImportDialog");
                 xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "CollectionName", "String");
-                xamlMember.Getter = get_4_ImportDialog_CollectionName;
+                xamlMember.Getter = get_0_ImportDialog_CollectionName;
                 xamlMember.SetIsReadOnly();
                 break;
             case "WeatherDataAnalysis.View.ImportDialog.ImportType":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.ImportDialog");
                 xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "ImportType", "WeatherDataAnalysis.Model.Enums.ImportType");
-                xamlMember.Getter = get_5_ImportDialog_ImportType;
-                xamlMember.Setter = set_5_ImportDialog_ImportType;
-                break;
-            case "WeatherDataAnalysis.View.ImportDialog.OriginFileName":
-                userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.ImportDialog");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "OriginFileName", "String");
-                xamlMember.Getter = get_6_ImportDialog_OriginFileName;
-                xamlMember.Setter = set_6_ImportDialog_OriginFileName;
-                break;
-            case "WeatherDataAnalysis.View.MergeMatchDialog.InputResult":
-                userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.MergeMatchDialog");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "InputResult", "Windows.UI.Xaml.Controls.ContentDialogResult");
-                xamlMember.Getter = get_7_MergeMatchDialog_InputResult;
+                xamlMember.Getter = get_1_ImportDialog_ImportType;
                 xamlMember.SetIsReadOnly();
                 break;
             case "WeatherDataAnalysis.View.NewWeatherInfoDialog.HighTemp":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.NewWeatherInfoDialog");
                 xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "HighTemp", "Int32");
-                xamlMember.Getter = get_8_NewWeatherInfoDialog_HighTemp;
+                xamlMember.Getter = get_2_NewWeatherInfoDialog_HighTemp;
                 xamlMember.SetIsReadOnly();
                 break;
             case "WeatherDataAnalysis.View.NewWeatherInfoDialog.LowTemp":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.NewWeatherInfoDialog");
                 xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "LowTemp", "Int32");
-                xamlMember.Getter = get_9_NewWeatherInfoDialog_LowTemp;
+                xamlMember.Getter = get_3_NewWeatherInfoDialog_LowTemp;
                 xamlMember.SetIsReadOnly();
                 break;
             case "WeatherDataAnalysis.View.NewWeatherInfoDialog.Date":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.NewWeatherInfoDialog");
                 xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "Date", "System.DateTime");
-                xamlMember.Getter = get_10_NewWeatherInfoDialog_Date;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "WeatherDataAnalysis.View.NewWeatherInfoDialog.InputResult":
-                userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.NewWeatherInfoDialog");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "InputResult", "Windows.UI.Xaml.Controls.ContentDialogResult");
-                xamlMember.Getter = get_11_NewWeatherInfoDialog_InputResult;
+                xamlMember.Getter = get_4_NewWeatherInfoDialog_Date;
                 xamlMember.SetIsReadOnly();
                 break;
             case "WeatherDataAnalysis.View.NewWeatherInfoDialog.CollectionName":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.View.NewWeatherInfoDialog");
                 xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "CollectionName", "String");
-                xamlMember.Getter = get_12_NewWeatherInfoDialog_CollectionName;
+                xamlMember.Getter = get_5_NewWeatherInfoDialog_CollectionName;
                 xamlMember.SetIsReadOnly();
                 break;
             }

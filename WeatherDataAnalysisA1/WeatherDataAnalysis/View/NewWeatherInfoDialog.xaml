@@ -2,7 +2,6 @@
     x:Class="WeatherDataAnalysis.View.NewWeatherInfoDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WeatherDataAnalysis.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -17,14 +16,14 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <DatePicker x:Name="DateInput" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="32" Width="296" LostFocus="lostFocus_InputField"/>
-        <TextBox x:Name="HighTempInput" HorizontalAlignment="Left" Margin="0,87,0,0" Text="" VerticalAlignment="Top" PlaceholderText="High Temperature" Height="32" Width="140" LostFocus="lostFocus_InputField"/>
-        <TextBox x:Name="LowTempInput" HorizontalAlignment="Left" Margin="0,151,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Low Temperature" Height="32" Width="135" LostFocus="lostFocus_InputField"/>
-        <TextBlock x:Name="DateLabel" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Select the Date" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="127"/>
-        <TextBlock x:Name="HighTemperatureLabel" HorizontalAlignment="Left" Margin="0,63,0,0" Text="High Temperature on this date" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="202"/>
-        <TextBlock x:Name="LowTemperatureLabel" HorizontalAlignment="Left" Margin="0,127,0,0" Text="Low Temperature on this date" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="197"/>
-        <CheckBox x:Name="OverwriteCheckBox" Content="I would like to overwrite any existing data for this date." HorizontalAlignment="Left" Margin="0,188,0,0" VerticalAlignment="Top" Height="32" Width="390"/>
-        <TextBox x:Name="NameInput" HorizontalAlignment="Left" Margin="0,245,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Collection Name" Visibility="Collapsed" LostFocus="lostFocus_InputField"/>
-        <TextBlock x:Name="NoCollectionLabel" HorizontalAlignment="Left" Margin="0,221,0,0" Text="Please provide a name for the new weather data set." TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <DatePicker x:Name="dateInput" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="32" Width="296" LostFocus="lostFocus_InputField"/>
+        <TextBox Grid.Column="0" x:Name="highTempInput" HorizontalAlignment="Left" Margin="0,87,0,0" Text="" VerticalAlignment="Top" PlaceholderText="High Temperature" Height="32" Width="140" LostFocus="lostFocus_InputField"/>
+        <TextBox Grid.Column="0" x:Name="lowTempInput" HorizontalAlignment="Left" Margin="0,151,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Low Temperature" Height="32" Width="135" LostFocus="lostFocus_InputField"/>
+        <TextBlock Grid.Column="0" x:Name="dateLabel" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Select the Date" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="127"/>
+        <TextBlock Grid.Column="0" x:Name="highTemperatureLabel" HorizontalAlignment="Left" Margin="0,63,0,0" Text="High Temperature on this date" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="202"/>
+        <TextBlock Grid.Column="0" x:Name="lowTemperatureLabel" HorizontalAlignment="Left" Margin="0,127,0,0" Text="Low Temperature on this date" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="197"/>
+        <CheckBox Grid.Column="0" x:Name="overwriteCheckBox" Content="I would like to overwrite any existing data for this date." HorizontalAlignment="Left" Margin="0,188,0,0" VerticalAlignment="Top" Height="32" Width="390"/>
+        <TextBox Grid.Column="0" x:Name="nameInput" HorizontalAlignment="Left" Margin="0,245,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Collection Name" Visibility="Collapsed" LostFocus="lostFocus_InputField"/>
+        <TextBlock Grid.Column="0" x:Name="noCollectionLabel" HorizontalAlignment="Left" Margin="0,221,0,0" Text="Please provide a name for the new weather data set." TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
     </Grid>
 </ContentDialog>

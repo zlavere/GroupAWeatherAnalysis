@@ -11,7 +11,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using WeatherDataAnalysis.Controller;
-using WeatherDataAnalysis.IO;
 using WeatherDataAnalysis.Model.Enums;
 using WeatherDataAnalysis.View;
 using WeatherDataAnalysis.ViewModel;
@@ -37,24 +36,24 @@ namespace WeatherDataAnalysis
         /// </summary>
         private const int ApplicationWidth = 1080;
 
-        private const int defaultBucketSize = 10;
+        private const int DefaultBucketSize = 10;
 
-        private readonly MainPageController MainPageController;
+        private readonly MainPageController mainPageController;
 
         #endregion
 
         #region Properties
 
-        public FileOpenPicker FilePicker { get; private set; }
-        public StorageFile File { get; private set; }
-        public ImportDialog ImportDialog { get; private set; }
-        public ContentDialogResult ImportDialogResults { get; private set; }
+        private FileOpenPicker FilePicker { get; set; }
+        private StorageFile File { get; set; }
+        private ImportDialog ImportDialog { get; set; }
+        private ContentDialogResult ImportDialogResults { get; set; }
 
         private int HighTempThreshold { get; set; }
         private int LowTempThreshold { get; set; }
         private List<HistogramBucketSize> HistogramBucketSizes { get; set; }
 
-        private ComboBoxBindings ComboBoxBindings { get; }
+        private HistogramSizeComboBoxBindings HistogramSizeComboBoxBindings { get; }
 
         #endregion
 
@@ -66,9 +65,9 @@ namespace WeatherDataAnalysis
         /// </summary>
         public MainPage()
         {
-            this.ComboBoxBindings = new ComboBoxBindings();
+            this.HistogramSizeComboBoxBindings = new HistogramSizeComboBoxBindings();
             this.InitializeComponent();
-            this.MainPageController = new MainPageController();
+            this.mainPageController = new MainPageController();
 
             this.HighTempThreshold = (int) Temperature.HighWarningThreshold;
             this.LowTempThreshold = (int) Temperature.FreezingFahrenheit;
@@ -90,9 +89,9 @@ namespace WeatherDataAnalysis
             {
                 var importExecution = await this.executeImport();
 
-                if (this.MonthInput.MaxLength > 0)
+                if (this.monthInput.MaxLength > 0)
                 {
-                    this.MainPageController.SetMonth(int.Parse(this.MonthInput.Text));
+                    this.mainPageController.SetMonth(int.Parse(this.monthInput.Text));
                 }
 
                 if (importExecution)
@@ -114,15 +113,15 @@ namespace WeatherDataAnalysis
         private void setSummaryText()
         {
             var getImportResults = string.Empty;
-            this.MainPageController.SetHighTempThreshold(this.HighTempThreshold);
-            this.MainPageController.SetLowTempThreshold(this.LowTempThreshold);
-            if (this.MonthInput.Text.Equals(string.Empty))
+            this.mainPageController.SetHighTempThreshold(this.HighTempThreshold);
+            this.mainPageController.SetLowTempThreshold(this.LowTempThreshold);
+            if (this.monthInput.Text.Equals(string.Empty))
             {
-                getImportResults = this.MainPageController.GenerateOutput();
+                getImportResults = this.mainPageController.GenerateOutput();
             }
-            else if (int.TryParse(this.MonthInput.Text, out _))
+            else if (int.TryParse(this.monthInput.Text, out _))
             {
-                getImportResults = this.MainPageController.GenerateOutput(int.Parse(this.MonthInput.Text));
+                getImportResults = this.mainPageController.GenerateOutput(int.Parse(this.monthInput.Text));
             }
 
             this.summaryTextBox.Text = getImportResults;
@@ -155,8 +154,8 @@ namespace WeatherDataAnalysis
             {
                 this.ImportDialog = new ImportDialog();
                 this.ImportDialogResults = await this.ImportDialog.ShowAsync();
-                await this.MainPageController.CreateNewFromFile(this.File, this.ImportDialog);
-                this.MainPageController.SetUpFormatter();
+                await this.mainPageController.CreateNewFromFile(this.File, this.ImportDialog);
+                this.mainPageController.SetUpFormatter();
                 executionSuccess = true;
             }
 
@@ -209,7 +208,7 @@ namespace WeatherDataAnalysis
                                            $"Date: {addWeatherInfo.CreatedWeatherInfo.Date}{Environment.NewLine}" +
                                            $"High Temperature: {addWeatherInfo.CreatedWeatherInfo.HighTemp}{Environment.NewLine}" +
                                            $"Low Temperature: {addWeatherInfo.CreatedWeatherInfo.LowTemp}{Environment.NewLine}";
-                this.RefreshButton.IsEnabled = true;
+                this.refreshButton.IsEnabled = true;
             }
             else
             {
@@ -220,16 +219,16 @@ namespace WeatherDataAnalysis
         private void c_Refresh(object sender, RoutedEventArgs e)
         {
             this.setSummaryText();
-            this.RefreshButton.IsEnabled = false;
+            this.refreshButton.IsEnabled = false;
         }
 
         private void change_BucketSize(object sender, SelectionChangedEventArgs e)
         {
-            var selection = this.ComboBoxBindings.Sizes[this.BucketSizeComboBox.SelectedIndex];
-            this.MainPageController.SetHistogramBucketSize(selection);
+            var selection = this.HistogramSizeComboBoxBindings.Sizes[this.bucketSizeComboBox.SelectedIndex];
+            this.mainPageController.SetHistogramBucketSize(selection);
             if (ActiveWeatherInfoCollection.Active != null)
             {
-                this.RefreshButton.IsEnabled = true;
+                this.refreshButton.IsEnabled = true;
             }
         }
 
@@ -245,7 +244,7 @@ namespace WeatherDataAnalysis
             if (directoryResult != null)
             {
                 StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", directoryResult);
-                this.MainPageController.WriteActiveInfoToFile(directoryResult);
+                this.mainPageController.WriteActiveInfoToFile(directoryResult);
                 this.summaryTextBox.Text =
                     $"{ActiveWeatherInfoCollection.Active.Name} data has been written to {directoryResult.Name}.";
             }

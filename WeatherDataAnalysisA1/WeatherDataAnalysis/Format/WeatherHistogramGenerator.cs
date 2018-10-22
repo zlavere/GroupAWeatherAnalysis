@@ -7,22 +7,33 @@ using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.Format
 {
+    /// <summary>
+    /// Generates high and low temperature histograms based on a collection of weather data.
+    /// </summary>
     public class WeatherHistogramGenerator
     {
-        public HistogramBucketSize BucketSize { get; set; }
-        
 
+        private HistogramBucketSize BucketSize { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WeatherHistogramGenerator"/> class.
+        /// </summary>
         public WeatherHistogramGenerator()
         {
             this.BucketSize = HistogramBucketSize.Ten;
         }
 
+        /// <summary>
+        /// Creates the histogram.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <returns></returns>
         public string CreateHistogram(IEnumerable<WeatherInfo> collection)
         {
             var weatherInfos = collection.ToList();
             var highTemps = weatherInfos.Select(temp => temp.HighTemp);
             var lowTemps = weatherInfos.Select(temp => temp.LowTemp);
-            this.BucketSize = (HistogramBucketSize)ComboBoxBindings.ActiveSelection;
+            this.BucketSize = (HistogramBucketSize)HistogramSizeComboBoxBindings.ActiveSelection;
             var output = $"High Temperature Histogram {Environment.NewLine}" +
                          $"{this.evaluateRanges(highTemps)} {Environment.NewLine}" +
                          $"Low Temperature Histogram {Environment.NewLine}" +

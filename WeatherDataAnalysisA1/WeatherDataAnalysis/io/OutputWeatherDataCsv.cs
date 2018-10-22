@@ -1,27 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Storage;
 using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.IO
 {
+    /// <summary>
+    /// Writes Weather Data to a CSV file to save data.
+    /// </summary>
     public class OutputWeatherDataCsv
     {
-          private StorageFolder directory { get; set; }
+        #region Properties
 
+        private StorageFolder Directory { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        ///     Writes the active data to CSV.
+        /// </summary>
+        /// <param name="directory">The directory.</param>
         public async void WriteActiveDataToCsv(StorageFolder directory)
         {
-            this.directory = directory;
-            var file = await this.directory.CreateFileAsync($"{ActiveWeatherInfoCollection.Active.Name}.csv",
+            this.Directory = directory;
+            var file = await this.Directory.CreateFileAsync($"{ActiveWeatherInfoCollection.Active.Name}.csv",
                 CreationCollisionOption.GenerateUniqueName);
-            await FileIO.WriteLinesAsync(file, this.getSeperatedWeatherInfo());
+            await FileIO.WriteLinesAsync(file, this.getSeparatedWeatherInfo());
         }
 
-        private IEnumerable<string> getSeperatedWeatherInfo()
+        private IEnumerable<string> getSeparatedWeatherInfo()
         {
             var commaSeparatedData = new List<string>();
             foreach (var current in ActiveWeatherInfoCollection.Active)
@@ -32,6 +41,7 @@ namespace WeatherDataAnalysis.IO
 
             return commaSeparatedData;
         }
-        
+
+        #endregion
     }
 }
