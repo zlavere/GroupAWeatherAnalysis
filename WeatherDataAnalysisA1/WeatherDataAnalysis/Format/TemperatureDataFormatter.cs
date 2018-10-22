@@ -260,7 +260,7 @@ namespace WeatherDataAnalysis.Format
         }
 
         /// <summary>
-        ///     Formats the high per month.
+        ///     Formats the high for month output.
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns>Returns a string formatted for GUI of highest temperature for the month and date(s) it occurred on.</returns>
