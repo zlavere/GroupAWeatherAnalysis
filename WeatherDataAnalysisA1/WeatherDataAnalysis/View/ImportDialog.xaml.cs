@@ -32,6 +32,8 @@ namespace WeatherDataAnalysis.View
         /// </value>
         public ImportType ImportType { get; set; }
 
+        public string OriginFileName { get; set; }
+
         #endregion
 
         #region Constructors

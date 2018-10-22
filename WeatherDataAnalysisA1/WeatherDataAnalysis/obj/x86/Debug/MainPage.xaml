@@ -16,21 +16,22 @@
             </CommandBar.Content>
             <AppBarButton x:ConnectionId='13' HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Center"                            />
             <AppBarButton x:ConnectionId='14' Icon="OpenFile" Label="Load File"                        />
+            <AppBarButton x:ConnectionId='15' HorizontalAlignment="Left" Icon="Download" Label="Download" VerticalAlignment="Top"                   />
         </CommandBar>
         <TextBox x:ConnectionId='2' x:Name="summaryTextBox" HorizontalAlignment="Left" Margin="234,98,0,0" VerticalAlignment="Top"
                  TextWrapping="Wrap" Text="Summary" Height="276" Width="600" IsReadOnly="True"
                  AutomationProperties.Name="summaryTextBlock" />
-        <TextBlock HorizontalAlignment="Left" Margin="23,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" ><Run Text="Weather Analysis" /><Run /><Run /></TextBlock>
-        <TextBlock x:ConnectionId='3' x:Name="MonthLabel" HorizontalAlignment="Left" Margin="25,131,0,0" Text="Month" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:ConnectionId='4' x:Name="MonthInput" HorizontalAlignment="Left" Margin="25,151,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Month to analyze" Width="156"/>
-        <TextBlock x:ConnectionId='5' x:Name="HighTempLabel" HorizontalAlignment="Left" Margin="24,195,0,0" Text="High Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:ConnectionId='6' x:Name="highTempInput" HorizontalAlignment="Left" Margin="24,217,0,0" VerticalAlignment="Top" PlaceholderText="High Temp" Width="93" Text="90"                                                />
-        <TextBlock x:ConnectionId='7' x:Name="LowTempLabel" HorizontalAlignment="Left" Margin="26,265,0,0" Text="Low Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:ConnectionId='8' x:Name="lowTempInput" HorizontalAlignment="Left" Margin="25,286,0,0" VerticalAlignment="Top" PlaceholderText="Low Temp" Width="93" Text="32"                                               />
+        <TextBlock HorizontalAlignment="Left" Margin="20,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" ><Run Text="Weather Analysis" /><Run /><Run /></TextBlock>
+        <TextBlock x:ConnectionId='3' x:Name="MonthLabel" HorizontalAlignment="Left" Margin="20,131,0,0" Text="Month" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:ConnectionId='4' x:Name="MonthInput" HorizontalAlignment="Left" Margin="20,151,0,0" Text="" VerticalAlignment="Top" PlaceholderText="Month to analyze" Width="156"/>
+        <TextBlock x:ConnectionId='5' x:Name="HighTempLabel" HorizontalAlignment="Left" Margin="20,195,0,0" Text="High Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:ConnectionId='6' x:Name="highTempInput" HorizontalAlignment="Left" Margin="20,217,0,0" VerticalAlignment="Top" PlaceholderText="High Temp" Width="93" Text="90"                                                />
+        <TextBlock x:ConnectionId='7' x:Name="LowTempLabel" HorizontalAlignment="Left" Margin="20,265,0,0" Text="Low Temperature Threshold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:ConnectionId='8' x:Name="lowTempInput" HorizontalAlignment="Left" Margin="20,286,0,0" VerticalAlignment="Top" PlaceholderText="Low Temp" Width="93" Text="32"                                               />
         <Button x:ConnectionId='9' x:Name="ClearButton" Content="Clear Data" HorizontalAlignment="Left" Margin="744,58,0,0" VerticalAlignment="Top"                    />
         <Button x:ConnectionId='10' x:Name="RefreshButton" Content="RefreshOutput" HorizontalAlignment="Left" Margin="607,58,0,0" VerticalAlignment="Top" IsEnabled="False"                  />
-        <ComboBox x:ConnectionId='11' x:Name="BucketSizeComboBox"                                          HorizontalAlignment="Left" Margin="29,356,0,0" VerticalAlignment="Top" Width="112"                                       />
-        <TextBlock x:ConnectionId='12' x:Name="BucketSizeLabel" HorizontalAlignment="Left" Margin="31,332,0,0" Text="Histogram Bucket Size" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox x:ConnectionId='11' x:Name="BucketSizeComboBox"                                          HorizontalAlignment="Left" Margin="20,356,0,0" VerticalAlignment="Top" Width="112"                                       />
+        <TextBlock x:ConnectionId='12' x:Name="BucketSizeLabel" HorizontalAlignment="Left" Margin="20,332,0,0" Text="Histogram Bucket Size" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
 
     </Grid>

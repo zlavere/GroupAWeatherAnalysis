@@ -16,6 +16,7 @@
             </CommandBar.Content>
             <AppBarButton HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Center" Click="c_CreateWeatherInfo"/>
             <AppBarButton Icon="OpenFile" Label="Load File" Click="loadFile_Click" />
+            <AppBarButton HorizontalAlignment="Left" Icon="Download" Label="Download" VerticalAlignment="Top" Click="c_Download"/>
         </CommandBar>
         <TextBox x:Name="summaryTextBox" HorizontalAlignment="Left" Margin="234,98,0,0" VerticalAlignment="Top"
                  TextWrapping="Wrap" Text="Summary" Height="276" Width="600" IsReadOnly="True"

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Storage;
@@ -12,6 +11,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using WeatherDataAnalysis.Controller;
+using WeatherDataAnalysis.IO;
 using WeatherDataAnalysis.Model.Enums;
 using WeatherDataAnalysis.View;
 using WeatherDataAnalysis.ViewModel;
@@ -37,13 +37,14 @@ namespace WeatherDataAnalysis
         /// </summary>
         private const int ApplicationWidth = 1080;
 
+        private const int defaultBucketSize = 10;
+
         private readonly MainPageController MainPageController;
 
         #endregion
 
         #region Properties
 
-        private const int defaultBucketSize = 10;
         public FileOpenPicker FilePicker { get; private set; }
         public StorageFile File { get; private set; }
         public ImportDialog ImportDialog { get; private set; }
@@ -68,7 +69,7 @@ namespace WeatherDataAnalysis
             this.ComboBoxBindings = new ComboBoxBindings();
             this.InitializeComponent();
             this.MainPageController = new MainPageController();
-            
+
             this.HighTempThreshold = (int) Temperature.HighWarningThreshold;
             this.LowTempThreshold = (int) Temperature.FreezingFahrenheit;
 
@@ -76,8 +77,6 @@ namespace WeatherDataAnalysis
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(ApplicationWidth, ApplicationHeight));
         }
-
-
 
         #endregion
 
@@ -150,11 +149,12 @@ namespace WeatherDataAnalysis
             this.FilePicker = this.createNewFileOpenPicker();
             this.File = await this.FilePicker.PickSingleFileAsync();
             StorageApplicationPermissions.FutureAccessList.Add(this.File);
-            this.ImportDialog = new ImportDialog();
-            this.ImportDialogResults = await this.ImportDialog.ShowAsync();
+            
 
             if (this.File != null)
             {
+                this.ImportDialog = new ImportDialog();
+                this.ImportDialogResults = await this.ImportDialog.ShowAsync();
                 await this.MainPageController.CreateNewFromFile(this.File, this.ImportDialog);
                 this.MainPageController.SetUpFormatter();
                 executionSuccess = true;
@@ -225,16 +225,32 @@ namespace WeatherDataAnalysis
 
         private void change_BucketSize(object sender, SelectionChangedEventArgs e)
         {
-           var selection = this.ComboBoxBindings.Sizes[this.BucketSizeComboBox.SelectedIndex];
-           this.MainPageController.SetHistogramBucketSize(selection);
+            var selection = this.ComboBoxBindings.Sizes[this.BucketSizeComboBox.SelectedIndex];
+            this.MainPageController.SetHistogramBucketSize(selection);
             if (ActiveWeatherInfoCollection.Active != null)
             {
                 this.RefreshButton.IsEnabled = true;
-            } 
+            }
+        }
+
+        private async void c_Download(object sender, RoutedEventArgs e)
+        {
+            var directoryPicker = new FolderPicker();
+            directoryPicker.FileTypeFilter.Add(".csv");
+            directoryPicker.FileTypeFilter.Add(".txt");
+            directoryPicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
+
+            var directoryResult = await directoryPicker.PickSingleFolderAsync();
+
+            if (directoryResult != null)
+            {
+                StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", directoryResult);
+                this.MainPageController.WriteActiveInfoToFile(directoryResult);
+                this.summaryTextBox.Text =
+                    $"{ActiveWeatherInfoCollection.Active.Name} data has been written to {directoryResult.Name}.";
+            }
         }
 
         #endregion
-
-
     }
 }

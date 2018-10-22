@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using WeatherDataAnalysis.Format;
 using WeatherDataAnalysis.io;
+using WeatherDataAnalysis.IO;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.Model.Enums;
 using WeatherDataAnalysis.View;
@@ -53,6 +54,12 @@ namespace WeatherDataAnalysis.Controller
         #endregion
 
         #region Methods
+
+        public void WriteActiveInfoToFile(StorageFolder directory)
+        {
+            var output = new OutputWeatherDataCsv();
+            output.WriteActiveDataToCsv(directory);
+        }
 
         public void SetUpFormatter()
         {
