@@ -26,6 +26,7 @@ namespace WeatherDataAnalysis
     {
         #region Data members
 
+        private const int DefaultBucketSizeIndex = 2;
         /// <summary>
         ///     The application height
         /// </summary>
@@ -224,7 +225,7 @@ namespace WeatherDataAnalysis
 
         private void change_BucketSize(object sender, SelectionChangedEventArgs e)
         {
-            var selection = this.HistogramSizeComboBoxBindings.Sizes[this.bucketSizeComboBox.SelectedIndex];
+            var selection = this.HistogramSizeComboBoxBindings.Sizes[DefaultBucketSizeIndex];
             this.mainPageController.SetHistogramBucketSize(selection);
             if (ActiveWeatherInfoCollection.Active != null)
             {
