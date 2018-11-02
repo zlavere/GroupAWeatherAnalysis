@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using WeatherDataAnalysis.Model;
+using WeatherDataAnalysis.Utility;
 using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.Format
@@ -305,6 +306,8 @@ namespace WeatherDataAnalysis.Format
                 if (current != lowestInMonthList.Last())
                 {
                     lowestInMonth += $"{this.getDateString(current.Date)}{Environment.NewLine}";
+
+                    current.Date.OrdinalDateString();
                 }
                 else
                 {

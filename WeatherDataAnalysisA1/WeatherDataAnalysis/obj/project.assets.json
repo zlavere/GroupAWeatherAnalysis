@@ -7005,24 +7005,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\zlavere\\.nuget\\packages\\": {},
+    "C:\\Users\\zach\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zlavere\\Documents\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\WeatherDataAnalysis.csproj",
+      "projectUniqueName": "C:\\groupaweatheranalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\WeatherDataAnalysis.csproj",
       "projectName": "WeatherDataAnalysis",
-      "projectPath": "C:\\Users\\zlavere\\Documents\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\WeatherDataAnalysis.csproj",
-      "packagesPath": "C:\\Users\\zlavere\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zlavere\\Documents\\weatherdataanalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\obj\\",
+      "projectPath": "C:\\groupaweatheranalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\WeatherDataAnalysis.csproj",
+      "packagesPath": "C:\\Users\\zach\\.nuget\\packages\\",
+      "outputPath": "C:\\groupaweatheranalysis\\WeatherDataAnalysisA1\\WeatherDataAnalysis\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\zlavere\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zach\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

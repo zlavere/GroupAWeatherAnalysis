@@ -852,3 +852,12 @@ C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherData
 C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\resources.en.resfiles
 C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\resources.en.resfiles.intermediate
 C:\Users\zlavere\Documents\weatherdataanalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\ProjectArchitectures.txt
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\WeatherDataAnalysisTests.csprojAssemblyReference.cache
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\UnitTestApp.g.i.cs
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\UnitTestApp.g.cs
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\XamlTypeInfo.g.cs
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\UnitTestApp.xaml
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\UnitTestApp.xbf
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\XamlSaveStateFile.xml
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\WeatherDataAnalysisTests.exe
+C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x86\Debug\WeatherDataAnalysisTests.pdb

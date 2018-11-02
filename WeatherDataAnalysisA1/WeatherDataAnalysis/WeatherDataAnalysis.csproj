@@ -114,6 +114,7 @@
     <Compile Include="Model\WeatherInfo.cs" />
     <Compile Include="Model\WeatherInfoCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\DateOrdinalUtility.cs" />
     <Compile Include="ViewModel\ActiveWeatherInfoCollection.cs" />
     <Compile Include="ViewModel\HistogramSizeComboBoxBindings.cs" />
     <Compile Include="ViewModel\DataFormatter.cs" />
