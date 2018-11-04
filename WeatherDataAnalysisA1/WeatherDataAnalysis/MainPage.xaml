@@ -5,7 +5,8 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	x:Class="WeatherDataAnalysis.MainPage"
 	mc:Ignorable="d"
-	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+	>
 
 	<Grid>
 
@@ -16,10 +17,10 @@
 					<Grid />
 				</CommandBar.Content>
 				<AppBarButton HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Center"
-				              Click="c_CreateWeatherInfo" />
-				<AppBarButton Icon="OpenFile" Label="Load File" Click="loadFile_Click" />
+				              Click="{Binding c_ResetData}" />
+				<AppBarButton Icon="OpenFile" Label="Load File" Click="{Binding c_ResetData}" />
 				<AppBarButton HorizontalAlignment="Left" Icon="Download" Label="Download" VerticalAlignment="Top"
-				              Click="c_Download" />
+				              Click="{Binding c_ResetData}" />
 				<AppBarToggleButton HorizontalAlignment="Left" Icon="Setting" Label="Show Analysis Options" />
 			</CommandBar>
 			<SplitView
@@ -46,12 +47,12 @@
 							<RowDefinition Height="1*" />
 						</Grid.RowDefinitions>
 						<TextBlock Grid.Column="0" Grid.Row="0" x:Name="monthLabel" HorizontalAlignment="Center" FontSize="20"
-						           Text="Month" TextWrapping="Wrap" VerticalAlignment="Center" />
+						           Text="Month" TextWrapping="Wrap" VerticalAlignment="Center" Padding="20,10,0,10" />
 						<TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" x:Name="monthInput" HorizontalAlignment="Center"
-						         Text="" VerticalAlignment="center" PlaceholderText="Month to analyze" Width="156" />
-						<GridViewItem Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1">
-							<StackPanel Padding="20,0,0,0">
-								<TextBlock Text="Temperture Histogram Range Sze:" TextAlignment="Left" />
+						         Text="" VerticalAlignment="center" PlaceholderText="Month to analyze" Width="156" Padding="20,10,0,10" />
+						<GridViewItem Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" Padding="0,10,0,10">
+							<StackPanel Padding="20,10,0,0">
+								<TextBlock Text="Temperture Histogram Range Sze:" TextAlignment="Center" Padding="0,0,30,5" />
 								<StackPanel Orientation="Horizontal" Padding="0,0,0,0">
 									<RadioButton Content="5" Tag="5" />
 									<RadioButton Content="10" Tag="10" IsChecked="True" />
@@ -59,25 +60,24 @@
 								</StackPanel>
 							</StackPanel>
 						</GridViewItem>
+						
 						<TextBlock Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" x:Name="highTempLabel" HorizontalAlignment="Center"
-						           VerticalAlignment="center" Text="High Temperature Threshold" TextWrapping="Wrap" />
+						           VerticalAlignment="center" Text="High Temperature Threshold" TextWrapping="Wrap" Padding="0,0,0,0" />
 
 						<TextBox Grid.Column="3" Grid.Row="2" x:Name="highTempInput" HorizontalAlignment="Center"
-						         VerticalAlignment="center" PlaceholderText="High Temp" Width="93" Text="90"
-						         LosingFocus="lostFocus_UpdateHighTempThreshold" />
-
+						         VerticalAlignment="center" Text="{Binding LowTempThreashold}" Width="93"/>
+						
 						<TextBlock Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" x:Name="lowTempLabel" HorizontalAlignment="Center"
 						           VerticalAlignment="center" Text="Low Temperature Threshold" TextWrapping="Wrap" />
 
 						<TextBox Grid.Column="3" Grid.Row="3" x:Name="lowTempInput" HorizontalAlignment="Center"
-						         VerticalAlignment="center" PlaceholderText="Low Temp" Width="93" Text="32"
-						         LosingFocus="lostFocus_UpdateLowTempThreshold" />
+						         VerticalAlignment="center" Text="{Binding LowTempThreashold}" Width="93"/>
 
 						<Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" x:Name="clearButton" Content="Clear Data"
-						        HorizontalAlignment="Center" VerticalAlignment="center" Click="c_ClearData" />
+						        HorizontalAlignment="Center" VerticalAlignment="center" Click="{Binding c_ClearData}" />
 
 						<Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" x:Name="refreshButton" Content="RefreshOutput"
-						        HorizontalAlignment="Center" VerticalAlignment="center" IsEnabled="False" Click="c_Refresh" />
+						        HorizontalAlignment="Center" VerticalAlignment="center" IsEnabled="False" Click="{Binding c_ResetData}" />
 
 					</Grid>
 				</SplitView.Pane>
