@@ -251,6 +251,13 @@ namespace WeatherDataAnalysis
             }
         }
 
+
+
         #endregion
+
+        private void c_DetailsView(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MasterDetailsWeather));
+        }
     }
 }

@@ -46,7 +46,6 @@ namespace WeatherDataAnalysis.Utility
                         break;
                 }
             }
-
             return ordinalDay;
         }
     }

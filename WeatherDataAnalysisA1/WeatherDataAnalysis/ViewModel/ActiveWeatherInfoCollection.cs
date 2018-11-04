@@ -1,4 +1,6 @@
-﻿using WeatherDataAnalysis.Model;
+﻿using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
 {
@@ -14,6 +16,5 @@ namespace WeatherDataAnalysis.ViewModel
         /// Sets the WeatherInformationCollection used ubiquitously throughout the application.
         /// </value>
         public static WeatherInfoCollection Active { get; set; }
-
     }
 }
