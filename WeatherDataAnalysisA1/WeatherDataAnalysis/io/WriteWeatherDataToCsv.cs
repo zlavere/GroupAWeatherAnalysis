@@ -8,7 +8,7 @@ namespace WeatherDataAnalysis.IO
     /// <summary>
     /// Writes Weather Data to a CSV file to save data.
     /// </summary>
-    public class OutputWeatherDataCsv
+    public class WriteWeatherDataToCsv
     {
         #region Properties
 
