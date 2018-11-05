@@ -120,11 +120,11 @@ namespace WeatherDataAnalysis.Format
                     $"The Highest Low Temperature in {currentYear} was " +
                     $"{Math.Round((double)this.WeatherInfoCollection.Max(temp => temp.LowTemp),2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestLowTemps()}";
 
-                output += $"Dates with temperatures below {this.LowTempThreshold}{Environment.NewLine}";
-                output += $"{this.getTempsBelow()}";
+                output += $"Dates with temperatures below {this.LowTempThreshold} : ";
+                output += this.getTempsBelow() + Environment.NewLine;
 
-                output += $"Dates with temperatures above {this.HighTempThreshold}{Environment.NewLine}";
-                output += this.getTempsAbove();
+                output += $"Dates with temperatures above {this.HighTempThreshold} : ";
+                output += this.getTempsAbove() + Environment.NewLine;
 
                 output += this.createHistograms(this.WeatherInfoCollection);
                 output += Environment.NewLine;
@@ -240,24 +240,24 @@ namespace WeatherDataAnalysis.Format
 
         private string getTempsBelow()
         {
-            var output = string.Empty;
+            var output = 0;
             foreach (var current in this.WeatherInfoCollection.FindAllBelowLowTempThreshold(this.LowTempThreshold))
             {
-                output += $"{this.getDateString(current.Date)}{Environment.NewLine}";
+                output++;
             }
 
-            return output;
+            return output.ToString();
         }
 
         private string getTempsAbove()
         {
-            var output = string.Empty;
+            var output =0;
             foreach (var current in this.WeatherInfoCollection.FindAllAboveHighTempThreshold(this.HighTempThreshold))
             {
-                output += $"{this.getDateString(current.Date)}{Environment.NewLine}";
+                output++;
             }
 
-            return output;
+            return output.ToString();
         }
 
         /// <summary>
