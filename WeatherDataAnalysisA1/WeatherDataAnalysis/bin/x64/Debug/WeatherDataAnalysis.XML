@@ -299,12 +299,12 @@
             <param name="weatherInfoList">The temporary list.</param>
             <returns></returns>
         </member>
-        <member name="T:WeatherDataAnalysis.IO.OutputWeatherDataCsv">
+        <member name="T:WeatherDataAnalysis.IO.WriteWeatherDataToCsv">
             <summary>
             Writes Weather Data to a CSV file to save data.
             </summary>
         </member>
-        <member name="M:WeatherDataAnalysis.IO.OutputWeatherDataCsv.WriteActiveDataToCsv(Windows.Storage.StorageFolder)">
+        <member name="M:WeatherDataAnalysis.IO.WriteWeatherDataToCsv.WriteActiveDataToCsv(Windows.Storage.StorageFolder)">
             <summary>
                 Writes the active data to CSV.
             </summary>

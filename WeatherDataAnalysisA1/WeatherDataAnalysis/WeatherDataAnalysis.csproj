@@ -101,8 +101,8 @@
     <Compile Include="Controller\MainPageController.cs" />
     <Compile Include="Format\TemperatureDataFormatter.cs" />
     <Compile Include="IO\CsvReader.cs" />
-    <Compile Include="IO\OutputWeatherDataCsv.cs" />
     <Compile Include="IO\TemperatureParser.cs" />
+    <Compile Include="IO\WriteWeatherDataToCsv.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
