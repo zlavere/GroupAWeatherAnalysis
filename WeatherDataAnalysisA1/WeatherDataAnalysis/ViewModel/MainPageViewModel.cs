@@ -14,7 +14,6 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using WeatherDataAnalysis.Annotations;
 using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.Model.Enums;
 using WeatherDataAnalysis.View;
@@ -88,11 +87,6 @@ namespace WeatherDataAnalysis.ViewModel
 
         public Button refreshButton;
         #endregion
-
-
-
-
-
         #region Constructors
 
         /// <inheritdoc />
