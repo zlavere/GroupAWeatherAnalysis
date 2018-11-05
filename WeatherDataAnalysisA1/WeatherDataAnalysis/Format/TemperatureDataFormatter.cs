@@ -103,10 +103,10 @@ namespace WeatherDataAnalysis.Format
                 output += $"{currentYear} Data: ({this.WeatherInfoCollection.Count} Days of Data){Environment.NewLine}";
                 output +=
                     $"Average High Temperature in {currentYear}: " +
-                    $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2)}{Environment.NewLine}";
+                    $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2):0.00}{Environment.NewLine}";
                 output +=
                     $"Average Low Temperature in {currentYear}: " +
-                    $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2)}{Environment.NewLine}";
+                    $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2):0.00}{Environment.NewLine}";
                 output +=
                     $"The Highest Temperature in {currentYear} was " +
                     $"{Math.Round((double) this.WeatherInfoCollection.HighestTemp, 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestTemps()}";
@@ -163,10 +163,10 @@ namespace WeatherDataAnalysis.Format
 
                     output +=
                         $"Average High Temperature in {this.WeatherInfoCollection.Name}: " +
-                        $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2)}{Environment.NewLine}";
+                        $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2):0.00}{Environment.NewLine}";
                     output +=
                         $"Average Low Temperature in {this.WeatherInfoCollection.Name}: " +
-                        $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2)}{Environment.NewLine}";
+                        $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2):0.00}{Environment.NewLine}";
                     output +=
                         $"The Highest Temperature in {this.WeatherInfoCollection.Name} was " +
                         $"{Math.Round((double)this.WeatherInfoCollection.Max(temp => temp.HighTemp),2)}" +
