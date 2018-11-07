@@ -1,92 +1,106 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.Model.Enums;
 using WeatherDataAnalysis.View;
 
 namespace WeatherDataAnalysis.ViewModel
 {
-    class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : INotifyPropertyChanged
     {
+        #region Data members
+
+        private string summaryText;
+        private string monthFilter;
+        private string yearFilter;
+        private string highTempThreshold;
+        private string lowTempThreshold;
+        public Button RefreshButton;
+
+        #endregion
+
         #region Properties
+
         private FileOpenPicker FilePicker { get; set; }
         private StorageFile File { get; set; }
         private ImportDialog ImportDialog { get; set; }
         private ContentDialogResult ImportDialogResults { get; set; }
 
         private List<HistogramBucketSize> HistogramBucketSizes { get; set; }
-        private string summaryText;
+
         public string SummaryText
         {
-            get => this.summaryText; set
+            get => this.summaryText;
+            set
             {
                 this.summaryText = value;
                 this.OnPropertyChanged(this.summaryText);
             }
         }
 
-        private string monthFilter;
         public string MonthFilter
         {
-            get => this.summaryText; set
+            get => this.summaryText;
+            set
             {
                 this.summaryText = value;
-                this.OnPropertyChanged(monthFilter);
+                this.OnPropertyChanged(this.monthFilter);
             }
         }
-        private string yearFilter;
+
         public string YearFilter
         {
-            get => this.summaryText; set
+            get => this.summaryText;
+            set
             {
                 this.summaryText = value;
-                this.OnPropertyChanged(yearFilter);
+                this.OnPropertyChanged(this.yearFilter);
             }
         }
+
         private HistogramSizeComboBoxBindings HistogramSizeComboBoxBindings { get; }
-        private string highTempThreshold ;
 
         public string HighTempThreshold
         {
             get => this.highTempThreshold;
             set
             {
-                if (value == this.highTempThreshold) return;
+                if (value == this.highTempThreshold)
+                {
+                    return;
+                }
+
                 this.highTempThreshold = value;
 
                 this.OnPropertyChanged(nameof(this.HighTempThreshold));
             }
         }
 
-        private string lowTempThreashold;
-
         public string LowTempThreshold
         {
-            get => this.lowTempThreashold;
+            get => this.lowTempThreshold;
             set
             {
-                if (value == this.lowTempThreashold) return;
-                this.lowTempThreashold = value;
+                if (value == this.lowTempThreshold)
+                {
+                    return;
+                }
+
+                this.lowTempThreshold = value;
                 this.OnPropertyChanged(nameof(this.LowTempThreshold));
             }
         }
 
-        public Button refreshButton;
         #endregion
+
         #region Constructors
 
         /// <inheritdoc />
@@ -99,8 +113,6 @@ namespace WeatherDataAnalysis.ViewModel
 
             this.HighTempThreshold = Temperature.HighWarningThreshold.ToString();
             this.LowTempThreshold = Temperature.FreezingFahrenheit.ToString();
-
-            
         }
 
         #endregion
@@ -120,7 +132,7 @@ namespace WeatherDataAnalysis.ViewModel
                     //TODO month Filter
                     //this.mainPageController.SetMonth(int.Parse(this.monthInput.Text));
                 }
-                
+
                 if (importExecution)
                 {
                     this.setSummaryText();
@@ -139,18 +151,17 @@ namespace WeatherDataAnalysis.ViewModel
 
         private void setSummaryText()
         {
-
             //TODO setSummeryText
             var getImportResults = string.Empty;
-                //this.mainPageController.SetHighTempThreshold(this.HighTempThreshold);
-           // this.mainPageController.SetLowTempThreshold(this.LowTempThreshold);
+            //this.mainPageController.SetHighTempThreshold(this.HighTempThreshold);
+            // this.mainPageController.SetLowTempThreshold(this.LowTempThreshold);
             if (this.monthFilter.Equals(string.Empty))
             {
-               // getImportResults = this.mainPageController.GenerateOutput();
+                // getImportResults = this.mainPageController.GenerateOutput();
             }
             else if (int.TryParse(this.monthFilter, out _))
             {
-               // getImportResults = this.mainPageController.GenerateOutput(int.Parse(this.monthFilter));
+                // getImportResults = this.mainPageController.GenerateOutput(int.Parse(this.monthFilter));
             }
 
             this.summaryText = getImportResults;
@@ -178,20 +189,18 @@ namespace WeatherDataAnalysis.ViewModel
             this.File = await this.FilePicker.PickSingleFileAsync();
             StorageApplicationPermissions.FutureAccessList.Add(this.File);
 
-
             if (this.File != null)
             {
                 //TODO exeecuteImport
                 this.ImportDialog = new ImportDialog();
                 this.ImportDialogResults = await this.ImportDialog.ShowAsync();
-               // await this.mainPageController.CreateNewFromFile(this.File, this.ImportDialog);
-               // this.mainPageController.SetUpFormatter();
+                // await this.mainPageController.CreateNewFromFile(this.File, this.ImportDialog);
+                // this.mainPageController.SetUpFormatter();
                 executionSuccess = true;
             }
 
             return executionSuccess;
         }
-
 
         private void c_ClearData(object sender, RoutedEventArgs e)
         {
@@ -211,10 +220,10 @@ namespace WeatherDataAnalysis.ViewModel
             if (successfullyCreated)
             {
                 this.summaryText = $"Created New Weather Information Entry{Environment.NewLine}" +
-                                           $"Date: {addWeatherInfo.CreatedWeatherInfo.Date}{Environment.NewLine}" +
-                                           $"High Temperature: {addWeatherInfo.CreatedWeatherInfo.HighTemp}{Environment.NewLine}" +
-                                           $"Low Temperature: {addWeatherInfo.CreatedWeatherInfo.LowTemp}{Environment.NewLine}";
-                this.refreshButton.IsEnabled = true;
+                                   $"Date: {addWeatherInfo.CreatedWeatherInfo.Date}{Environment.NewLine}" +
+                                   $"High Temperature: {addWeatherInfo.CreatedWeatherInfo.HighTemp}{Environment.NewLine}" +
+                                   $"Low Temperature: {addWeatherInfo.CreatedWeatherInfo.LowTemp}{Environment.NewLine}";
+                this.RefreshButton.IsEnabled = true;
             }
             else
             {
@@ -225,7 +234,7 @@ namespace WeatherDataAnalysis.ViewModel
         private void c_Refresh(object sender, RoutedEventArgs e)
         {
             this.setSummaryText();
-            this.refreshButton.IsEnabled = false;
+            this.RefreshButton.IsEnabled = false;
         }
 
         private void change_BucketSize(object sender, SelectionChangedEventArgs e)
@@ -235,11 +244,11 @@ namespace WeatherDataAnalysis.ViewModel
             //this.mainPageController.SetHistogramBucketSize(selection);
             if (ActiveWeatherInfoCollection.Active != null)
             {
-                this.refreshButton.IsEnabled = true;
+                this.RefreshButton.IsEnabled = true;
             }
         }
 
-        private async void c_Download(object sender, RoutedEventArgs e)
+        private async void c_SaveWeatherData(object sender, RoutedEventArgs e)
         {
             //todo c_download
             var directoryPicker = new FolderPicker();
@@ -252,18 +261,19 @@ namespace WeatherDataAnalysis.ViewModel
             if (directoryResult != null)
             {
                 StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", directoryResult);
-               // this.mainPageController.WriteActiveInfoToFile(directoryResult);
+                // this.mainPageController.WriteActiveInfoToFile(directoryResult);
                 this.summaryText =
                     $"{ActiveWeatherInfoCollection.Active.Name} data has been written to {directoryResult.Name}.";
             }
         }
 
         #endregion
+
         #region INotifyPropertyChangedImplementation
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
+        // [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
