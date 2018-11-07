@@ -150,6 +150,12 @@
             </summary>
             <param name="month">The month.</param>
         </member>
+        <member name="T:WeatherDataAnalysis.Converter.OrdinalDateConverter">
+            <summary>
+            Converts Date string to have an ordinal number for the day of the month.
+            Example Format: January 1st, 2019
+            </summary>
+        </member>
         <member name="T:WeatherDataAnalysis.Format.TemperatureDataFormatter">
             <summary>
                 Formats Temperature Data
@@ -299,12 +305,12 @@
             <param name="weatherInfoList">The temporary list.</param>
             <returns></returns>
         </member>
-        <member name="T:WeatherDataAnalysis.IO.OutputWeatherDataCsv">
+        <member name="T:WeatherDataAnalysis.IO.WriteWeatherDataToCsv">
             <summary>
             Writes Weather Data to a CSV file to save data.
             </summary>
         </member>
-        <member name="M:WeatherDataAnalysis.IO.OutputWeatherDataCsv.WriteActiveDataToCsv(Windows.Storage.StorageFolder)">
+        <member name="M:WeatherDataAnalysis.IO.WriteWeatherDataToCsv.WriteActiveDataToCsv(Windows.Storage.StorageFolder)">
             <summary>
                 Writes the active data to CSV.
             </summary>
@@ -696,6 +702,11 @@
             <param name="lowTempThreshold">The low temperature threshold.</param>
             <returns></returns>
         </member>
+        <member name="M:WeatherDataAnalysis.Utility.RelayCommand.OnCanExecuteChanged">
+            <summary>
+            Typically, protected but made public, so can trigger a manual refresh on the result of CanExecute.
+            </summary>
+        </member>
         <member name="T:WeatherDataAnalysis.ViewModel.ActiveWeatherInfoCollection">
             <summary>
             Data binding for the currently active WeatherInformationCollection to be used throughout the application.
@@ -754,6 +765,18 @@
             <summary>
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.ViewModel.DataFormatter" /> class.
             </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.ViewModel.MainPageViewModel.#ctor">
+            <inheritdoc />
+            <summary>
+                Initializes a new instance of the <see cref="T:WeatherDataAnalysis.MainPage" /> class.
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.ViewModel.MainPageViewModel.executeImport">
+            <summary>
+                Executes the MainPageController.
+            </summary>
+            <returns>True if new WeatherInfoCollection is added.</returns>
         </member>
         <member name="T:WeatherDataAnalysis.ViewModel.WeatherInfoCollectionsBinding">
             <summary>

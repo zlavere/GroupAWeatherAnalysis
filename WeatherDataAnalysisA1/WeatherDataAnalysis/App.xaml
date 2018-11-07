@@ -1,6 +1,11 @@
 ﻿<Application
     x:Class="WeatherDataAnalysis.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:WeatherDataAnalysis.Converter">          
+    <Application.Resources>
+        <converters:OrdinalDateConverter x:Key="DateOridnalConverter" />
+        <converters:DatePickerConverter x:Key="DatePickerConverter" />
+    </Application.Resources>
+    
 </Application>

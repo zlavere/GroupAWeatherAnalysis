@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WeatherDataAnalysis.Utility
+namespace WeatherDataAnalysis.Extension
 {
-    public static class DateOrdinalUtility
+    public static class DateExtensions
     {
         public static string OrdinalDateString(this DateTime date)
         {

@@ -99,10 +99,12 @@
     </Compile>
     <Compile Include="Controller\AddWeatherInfo.cs" />
     <Compile Include="Controller\MainPageController.cs" />
+    <Compile Include="Converter\DatePickerConverter.cs" />
+    <Compile Include="Converter\OrdinalDateConverter.cs" />
     <Compile Include="Format\TemperatureDataFormatter.cs" />
     <Compile Include="IO\CsvReader.cs" />
-    <Compile Include="IO\OutputWeatherDataCsv.cs" />
     <Compile Include="IO\TemperatureParser.cs" />
+    <Compile Include="IO\WriteWeatherDataToCsv.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -114,11 +116,13 @@
     <Compile Include="Model\WeatherInfo.cs" />
     <Compile Include="Model\WeatherInfoCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\DateOrdinalUtility.cs" />
-    <Compile Include="Utility\ObservableCollectionUtility.cs" />
+    <Compile Include="Extension\DateExtensions.cs" />
+    <Compile Include="Extension\ListExtensions.cs" />
+    <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="ViewModel\ActiveWeatherInfoCollection.cs" />
     <Compile Include="ViewModel\HistogramSizeComboBoxBindings.cs" />
     <Compile Include="ViewModel\DataFormatter.cs" />
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="ViewModel\WeatherInfoCollectionsBinding.cs" />
     <Compile Include="ViewModel\DetailViewModel.cs" />
     <Compile Include="View\ImportDialog.xaml.cs">

@@ -213,63 +213,67 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[27];
-            _typeNameTable[0] = "WeatherDataAnalysis.MainPage";
-            _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "WeatherDataAnalysis.View.ImportDialog";
-            _typeNameTable[4] = "Windows.UI.Xaml.Controls.ContentDialog";
-            _typeNameTable[5] = "Windows.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[6] = "String";
-            _typeNameTable[7] = "WeatherDataAnalysis.Model.Enums.ImportType";
-            _typeNameTable[8] = "System.Enum";
-            _typeNameTable[9] = "System.ValueType";
-            _typeNameTable[10] = "Object";
-            _typeNameTable[11] = "WeatherDataAnalysis.View.MergeMatchDialog";
-            _typeNameTable[12] = "WeatherDataAnalysis.View.NewWeatherInfoDialog";
-            _typeNameTable[13] = "Int32";
-            _typeNameTable[14] = "System.DateTime";
-            _typeNameTable[15] = "WeatherDataAnalysis.ViewModel.DetailViewModel";
-            _typeNameTable[16] = "System.Collections.ObjectModel.ObservableCollection`1<WeatherDataAnalysis.Model.WeatherInfo>";
-            _typeNameTable[17] = "System.Collections.ObjectModel.Collection`1<WeatherDataAnalysis.Model.WeatherInfo>";
-            _typeNameTable[18] = "WeatherDataAnalysis.Model.WeatherInfo";
-            _typeNameTable[19] = "WeatherDataAnalysis.View.MasterDetailsWeather";
-            _typeNameTable[20] = "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool";
-            _typeNameTable[21] = "Windows.UI.Xaml.Markup.MarkupExtension";
-            _typeNameTable[22] = "Boolean";
-            _typeNameTable[23] = "Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter";
-            _typeNameTable[24] = "Windows.UI.Xaml.DependencyObject";
-            _typeNameTable[25] = "Double";
-            _typeNameTable[26] = "Microsoft.Toolkit.Uwp.UI.Converters.DoubleToVisibilityConverter";
+            _typeNameTable = new string[29];
+            _typeNameTable[0] = "WeatherDataAnalysis.Converter.OrdinalDateConverter";
+            _typeNameTable[1] = "Object";
+            _typeNameTable[2] = "WeatherDataAnalysis.Converter.DatePickerConverter";
+            _typeNameTable[3] = "WeatherDataAnalysis.MainPage";
+            _typeNameTable[4] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[5] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[6] = "WeatherDataAnalysis.View.ImportDialog";
+            _typeNameTable[7] = "Windows.UI.Xaml.Controls.ContentDialog";
+            _typeNameTable[8] = "Windows.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[9] = "String";
+            _typeNameTable[10] = "WeatherDataAnalysis.Model.Enums.ImportType";
+            _typeNameTable[11] = "System.Enum";
+            _typeNameTable[12] = "System.ValueType";
+            _typeNameTable[13] = "WeatherDataAnalysis.View.MergeMatchDialog";
+            _typeNameTable[14] = "WeatherDataAnalysis.View.NewWeatherInfoDialog";
+            _typeNameTable[15] = "Int32";
+            _typeNameTable[16] = "System.DateTime";
+            _typeNameTable[17] = "WeatherDataAnalysis.ViewModel.DetailViewModel";
+            _typeNameTable[18] = "System.Collections.ObjectModel.ObservableCollection`1<WeatherDataAnalysis.Model.WeatherInfo>";
+            _typeNameTable[19] = "System.Collections.ObjectModel.Collection`1<WeatherDataAnalysis.Model.WeatherInfo>";
+            _typeNameTable[20] = "WeatherDataAnalysis.Model.WeatherInfo";
+            _typeNameTable[21] = "WeatherDataAnalysis.View.MasterDetailsWeather";
+            _typeNameTable[22] = "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool";
+            _typeNameTable[23] = "Windows.UI.Xaml.Markup.MarkupExtension";
+            _typeNameTable[24] = "Boolean";
+            _typeNameTable[25] = "Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter";
+            _typeNameTable[26] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[27] = "Double";
+            _typeNameTable[28] = "Microsoft.Toolkit.Uwp.UI.Converters.DoubleToVisibilityConverter";
 
-            _typeTable = new global::System.Type[27];
-            _typeTable[0] = typeof(global::WeatherDataAnalysis.MainPage);
-            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::WeatherDataAnalysis.View.ImportDialog);
-            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.ContentDialog);
-            _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
-            _typeTable[6] = typeof(global::System.String);
-            _typeTable[7] = typeof(global::WeatherDataAnalysis.Model.Enums.ImportType);
-            _typeTable[8] = typeof(global::System.Enum);
-            _typeTable[9] = typeof(global::System.ValueType);
-            _typeTable[10] = typeof(global::System.Object);
-            _typeTable[11] = typeof(global::WeatherDataAnalysis.View.MergeMatchDialog);
-            _typeTable[12] = typeof(global::WeatherDataAnalysis.View.NewWeatherInfoDialog);
-            _typeTable[13] = typeof(global::System.Int32);
-            _typeTable[14] = typeof(global::System.DateTime);
-            _typeTable[15] = typeof(global::WeatherDataAnalysis.ViewModel.DetailViewModel);
-            _typeTable[16] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::WeatherDataAnalysis.Model.WeatherInfo>);
-            _typeTable[17] = typeof(global::System.Collections.ObjectModel.Collection<global::WeatherDataAnalysis.Model.WeatherInfo>);
-            _typeTable[18] = typeof(global::WeatherDataAnalysis.Model.WeatherInfo);
-            _typeTable[19] = typeof(global::WeatherDataAnalysis.View.MasterDetailsWeather);
-            _typeTable[20] = typeof(global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool);
-            _typeTable[21] = typeof(global::Windows.UI.Xaml.Markup.MarkupExtension);
-            _typeTable[22] = typeof(global::System.Boolean);
-            _typeTable[23] = typeof(global::Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter);
-            _typeTable[24] = typeof(global::Windows.UI.Xaml.DependencyObject);
-            _typeTable[25] = typeof(global::System.Double);
-            _typeTable[26] = typeof(global::Microsoft.Toolkit.Uwp.UI.Converters.DoubleToVisibilityConverter);
+            _typeTable = new global::System.Type[29];
+            _typeTable[0] = typeof(global::WeatherDataAnalysis.Converter.OrdinalDateConverter);
+            _typeTable[1] = typeof(global::System.Object);
+            _typeTable[2] = typeof(global::WeatherDataAnalysis.Converter.DatePickerConverter);
+            _typeTable[3] = typeof(global::WeatherDataAnalysis.MainPage);
+            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[6] = typeof(global::WeatherDataAnalysis.View.ImportDialog);
+            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.ContentDialog);
+            _typeTable[8] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
+            _typeTable[9] = typeof(global::System.String);
+            _typeTable[10] = typeof(global::WeatherDataAnalysis.Model.Enums.ImportType);
+            _typeTable[11] = typeof(global::System.Enum);
+            _typeTable[12] = typeof(global::System.ValueType);
+            _typeTable[13] = typeof(global::WeatherDataAnalysis.View.MergeMatchDialog);
+            _typeTable[14] = typeof(global::WeatherDataAnalysis.View.NewWeatherInfoDialog);
+            _typeTable[15] = typeof(global::System.Int32);
+            _typeTable[16] = typeof(global::System.DateTime);
+            _typeTable[17] = typeof(global::WeatherDataAnalysis.ViewModel.DetailViewModel);
+            _typeTable[18] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::WeatherDataAnalysis.Model.WeatherInfo>);
+            _typeTable[19] = typeof(global::System.Collections.ObjectModel.Collection<global::WeatherDataAnalysis.Model.WeatherInfo>);
+            _typeTable[20] = typeof(global::WeatherDataAnalysis.Model.WeatherInfo);
+            _typeTable[21] = typeof(global::WeatherDataAnalysis.View.MasterDetailsWeather);
+            _typeTable[22] = typeof(global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool);
+            _typeTable[23] = typeof(global::Windows.UI.Xaml.Markup.MarkupExtension);
+            _typeTable[24] = typeof(global::System.Boolean);
+            _typeTable[25] = typeof(global::Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter);
+            _typeTable[26] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[27] = typeof(global::System.Double);
+            _typeTable[28] = typeof(global::Microsoft.Toolkit.Uwp.UI.Converters.DoubleToVisibilityConverter);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -304,24 +308,26 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::WeatherDataAnalysis.MainPage(); }
-        private object Activate_3_ImportDialog() { return new global::WeatherDataAnalysis.View.ImportDialog(); }
-        private object Activate_11_MergeMatchDialog() { return new global::WeatherDataAnalysis.View.MergeMatchDialog(); }
-        private object Activate_12_NewWeatherInfoDialog() { return new global::WeatherDataAnalysis.View.NewWeatherInfoDialog(); }
-        private object Activate_15_DetailViewModel() { return new global::WeatherDataAnalysis.ViewModel.DetailViewModel(); }
-        private object Activate_16_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::WeatherDataAnalysis.Model.WeatherInfo>(); }
-        private object Activate_17_Collection() { return new global::System.Collections.ObjectModel.Collection<global::WeatherDataAnalysis.Model.WeatherInfo>(); }
-        private object Activate_19_MasterDetailsWeather() { return new global::WeatherDataAnalysis.View.MasterDetailsWeather(); }
-        private object Activate_20_NullableBool() { return new global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool(); }
-        private object Activate_23_DoubleToObjectConverter() { return new global::Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter(); }
-        private object Activate_26_DoubleToVisibilityConverter() { return new global::Microsoft.Toolkit.Uwp.UI.Converters.DoubleToVisibilityConverter(); }
-        private void VectorAdd_16_ObservableCollection(object instance, object item)
+        private object Activate_0_OrdinalDateConverter() { return new global::WeatherDataAnalysis.Converter.OrdinalDateConverter(); }
+        private object Activate_2_DatePickerConverter() { return new global::WeatherDataAnalysis.Converter.DatePickerConverter(); }
+        private object Activate_3_MainPage() { return new global::WeatherDataAnalysis.MainPage(); }
+        private object Activate_6_ImportDialog() { return new global::WeatherDataAnalysis.View.ImportDialog(); }
+        private object Activate_13_MergeMatchDialog() { return new global::WeatherDataAnalysis.View.MergeMatchDialog(); }
+        private object Activate_14_NewWeatherInfoDialog() { return new global::WeatherDataAnalysis.View.NewWeatherInfoDialog(); }
+        private object Activate_17_DetailViewModel() { return new global::WeatherDataAnalysis.ViewModel.DetailViewModel(); }
+        private object Activate_18_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::WeatherDataAnalysis.Model.WeatherInfo>(); }
+        private object Activate_19_Collection() { return new global::System.Collections.ObjectModel.Collection<global::WeatherDataAnalysis.Model.WeatherInfo>(); }
+        private object Activate_21_MasterDetailsWeather() { return new global::WeatherDataAnalysis.View.MasterDetailsWeather(); }
+        private object Activate_22_NullableBool() { return new global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool(); }
+        private object Activate_25_DoubleToObjectConverter() { return new global::Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter(); }
+        private object Activate_28_DoubleToVisibilityConverter() { return new global::Microsoft.Toolkit.Uwp.UI.Converters.DoubleToVisibilityConverter(); }
+        private void VectorAdd_18_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::WeatherDataAnalysis.Model.WeatherInfo>)instance;
             var newItem = (global::WeatherDataAnalysis.Model.WeatherInfo)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_17_Collection(object instance, object item)
+        private void VectorAdd_19_Collection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::WeatherDataAnalysis.Model.WeatherInfo>)instance;
             var newItem = (global::WeatherDataAnalysis.Model.WeatherInfo)item;
@@ -338,43 +344,61 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  WeatherDataAnalysis.MainPage
-                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+            case 0:   //  WeatherDataAnalysis.Converter.OrdinalDateConverter
+                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_0_OrdinalDateConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 1:   //  Windows.UI.Xaml.Controls.Page
+            case 1:   //  Object
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  Windows.UI.Xaml.Controls.UserControl
+            case 2:   //  WeatherDataAnalysis.Converter.DatePickerConverter
+                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_2_DatePickerConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 3:   //  WeatherDataAnalysis.MainPage
+                userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_3_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 4:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  WeatherDataAnalysis.View.ImportDialog
+            case 5:   //  Windows.UI.Xaml.Controls.UserControl
+                xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 6:   //  WeatherDataAnalysis.View.ImportDialog
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_3_ImportDialog;
+                userType.Activator = Activate_6_ImportDialog;
                 userType.AddMemberName("CollectionName");
                 userType.AddMemberName("ImportType");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Windows.UI.Xaml.Controls.ContentDialog
+            case 7:   //  Windows.UI.Xaml.Controls.ContentDialog
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 5:   //  Windows.UI.Xaml.Controls.ContentControl
+            case 8:   //  Windows.UI.Xaml.Controls.ContentControl
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  String
+            case 9:   //  String
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 7:   //  WeatherDataAnalysis.Model.Enums.ImportType
+            case 10:   //  WeatherDataAnalysis.Model.Enums.ImportType
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Merge", global::WeatherDataAnalysis.Model.Enums.ImportType.Merge);
                 userType.AddEnumValue("Overwrite", global::WeatherDataAnalysis.Model.Enums.ImportType.Overwrite);
@@ -382,30 +406,26 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 8:   //  System.Enum
+            case 11:   //  System.Enum
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 xamlType = userType;
                 break;
 
-            case 9:   //  System.ValueType
+            case 12:   //  System.ValueType
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 10:   //  Object
-                xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 11:   //  WeatherDataAnalysis.View.MergeMatchDialog
+            case 13:   //  WeatherDataAnalysis.View.MergeMatchDialog
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_11_MergeMatchDialog;
+                userType.Activator = Activate_13_MergeMatchDialog;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 12:   //  WeatherDataAnalysis.View.NewWeatherInfoDialog
+            case 14:   //  WeatherDataAnalysis.View.NewWeatherInfoDialog
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentDialog"));
-                userType.Activator = Activate_12_NewWeatherInfoDialog;
+                userType.Activator = Activate_14_NewWeatherInfoDialog;
                 userType.AddMemberName("HighTemp");
                 userType.AddMemberName("LowTemp");
                 userType.AddMemberName("Date");
@@ -414,40 +434,40 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 13:   //  Int32
+            case 15:   //  Int32
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 14:   //  System.DateTime
+            case 16:   //  System.DateTime
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 15:   //  WeatherDataAnalysis.ViewModel.DetailViewModel
+            case 17:   //  WeatherDataAnalysis.ViewModel.DetailViewModel
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_15_DetailViewModel;
+                userType.Activator = Activate_17_DetailViewModel;
                 userType.AddMemberName("WeatherInfoMaster");
-                userType.AddMemberName("WeatherInfoDetail");
+                userType.AddMemberName("SelectedWeatherInfoDetail");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  System.Collections.ObjectModel.ObservableCollection`1<WeatherDataAnalysis.Model.WeatherInfo>
+            case 18:   //  System.Collections.ObjectModel.ObservableCollection`1<WeatherDataAnalysis.Model.WeatherInfo>
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<WeatherDataAnalysis.Model.WeatherInfo>"));
-                userType.CollectionAdd = VectorAdd_16_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_18_ObservableCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 17:   //  System.Collections.ObjectModel.Collection`1<WeatherDataAnalysis.Model.WeatherInfo>
+            case 19:   //  System.Collections.ObjectModel.Collection`1<WeatherDataAnalysis.Model.WeatherInfo>
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_17_Collection;
-                userType.CollectionAdd = VectorAdd_17_Collection;
+                userType.Activator = Activate_19_Collection;
+                userType.CollectionAdd = VectorAdd_19_Collection;
                 xamlType = userType;
                 break;
 
-            case 18:   //  WeatherDataAnalysis.Model.WeatherInfo
+            case 20:   //  WeatherDataAnalysis.Model.WeatherInfo
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("HighTemp");
                 userType.AddMemberName("LowTemp");
@@ -456,16 +476,16 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 19:   //  WeatherDataAnalysis.View.MasterDetailsWeather
+            case 21:   //  WeatherDataAnalysis.View.MasterDetailsWeather
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_19_MasterDetailsWeather;
+                userType.Activator = Activate_21_MasterDetailsWeather;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 20:   //  Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool
+            case 22:   //  Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Markup.MarkupExtension"));
-                userType.Activator = Activate_20_NullableBool;
+                userType.Activator = Activate_22_NullableBool;
                 userType.AddMemberName("Value");
                 userType.AddMemberName("IsNull");
                 userType.SetIsBindable();
@@ -473,17 +493,17 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 21:   //  Windows.UI.Xaml.Markup.MarkupExtension
+            case 23:   //  Windows.UI.Xaml.Markup.MarkupExtension
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 22:   //  Boolean
+            case 24:   //  Boolean
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 23:   //  Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter
+            case 25:   //  Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_23_DoubleToObjectConverter;
+                userType.Activator = Activate_25_DoubleToObjectConverter;
                 userType.AddMemberName("TrueValue");
                 userType.AddMemberName("FalseValue");
                 userType.AddMemberName("NullValue");
@@ -493,17 +513,17 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 24:   //  Windows.UI.Xaml.DependencyObject
+            case 26:   //  Windows.UI.Xaml.DependencyObject
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 25:   //  Double
+            case 27:   //  Double
                 xamlType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 26:   //  Microsoft.Toolkit.Uwp.UI.Converters.DoubleToVisibilityConverter
+            case 28:   //  Microsoft.Toolkit.Uwp.UI.Converters.DoubleToVisibilityConverter
                 userType = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Converters.DoubleToObjectConverter"));
-                userType.Activator = Activate_26_DoubleToVisibilityConverter;
+                userType.Activator = Activate_28_DoubleToVisibilityConverter;
                 userType.SetIsBindable();
                 xamlType = userType;
                 break;
@@ -601,6 +621,11 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             var that = (global::WeatherDataAnalysis.ViewModel.DetailViewModel)instance;
             return that.WeatherInfoMaster;
         }
+        private void set_6_DetailViewModel_WeatherInfoMaster(object instance, object Value)
+        {
+            var that = (global::WeatherDataAnalysis.ViewModel.DetailViewModel)instance;
+            that.WeatherInfoMaster = (global::System.Collections.ObjectModel.ObservableCollection<global::WeatherDataAnalysis.Model.WeatherInfo>)Value;
+        }
         private object get_7_WeatherInfo_HighTemp(object instance)
         {
             var that = (global::WeatherDataAnalysis.Model.WeatherInfo)instance;
@@ -616,15 +641,15 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
             var that = (global::WeatherDataAnalysis.Model.WeatherInfo)instance;
             return that.Date;
         }
-        private object get_10_DetailViewModel_WeatherInfoDetail(object instance)
+        private object get_10_DetailViewModel_SelectedWeatherInfoDetail(object instance)
         {
             var that = (global::WeatherDataAnalysis.ViewModel.DetailViewModel)instance;
-            return that.WeatherInfoDetail;
+            return that.SelectedWeatherInfoDetail;
         }
-        private void set_10_DetailViewModel_WeatherInfoDetail(object instance, object Value)
+        private void set_10_DetailViewModel_SelectedWeatherInfoDetail(object instance, object Value)
         {
             var that = (global::WeatherDataAnalysis.ViewModel.DetailViewModel)instance;
-            that.WeatherInfoDetail = (global::WeatherDataAnalysis.Model.WeatherInfo)Value;
+            that.SelectedWeatherInfoDetail = (global::WeatherDataAnalysis.Model.WeatherInfo)Value;
         }
         private object get_11_NullableBool_Value(object instance)
         {
@@ -744,7 +769,7 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.ViewModel.DetailViewModel");
                 xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "WeatherInfoMaster", "System.Collections.ObjectModel.ObservableCollection`1<WeatherDataAnalysis.Model.WeatherInfo>");
                 xamlMember.Getter = get_6_DetailViewModel_WeatherInfoMaster;
-                xamlMember.SetIsReadOnly();
+                xamlMember.Setter = set_6_DetailViewModel_WeatherInfoMaster;
                 break;
             case "WeatherDataAnalysis.Model.WeatherInfo.HighTemp":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.Model.WeatherInfo");
@@ -764,11 +789,11 @@ namespace WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo
                 xamlMember.Getter = get_9_WeatherInfo_Date;
                 xamlMember.SetIsReadOnly();
                 break;
-            case "WeatherDataAnalysis.ViewModel.DetailViewModel.WeatherInfoDetail":
+            case "WeatherDataAnalysis.ViewModel.DetailViewModel.SelectedWeatherInfoDetail":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WeatherDataAnalysis.ViewModel.DetailViewModel");
-                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "WeatherInfoDetail", "WeatherDataAnalysis.Model.WeatherInfo");
-                xamlMember.Getter = get_10_DetailViewModel_WeatherInfoDetail;
-                xamlMember.Setter = set_10_DetailViewModel_WeatherInfoDetail;
+                xamlMember = new global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlMember(this, "SelectedWeatherInfoDetail", "WeatherDataAnalysis.Model.WeatherInfo");
+                xamlMember.Getter = get_10_DetailViewModel_SelectedWeatherInfoDetail;
+                xamlMember.Setter = set_10_DetailViewModel_SelectedWeatherInfoDetail;
                 break;
             case "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool.Value":
                 userType = (global::WeatherDataAnalysis.WeatherDataAnalysis_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool");

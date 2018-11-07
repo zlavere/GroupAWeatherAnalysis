@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using WeatherDataAnalysis.Extension;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.Utility;
 
@@ -13,31 +9,56 @@ namespace WeatherDataAnalysis.ViewModel
 {
     public class DetailViewModel : INotifyPropertyChanged
     {
+        #region Data members
+
         private ObservableCollection<WeatherInfo> weatherInfoMaster;
-        private WeatherInfo selectedWeatherInfo;
+        private WeatherInfo selectedSelectedWeatherInfo;
 
-        public ObservableCollection<WeatherInfo> WeatherInfoMaster { get => this.weatherInfoMaster; private set => this.weatherInfoMaster = value; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
 
-        public WeatherInfo WeatherInfoDetail
+        #region Properties
+
+        public ObservableCollection<WeatherInfo> WeatherInfoMaster
         {
-            get => this.selectedWeatherInfo;
+            get => this.weatherInfoMaster;
             set
             {
-                this.selectedWeatherInfo = value;
-                this.OnPropertyChanged(nameof(this.WeatherInfoDetail));
+                this.weatherInfoMaster = value;
+                this.OnPropertyChanged();
             }
         }
+
+        public WeatherInfo SelectedWeatherInfoDetail
+        {
+            get => this.selectedSelectedWeatherInfo;
+            set
+            {
+                this.selectedSelectedWeatherInfo = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region Constructors
 
         public DetailViewModel()
         {
             this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region Methods
+
+        
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
     }
 }
