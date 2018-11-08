@@ -36,7 +36,6 @@ namespace WeatherDataAnalysis.ViewModel
             set
             {
                 this.selectedSelectedWeatherInfo = value;
-                this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
                 this.OnPropertyChanged();
             }
         }
@@ -54,8 +53,6 @@ namespace WeatherDataAnalysis.ViewModel
         #endregion
 
         #region Methods
-
-        
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-08T00:28:23.651</Modified>
+      <Modified>2018-11-08T01:26:34.826</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.exe">
       <PackagePath>entrypoint\WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-11-08T00:28:22.474</Modified>
+      <Modified>2018-11-08T01:26:32.510</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\zach\.nuget\packages\microsoft.identity.client\1.1.2-preview0008\lib\win81\Microsoft.Identity.Client.dll">
       <PackagePath>Microsoft.Identity.Client.dll</PackagePath>
@@ -767,31 +767,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.xr.xml">
       <PackagePath>WeatherDataAnalysis.xr.xml</PackagePath>
-      <Modified>2018-11-07T23:55:47.359</Modified>
+      <Modified>2018-11-08T01:26:31.749</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-11-08T00:28:21.988</Modified>
+      <Modified>2018-11-08T01:26:31.867</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-11-08T00:28:21.989</Modified>
+      <Modified>2018-11-08T01:26:31.868</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\ImportDialog.xbf">
       <PackagePath>View\ImportDialog.xbf</PackagePath>
-      <Modified>2018-11-08T00:28:21.990</Modified>
+      <Modified>2018-11-08T01:26:31.869</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\MergeMatchDialog.xbf">
       <PackagePath>View\MergeMatchDialog.xbf</PackagePath>
-      <Modified>2018-11-08T00:28:21.992</Modified>
+      <Modified>2018-11-08T01:26:31.870</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\NewWeatherInfoDialog.xbf">
       <PackagePath>View\NewWeatherInfoDialog.xbf</PackagePath>
-      <Modified>2018-11-08T00:28:21.993</Modified>
+      <Modified>2018-11-08T01:26:31.871</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\MasterDetailsWeather.xbf">
       <PackagePath>View\MasterDetailsWeather.xbf</PackagePath>
-      <Modified>2018-11-08T00:28:21.995</Modified>
+      <Modified>2018-11-08T01:26:31.879</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -816,7 +816,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-11-08T00:28:23.640</Modified>
+      <Modified>2018-11-08T01:26:34.806</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

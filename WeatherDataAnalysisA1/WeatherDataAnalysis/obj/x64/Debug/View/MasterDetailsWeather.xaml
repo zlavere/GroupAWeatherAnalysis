@@ -16,17 +16,33 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <CommandBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <CommandBar.Content>
+            <Grid />
+            </CommandBar.Content>
 
+            <AppBarButton HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Top"
+                         />
+            <AppBarButton Icon="OpenFile" Label="Load File"  />
+            <AppBarButton HorizontalAlignment="Left" Icon="Save" Label="Save" VerticalAlignment="Top"
+                           />
+            <AppBarButton Icon="List" Label="Details" VerticalAlignment="Top" HorizontalAlignment="Left"
+                          />
+            <AppBarToggleButton HorizontalAlignment="Left" VerticalAlignment="Top" Icon="Setting" Label="Options" />
 
-        <ListView x:ConnectionId='2' Grid.Column="0" x:Name="weatherInfoMaster" ItemsSource="{Binding WeatherInfoMaster, Mode=TwoWay}"
+            <AppBarButton Icon="Home" Label="Home" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        </CommandBar>
+        <ListView x:ConnectionId='2' Grid.Column="0" Grid.Row="1" x:Name="weatherInfoMaster" ItemsSource="{Binding WeatherInfoMaster, Mode=TwoWay}"
                   SelectedItem="{Binding SelectedWeatherInfoDetail, Mode=TwoWay}" HorizontalAlignment="Left"
-                  Height="Auto" Margin="0" VerticalAlignment="Top">
+                  Height="Auto" Margin="20" Padding="10,10,0,0" VerticalAlignment="Top">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border>
@@ -43,7 +59,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Grid Grid.Column="1" HorizontalAlignment="Center"
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"
               Margin="0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
