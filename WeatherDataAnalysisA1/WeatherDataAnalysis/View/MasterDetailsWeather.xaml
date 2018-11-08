@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListView Grid.Column="0" x:Name="weatherInfoMaster" ItemsSource="{Binding WeatherInfoMaster}"
+        <ListView Grid.Column="0" x:Name="weatherInfoMaster" ItemsSource="{Binding WeatherInfoMaster, Mode=TwoWay}"
                   SelectedItem="{Binding SelectedWeatherInfoDetail, Mode=TwoWay}" HorizontalAlignment="Left"
                   Height="Auto" Margin="0" VerticalAlignment="Top">
             <ListView.ItemTemplate>
@@ -36,17 +36,17 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <TextBlock HorizontalAlignment="Stretch" Grid.Row="0"
-                                       Text="{Binding Date}" />
-                            <TextBlock Grid.Row="1" Text="{Binding HighTemp}" />
+                                       Text="{Binding Date, Converter={StaticResource OrdinalDateConverter}, Mode=TwoWay}" />
+                            <TextBlock Grid.Row="1" Text="{Binding HighTemp, Mode=TwoWay}" />
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Grid Grid.Column="1" HorizontalAlignment="Left"
-              Margin="0" VerticalAlignment="Top">
+        <Grid Grid.Column="1" HorizontalAlignment="Center"
+              Margin="0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -54,15 +54,22 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Date" />
-            <DatePicker Grid.Column="0" Grid.Row="1"
-                       Date="{Binding SelectedWeatherInfoDetail.Date, Converter={StaticResource DatePickerConverter}}" Margin="10" />
+            <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Text="Date" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <DatePicker Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                       Date="{Binding SelectedWeatherInfoDetail.Date, Mode=TwoWay, Converter={StaticResource DatePickerConverter}}" Margin="10,0,0,0" HorizontalAlignment="Left" />
             <!-- TODO Make TwoWay on Edit button-->
-            <TextBlock Text="High Temperature" Grid.Column="1" Grid.Row="0" />
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedWeatherInfoDetail.HighTemp}" Margin="10" />
-
+            <TextBlock Text="High Temperature" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Margin="10,0,0,0" />
+            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding SelectedWeatherInfoDetail.HighTemp, Mode=TwoWay, Converter={StaticResource StringToInt}}" Margin="10,0,0,0"  HorizontalAlignment="Left" />
+            <TextBlock Text="Low Temperature" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Margin="10,0,0,0" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedWeatherInfoDetail.LowTemp, Mode=TwoWay, Converter={StaticResource StringToInt}}" Margin="10,0,0,0"  HorizontalAlignment="Left" />
+            <TextBlock Text="Precipitation" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="10,0,0,0" />
+            <TextBox Grid.Row="5" Grid.Column="0" Text="{Binding SelectedWeatherInfoDetail.Precipitation, Mode=TwoWay}" Margin="10,0,0,0"  HorizontalAlignment="Left" />
         </Grid>
 
     </Grid>

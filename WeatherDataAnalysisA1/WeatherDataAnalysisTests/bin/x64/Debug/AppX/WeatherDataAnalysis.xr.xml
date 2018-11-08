@@ -15,6 +15,7 @@
     </RootType>
     <RootType FullName="WeatherDataAnalysis.Converter.OrdinalDateConverter" />
     <RootType FullName="WeatherDataAnalysis.Converter.DatePickerConverter" />
+    <RootType FullName="WeatherDataAnalysis.Converter.StringInputToInt" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Width" />
@@ -184,8 +185,8 @@
       <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="Converter" />
       <RootProperty Name="Mode" />
+      <RootProperty Name="Converter" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">

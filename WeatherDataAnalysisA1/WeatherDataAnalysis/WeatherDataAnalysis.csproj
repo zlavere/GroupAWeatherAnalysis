@@ -101,6 +101,7 @@
     <Compile Include="Controller\MainPageController.cs" />
     <Compile Include="Converter\DatePickerConverter.cs" />
     <Compile Include="Converter\OrdinalDateConverter.cs" />
+    <Compile Include="Converter\StringInputToInt.cs" />
     <Compile Include="Format\TemperatureDataFormatter.cs" />
     <Compile Include="IO\CsvReader.cs" />
     <Compile Include="IO\TemperatureParser.cs" />

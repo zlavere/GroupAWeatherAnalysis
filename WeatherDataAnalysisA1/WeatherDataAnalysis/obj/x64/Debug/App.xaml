@@ -4,8 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:WeatherDataAnalysis.Converter">          
     <Application.Resources>
-        <converters:OrdinalDateConverter x:Key="DateOridnalConverter" />
+        <converters:OrdinalDateConverter x:Key="OrdinalDateConverter" />
         <converters:DatePickerConverter x:Key="DatePickerConverter" />
+        <converters:StringInputToInt x:Key="StringToInt" />
     </Application.Resources>
     
 </Application>

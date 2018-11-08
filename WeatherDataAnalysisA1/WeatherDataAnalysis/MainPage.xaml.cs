@@ -60,8 +60,7 @@ namespace WeatherDataAnalysis
 
         #region Constructors
 
-        /// <inheritdoc />
-        /// <summary>
+        ///  <summary>
         ///     Initializes a new instance of the <see cref="T:WeatherDataAnalysis.MainPage" /> class.
         /// </summary>
         public MainPage()

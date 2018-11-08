@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using WeatherDataAnalysis.Extension;
 using WeatherDataAnalysis.Model;
@@ -35,6 +36,7 @@ namespace WeatherDataAnalysis.ViewModel
             set
             {
                 this.selectedSelectedWeatherInfo = value;
+                this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
                 this.OnPropertyChanged();
             }
         }
@@ -46,6 +48,7 @@ namespace WeatherDataAnalysis.ViewModel
         public DetailViewModel()
         {
             this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
+            this.SelectedWeatherInfoDetail = ActiveWeatherInfoCollection.Active.First();
         }
 
         #endregion
@@ -57,6 +60,7 @@ namespace WeatherDataAnalysis.ViewModel
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            
         }
 
         #endregion

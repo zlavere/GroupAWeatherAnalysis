@@ -15,7 +15,7 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The high temperature.
         /// </value>
-        public int HighTemp { get; }
+        public int HighTemp { get; set; }
 
         /// <summary>
         ///     Gets the low temperature.
@@ -23,7 +23,7 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The low temperature.
         /// </value>
-        public int LowTemp { get; }
+        public int LowTemp { get; set; }
 
         /// <summary>
         ///     Gets the date.
@@ -31,7 +31,9 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The date.
         /// </value>
-        public DateTime Date { get; }
+        public DateTime Date { get; set; }
+
+        public double Precipitation { get; set; }
 
         #endregion
 

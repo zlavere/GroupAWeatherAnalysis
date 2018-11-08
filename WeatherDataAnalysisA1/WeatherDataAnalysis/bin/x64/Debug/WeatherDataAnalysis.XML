@@ -332,8 +332,7 @@
             </summary>
         </member>
         <member name="M:WeatherDataAnalysis.MainPage.#ctor">
-            <inheritdoc />
-            <summary>
+             <summary>
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.MainPage" /> class.
             </summary>
         </member>
