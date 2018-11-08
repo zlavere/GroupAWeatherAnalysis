@@ -9,6 +9,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
     /// Tests Cases:
     /// Finding Average on a WeatherInfoCollection with One WeatherInfo
     /// Finding Average on a WeatherInfoCollection with More than One WeatherInfo
+    /// Finding Average on a WeatherInfoCollection with Many WeatherInfo
     /// Finding Average on an empty WeatherInfoCollection 
     /// </summary>
     [TestClass]
@@ -39,7 +40,15 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
             });
             Assert.AreEqual(50, collection.GetAverageHigh());
         }
-
-        
+        [TestMethod]
+        public void TestManyDataPoints()
+        {
+            var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
+                new WeatherInfo(DateTime.Today.AddDays(-3), 0, -10),
+                new WeatherInfo(DateTime.Today.AddDays(-2), 50, 90),
+                new WeatherInfo(DateTime.Today, 100, 90)
+            });
+            Assert.AreEqual(50, collection.GetAverageHigh());
+        }
     }
 }
