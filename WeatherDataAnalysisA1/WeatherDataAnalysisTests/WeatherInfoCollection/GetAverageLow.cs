@@ -61,7 +61,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
                 new WeatherInfo(DateTime.Today, 100, 97),
                 new WeatherInfo(DateTime.Today, 100, 43)
             });
-            Assert.AreEqual(47.33,collection.GetAverageLow(),.001);
+            Assert.AreEqual(47.33,collection.GetAverageLow(),.01);
         }
     }
 }

@@ -63,7 +63,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
                 
             });
 
-            Assert.AreEqual(49.33, collection.GetAverageHigh(), .001);
+            Assert.AreEqual(49.33, collection.GetAverageHigh(), .01);
         }
     }
 }
