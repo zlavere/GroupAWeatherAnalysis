@@ -52,7 +52,8 @@ namespace WeatherDataAnalysisTests.WeatherInfoTests
         [TestMethod]
         public void TestWhenDateIsYesterday()
         {
-            Assert.ThrowsException<ArgumentException>(() => new WeatherInfo(DateTime.Now.AddDays(-1), 100, 0));
+           var test = new WeatherInfo(DateTime.Now.AddDays(-1), 100, 0);
+            Assert.IsNotNull(test);
         }
     }
 }

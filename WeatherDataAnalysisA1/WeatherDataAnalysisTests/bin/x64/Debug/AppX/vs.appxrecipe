@@ -31,25 +31,25 @@
     <AppXManifest Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-09T02:05:01.485</Modified>
+      <Modified>2018-11-09T02:57:54.567</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\WeatherDataAnalysisTests.exe">
       <PackagePath>entrypoint\WeatherDataAnalysisTests.exe</PackagePath>
-      <Modified>2018-11-09T02:04:58.052</Modified>
+      <Modified>2018-11-09T02:57:53.306</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-11-09T02:04:47.779</Modified>
+      <Modified>2018-11-09T02:48:18.569</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\WeatherDataAnalysisTests.pdb">
       <PackagePath>WeatherDataAnalysisTests.pdb</PackagePath>
-      <Modified>2018-11-09T02:04:58.053</Modified>
+      <Modified>2018-11-09T02:57:53.307</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.pdb">
       <PackagePath>WeatherDataAnalysis.pdb</PackagePath>
-      <Modified>2018-11-09T02:04:47.780</Modified>
+      <Modified>2018-11-09T02:48:18.570</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\TestPlatform.Universal\15.5\References\CommonConfiguration\neutral\testhost.dll">
       <PackagePath>testhost.dll</PackagePath>
@@ -863,31 +863,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\UnitTestApp.xbf">
       <PackagePath>UnitTestApp.xbf</PackagePath>
-      <Modified>2018-11-09T02:04:57.849</Modified>
+      <Modified>2018-11-09T02:57:53.129</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-11-09T02:04:47.423</Modified>
+      <Modified>2018-11-09T02:48:18.344</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-11-09T02:04:47.424</Modified>
+      <Modified>2018-11-09T02:48:18.344</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\ImportDialog.xbf">
       <PackagePath>View\ImportDialog.xbf</PackagePath>
-      <Modified>2018-11-09T02:04:47.424</Modified>
+      <Modified>2018-11-09T02:48:18.345</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\MergeMatchDialog.xbf">
       <PackagePath>View\MergeMatchDialog.xbf</PackagePath>
-      <Modified>2018-11-09T02:04:47.424</Modified>
+      <Modified>2018-11-09T02:48:18.345</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\NewWeatherInfoDialog.xbf">
       <PackagePath>View\NewWeatherInfoDialog.xbf</PackagePath>
-      <Modified>2018-11-09T02:04:47.425</Modified>
+      <Modified>2018-11-09T02:48:18.346</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\MasterDetailsWeather.xbf">
       <PackagePath>View\MasterDetailsWeather.xbf</PackagePath>
-      <Modified>2018-11-09T02:04:47.425</Modified>
+      <Modified>2018-11-09T02:48:18.346</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -908,11 +908,11 @@
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-09T02:04:59.383</Modified>
+      <Modified>2018-11-09T02:48:30.023</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\Core\WeatherDataAnalysisTests.exe">
       <PackagePath>WeatherDataAnalysisTests.exe</PackagePath>
-      <Modified>2018-11-09T02:05:01.476</Modified>
+      <Modified>2018-11-09T02:57:54.561</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
