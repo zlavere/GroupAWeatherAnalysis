@@ -1,12 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
+  <Roots.Interfaces>
+    <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
+  </Roots.Interfaces>
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="WeatherInfoMaster" />
+    <RootPropertyPathName Name="SelectedWeatherInfoDetail" />
+    <RootPropertyPathName Name="Precipitation" />
+    <RootPropertyPathName Name="LowTemp" />
     <RootPropertyPathName Name="HighTemp" />
     <RootPropertyPathName Name="Date" />
+    <RootPropertyPathName Name="WeatherInfoMaster" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
-    <RootType FullName="Windows.UI.Xaml.Application" />
+    <RootType FullName="Windows.UI.Xaml.Application">
+      <RootProperty Name="Resources" />
+    </RootType>
+    <RootType FullName="WeatherDataAnalysis.Converter.OrdinalDateConverter" />
+    <RootType FullName="WeatherDataAnalysis.Converter.DatePickerConverter" />
+    <RootType FullName="WeatherDataAnalysis.Converter.StringInputToInt" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Width" />
@@ -37,6 +48,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Content" />
@@ -134,6 +146,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
+      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="WeatherDataAnalysis.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ContentDialog">
@@ -153,6 +166,7 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Date" />
       <RootEvent Name="LostFocus" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
@@ -167,22 +181,19 @@
     <RootType FullName="WeatherDataAnalysis.ViewModel.DetailViewModel" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="ItemsSource" />
+      <RootProperty Name="SelectedItem" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Padding" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="ItemTemplate" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="BorderThickness" />
-      <RootProperty Name="BorderBrush" />
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Mode" />
+      <RootProperty Name="Converter" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding" />
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
