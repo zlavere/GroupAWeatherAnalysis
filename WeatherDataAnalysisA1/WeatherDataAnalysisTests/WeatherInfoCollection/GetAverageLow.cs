@@ -59,9 +59,9 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
             var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
                 new WeatherInfo(DateTime.Today.AddDays(-3), 5, 2),
                 new WeatherInfo(DateTime.Today, 100, 97),
-                new WeatherInfo(DateTime.Today, 100, 45)
+                new WeatherInfo(DateTime.Today, 100, 43)
             });
-            Assert.AreEqual(64.67,collection.GetAverageLow(),.000000001);
+            Assert.AreEqual(47.33,collection.GetAverageLow(),.001);
         }
     }
 }

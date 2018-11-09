@@ -177,19 +177,19 @@ namespace WeatherDataAnalysis.Format
                             $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2):0.00}{Environment.NewLine}";
                         output +=
                             $"The Highest Temperature in {this.WeatherInfoCollection.Name} was " +
-                            $"{Math.Round((double) this.WeatherInfoCollection.Max(temp => temp.HighTemp), 2)}" +
+                            $"{ this.WeatherInfoCollection.Max(temp => temp.HighTemp)}" +
                             $"{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestTemps()}";
                         output +=
                             $"The Lowest Temperature in {this.WeatherInfoCollection.Name} was " +
-                            $"{Math.Round((double) this.WeatherInfoCollection.Min(temp => temp.LowTemp), 2)}" +
+                            $"{ this.WeatherInfoCollection.Min(temp => temp.LowTemp)}" +
                             $"{Environment.NewLine}Occurred on:{Environment.NewLine}{this.getLowestTemps()}";
                         output +=
                             $"The Lowest High Temperature in {this.WeatherInfoCollection.Name} was " +
-                            $"{Math.Round((double) this.WeatherInfoCollection.Min(temp => temp.HighTemp), 2)}" +
+                            $"{this.WeatherInfoCollection.Min(temp => temp.HighTemp)}" +
                             $"{Environment.NewLine}Occured on:{Environment.NewLine}{this.getLowestHighTemps()}";
                         output +=
                             $"The Highest Low Temperature in {this.WeatherInfoCollection.Name} was " +
-                            $"{Math.Round((double) this.WeatherInfoCollection.Max(temp => temp.LowTemp), 2)}" +
+                            $"{ this.WeatherInfoCollection.Max(temp => temp.LowTemp)}" +
                             $"{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestLowTemps()}";
                         output += Environment.NewLine;
                     }

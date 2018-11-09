@@ -48,8 +48,8 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
         {
             var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
                 new WeatherInfo(DateTime.Today.AddDays(-3), 0, -10),
-                new WeatherInfo(DateTime.Today.AddDays(-2), 50, 90),
-                new WeatherInfo(DateTime.Today, 100, 90)
+                new WeatherInfo(DateTime.Today.AddDays(-2), 50, -10),
+                new WeatherInfo(DateTime.Today, 100, -10)
             });
             Assert.AreEqual(50, collection.GetAverageHigh());
         }
@@ -58,12 +58,12 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
         {
             var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
                 new WeatherInfo(DateTime.Today.AddDays(-3), -2, -10),
-                new WeatherInfo(DateTime.Today.AddDays(-2), 32, 90),
+                new WeatherInfo(DateTime.Today.AddDays(-2), 32, -10),
                 new WeatherInfo(DateTime.Today, 118, 90)
                 
             });
 
-            Assert.AreEqual(49.34, collection.GetAverageLow(), .000000001);
+            Assert.AreEqual(49.33, collection.GetAverageHigh(), .001);
         }
     }
 }
