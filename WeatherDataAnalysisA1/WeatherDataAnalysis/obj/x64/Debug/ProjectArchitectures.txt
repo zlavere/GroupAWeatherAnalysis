@@ -1,1 +1,1 @@
-C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\WeatherDataAnalysis.csproj;x64
+C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\WeatherDataAnalysis.csproj;x64

@@ -10,7 +10,8 @@ namespace WeatherDataAnalysisTests.WeatherInfoTests
     /// Exception when the high is less than the low
     /// Successful creation when the date is today
     /// Successful creation when high equals low
-    /// Exception when the Date is greater than today  
+    /// Exception when the Date is greater than today
+    /// Successful creation the Date is yesterday 
     /// </summary>
     [TestClass]
     public class WeatherInfoTest
@@ -47,6 +48,12 @@ namespace WeatherDataAnalysisTests.WeatherInfoTests
         public void TestWhenDateIsTomorrow()
         {
             Assert.ThrowsException<ArgumentException>(() => new WeatherInfo(DateTime.Now.AddDays(1), 100, 0));
+        }
+        [TestMethod]
+        public void TestWhenDateIsYesterday()
+        {
+           var test = new WeatherInfo(DateTime.Now.AddDays(-1), 100, 0);
+            Assert.IsNotNull(test);
         }
     }
 }

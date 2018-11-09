@@ -10,6 +10,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
     /// Test Cases
     /// Find Highest from one WeatherInfo in collection
     /// Find Highest from more than one WeatherInfo in collection
+    /// Find Highest from many WeatherInfo in collection
     /// Find Highest in collection of 0 WeatherInfo
     /// </summary>
     [TestClass]
@@ -28,8 +29,18 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
         public void FromTwoWeatherInfo()
         {
             var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
+                new WeatherInfo(DateTime.Today.AddDays(-3), 99, -10),
+                new WeatherInfo(DateTime.Today, 100, -10)
+            });
+            Assert.AreEqual(100, collection.FindWithHighest().First().HighTemp);
+        }
+        [TestMethod]
+        public void FromManyWeatherInfo()
+        {
+            var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
                 new WeatherInfo(DateTime.Today.AddDays(-3), 0, -10),
-                new WeatherInfo(DateTime.Today, 100, 90)
+                new WeatherInfo(DateTime.Today.AddDays(-1), 99, -10),
+                new WeatherInfo(DateTime.Today, 100, -10)
             });
             Assert.AreEqual(100, collection.FindWithHighest().First().HighTemp);
         }

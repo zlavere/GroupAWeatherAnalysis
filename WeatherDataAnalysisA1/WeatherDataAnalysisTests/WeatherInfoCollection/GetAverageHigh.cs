@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WeatherDataAnalysis.Model;
 
@@ -9,6 +10,8 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
     /// Tests Cases:
     /// Finding Average on a WeatherInfoCollection with One WeatherInfo
     /// Finding Average on a WeatherInfoCollection with More than One WeatherInfo
+    /// Finding Average on a WeatherInfoCollection with Many WeatherInfo
+    /// Finding Average on a WeatherInfoCollection with Many WeatherInfo that returns a decimal answer
     /// Finding Average on an empty WeatherInfoCollection 
     /// </summary>
     [TestClass]
@@ -40,6 +43,27 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
             Assert.AreEqual(50, collection.GetAverageHigh());
         }
 
-        
+        [TestMethod]
+        public void TestManyDataPoints()
+        {
+            var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
+                new WeatherInfo(DateTime.Today.AddDays(-3), 0, -10),
+                new WeatherInfo(DateTime.Today.AddDays(-2), 50, -10),
+                new WeatherInfo(DateTime.Today, 100, -10)
+            });
+            Assert.AreEqual(50, collection.GetAverageHigh());
+        }
+        [TestMethod]
+        public void TestManyDataPointsDecimalAnswer()
+        {
+            var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
+                new WeatherInfo(DateTime.Today.AddDays(-3), -2, -10),
+                new WeatherInfo(DateTime.Today.AddDays(-2), 32, -10),
+                new WeatherInfo(DateTime.Today, 118, 90)
+                
+            });
+
+            Assert.AreEqual(49.33, collection.GetAverageHigh(), .01);
+        }
     }
 }
