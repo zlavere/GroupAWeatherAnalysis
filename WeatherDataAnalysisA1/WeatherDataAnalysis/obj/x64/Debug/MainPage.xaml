@@ -15,12 +15,12 @@
                     <Grid />
                 </CommandBar.Content>
 
-                <AppBarButton x:ConnectionId='11' HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Center"
+                <AppBarButton x:ConnectionId='13' HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Center"
                                                           />
-                <AppBarButton x:ConnectionId='12' Icon="OpenFile" Label="Load File"                        />
-                <AppBarButton x:ConnectionId='13' HorizontalAlignment="Left" Icon="Save" Label="Save" VerticalAlignment="Center"
+                <AppBarButton x:ConnectionId='14' Icon="OpenFile" Label="Load File"                        />
+                <AppBarButton x:ConnectionId='15' HorizontalAlignment="Left" Icon="Save" Label="Save" VerticalAlignment="Center"
                                                  />
-                <AppBarButton x:ConnectionId='14' Icon="List" Label="Details" VerticalAlignment="Center" HorizontalAlignment="Left"
+                <AppBarButton x:ConnectionId='16' Icon="List" Label="Details" VerticalAlignment="Center" HorizontalAlignment="Left"
                                                     />
                 <AppBarToggleButton HorizontalAlignment="Left" Icon="Setting" Label="Show Analysis Options" />
 
@@ -47,8 +47,8 @@
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
-
-                            </Grid.RowDefinitions>
+	                            <RowDefinition Height="1*" />
+							</Grid.RowDefinitions>
                             <TextBlock x:ConnectionId='2' Grid.Column="0" Grid.Row="0" x:Name="monthLabel" HorizontalAlignment="Left"
                                        FontSize="20"
                                        Text="Month" TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="2"
@@ -57,7 +57,15 @@
                                      HorizontalAlignment="Left"
                                      Text="" VerticalAlignment="Center" Margin="5" PlaceholderText="Month to analyze"
                                      Width="156" Height="26" FontFamily="Arial" FontSize="14" />
-                            <GridViewItem Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" Margin="5"
+	                        <TextBlock x:ConnectionId='4' Grid.Column="0" Grid.Row="1" x:Name="yearLabel" HorizontalAlignment="Left"
+	                                   FontSize="20"
+	                                   Text="Month" TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="2"
+	                                   Height="32" Margin="5" Width="74" />
+	                        <TextBox x:ConnectionId='5' Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" x:Name="yearInput"
+	                                 HorizontalAlignment="Left"
+	                                 Text="" VerticalAlignment="Center" Margin="5" PlaceholderText="Month to analyze"
+	                                 Width="156" Height="26" FontFamily="Arial" FontSize="14" />
+							<GridViewItem Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Margin="5"
                                           HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"
                                           FontSize="14">
                                 <StackPanel Padding="0">
@@ -74,35 +82,35 @@
                                     </StackPanel>
                                 </StackPanel>
                             </GridViewItem>
-                            <TextBlock x:ConnectionId='4' Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" x:Name="highTempLabel"
+                            <TextBlock x:ConnectionId='6' Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" x:Name="highTempLabel"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center" Text="High Temperature Threshold" TextWrapping="Wrap"
                                        Height="26" Margin="5" Width="244" FontFamily="Arial" FontSize="14" />
 
-                            <TextBox x:ConnectionId='5' Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" x:Name="highTempInput"
+                            <TextBox x:ConnectionId='7' Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" x:Name="highTempInput"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Center" PlaceholderText="High Temp" Width="93" Text="90"
                                                                                      Height="32" Margin="5"
                                      FontFamily="Arial" FontSize="14" />
 
-                            <TextBlock x:ConnectionId='6' Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" x:Name="lowTempLabel"
+                            <TextBlock x:ConnectionId='8' Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="5" x:Name="lowTempLabel"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center" Text="Low Temperature Threshold" TextWrapping="Wrap"
                                        Height="20" Margin="5" Width="243" FontFamily="Arial" FontSize="14" />
 
-                            <TextBox x:ConnectionId='7' Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" x:Name="lowTempInput"
+                            <TextBox x:ConnectionId='9' Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4" x:Name="lowTempInput"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Center" PlaceholderText="Low Temp" Width="93" Text="32"
                                                                                     Height="32" Margin="5"
                                      FontFamily="Arial" FontSize="14" />
 
-                            <Button x:ConnectionId='8' Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" x:Name="clearButton"
+                            <Button x:ConnectionId='10' Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="7" x:Name="clearButton"
                                     Content="Clear Data"
                                     HorizontalAlignment="Left" VerticalAlignment="Center"                    
                                     Margin="5"
                                     Height="32" Width="120" FontFamily="Arial" FontSize="14" />
 
-                            <Button x:ConnectionId='9' Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="6" x:Name="refreshButton"
+                            <Button x:ConnectionId='11' Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="7" x:Name="refreshButton"
                                     Content="RefreshOutput"
                                     HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False"
                                                      
@@ -123,7 +131,7 @@
                         <TextBlock Width="206" Grid.Column="0" Grid.Row="0" Height="36" Text="Weather Analysis"
                                    HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center"
                                    FontFamily="Arial" FontSize="26" />
-                        <TextBox x:ConnectionId='10' Grid.Row="1" x:Name="summaryTextBox" HorizontalAlignment="Left"
+                        <TextBox x:ConnectionId='12' Grid.Row="1" x:Name="summaryTextBox" HorizontalAlignment="Left"
                                  VerticalAlignment="Center"
                                  TextWrapping="Wrap" Text="Summary" Height="275" Width="766" IsReadOnly="True"
                                  AutomationProperties.Name="summaryTextBlock" Margin="0,0,0,0" />
