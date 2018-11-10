@@ -193,6 +193,14 @@
             The month.
             </value>
         </member>
+        <member name="P:WeatherDataAnalysis.Format.TemperatureDataFormatter.Year">
+            <summary>
+            Gets or sets the year.
+            </summary>
+            <value>
+            The month.
+            </value>
+        </member>
         <member name="M:WeatherDataAnalysis.Format.TemperatureDataFormatter.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Format.TemperatureDataFormatter" /> class.

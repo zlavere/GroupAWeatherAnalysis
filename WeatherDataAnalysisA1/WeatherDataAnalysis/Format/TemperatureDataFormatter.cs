@@ -52,6 +52,13 @@ namespace WeatherDataAnalysis.Format
         /// </value>
         public int Month { private get; set; }
 
+        /// <summary>
+        /// Gets or sets the year.
+        /// </summary>
+        /// <value>
+        /// The month.
+        /// </value>
+        public int Year { private get; set; }
         #endregion
 
         #region Constructors
@@ -94,6 +101,7 @@ namespace WeatherDataAnalysis.Format
 
             foreach (var currentYear in years)
             {
+                this.Year = currentYear;
                 var queryYearInActiveCollection =
                     ActiveWeatherInfoCollection.Active.Where(weatherInfo => weatherInfo.Date.Year == currentYear);
 
@@ -160,7 +168,7 @@ namespace WeatherDataAnalysis.Format
                 
                 
                     output +=
-                        $"{this.WeatherInfoCollection.Name}: ({this.WeatherInfoCollection.Count} Days of Data){Environment.NewLine}";
+                        $"{this.WeatherInfoCollection.Name}: ({this.WeatherInfoCollection.Count}/{DateTime.DaysInMonth(this.Year, currentMonth)} Days of Data){Environment.NewLine}";
 
                 if (this.WeatherInfoCollection.Any()) { 
 
