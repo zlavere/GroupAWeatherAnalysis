@@ -279,7 +279,7 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the highest low temps.
         /// </summary>
         /// <returns>List of Weather with the highest low temps.</returns>
-        public ICollection<WeatherInfo> FindHighestLow()
+        public ICollection<WeatherInfo> FindHighestLowTemps()
         {
             var highest = this.WeatherInfos.Max(weather => weather.LowTemp);
             var highestTemps =
