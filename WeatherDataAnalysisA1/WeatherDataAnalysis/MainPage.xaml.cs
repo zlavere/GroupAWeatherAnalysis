@@ -97,6 +97,7 @@ namespace WeatherDataAnalysis
                 if (importExecution)
                 {
                     this.setSummaryText();
+                    this.DetailsViewButton.Visibility = Visibility.Visible;
                 }
             }
             catch (ArgumentException ae)
@@ -126,6 +127,8 @@ namespace WeatherDataAnalysis
 
             this.summaryTextBox.Text = getImportResults;
         }
+        //TODO Move to ViewModel
+
 
         private FileOpenPicker createNewFileOpenPicker()
         {

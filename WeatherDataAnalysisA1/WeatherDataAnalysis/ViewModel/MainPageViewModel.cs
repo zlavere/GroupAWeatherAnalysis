@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -9,7 +10,10 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using WeatherDataAnalysis.Controller;
+using WeatherDataAnalysis.Extension;
+using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.Model.Enums;
+using WeatherDataAnalysis.Utility;
 using WeatherDataAnalysis.View;
 
 namespace WeatherDataAnalysis.ViewModel
@@ -23,18 +27,40 @@ namespace WeatherDataAnalysis.ViewModel
         private string yearFilter;
         private string highTempThreshold;
         private string lowTempThreshold;
+
+        public event PropertyChangedEventHandler PropertyChanged;
         public Button RefreshButton;
+        private ObservableCollection<WeatherInfo> activeWeatherInfos;
 
         #endregion
 
         #region Properties
 
+        public ObservableCollection<WeatherInfo> ActiveWeatherInfos
+        {
+            get => this.activeWeatherInfos;
+            set
+            {
+                this.activeWeatherInfos = value;
+                this.OnPropertyChanged();
+            }
+        }
         private FileOpenPicker FilePicker { get; set; }
         private StorageFile File { get; set; }
         private ImportDialog ImportDialog { get; set; }
         private ContentDialogResult ImportDialogResults { get; set; }
-
         private List<HistogramBucketSize> HistogramBucketSizes { get; set; }
+
+
+        private void DisplayDetailsButton(object obj)
+        {
+            if (ActiveWeatherInfoCollection.Active.Count > 0)
+            {
+                var detailsButton = (AppBarButton) obj;
+                detailsButton.Visibility = Visibility.Visible;
+            }
+        }
+
 
         public string SummaryText
         {
@@ -113,11 +139,14 @@ namespace WeatherDataAnalysis.ViewModel
 
             this.HighTempThreshold = Temperature.HighWarningThreshold.ToString();
             this.LowTempThreshold = Temperature.FreezingFahrenheit.ToString();
+            
         }
 
         #endregion
 
         #region Methods
+
+
 
         private async void loadFile_Click(object sender, RoutedEventArgs e)
         {
@@ -191,7 +220,7 @@ namespace WeatherDataAnalysis.ViewModel
 
             if (this.File != null)
             {
-                //TODO exeecuteImport
+                //TODO executeImport
                 this.ImportDialog = new ImportDialog();
                 this.ImportDialogResults = await this.ImportDialog.ShowAsync();
                 // await this.mainPageController.CreateNewFromFile(this.File, this.ImportDialog);
@@ -267,13 +296,6 @@ namespace WeatherDataAnalysis.ViewModel
             }
         }
 
-        #endregion
-
-        #region INotifyPropertyChangedImplementation
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        // [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

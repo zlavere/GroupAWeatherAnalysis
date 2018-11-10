@@ -9,6 +9,8 @@
     <RootPropertyPathName Name="LowTemp" />
     <RootPropertyPathName Name="HighTemp" />
     <RootPropertyPathName Name="Date" />
+    <RootPropertyPathName Name="RemoveWeatherInfo" />
+    <RootPropertyPathName Name="AddWeatherInfo" />
     <RootPropertyPathName Name="WeatherInfoMaster" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -140,6 +142,8 @@
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Command" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">
@@ -179,6 +183,11 @@
     </RootType>
     <RootType FullName="WeatherDataAnalysis.View.NewWeatherInfoDialog" />
     <RootType FullName="WeatherDataAnalysis.ViewModel.DetailViewModel" />
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Mode" />
+      <RootProperty Name="Converter" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="SelectedItem" />
@@ -189,11 +198,6 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="ItemTemplate" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="Mode" />
-      <RootProperty Name="Converter" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>

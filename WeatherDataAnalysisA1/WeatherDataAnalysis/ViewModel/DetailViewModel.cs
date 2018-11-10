@@ -1,7 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Windows.UI.Xaml.Controls;
 using WeatherDataAnalysis.Extension;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.Utility;
@@ -13,8 +15,7 @@ namespace WeatherDataAnalysis.ViewModel
         #region Data members
 
         private ObservableCollection<WeatherInfo> weatherInfoMaster;
-        private WeatherInfo selectedSelectedWeatherInfo;
-
+        private WeatherInfo selectedWeatherInfo;
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
@@ -32,13 +33,18 @@ namespace WeatherDataAnalysis.ViewModel
 
         public WeatherInfo SelectedWeatherInfoDetail
         {
-            get => this.selectedSelectedWeatherInfo;
+            get => this.selectedWeatherInfo;
             set
             {
-                this.selectedSelectedWeatherInfo = value;
+                this.selectedWeatherInfo = value;
+                this.canRemoveWeatherInfo(this.selectedWeatherInfo);
                 this.OnPropertyChanged();
             }
         }
+
+        public RelayCommand RemoveWeatherInfo { get; set; }
+        public RelayCommand AddWeatherInfo { get; set; }
+
 
         #endregion
 
@@ -48,16 +54,35 @@ namespace WeatherDataAnalysis.ViewModel
         {
             this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
             this.SelectedWeatherInfoDetail = ActiveWeatherInfoCollection.Active.First();
+            this.RemoveWeatherInfo = new RelayCommand(this.removeSelectedWeatherInfo, this.canRemoveWeatherInfo);
+          
+        }
+
+
+
+        private bool canNavigateToMainPage(object obj)
+        {
+            return true;
         }
 
         #endregion
 
         #region Methods
 
+        private bool canRemoveWeatherInfo(object obj)
+        {
+            return this.selectedWeatherInfo != null;
+        }
+
+        private void removeSelectedWeatherInfo(object obj)
+        {
+            ActiveWeatherInfoCollection.Active.Remove(this.selectedWeatherInfo);
+            this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
+        }
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            
         }
 
         #endregion

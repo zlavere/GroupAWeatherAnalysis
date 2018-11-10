@@ -33,32 +33,45 @@
             <AppBarButton Icon="OpenFile" Label="Load File"  />
             <AppBarButton HorizontalAlignment="Left" Icon="Save" Label="Save" VerticalAlignment="Top"
                            />
-            <AppBarButton Icon="List" Label="Details" VerticalAlignment="Top" HorizontalAlignment="Left"
+            <AppBarButton Icon="List" Label="Details"  VerticalAlignment="Top" HorizontalAlignment="Left"
                           />
             <AppBarToggleButton HorizontalAlignment="Left" VerticalAlignment="Top" Icon="Setting" Label="Options" />
 
-            <AppBarButton Icon="Home" Label="Home" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-
+            <AppBarButton x:ConnectionId='6' Icon="Home" Label="Home" HorizontalAlignment="Left" VerticalAlignment="Top"                             />
+            
         </CommandBar>
-        <ListView x:ConnectionId='2' Grid.Column="0" Grid.Row="1" x:Name="weatherInfoMaster" ItemsSource="{Binding WeatherInfoMaster, Mode=TwoWay}"
+        <Grid  Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height ="Auto"/>
+            </Grid.RowDefinitions>
+            <ListView x:ConnectionId='2' Grid.Row="0" x:Name="weatherInfoMaster" ItemsSource="{Binding WeatherInfoMaster, Mode=TwoWay}"
                   SelectedItem="{Binding SelectedWeatherInfoDetail, Mode=TwoWay}" HorizontalAlignment="Left"
-                  Height="Auto" Margin="20" Padding="10,10,0,0" VerticalAlignment="Top">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Border>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBlock HorizontalAlignment="Stretch" Grid.Row="0"
+                  Height="Auto" Margin="20" Padding="10,10,0,0"  VerticalAlignment="Top">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock HorizontalAlignment="Stretch" Grid.Row="0"
                                        Text="{Binding Date, Converter={StaticResource OrdinalDateConverter}, Mode=TwoWay}" />
-                            <TextBlock Grid.Row="1" Text="{Binding HighTemp, Mode=TwoWay}" />
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                <TextBlock Grid.Row="1" Text="{Binding HighTemp, Mode=TwoWay}" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <CommandBar Grid.Row="1" VerticalAlignment="Bottom">
+                <CommandBar.Content>
+                    <Grid />
+                </CommandBar.Content>
+                <AppBarButton x:ConnectionId='3' x:Name="AddWeatherInfoButton" Command="{Binding AddWeatherInfo}" Label="Add New" Icon="Add" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <AppBarButton x:ConnectionId='4' x:Name="DeleteWeatherInfoButton" Command="{Binding RemoveWeatherInfo}" Label="Delete" Icon="Delete" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            </CommandBar>
+        </Grid>
         <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"
               Margin="0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
