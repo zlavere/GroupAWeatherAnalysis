@@ -8,7 +8,7 @@ namespace WeatherDataAnalysis.io
     /// <summary>
     ///     Reads CSV file lines
     /// </summary>
-    public class CsvReader
+    public class FileLineGenerator
     {
         #region Methods
 

@@ -1,25 +1,22 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using Windows.Storage.Pickers.Provider;
-using WeatherDataAnalysis.Model;
+﻿using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
 {
     /// <summary>
-    /// Data binding for the currently active WeatherInformationCollection to be used throughout the application.
+    ///     Data binding for the currently active WeatherInformationCollection to be used throughout the application.
     /// </summary>
     public static class ActiveWeatherInfoCollection
     {
+        #region Properties
+
         /// <summary>
-        /// Gets or sets the active WeatherInformationCollection.
+        ///     Gets or sets the active WeatherInformationCollection.
         /// </summary>
         /// <value>
-        /// Sets the WeatherInformationCollection used ubiquitously throughout the application.
+        ///     Sets the WeatherInformationCollection used ubiquitously throughout the application.
         /// </value>
-        public static WeatherInfoCollection Active 
-        { get;
-            set;
-        }
+        public static WeatherInfoCollection Active { get; set; }
+
+        #endregion
     }
 }

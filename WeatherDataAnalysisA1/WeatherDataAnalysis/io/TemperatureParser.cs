@@ -140,7 +140,7 @@ namespace WeatherDataAnalysis.io
         //TODO I need to figure out how the TryParse functions worth with keyword out.
         private bool isValidTemp(string temp)
         {
-            bool isValid;
+            var isValid = false;
 
             try
             {
@@ -149,7 +149,7 @@ namespace WeatherDataAnalysis.io
             }
             catch (Exception)
             {
-                isValid = false;
+                //ignored
             }
 
             return isValid;

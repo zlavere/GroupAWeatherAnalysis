@@ -1,0 +1,151 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:WeatherDataAnalysis.ViewModel"
+    x:Class="WeatherDataAnalysis.MainPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="Auto" Height="Auto">
+
+    <Grid Width="Auto" Height="Auto">
+        <StackPanel>
+            <CommandBar VerticalAlignment="Top" Width="Auto" Height="Auto">
+                <CommandBar.Content>
+                    <Grid />
+                </CommandBar.Content>
+                <AppBarButton x:ConnectionId='13' HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Top"
+                                                          />
+                <AppBarButton x:ConnectionId='14' Icon="OpenFile" Label="Load File"                        />
+                <AppBarButton x:ConnectionId='15' HorizontalAlignment="Left" Icon="Save" Label="Save" VerticalAlignment="Top"
+                                                 />
+                <AppBarButton x:ConnectionId='16' x:Name="detailsViewButton" Icon="List" Label="Details" VerticalAlignment="Top"
+                              HorizontalAlignment="Left"
+                                                    Visibility="Collapsed" />
+                <AppBarToggleButton HorizontalAlignment="Left" VerticalAlignment="Top" Icon="Setting" Label="Options" />
+            </CommandBar>
+            <Grid>
+                <SplitView
+                    IsPaneOpen="true"
+                    DisplayMode="Inline"
+                    OpenPaneLength="360">
+                    <SplitView.Pane>
+                        <Grid Padding="10,0,0,0" Margin="0,36,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock x:ConnectionId='2' Grid.Column="0" Grid.Row="0" x:Name="monthLabel" HorizontalAlignment="Left"
+                                       FontSize="20"
+                                       Text="Month" Grid.ColumnSpan="2"
+                                       Margin="5,10,0,5" />
+                            <TextBox x:ConnectionId='3' Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" x:Name="monthInput"
+                                     HorizontalAlignment="Left"
+                                     Margin="5,10,0,5"
+                                     PlaceholderText="Month to Analyze" />
+                            <TextBlock x:ConnectionId='4' Grid.Column="0" Grid.Row="1" x:Name="yearLabel"
+                                       FontSize="20"
+                                       Text="Year" TextWrapping="Wrap" Grid.ColumnSpan="2"
+                                       Margin="5" />
+                            <TextBox x:ConnectionId='5' Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" x:Name="yearInput"
+                                     VerticalContentAlignment="Center" Margin="5"
+                                     PlaceholderText="Year to Analyze" HorizontalAlignment="Left" />
+                            <GridViewItem Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Margin="5">
+                                <StackPanel Padding="0">
+                                    <TextBlock Text="Temperature Histogram Band Range" FontSize="20" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton Content="5" Tag="5" />
+                                        <RadioButton Content="10" Tag="10" IsChecked="True" HorizontalAlignment="Left"
+                                                     VerticalAlignment="Center" />
+                                        <RadioButton Content="20" Tag="20" />
+                                    </StackPanel>
+                                    <TextBlock Text="Precipitation Histogram Band Range" TextAlignment="Left"
+                                               FontSize="20" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton Content="0.1" Tag="0.1" />
+                                        <RadioButton Content="0.25" Tag="0.25" IsChecked="True" />
+                                        <RadioButton Content="0.5" Tag="0.5" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </GridViewItem>
+                            <TextBlock Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" FontSize="20"
+                                       Text="Temperature Thresholds" />
+                            <TextBlock x:ConnectionId='6' Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" x:Name="highTempLabel"
+                                       Text="High Temp Above" TextWrapping="Wrap"
+                                       Margin="5" />
+
+                            <TextBox x:ConnectionId='7' Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" x:Name="highTempInput"
+                                     HorizontalAlignment="Left"
+                                     Text="90"
+                                                                                     Margin="5" />
+
+                            <TextBlock x:ConnectionId='8' Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" x:Name="lowTempLabel"
+                                       Text="Low Temp Below"
+                                       Margin="5" />
+                            <TextBox x:ConnectionId='9' Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" x:Name="lowTempInput"
+                                     HorizontalAlignment="Left"
+                                     Text="32"
+                                                                                    Margin="5" />
+                            <Grid Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Button x:ConnectionId='10' Grid.Column="0" x:Name="refreshButton"
+                                        Content="Refresh Summary"
+                                        HorizontalAlignment="Left" IsEnabled="False"
+                                                         
+                                        Margin="5,10,0,0" FontWeight="Bold" >
+                                    <Button.Background>
+                                        <SolidColorBrush Color="{ThemeResource SystemChromeDisabledHighColor}"/>
+                                    </Button.Background>
+                                    <Button.Foreground>
+                                        <SolidColorBrush Color="{ThemeResource SystemAltMediumColor}"/>
+                                    </Button.Foreground>
+                                </Button>
+                                <Button x:ConnectionId='11' Grid.Column="1"  x:Name="clearButton"
+                                        Content="Clear Data"
+                                        HorizontalAlignment="Left"                    
+                                        Margin="5,10,0,0" Foreground="#FFFDFBFB" FontWeight="Bold" AutomationProperties.HelpText="Removes any existing data sets." >
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#FFB00808"/>
+                                    </Button.Background>
+                                </Button>
+
+                            </Grid>
+
+                        </Grid>
+                    </SplitView.Pane>
+                    <Grid Padding="10,0,10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Margin="0,10,0,0" Grid.Column="0" Grid.Row="0" Text="Weather Analysis"
+                                   HorizontalAlignment="Left" TextWrapping="Wrap"
+                                   FontSize="26" />
+                        <TextBox x:ConnectionId='12' Grid.Row="1" x:Name="summaryTextBox" HorizontalAlignment="Left" Margin="0,0,20,0"
+                                 TextWrapping="Wrap" Text="Summary" Height="360" Width="720" IsReadOnly="True"
+                                 AutomationProperties.Name="summaryTextBlock" />
+                    </Grid>
+                </SplitView>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
+
