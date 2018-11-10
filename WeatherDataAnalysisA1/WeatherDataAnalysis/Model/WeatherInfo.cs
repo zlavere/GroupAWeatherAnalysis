@@ -33,7 +33,13 @@ namespace WeatherDataAnalysis.Model
         /// </value>
         public DateTime Date { get; set; }
 
-        public double Precipitation { get; set; }
+        /// <summary>
+        ///     Gets  or sets the precipitation.
+        /// </summary>
+        /// <value>
+        ///     The date.
+        /// </value>
+        public double? Precipitation { get; set; }
 
         #endregion
 
@@ -47,7 +53,8 @@ namespace WeatherDataAnalysis.Model
         /// <param name="date">The date.</param>
         /// <param name="highTemp">The high temperature.</param>
         /// <param name="lowTemp">The low temperature.</param>
-        public WeatherInfo(DateTime date, int highTemp, int lowTemp)
+        /// <param name="precipitation">The precipitation level</param>
+        public WeatherInfo(DateTime date, int highTemp, int lowTemp, double? precipitation = null)
         {
             if (highTemp < lowTemp)
             {
@@ -58,11 +65,16 @@ namespace WeatherDataAnalysis.Model
             {
                 throw new ArgumentException("Date must be on or before Today.");
             }
+
+            if (precipitation < 0)
+            {
+                throw new ArgumentException("Precipitation can't be negative");
+            }
             this.Date = date;
             this.LowTemp = lowTemp;
             this.HighTemp = highTemp;
+            this.Precipitation = precipitation;
         }
-
         #endregion
 
         #region Methods

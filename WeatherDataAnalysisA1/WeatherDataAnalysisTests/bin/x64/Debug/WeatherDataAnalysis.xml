@@ -462,7 +462,15 @@
                 The date.
             </value>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfo.#ctor(System.DateTime,System.Int32,System.Int32)">
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfo.Precipitation">
+            <summary>
+                Gets  or sets the precipitation.
+            </summary>
+            <value>
+                The date.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfo.#ctor(System.DateTime,System.Int32,System.Int32,System.Nullable{System.Double})">
             <summary>
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.WeatherInfo" /> class.
             </summary>
@@ -471,6 +479,7 @@
             <param name="date">The date.</param>
             <param name="highTemp">The high temperature.</param>
             <param name="lowTemp">The low temperature.</param>
+            <param name="precipitation">The precipitation level</param>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfo.CompareTo(WeatherDataAnalysis.Model.WeatherInfo)">
             <summary>

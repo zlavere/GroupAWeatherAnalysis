@@ -1,10 +1,3 @@
-C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\WeatherDataAnalysisTests.csprojAssemblyReference.cache
-C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\UnitTestApp.g.i.cs
-C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\UnitTestApp.g.cs
-C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\XamlTypeInfo.g.cs
-C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\UnitTestApp.xaml
-C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\UnitTestApp.xbf
-C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\XamlSaveStateFile.xml
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -199,6 +192,13 @@ C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\WeatherDataAnalysis.exe
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\WeatherDataAnalysis.pdb
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\bin\x64\Debug\WeatherDataAnalysis.xml
+C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\WeatherDataAnalysisTests.csprojAssemblyReference.cache
+C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\UnitTestApp.g.i.cs
+C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\UnitTestApp.g.cs
+C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\XamlTypeInfo.g.cs
+C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\UnitTestApp.xaml
+C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\UnitTestApp.xbf
+C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\XamlSaveStateFile.xml
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\WeatherDataAnalysisTests.csproj.CoreCompileInputs.cache
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\WeatherDataAnalysisTests.csproj.CopyComplete
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysisTests\obj\x64\Debug\WeatherDataAnalysisTests.exe
