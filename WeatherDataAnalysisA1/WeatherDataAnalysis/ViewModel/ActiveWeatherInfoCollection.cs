@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using Windows.Storage.Pickers.Provider;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
@@ -15,6 +17,9 @@ namespace WeatherDataAnalysis.ViewModel
         /// <value>
         /// Sets the WeatherInformationCollection used ubiquitously throughout the application.
         /// </value>
-        public static WeatherInfoCollection Active { get; set; }
+        public static WeatherInfoCollection Active 
+        { get;
+            set;
+        }
     }
 }

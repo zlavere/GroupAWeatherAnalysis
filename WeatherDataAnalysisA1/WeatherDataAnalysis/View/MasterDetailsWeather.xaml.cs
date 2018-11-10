@@ -28,10 +28,10 @@ namespace WeatherDataAnalysis.View
         {
             this.InitializeComponent();
         }
-
+        
         private void c_NavigateToMainPage(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(MainPage)); //TODO Move to ViewModel
         }
     }
 }

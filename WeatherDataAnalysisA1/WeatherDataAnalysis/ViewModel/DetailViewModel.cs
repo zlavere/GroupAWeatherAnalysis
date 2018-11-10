@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
+using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.Extension;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.Utility;
@@ -23,7 +24,7 @@ namespace WeatherDataAnalysis.ViewModel
 
         public ObservableCollection<WeatherInfo> WeatherInfoMaster
         {
-            get => this.weatherInfoMaster;
+            get => this.weatherInfoMaster.OrderBy(weatherInfo => weatherInfo.Date).ToList().ToObservableCollection();
             set
             {
                 this.weatherInfoMaster = value;
@@ -55,11 +56,26 @@ namespace WeatherDataAnalysis.ViewModel
             this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
             this.SelectedWeatherInfoDetail = ActiveWeatherInfoCollection.Active.First();
             this.RemoveWeatherInfo = new RelayCommand(this.removeSelectedWeatherInfo, this.canRemoveWeatherInfo);
-          
+            this.AddWeatherInfo = new RelayCommand(this.createWeatherInfo, this.canCreateWeatherInfo);
         }
 
+        private bool canCreateWeatherInfo(object obj)
+        {
+            return ActiveWeatherInfoCollection.Active != null;
+        }
 
+        private async void createWeatherInfo(object obj)
+        {
+            var addWeatherInfoController = new AddWeatherInfo();
+            var isCreated = await addWeatherInfoController.StartDialog();
+            if (this.canCreateWeatherInfo(isCreated))
+            {
+                this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
+            }
+            
+        }
 
+        //TODO Use this method when moving navigation from View to ViewModel
         private bool canNavigateToMainPage(object obj)
         {
             return true;
@@ -68,6 +84,7 @@ namespace WeatherDataAnalysis.ViewModel
         #endregion
 
         #region Methods
+
 
         private bool canRemoveWeatherInfo(object obj)
         {

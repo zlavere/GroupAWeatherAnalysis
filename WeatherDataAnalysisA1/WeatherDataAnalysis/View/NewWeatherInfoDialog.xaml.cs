@@ -20,7 +20,6 @@ namespace WeatherDataAnalysis.View
         /// Submit Button
         /// </summary>
         public const ContentDialogResult Submit = ContentDialogResult.Primary;
-
         private const ContentDialogResult Cancel = ContentDialogResult.Secondary;
 
         /// <summary>
@@ -164,9 +163,15 @@ namespace WeatherDataAnalysis.View
         /// </returns>
         public bool IsOverwriteAllowed()
         {
-            var isChecked = this.overwriteCheckBox.IsChecked;
+            var checkBoxValue = this.overwriteCheckBox.IsChecked;
+            var isAllowed = false;
 
-            return isChecked != null && (bool)isChecked;
+            if (checkBoxValue != null && checkBoxValue == true)
+            {
+                isAllowed = true;
+            }
+
+            return isAllowed;
         }
     }
 }
