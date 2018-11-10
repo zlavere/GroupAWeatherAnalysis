@@ -77,6 +77,13 @@ namespace WeatherDataAnalysis.Model
         /// The highest precipitation.
         /// </value>
         public double? HighestPrecipitation => this.WeatherInfos.Max(precipitation => precipitation.Precipitation);
+        /// <summary>
+        /// Gets the total precipitation.
+        /// </summary>
+        /// <value>
+        /// The total precipitation.
+        /// </value>
+        public double? TotalPrecipitation => this.WeatherInfos.Sum(precipitation => precipitation.Precipitation);
         #endregion
 
         #region Constructors
