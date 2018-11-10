@@ -248,7 +248,7 @@ namespace WeatherDataAnalysis.Format
         private string getHighestLowTemps()
         {
             var output = string.Empty;
-            foreach (var current in this.WeatherInfoCollection.FindHighestLow())
+            foreach (var current in this.WeatherInfoCollection.FindHighestLowTemps())
             {
                 output += $"{this.getDateString(current.Date)}{Environment.NewLine}";
             }
