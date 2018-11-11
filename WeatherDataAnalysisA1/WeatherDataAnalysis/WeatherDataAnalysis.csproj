@@ -103,9 +103,10 @@
     <Compile Include="Converter\OrdinalDateConverter.cs" />
     <Compile Include="Converter\StringInputToInt.cs" />
     <Compile Include="Format\TemperatureDataFormatter.cs" />
-    <Compile Include="IO\CsvReader.cs" />
+    <Compile Include="IO\FileLineGenerator.cs" />
     <Compile Include="IO\TemperatureParser.cs" />
     <Compile Include="IO\WriteWeatherDataToCsv.cs" />
+    <Compile Include="IO\XMLSerializer.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

@@ -27,15 +27,6 @@ namespace WeatherDataAnalysis
         #region Data members
 
         private const int DefaultBucketSizeIndex = 2;
-        /// <summary>
-        ///     The application height
-        /// </summary>
-        private const int ApplicationHeight = 480;
-
-        /// <summary>
-        ///     The application width
-        /// </summary>
-        private const int ApplicationWidth = 1080;
 
         private const int DefaultBucketSize = 10;
 
@@ -71,10 +62,6 @@ namespace WeatherDataAnalysis
 
             this.HighTempThreshold = (int) Temperature.HighWarningThreshold;
             this.LowTempThreshold = (int) Temperature.FreezingFahrenheit;
-
-            ApplicationView.PreferredLaunchViewSize = new Size {Width = ApplicationWidth, Height = ApplicationHeight};
-            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(ApplicationWidth, ApplicationHeight));
         }
 
         #endregion
@@ -97,7 +84,7 @@ namespace WeatherDataAnalysis
                 if (importExecution)
                 {
                     this.setSummaryText();
-                    this.DetailsViewButton.Visibility = Visibility.Visible;
+                    this.detailsViewButton.Visibility = Visibility.Visible;
                 }
             }
             catch (ArgumentException ae)

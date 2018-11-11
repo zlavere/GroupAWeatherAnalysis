@@ -12,7 +12,7 @@ namespace WeatherDataAnalysis.Model
     {
         #region Properties
 
-        private IList<WeatherInfo> WeatherInfos { get; }
+        public IList<WeatherInfo> WeatherInfos { get; }
 
         /// <summary>
         ///     Gets or sets the name.
@@ -215,8 +215,11 @@ namespace WeatherDataAnalysis.Model
         {
             this.WeatherInfos.RemoveAt(index);
         }
-
-        private IDictionary<int, List<WeatherInfo>> groupByYear()
+        /// <summary>
+        ///     Groups the by year.
+        /// </summary>
+        /// <returns></returns>
+        public IDictionary<int, List<WeatherInfo>> groupByYear()
         {
             var years = this.WeatherInfos.Select(weather => weather.Date.Year).Distinct().ToList();
             var dictionary = new Dictionary<int, List<WeatherInfo>>();

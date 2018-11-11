@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-10T23:10:05.010</Modified>
+      <Modified>2018-11-11T03:16:00.823</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.exe">
       <PackagePath>entrypoint\WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-11-10T23:10:03.818</Modified>
+      <Modified>2018-11-11T03:16:00.194</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Corgi\.nuget\packages\microsoft.identity.client\1.1.2-preview0008\lib\win81\Microsoft.Identity.Client.dll">
       <PackagePath>Microsoft.Identity.Client.dll</PackagePath>
@@ -767,31 +767,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.xr.xml">
       <PackagePath>WeatherDataAnalysis.xr.xml</PackagePath>
-      <Modified>2018-11-10T20:44:10.521</Modified>
+      <Modified>2018-11-11T03:01:34.613</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-11-10T23:10:03.296</Modified>
+      <Modified>2018-11-11T03:15:59.879</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-11-10T23:10:03.297</Modified>
+      <Modified>2018-11-11T03:15:59.880</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\ImportDialog.xbf">
       <PackagePath>View\ImportDialog.xbf</PackagePath>
-      <Modified>2018-11-10T23:10:03.297</Modified>
+      <Modified>2018-11-11T03:15:59.880</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\MergeMatchDialog.xbf">
       <PackagePath>View\MergeMatchDialog.xbf</PackagePath>
-      <Modified>2018-11-10T23:10:03.297</Modified>
+      <Modified>2018-11-11T03:15:59.880</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\NewWeatherInfoDialog.xbf">
       <PackagePath>View\NewWeatherInfoDialog.xbf</PackagePath>
-      <Modified>2018-11-10T23:10:03.298</Modified>
+      <Modified>2018-11-11T03:15:59.881</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\MasterDetailsWeather.xbf">
       <PackagePath>View\MasterDetailsWeather.xbf</PackagePath>
-      <Modified>2018-11-10T23:10:03.298</Modified>
+      <Modified>2018-11-11T03:15:59.881</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -812,11 +812,11 @@
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-10T22:22:27.426</Modified>
+      <Modified>2018-11-11T03:02:09.675</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Core\WeatherDataAnalysis.exe">
       <PackagePath>WeatherDataAnalysis.exe</PackagePath>
-      <Modified>2018-11-10T23:10:05.001</Modified>
+      <Modified>2018-11-11T03:16:00.817</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

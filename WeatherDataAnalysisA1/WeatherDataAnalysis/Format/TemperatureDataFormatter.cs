@@ -108,9 +108,23 @@ namespace WeatherDataAnalysis.Format
                 var yearInActiveCollection = queryYearInActiveCollection.ToList();
                 this.WeatherInfoCollection =
                     new WeatherInfoCollection($"{currentYear}", yearInActiveCollection.ToList());
+               
 
                 output += $"{currentYear} Data: ({this.WeatherInfoCollection.Count} Days of Data){Environment.NewLine}";
-                output +=
+                var precipitation = this.WeatherInfoCollection.TotalPrecipitation;
+                if (precipitation == null)
+                {
+                    output += $"There is no precipitation data associated with {currentYear}.{Environment.NewLine}";
+                }
+                else
+                {
+                    output += $"Total precipitation in  {currentYear}: " +
+                              $"{precipitation}{Environment.NewLine}";
+                }
+                
+
+
+               output +=
                     $"Average High Temperature in {currentYear}: " +
                     $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2):0.00}{Environment.NewLine}";
                 output +=

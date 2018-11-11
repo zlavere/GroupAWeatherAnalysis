@@ -175,7 +175,7 @@ namespace WeatherDataAnalysis.Controller
         public async Task<WeatherInfoCollection> CreateNewFromFile(StorageFile file, ImportDialog importDialog)
         {
             this.File = file;
-            var csvFileReader = new CsvReader();
+            var csvFileReader = new FileLineGenerator();
             var temperatureParser = new TemperatureParser();
             var fileLines = await csvFileReader.GetFileLines(this.File);
             var newWeatherInfoCollection = temperatureParser.GetWeatherInfoCollection(importDialog.CollectionName, fileLines);
