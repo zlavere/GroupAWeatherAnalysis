@@ -14,7 +14,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
     /// Find Highest in collection of 0 WeatherInfo, throws InvalidOperationException
     /// </summary>
     [TestClass]
-    public class FindWithLowest
+    public class FindWithLowestTemp
     {
         [TestMethod]
         public void FromOneWeatherInfo()
@@ -22,7 +22,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
             var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
                 new WeatherInfo(DateTime.Today.AddDays(-3), 50, 40)
             });
-            Assert.AreEqual(40, collection.FindWithLowest().First().LowTemp);
+            Assert.AreEqual(40, collection.FindWithLowestTemp().First().LowTemp);
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
                 new WeatherInfo(DateTime.Today.AddDays(-3), 0, -10),
                 new WeatherInfo(DateTime.Today, 100, -9)
             });
-            Assert.AreEqual(-10, collection.FindWithLowest().First().LowTemp);
+            Assert.AreEqual(-10, collection.FindWithLowestTemp().First().LowTemp);
         }
         [TestMethod]
         public void FromManyWeatherInfo()
@@ -42,14 +42,14 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
                 new WeatherInfo(DateTime.Today.AddDays(-2), 100, -9),
                 new WeatherInfo(DateTime.Today, 100, 90)
             });
-            Assert.AreEqual(-10, collection.FindWithLowest().First().LowTemp);
+            Assert.AreEqual(-10, collection.FindWithLowestTemp().First().LowTemp);
         }
         [TestMethod]
         public void FromZeroWeatherInfo()
         {
             var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo>());
 
-            Assert.ThrowsException<InvalidOperationException>(() => collection.FindWithHighest());
+            Assert.ThrowsException<InvalidOperationException>(() => collection.FindWithHighestTemp());
 
         }
 

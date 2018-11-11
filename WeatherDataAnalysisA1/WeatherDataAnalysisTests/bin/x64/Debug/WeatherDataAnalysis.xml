@@ -275,12 +275,12 @@
             <param name="collection">The collection.</param>
             <returns></returns>
         </member>
-        <member name="T:WeatherDataAnalysis.io.FileLineGenerator">
+        <member name="T:WeatherDataAnalysis.io.CsvReader">
             <summary>
                 Reads CSV file lines
             </summary>
         </member>
-        <member name="M:WeatherDataAnalysis.io.FileLineGenerator.GetFileLines(Windows.Storage.IStorageFile)">
+        <member name="M:WeatherDataAnalysis.io.CsvReader.GetFileLines(Windows.Storage.IStorageFile)">
             <summary>
             Gets the file lines.
             </summary>
@@ -327,6 +327,16 @@
         <member name="T:WeatherDataAnalysis.MainPage">
             <summary>
                 An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.MainPage.ApplicationHeight">
+            <summary>
+                The application height
+            </summary>
+        </member>
+        <member name="F:WeatherDataAnalysis.MainPage.ApplicationWidth">
+            <summary>
+                The application width
             </summary>
         </member>
         <member name="M:WeatherDataAnalysis.MainPage.#ctor">
@@ -452,7 +462,15 @@
                 The date.
             </value>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfo.#ctor(System.DateTime,System.Int32,System.Int32)">
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfo.Precipitation">
+            <summary>
+                Gets  or sets the precipitation.
+            </summary>
+            <value>
+                The date.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfo.#ctor(System.DateTime,System.Int32,System.Int32,System.Nullable{System.Double})">
             <summary>
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.WeatherInfo" /> class.
             </summary>
@@ -461,6 +479,7 @@
             <param name="date">The date.</param>
             <param name="highTemp">The high temperature.</param>
             <param name="lowTemp">The low temperature.</param>
+            <param name="precipitation">The precipitation level</param>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfo.CompareTo(WeatherDataAnalysis.Model.WeatherInfo)">
             <summary>
@@ -524,6 +543,22 @@
             </summary>
             <value>
             The lowest temperature.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.HighestPrecipitation">
+            <summary>
+            Gets the highest precipitation.
+            </summary>
+            <value>
+            The highest precipitation.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.TotalPrecipitation">
+            <summary>
+            Gets the total precipitation.
+            </summary>
+            <value>
+            The total precipitation.
             </value>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.#ctor(System.String,System.Collections.Generic.IList{WeatherDataAnalysis.Model.WeatherInfo})">
@@ -621,19 +656,25 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithHighest">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithHighestTemp">
             <summary>
                 Gets the highest temps.
             </summary>
             <returns>List of Weather with the highest temps.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithLowest">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithLowestTemp">
             <summary>
             Gets the lowest temps.
             </summary>
             <returns>List of Weather with the lowest temps.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindHighestLow">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithHighestPrecipitation">
+            <summary>
+                Gets the highest precipitation.
+            </summary>
+            <returns>List of Weather with the highest temps.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindHighestLowTemps">
             <summary>
                 Gets the highest low temps.
             </summary>
@@ -706,15 +747,15 @@
         </member>
         <member name="T:WeatherDataAnalysis.ViewModel.ActiveWeatherInfoCollection">
             <summary>
-                Data binding for the currently active WeatherInformationCollection to be used throughout the application.
+            Data binding for the currently active WeatherInformationCollection to be used throughout the application.
             </summary>
         </member>
         <member name="P:WeatherDataAnalysis.ViewModel.ActiveWeatherInfoCollection.Active">
             <summary>
-                Gets or sets the active WeatherInformationCollection.
+            Gets or sets the active WeatherInformationCollection.
             </summary>
             <value>
-                Sets the WeatherInformationCollection used ubiquitously throughout the application.
+            Sets the WeatherInformationCollection used ubiquitously throughout the application.
             </value>
         </member>
         <member name="T:WeatherDataAnalysis.ViewModel.HistogramSizeComboBoxBindings">

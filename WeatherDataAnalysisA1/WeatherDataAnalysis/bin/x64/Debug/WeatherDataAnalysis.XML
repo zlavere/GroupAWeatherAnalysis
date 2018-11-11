@@ -462,7 +462,15 @@
                 The date.
             </value>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfo.#ctor(System.DateTime,System.Int32,System.Int32)">
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfo.Precipitation">
+            <summary>
+                Gets  or sets the precipitation.
+            </summary>
+            <value>
+                The date.
+            </value>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfo.#ctor(System.DateTime,System.Int32,System.Int32,System.Nullable{System.Double})">
             <summary>
                 Initializes a new instance of the <see cref="T:WeatherDataAnalysis.Model.WeatherInfo" /> class.
             </summary>
@@ -471,6 +479,7 @@
             <param name="date">The date.</param>
             <param name="highTemp">The high temperature.</param>
             <param name="lowTemp">The low temperature.</param>
+            <param name="precipitation">The precipitation level</param>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfo.CompareTo(WeatherDataAnalysis.Model.WeatherInfo)">
             <summary>
@@ -534,6 +543,22 @@
             </summary>
             <value>
             The lowest temperature.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.HighestPrecipitation">
+            <summary>
+            Gets the highest precipitation.
+            </summary>
+            <value>
+            The highest precipitation.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.Model.WeatherInfoCollection.TotalPrecipitation">
+            <summary>
+            Gets the total precipitation.
+            </summary>
+            <value>
+            The total precipitation.
             </value>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.#ctor(System.String,System.Collections.Generic.IList{WeatherDataAnalysis.Model.WeatherInfo})">
@@ -631,17 +656,23 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithHighest">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithHighestTemp">
             <summary>
                 Gets the highest temps.
             </summary>
             <returns>List of Weather with the highest temps.</returns>
         </member>
-        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithLowest">
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithLowestTemp">
             <summary>
             Gets the lowest temps.
             </summary>
             <returns>List of Weather with the lowest temps.</returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindWithHighestPrecipitation">
+            <summary>
+                Gets the highest precipitation.
+            </summary>
+            <returns>List of Weather with the highest temps.</returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindHighestLowTemps">
             <summary>

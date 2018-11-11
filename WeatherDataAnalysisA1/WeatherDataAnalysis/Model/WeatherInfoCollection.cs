@@ -70,6 +70,20 @@ namespace WeatherDataAnalysis.Model
         /// </value>
         public int LowestTemp => this.WeatherInfos.Min(temp => temp.LowTemp);
 
+        /// <summary>
+        /// Gets the highest precipitation.
+        /// </summary>
+        /// <value>
+        /// The highest precipitation.
+        /// </value>
+        public double? HighestPrecipitation => this.WeatherInfos.Max(precipitation => precipitation.Precipitation);
+        /// <summary>
+        /// Gets the total precipitation.
+        /// </summary>
+        /// <value>
+        /// The total precipitation.
+        /// </value>
+        public double? TotalPrecipitation => this.WeatherInfos.Sum(precipitation => precipitation.Precipitation);
         #endregion
 
         #region Constructors
@@ -255,7 +269,7 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the highest temps.
         /// </summary>
         /// <returns>List of Weather with the highest temps.</returns>
-        public ICollection<WeatherInfo> FindWithHighest()
+        public ICollection<WeatherInfo> FindWithHighestTemp()
         {
             var highest = this.WeatherInfos.Max(weather => weather.HighTemp);
 
@@ -267,14 +281,24 @@ namespace WeatherDataAnalysis.Model
         /// Gets the lowest temps.
         /// </summary>
         /// <returns>List of Weather with the lowest temps.</returns>
-        public ICollection<WeatherInfo> FindWithLowest()
+        public ICollection<WeatherInfo> FindWithLowestTemp()
         {
             var lowest = this.WeatherInfos.Min(weather => weather.LowTemp);
             var lowTemps =
                 this.WeatherInfos.Where(temp => temp.LowTemp == lowest).ToList();
             return lowTemps;
         }
+        /// <summary>
+        ///     Gets the highest precipitation.
+        /// </summary>
+        /// <returns>List of Weather with the highest temps.</returns>
+        public ICollection<WeatherInfo> FindWithHighestPrecipitation()
+        {
+            var highest = this.WeatherInfos.Max(weather => weather.Precipitation);
 
+            return this.WeatherInfos.Where(precipitation => precipitation.Precipitation.Equals(highest))
+                       .ToList();
+        }
         /// <summary>
         ///     Gets the highest low temps.
         /// </summary>

@@ -103,8 +103,8 @@
     <Compile Include="WeatherInfoCollection\FindHighestLowTemps.cs" />
     <Compile Include="WeatherInfoCollection\FindLowestHighTemps.cs" />
     <Compile Include="WeatherInfoCollection\GetHighestInMonth.cs" />
-    <Compile Include="WeatherInfoCollection\FindWithHighest.cs" />
-    <Compile Include="WeatherInfoCollection\FindWithLowest.cs" />
+    <Compile Include="WeatherInfoCollection\FindWithHighestTemp.cs" />
+    <Compile Include="WeatherInfoCollection\FindWithLowestTemp.cs" />
     <Compile Include="WeatherInfoCollection\GetAverageHigh.cs" />
     <Compile Include="WeatherInfoCollection\GetAverageLow.cs" />
     <Compile Include="WeatherInfoCollection\GetLowestInMonth.cs" />

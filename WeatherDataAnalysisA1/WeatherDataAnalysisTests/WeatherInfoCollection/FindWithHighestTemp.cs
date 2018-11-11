@@ -14,7 +14,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
     /// Find Highest in collection of 0 WeatherInfo
     /// </summary>
     [TestClass]
-    public class FindWithHighest
+    public class FindWithHighestTemp
     {
         [TestMethod]
         public void FromOneWeatherInfo()
@@ -22,7 +22,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
             var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo> {
                 new WeatherInfo(DateTime.Today.AddDays(-3), 50, 40)
             });
-            Assert.AreEqual(50, collection.FindWithHighest().First().HighTemp);
+            Assert.AreEqual(50, collection.FindWithHighestTemp().First().HighTemp);
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
                 new WeatherInfo(DateTime.Today.AddDays(-3), 99, -10),
                 new WeatherInfo(DateTime.Today, 100, -10)
             });
-            Assert.AreEqual(100, collection.FindWithHighest().First().HighTemp);
+            Assert.AreEqual(100, collection.FindWithHighestTemp().First().HighTemp);
         }
         [TestMethod]
         public void FromManyWeatherInfo()
@@ -42,7 +42,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
                 new WeatherInfo(DateTime.Today.AddDays(-1), 99, -10),
                 new WeatherInfo(DateTime.Today, 100, -10)
             });
-            Assert.AreEqual(100, collection.FindWithHighest().First().HighTemp);
+            Assert.AreEqual(100, collection.FindWithHighestTemp().First().HighTemp);
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollection
         {
             var collection = new WeatherDataAnalysis.Model.WeatherInfoCollection("Test1", new List<WeatherInfo>());
 
-            Assert.ThrowsException<InvalidOperationException>(() => collection.FindWithHighest());
+            Assert.ThrowsException<InvalidOperationException>(() => collection.FindWithHighestTemp());
 
         }
         

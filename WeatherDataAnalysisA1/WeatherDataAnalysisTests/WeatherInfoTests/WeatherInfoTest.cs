@@ -8,7 +8,9 @@ namespace WeatherDataAnalysisTests.WeatherInfoTests
     /// Test Cases
     /// Tests Valid input parameters
     /// Exception when the high is less than the low
-    /// Successful creation when the date is today
+    /// Exception when the precipitation is less than 0
+    /// Successful creation when the date is today with no precipitation
+    /// Successful creation when the date is today with precipitation
     /// Successful creation when high equals low
     /// Exception when the Date is greater than today
     /// Successful creation the Date is yesterday 
@@ -24,18 +26,27 @@ namespace WeatherDataAnalysisTests.WeatherInfoTests
         }
 
         [TestMethod]
-        public void TestWhenHighLessThanLow()
+        public void TestWhenHighTempLessThanLowTemp()
         {
             Assert.ThrowsException<ArgumentException>(() => new WeatherInfo(DateTime.Now.AddDays(-1), 0, 100));
         }
-
         [TestMethod]
-        public void TestSuccessWhenDateIsToday()
+        public void TestWhenPrecipitationLessThanZero()
+        {
+            Assert.ThrowsException<ArgumentException>(() => new WeatherInfo(DateTime.Now.AddDays(-1), 0, 100,-1));
+        }
+        [TestMethod]
+        public void TestSuccessWhenDateIsTodayWithoutPrecipitation()
         {
             var test = new WeatherInfo(DateTime.Today, 100, 0);
             Assert.IsNotNull(test);
         }
-
+        [TestMethod]
+        public void TestSuccessWhenDateIsTodayWithPrecipitation()
+        {
+            var test = new WeatherInfo(DateTime.Today, 100, 0,.01);
+            Assert.IsNotNull(test);
+        }
         [TestMethod]
         public void TestSuccessWhenHighEqualsLow()
         {
