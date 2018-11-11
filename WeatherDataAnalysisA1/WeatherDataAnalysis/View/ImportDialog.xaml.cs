@@ -1,4 +1,10 @@
-﻿using Windows.UI.Xaml;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.AccessCache;
+using Windows.Storage.Pickers;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using WeatherDataAnalysis.Model.Enums;
@@ -15,6 +21,9 @@ namespace WeatherDataAnalysis.View
     /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
     public sealed partial class ImportDialog
     {
+
+        public const ContentDialogResult Submit = ContentDialogResult.Primary;
+        public const ContentDialogResult Cancel = ContentDialogResult.Secondary;
         #region Properties
 
         /// <summary>
@@ -33,6 +42,16 @@ namespace WeatherDataAnalysis.View
         /// </value>
         public ImportType ImportType { get; private set; }
 
+        public ContentDialogResult Result
+        {
+            get;
+            set;
+        }
+
+        public StorageFile File { get; set; }
+
+//        private FileOpenPicker filePicker { get; set; }
+
         #endregion
 
         #region Constructors
@@ -44,6 +63,37 @@ namespace WeatherDataAnalysis.View
         {
             this.InitializeComponent();
             IsPrimaryButtonEnabled = false;
+        }
+
+        public async Task<bool> StartDialog()
+        {
+            var hasResponded = false;
+            var filePicker = new FileOpenPicker();
+            filePicker.FileTypeFilter.Add(".csv");
+            filePicker.FileTypeFilter.Add(".txt");
+            this.File = await filePicker.PickSingleFileAsync();
+            StorageApplicationPermissions.FutureAccessList.Add(this.File);
+
+            if (this.File != null)
+            {
+                hasResponded = await this.runDialog();
+            }
+
+            return hasResponded;
+        }
+
+        private async Task<bool> runDialog()
+        {
+            var isComplete = false;
+
+            this.Result = await this.ShowAsync();
+
+            if (this.Result == Submit)
+            {
+                isComplete = true;
+            }
+
+            return isComplete;
         }
 
         #endregion
@@ -77,7 +127,8 @@ namespace WeatherDataAnalysis.View
             var dataAvailable = false;
             var hasName = false;
             var hasImportType = false;
-            if (!this.collectionNameInput.Equals(null))
+
+            if (!string.IsNullOrEmpty(this.collectionNameInput.Text))
             {
                 hasName = true;
             }

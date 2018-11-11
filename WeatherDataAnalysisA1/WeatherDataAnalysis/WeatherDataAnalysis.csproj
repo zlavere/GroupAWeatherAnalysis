@@ -98,6 +98,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controller\AddWeatherInfo.cs" />
+    <Compile Include="Controller\ImportWeatherInfo.cs" />
     <Compile Include="Controller\MainPageController.cs" />
     <Compile Include="Converter\DatePickerConverter.cs" />
     <Compile Include="Converter\OrdinalDateConverter.cs" />
@@ -140,6 +141,9 @@
     <Compile Include="View\MasterDetailsWeather.xaml.cs">
       <DependentUpon>MasterDetailsWeather.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SummaryView.xaml.cs">
+      <DependentUpon>SummaryView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -180,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MasterDetailsWeather.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SummaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

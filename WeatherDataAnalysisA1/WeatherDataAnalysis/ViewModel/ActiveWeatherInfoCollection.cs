@@ -1,4 +1,5 @@
-﻿using WeatherDataAnalysis.Model;
+﻿using System.Collections.Generic;
+using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
 {
@@ -7,6 +8,7 @@ namespace WeatherDataAnalysis.ViewModel
     /// </summary>
     public static class ActiveWeatherInfoCollection
     {
+        private static WeatherInfoCollection active;
         #region Properties
 
         /// <summary>
@@ -15,8 +17,21 @@ namespace WeatherDataAnalysis.ViewModel
         /// <value>
         ///     Sets the WeatherInformationCollection used ubiquitously throughout the application.
         /// </value>
-        public static WeatherInfoCollection Active { get; set; }
+        public static WeatherInfoCollection Active {
+            get
+            {
+                if (active == null)
+                {
+                    active = new WeatherInfoCollection(string.Empty, new List<WeatherInfo>());
+                    
+                }
+
+                return active;
+            }
+            set => active = value;
+        }
 
         #endregion
+
     }
 }

@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Windows.Foundation.Collections;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
 {
     /// <summary>
-    ///     Binding for all available collections of weather data.
+    ///     Binding for all available collections of weather data and groupings therein. 
     /// </summary>
     public class WeatherInfoCollectionsBinding : ICollection<WeatherInfoCollection>, IObservableMap<string, WeatherInfoCollection>
     {
+        private IList<WeatherInfoCollection> collectionsByYear;
         #region Properties
 
         /// <summary>
@@ -19,6 +21,30 @@ namespace WeatherDataAnalysis.ViewModel
         ///     The weather information collections.
         /// </value>
         private IDictionary<string, WeatherInfoCollection> WeatherInfoCollections { get; }
+
+        public IList<WeatherInfoCollection> CollectionsByYear
+        {
+            get
+            {
+                var years = new List<int>();
+                if (ActiveWeatherInfoCollection.Active != null)
+                {
+                    years = ActiveWeatherInfoCollection.Active.Select(year => year.Date.Year).Distinct().ToList();
+                }
+                
+                foreach (var current in years)
+                {
+                    var weatherInfosInYear =
+                        ActiveWeatherInfoCollection.Active.Where(weatherInfo => weatherInfo.Date.Year == current);
+                    var newCollection = new WeatherInfoCollection($"{current}", weatherInfosInYear.ToList());
+                    this.collectionsByYear.Add(newCollection);
+                }
+
+                return this.collectionsByYear;
+            }
+            private set => this.collectionsByYear = value;
+        }
+
 
         /// <inheritdoc />
         /// <summary>
@@ -33,6 +59,8 @@ namespace WeatherDataAnalysis.ViewModel
         ///     <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
         /// </summary>
         public ICollection<WeatherInfoCollection> Values => this.WeatherInfoCollections.Values;
+
+        
 
         /// <summary>
         ///     Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
@@ -69,6 +97,7 @@ namespace WeatherDataAnalysis.ViewModel
         public WeatherInfoCollectionsBinding()
         {
             this.WeatherInfoCollections = new Dictionary<string, WeatherInfoCollection>();
+            this.collectionsByYear = new List<WeatherInfoCollection>();
         }
 
         #endregion

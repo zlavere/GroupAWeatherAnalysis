@@ -18,7 +18,8 @@ namespace WeatherDataAnalysis.Extension
         /// <param name="collection">The collection.</param>
         /// <returns></returns>
         public static ObservableCollection<WeatherInfo> ToObservableCollection(this IList<WeatherInfo> collection) => new ObservableCollection<WeatherInfo>(collection);
-        
+        public static ObservableCollection<WeatherInfoCollection> ToObservableCollection(this IList<WeatherInfoCollection> collection) => new ObservableCollection<WeatherInfoCollection>(collection);
+
         #endregion
     }
 }

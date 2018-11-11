@@ -1,10 +1,14 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.Foundation.Collections;
+using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.Extension;
 using WeatherDataAnalysis.Model;
+using WeatherDataAnalysis.Utility;
+using WeatherDataAnalysis.View;
 
 namespace WeatherDataAnalysis.ViewModel
 {
@@ -18,6 +22,8 @@ namespace WeatherDataAnalysis.ViewModel
 
         private WeatherInfoCollectionsBinding allCollections;
         private WeatherInfoCollection activeCollection;
+        private ObservableCollection<WeatherInfoCollection> importedCollections;
+        private ObservableCollection<WeatherInfoCollection> activeCollectionGroupedByYear;
         private ObservableCollection<WeatherInfo> displayCollection;
         private ObservableCollection<WeatherInfo> highestTempsInActiveCollection;
         private ObservableCollection<WeatherInfo> highestLowTempsInActiveCollection;
@@ -32,9 +38,33 @@ namespace WeatherDataAnalysis.ViewModel
         private double averageLowTemp;
         private double totalPrecipitation;
 
+
+
         #endregion
 
         #region Properties
+
+        public RelayCommand ImportWeatherInfo { get; private set; }
+
+        public ObservableCollection<WeatherInfoCollection> ActiveCollectionGroupedByYear
+        {
+            get => this.activeCollectionGroupedByYear;
+            set { this.activeCollectionGroupedByYear = value; this.OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<WeatherInfoCollection> ImportedCollections
+        {
+            get
+            {
+                this.importedCollections = this.AllCollections.Values.ToList().ToObservableCollection();
+                return this.importedCollections;
+            }
+            set
+            {
+                this.importedCollections = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         ///     Gets or sets all collections.
@@ -42,12 +72,12 @@ namespace WeatherDataAnalysis.ViewModel
         /// <value>
         ///     All collections.
         /// </value>
-        public IObservableMap<string, WeatherInfoCollection> AllCollections
+        public WeatherInfoCollectionsBinding AllCollections
         {
             get => this.allCollections;
             set
             {
-                this.allCollections = (WeatherInfoCollectionsBinding) value;
+                this.allCollections = value;
                 this.OnPropertyChanged();
             }
         }
@@ -79,7 +109,10 @@ namespace WeatherDataAnalysis.ViewModel
         {
             get
             {
-                this.displayCollection = this.activeCollection.ToObservableCollection();
+                if (ActiveWeatherInfoCollection.Active != null)
+                {
+                    this.displayCollection = this.activeCollection.ToObservableCollection();
+                }
                 return this.displayCollection;
             }
             set {
@@ -280,15 +313,52 @@ namespace WeatherDataAnalysis.ViewModel
         public SummaryViewModel()
         {
             this.AllCollections = new WeatherInfoCollectionsBinding();
+            this.DisplayCollection = new ObservableCollection<WeatherInfo>();
+            this.HighTempThreshold = 90;
+            this.LowTempThreshold = 32;
+
             if (ActiveWeatherInfoCollection.Active != null)
             {
                 this.ActiveCollection = ActiveWeatherInfoCollection.Active;
-            } 
+                this.DisplayCollection = new ObservableCollection<WeatherInfo>();
+            }
+
+            this.initializeCommands();
         }
+
 
         #endregion
 
         #region Methods
+
+
+        private void initializeCommands()
+        {
+            this.ImportWeatherInfo = new RelayCommand(this.executeImport, this.canExecuteImport);
+
+        }
+
+        private async void executeImport(object obj)
+        {
+
+            var importController = new ImportWeatherInfo();
+            var newCollection = await importController.CreateNewWeatherInfoCollection();
+
+            if (newCollection != null)
+            {
+                this.allCollections.Add(newCollection.Name, newCollection);
+                this.ImportedCollections = this.AllCollections.Values.ToList().ToObservableCollection();
+                this.ActiveCollectionGroupedByYear = this.AllCollections.CollectionsByYear.ToObservableCollection();
+                ActiveWeatherInfoCollection.Active = newCollection;
+            }
+
+        }
+
+        private bool canExecuteImport(object obj)
+        {
+            return true;
+        }
+
 
         /// <summary>
         ///     Occurs when a property value changes.
