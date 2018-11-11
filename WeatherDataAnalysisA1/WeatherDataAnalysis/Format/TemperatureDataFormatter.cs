@@ -121,13 +121,13 @@ namespace WeatherDataAnalysis.Format
                    // $"{Math.Round((double) this.WeatherInfoCollection.HighestTemp, 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestTemps()}";
                 output +=
                     $"The Lowest Temperature in {currentYear} was " +
-                    $"{Math.Round((double) this.WeatherInfoCollection.LowestTemp, 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getLowestTemps()}";
+                    $"{this.WeatherInfoCollection.LowestTemp}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getLowestTemps()}";
                 output +=
                     $"The Lowest High Temperature in {currentYear} was " +
-                    $"{Math.Round((double) this.WeatherInfoCollection.Min(temp => temp.HighTemp), 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getLowestHighTemps()}";
+                    $"{this.WeatherInfoCollection.Min(temp => temp.HighTemp)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getLowestHighTemps()}";
                 output +=
                     $"The Highest Low Temperature in {currentYear} was " +
-                    $"{Math.Round((double) this.WeatherInfoCollection.Max(temp => temp.LowTemp), 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestLowTemps()}";
+                    $"{this.WeatherInfoCollection.Max(temp => temp.LowTemp)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestLowTemps()}";
 
                 output += $"Dates with temperatures below {this.LowTempThreshold} : ";
                 output += this.getTempsBelow() + Environment.NewLine;
