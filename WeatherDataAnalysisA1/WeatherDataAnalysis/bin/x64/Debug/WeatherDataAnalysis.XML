@@ -640,6 +640,12 @@
             </summary>
             <param name="index">The zero-based index of the item to remove.</param>
         </member>
+        <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.groupByYear">
+            <summary>
+                Groups the by year.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.GroupByMonth">
             <summary>
                 Groups the by month.
