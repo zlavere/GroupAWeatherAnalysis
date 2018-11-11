@@ -106,12 +106,12 @@ namespace WeatherDataAnalysis.Format
                     ActiveWeatherInfoCollection.Active.Where(weatherInfo => weatherInfo.Date.Year == currentYear);
 
                 var yearInActiveCollection = queryYearInActiveCollection.ToList();
-                var precipitation = this.WeatherInfoCollection.TotalPrecipitation;
+                var totalPrecipitation = this.WeatherInfoCollection.TotalPrecipitation;
                 this.WeatherInfoCollection =
                     new WeatherInfoCollection($"{currentYear}", yearInActiveCollection.ToList());
 
                 output += $"{currentYear} Data: ({this.WeatherInfoCollection.Count} Days of Data){Environment.NewLine}";
-                if (precipitation == null)
+                if (totalPrecipitation == null)
                 {
                     output += $"{currentYear} contains no precipitation data.{Environment.NewLine}";
                 }
@@ -175,7 +175,7 @@ namespace WeatherDataAnalysis.Format
                     new WeatherInfoCollection(
                         $"{DateTimeFormatInfo.CurrentInfo.GetMonthName(currentMonth)} {currentYear}",
                         queryByMonthInCurrentYear.ToList());
-
+                var mostPrecipitation = this.WeatherInfoCollection.MostPrecipitation;
                 output +=
                     $"{this.WeatherInfoCollection.Name}: ({this.WeatherInfoCollection.Count}/{DateTime.DaysInMonth(this.Year, currentMonth)} Days of Data){Environment.NewLine}";
 
@@ -183,6 +183,17 @@ namespace WeatherDataAnalysis.Format
                 {
                     try
                     {
+                        if (mostPrecipitation == null)
+                        {
+                            output += $"{this.WeatherInfoCollection.Name} contains no precipitation data.{Environment.NewLine}";
+                        }
+                        else
+                        {
+                            output += $"The highet level of precipitation in {this.WeatherInfoCollection.Name} was: " +
+                                      $"{this.WeatherInfoCollection.MostPrecipitation}" +
+                                      $"{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestPrecipitation()}";
+
+                        }
                         output +=
                             $"Average High Temperature in {this.WeatherInfoCollection.Name}: " +
                             $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2):0.00}{Environment.NewLine}";
@@ -215,11 +226,20 @@ namespace WeatherDataAnalysis.Format
 
             return output;
         }
-
         private string getHighestTemps()
         {
             var output = string.Empty;
             foreach (var current in this.WeatherInfoCollection.FindWithHighestTemp())
+            {
+                output += $"{this.getDateString(current.Date)} {Environment.NewLine}";
+            }
+
+            return output;
+        }
+        private string getHighestPrecipitation()
+        {
+            var output = string.Empty;
+            foreach (var current in this.WeatherInfoCollection.FindWithMostPrecipitation())
             {
                 output += $"{this.getDateString(current.Date)} {Environment.NewLine}";
             }

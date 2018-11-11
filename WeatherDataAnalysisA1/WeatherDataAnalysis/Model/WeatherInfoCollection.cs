@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace WeatherDataAnalysis.Model
 {
@@ -297,18 +299,22 @@ namespace WeatherDataAnalysis.Model
         /// <summary>
         ///     Gets the highest precipitation.
         /// </summary>
-        /// <returns>List of Weather with the highest temps.</returns>
+        /// <returns>List of Weather with the highest Precipitation.</returns>
         public ICollection<WeatherInfo> FindWithMostPrecipitation()
         {
             var highest = this.WeatherInfos.Max(weather => weather.Precipitation);
+            var highestPrecipitation = new List<WeatherInfo>();
+            try
+            {
+                highestPrecipitation = this.WeatherInfos.Where(precipitation =>Math.Abs((double)precipitation.Precipitation - (double)highest) <0.01).ToList();
+            }
+            catch (Exception e)
+            {
+                highestPrecipitation = null;
+                
+            }
 
-            //return this.WeatherInfos
-            //           .Where(precipitation =>
-            //               Math.Abs(precipitation.Precipitation - highest) <
-            //               0.01)
-            //           //Formula to mitigate double conversion on == operator
-            //           .ToList();
-            return null;
+            return highestPrecipitation;
         }
 
         /// <summary>
