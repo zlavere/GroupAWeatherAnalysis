@@ -10,9 +10,9 @@ namespace WeatherDataAnalysis.IO
     /// </summary>
     public class WriteWeatherDataToCsv
     {
-        #region Properties
-
-        private StorageFolder Directory { get; set; }
+        #region Fields
+        private StorageFolder directory;
+      
 
         #endregion
 
@@ -24,8 +24,8 @@ namespace WeatherDataAnalysis.IO
         /// <param name="directory">The directory.</param>
         public async void WriteActiveDataToCsv(StorageFolder directory)
         {
-            this.Directory = directory;
-            var file = await this.Directory.CreateFileAsync($"{ActiveWeatherInfoCollection.Active.Name}.csv",
+            this.directory = directory;
+            var file = await this.directory.CreateFileAsync($"{ActiveWeatherInfoCollection.Active.Name}.csv",
                 CreationCollisionOption.GenerateUniqueName);
             await FileIO.WriteLinesAsync(file, this.getSeparatedWeatherInfo());
         }

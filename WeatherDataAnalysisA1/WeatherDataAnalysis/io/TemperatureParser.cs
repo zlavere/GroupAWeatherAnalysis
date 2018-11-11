@@ -77,7 +77,7 @@ namespace WeatherDataAnalysis.io
             var date = DateTime.ParseExact(line[DateSegment], "M/d/yyyy", CultureInfo.InvariantCulture);
             var highTemp = int.Parse(line[HighTempSegment]);
             var lowTemp = int.Parse(line[LowTempSegment]);
-
+            //TODO refactor so there is a single return
             try
             {
                 var precipitation = double.Parse(line[PrecipitationSegment]);
