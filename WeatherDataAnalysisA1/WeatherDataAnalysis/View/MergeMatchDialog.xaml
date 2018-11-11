@@ -13,9 +13,9 @@
 
     <Grid Margin="0,0,12,-4">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="150*" />
 
-            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="150*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,13 +23,21 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="activeDateText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Date:" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column ="0" Grid.Row="1" />
-        <TextBlock x:Name="newDateText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Date:" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column ="1" Grid.Row="1"/>
-        <TextBlock x:Name="newHighTempText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="High:" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column ="1" Grid.Row="2"/>
-        <TextBlock x:Name="newLowTempText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Low" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column ="1" Grid.Row="3" />
-        <TextBlock x:Name="activeHighTempText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="High:" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Column ="0" Grid.Row="2" />
-        <TextBlock x:Name="activeLowTempText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Low:" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column ="0" Grid.Row="3" />
-        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Text="Current Information" Grid.Column ="0" Grid.Row="0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Text="New Information" Grid.Column="1" Grid.Row="0" />
+        <TextBlock x:Name="activeDateText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Date:" TextWrapping="Wrap"
+                   VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" />
+        <TextBlock x:Name="newDateText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Date:" TextWrapping="Wrap"
+                   VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
+        <TextBlock x:Name="newHighTempText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="High:"
+                   TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" />
+        <TextBlock x:Name="newLowTempText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Low" TextWrapping="Wrap"
+                   VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" />
+        <TextBlock x:Name="activeHighTempText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="High:"
+                   TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" />
+        <TextBlock x:Name="activeLowTempText" HorizontalAlignment="Left" Margin="0,0,0,0" Text="Low:"
+                   TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="0" Grid.Row="3" />
+        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
+                   Text="Current Information" Grid.Column="0" Grid.Row="0" />
+        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"
+                   Text="New Information" Grid.Column="1" Grid.Row="0" />
     </Grid>
 </ContentDialog>

@@ -7,14 +7,21 @@ using Windows.UI.Xaml.Controls;
 namespace WeatherDataAnalysis.View
 {
     /// <summary>
-    /// Displays a dialog to manage Merging preferences when attempting
-    /// to import a second or more files.
+    ///     Displays a dialog to manage Merging preferences when attempting
+    ///     to import a second or more files.
     /// </summary>
     /// <seealso cref="Windows.UI.Xaml.Controls.ContentDialog" />
     /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector" />
     /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
     public sealed partial class MergeMatchDialog
     {
+        #region Data members
+
+        /// <summary>
+        ///     The replace button
+        /// </summary>
+        public const ContentDialogResult Replace = ContentDialogResult.Primary;
+
         private const int CurrentDateIndex = 0;
         private const int CurrentHighIndex = 1;
         private const int CurrentLowIndex = 2;
@@ -22,29 +29,36 @@ namespace WeatherDataAnalysis.View
         private const int NewHighIndex = 4;
         private const int NewLowIndex = 5;
 
-        /// <summary>
-        /// The replace button
-        /// </summary>
-        public const ContentDialogResult Replace = ContentDialogResult.Primary;
+        #endregion
+
+        #region Properties
 
         /// <summary>
-        /// Gets or sets the input result.
+        ///     Gets or sets the input result.
         /// </summary>
         /// <value>
-        /// The input result.
+        ///     The input result.
         /// </value>
         private ContentDialogResult InputResult { get; set; }
 
+        #endregion
+
+        #region Constructors
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="MergeMatchDialog"/> class.
+        ///     Initializes a new instance of the <see cref="MergeMatchDialog" /> class.
         /// </summary>
         public MergeMatchDialog()
         {
             this.InitializeComponent();
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
-        /// Shows the dialog.
+        ///     Shows the dialog.
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns></returns>
@@ -64,11 +78,12 @@ namespace WeatherDataAnalysis.View
 
         private void c_Replace(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-
         }
 
         private void c_Keep(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
         }
+
+        #endregion
     }
 }

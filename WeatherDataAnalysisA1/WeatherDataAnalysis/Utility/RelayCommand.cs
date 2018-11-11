@@ -1,32 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace WeatherDataAnalysis.Utility
 {
     public class RelayCommand : ICommand
     {
-        private Action<object> execute;
-        private Predicate<object> canExecute;
+        #region Data members
 
-        public bool CanExecute(object parameter)
-        {
-            bool result = canExecute?.Invoke(parameter) ?? true;
-            return result;
-        }
+        private readonly Action<object> execute;
+        private readonly Predicate<object> canExecute;
 
-        public void Execute(object parameter)
-        {
-            if (CanExecute(parameter))
-            {
-                execute(parameter);
-            }
-        }
+        #endregion
 
-        public event EventHandler CanExecuteChanged;
+        #region Constructors
 
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
@@ -34,13 +20,34 @@ namespace WeatherDataAnalysis.Utility
             this.canExecute = canExecute;
         }
 
+        #endregion
+
+        #region Methods
+
+        public bool CanExecute(object parameter)
+        {
+            var result = this.canExecute?.Invoke(parameter) ?? true;
+            return result;
+        }
+
+        public void Execute(object parameter)
+        {
+            if (this.CanExecute(parameter))
+            {
+                this.execute(parameter);
+            }
+        }
+
+        public event EventHandler CanExecuteChanged;
+
         /// <summary>
-        /// Typically, protected but made public, so can trigger a manual refresh on the result of CanExecute.
+        ///     Typically, protected but made public, so can trigger a manual refresh on the result of CanExecute.
         /// </summary>
         public virtual void OnCanExecuteChanged()
         {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            this.CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
-    }
 
+        #endregion
+    }
 }

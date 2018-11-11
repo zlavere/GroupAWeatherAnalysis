@@ -3,7 +3,7 @@
 namespace WeatherDataAnalysis.Model
 {
     /// <summary>
-    ///     High and low temperature data for a specific day
+    ///     Data class for Temperature and Precipitation on a specific date.
     /// </summary>
     public class WeatherInfo : IComparable<WeatherInfo>
     {
@@ -39,7 +39,7 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The date.
         /// </value>
-        public double? Precipitation { get; set; }
+        public double Precipitation { get; set; }
 
         #endregion
 
@@ -53,8 +53,7 @@ namespace WeatherDataAnalysis.Model
         /// <param name="date">The date.</param>
         /// <param name="highTemp">The high temperature.</param>
         /// <param name="lowTemp">The low temperature.</param>
-        /// <param name="precipitation">The precipitation level</param>
-        public WeatherInfo(DateTime date, int highTemp, int lowTemp, double? precipitation = null)
+        public WeatherInfo(DateTime date, int highTemp, int lowTemp)
         {
             if (highTemp < lowTemp)
             {
@@ -65,22 +64,34 @@ namespace WeatherDataAnalysis.Model
             {
                 throw new ArgumentException("Date must be on or before Today.");
             }
+        }
 
+        /// <summary>Initializes a new instance of the <see cref="WeatherInfo" /> class.</summary>
+        /// <param name="date">The date.</param>
+        /// <param name="highTemp">The high temporary.</param>
+        /// <param name="lowTemp">The low temporary.</param>
+        /// <param name="precipitation">The measure of precipitation in inches.</param>
+        /// <exception cref="System.ArgumentException">Precipitation can't be negative</exception>
+        public WeatherInfo(DateTime date, int highTemp, int lowTemp, double precipitation)
+            : this(date, highTemp, lowTemp)
+        {
             if (precipitation < 0)
             {
                 throw new ArgumentException("Precipitation can't be negative");
             }
+
             this.Date = date;
             this.LowTemp = lowTemp;
             this.HighTemp = highTemp;
             this.Precipitation = precipitation;
         }
+
         #endregion
 
         #region Methods
 
         /// <summary>
-        /// Compares to.
+        ///     Compares to.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns></returns>

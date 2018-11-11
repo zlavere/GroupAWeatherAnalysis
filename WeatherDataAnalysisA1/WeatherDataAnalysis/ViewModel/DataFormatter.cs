@@ -25,8 +25,8 @@ namespace WeatherDataAnalysis.ViewModel
         ///     Initializes a new instance of the <see cref="DataFormatter" /> class.
         /// </summary>
         public DataFormatter()
-        { 
-           this.TemperatureDataFormatter = new TemperatureDataFormatter();
+        {
+            this.TemperatureDataFormatter = new TemperatureDataFormatter();
         }
 
         #endregion

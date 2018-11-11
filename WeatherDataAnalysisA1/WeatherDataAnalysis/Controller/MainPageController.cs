@@ -18,18 +18,15 @@ namespace WeatherDataAnalysis.Controller
     /// </summary>
     public class MainPageController //TODO This class should not be responsible for generating output.
     {
-        #region Data members
+        #region Properties
 
         private DataFormatter DataFormatter { get; set; }
-
-        #endregion
-
-        #region Properties
 
         private StorageFile File { get; set; }
         private WeatherInfoCollectionsBinding WeatherInfoCollections { get; }
         private TemperatureDataFormatter TempFormatter { get; set; }
         private ICollection<string> Errors { get; set; }
+
         #endregion
 
         #region Constructors
@@ -42,14 +39,12 @@ namespace WeatherDataAnalysis.Controller
             this.WeatherInfoCollections = new WeatherInfoCollectionsBinding();
         }
 
-
-
         #endregion
 
         #region Methods
 
         /// <summary>
-        /// Writes the active information to file.
+        ///     Writes the active information to file.
         /// </summary>
         /// <param name="directory">The directory.</param>
         public void WriteActiveInfoToFile(StorageFolder directory)
@@ -59,7 +54,7 @@ namespace WeatherDataAnalysis.Controller
         }
 
         /// <summary>
-        /// Sets up TemperatureDataFormatter.
+        ///     Sets up TemperatureDataFormatter.
         /// </summary>
         public void SetUpFormatter()
         {
@@ -67,11 +62,11 @@ namespace WeatherDataAnalysis.Controller
             {
                 this.DataFormatter = new DataFormatter();
                 this.TempFormatter = this.DataFormatter.TemperatureDataFormatter;
-            } 
+            }
         }
 
         /// <summary>
-        /// Sets the size of the histogram bucket.
+        ///     Sets the size of the histogram bucket.
         /// </summary>
         /// <param name="size">The size.</param>
         public void SetHistogramBucketSize(int size)
@@ -103,6 +98,7 @@ namespace WeatherDataAnalysis.Controller
             {
                 results += this.getErrorMessages();
             }
+
             return results;
         }
 
@@ -119,6 +115,7 @@ namespace WeatherDataAnalysis.Controller
             {
                 results += this.getErrorMessages();
             }
+
             return results;
         }
 
@@ -152,7 +149,7 @@ namespace WeatherDataAnalysis.Controller
         }
 
         /// <summary>
-        /// Loads the temperatures by month.
+        ///     Loads the temperatures by month.
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns></returns>
@@ -167,7 +164,7 @@ namespace WeatherDataAnalysis.Controller
         }
 
         /// <summary>
-        /// Creates the new WeatherInfoCollection from selected file asynchronously.
+        ///     Creates the new WeatherInfoCollection from selected file asynchronously.
         /// </summary>
         /// <param name="file">The file selected by user.</param>
         /// <param name="importDialog">The import dialog.</param>
@@ -178,7 +175,8 @@ namespace WeatherDataAnalysis.Controller
             var csvFileReader = new FileLineGenerator();
             var temperatureParser = new TemperatureParser();
             var fileLines = await csvFileReader.GetFileLines(this.File);
-            var newWeatherInfoCollection = temperatureParser.GetWeatherInfoCollection(importDialog.CollectionName, fileLines);
+            var newWeatherInfoCollection =
+                temperatureParser.GetWeatherInfoCollection(importDialog.CollectionName, fileLines);
 
             if (importDialog.ImportType == ImportType.Merge && ActiveWeatherInfoCollection.Active.Count > 0)
             {
@@ -205,17 +203,19 @@ namespace WeatherDataAnalysis.Controller
             {
                 this.Errors.Clear();
             }
-            
+
             foreach (var current in temperatureParser.ErrorMessages)
             {
                 this.Errors.Add(current);
             }
         }
 
-        private async Task<WeatherInfoCollection> performMergeTypeImportAsync(WeatherInfoCollection newWeatherInfoCollection)
+        private async Task<WeatherInfoCollection> performMergeTypeImportAsync(
+            WeatherInfoCollection newWeatherInfoCollection)
         {
             var matchedDates = newWeatherInfoCollection.Where(weatherInfo =>
-                ActiveWeatherInfoCollection.Active.Any(activeWeatherInfo => activeWeatherInfo.Date == weatherInfo.Date));
+                ActiveWeatherInfoCollection.Active.Any(activeWeatherInfo =>
+                    activeWeatherInfo.Date == weatherInfo.Date));
             var unmatchedDates = newWeatherInfoCollection.Where(weatherInfo =>
                 ActiveWeatherInfoCollection.Active.All(activeWeatherInfo =>
                     activeWeatherInfo.Date != weatherInfo.Date));
@@ -226,6 +226,7 @@ namespace WeatherDataAnalysis.Controller
             {
                 ActiveWeatherInfoCollection.Active.Add(current);
             }
+
             return ActiveWeatherInfoCollection.Active;
         }
 
@@ -234,7 +235,8 @@ namespace WeatherDataAnalysis.Controller
             //var mergeResult = new WeatherInfoCollection("Merge Result", new List<WeatherInfo>());
             foreach (var currentNew in matchedDates)
             {
-                var matchingInfo = ActiveWeatherInfoCollection.Active.First(weatherInfo => weatherInfo.Date == currentNew.Date);
+                var matchingInfo =
+                    ActiveWeatherInfoCollection.Active.First(weatherInfo => weatherInfo.Date == currentNew.Date);
                 var mergeMatchDialog = new MergeMatchDialog();
                 var matchingInfoDate = matchingInfo.Date.ToShortDateString();
                 var matchingInfoHigh = matchingInfo.HighTemp.ToString();
@@ -251,11 +253,10 @@ namespace WeatherDataAnalysis.Controller
                     currentNewHigh,
                     currentNewLow
                 };
-                
+
                 var mergeMatchResult = await mergeMatchDialog.ShowDialog(data);
                 if (mergeMatchResult == MergeMatchDialog.Replace)
                 {
-
                     ActiveWeatherInfoCollection.Active.Remove(matchingInfo);
                     ActiveWeatherInfoCollection.Active.Add(currentNew);
                 }
@@ -265,7 +266,7 @@ namespace WeatherDataAnalysis.Controller
         }
 
         /// <summary>
-        /// Sets the high temporary threshold.
+        ///     Sets the high temporary threshold.
         /// </summary>
         /// <param name="highTemp">The highTemp.</param>
         public void SetHighTempThreshold(int highTemp)
@@ -276,17 +277,16 @@ namespace WeatherDataAnalysis.Controller
         }
 
         /// <summary>
-        /// Sets the low temperature threshold.
+        ///     Sets the low temperature threshold.
         /// </summary>
         /// <param name="lowTemp">The low temperature.</param>
         public void SetLowTempThreshold(int lowTemp)
         {
-            
             this.TempFormatter.LowTempThreshold = lowTemp;
         }
 
         /// <summary>
-        /// Sets the month to run analysis on.
+        ///     Sets the month to run analysis on.
         /// </summary>
         /// <param name="month">The month.</param>
         public void SetMonth(int month)

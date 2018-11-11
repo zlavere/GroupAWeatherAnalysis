@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WeatherDataAnalysis.Model;
@@ -41,11 +42,9 @@ namespace WeatherDataAnalysis.Controller
             {
                 this.CreatedWeatherInfo = new WeatherInfo(this.NewWeatherInfoDialog.Date,
                     this.NewWeatherInfoDialog.HighTemp, this.NewWeatherInfoDialog.LowTemp);
-               
             }
-            
-            isSuccessful= this.isCreatedWeatherInfoAdded();
-          
+
+            isSuccessful = this.isCreatedWeatherInfoAdded();
 
             return isSuccessful;
         }
@@ -64,7 +63,9 @@ namespace WeatherDataAnalysis.Controller
             {
                 var weatherInfoToReplace =
                     ActiveWeatherInfoCollection.Active.Where(weatherInfo =>
-                        weatherInfo.Date == this.CreatedWeatherInfo.Date); //Cannot be null ReSharper says it can.
+                        weatherInfo.Date ==
+                        this.CreatedWeatherInfo
+                            .Date); //Cannot be null ReSharper says it can.
                 ActiveWeatherInfoCollection.Active.Remove(weatherInfoToReplace.First());
                 this.addCreatedWeatherInfo();
                 result = true;
@@ -75,7 +76,8 @@ namespace WeatherDataAnalysis.Controller
                 this.addCreatedWeatherInfo();
                 result = true;
             }
-            System.Diagnostics.Debug.WriteLine(result);
+
+            Debug.WriteLine(result);
             return result;
         }
 

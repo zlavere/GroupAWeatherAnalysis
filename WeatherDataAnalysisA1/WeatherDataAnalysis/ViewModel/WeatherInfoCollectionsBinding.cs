@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Windows.Foundation.Collections;
 using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
 {
     /// <summary>
-    ///     Binding for weather info collections
-    ///     can be something like city and year.
+    ///     Binding for all available collections of weather data.
     /// </summary>
-    public class WeatherInfoCollectionsBinding : IDictionary<string, WeatherInfoCollection>,
-        ICollection<WeatherInfoCollection>
+    public class WeatherInfoCollectionsBinding : ICollection<WeatherInfoCollection>, IObservableMap<string, WeatherInfoCollection>
     {
         #region Properties
 
@@ -21,34 +20,39 @@ namespace WeatherDataAnalysis.ViewModel
         /// </value>
         private IDictionary<string, WeatherInfoCollection> WeatherInfoCollections { get; }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the keys of the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+        ///     Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the keys of the
+        ///     <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
         /// </summary>
         public ICollection<string> Keys => this.WeatherInfoCollections.Keys;
 
+        /// <inheritdoc />
         /// <summary>
-        /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the values in the <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
+        ///     Gets an <see cref="T:System.Collections.Generic.ICollection`1"></see> containing the values in the
+        ///     <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
         /// </summary>
         public ICollection<WeatherInfoCollection> Values => this.WeatherInfoCollections.Values;
 
         /// <summary>
-        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        ///     Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
         public int Count => this.WeatherInfoCollections.Count;
 
         /// <summary>
-        /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
+        ///     Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
         /// </summary>
         public bool IsReadOnly => this.WeatherInfoCollections.IsReadOnly;
 
+        /// <inheritdoc />
         /// <summary>
-        /// Gets or sets the <see cref="WeatherInfoCollection"/> with the specified key.
+        ///     Gets or sets the <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection" /> with the specified <paramref name="key"/>.
         /// </summary>
         /// <value>
-        /// The <see cref="WeatherInfoCollection"/>.
+        ///     The <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection" />.
         /// </value>
         /// <param name="key">The key.</param>
-        /// <returns></returns>
+        /// <returns>The collection with <paramref name="key"/>.</returns>
         public WeatherInfoCollection this[string key]
         {
             get => this.WeatherInfoCollections[key];
@@ -85,7 +89,7 @@ namespace WeatherDataAnalysis.ViewModel
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
         /// <returns>
-        ///     true if item is found in the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false.
+        ///     True if item is found in the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false.
         /// </returns>
         public bool Contains(WeatherInfoCollection item)
         {
@@ -166,6 +170,7 @@ namespace WeatherDataAnalysis.ViewModel
             return this.WeatherInfoCollections.Remove(key);
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     Gets the value associated with the specified key.
         /// </summary>
@@ -183,6 +188,7 @@ namespace WeatherDataAnalysis.ViewModel
             return this.WeatherInfoCollections.TryGetValue(key, out value);
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
@@ -200,6 +206,7 @@ namespace WeatherDataAnalysis.ViewModel
             this.WeatherInfoCollections.Clear();
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> contains a specific value.
         /// </summary>
@@ -212,6 +219,7 @@ namespace WeatherDataAnalysis.ViewModel
             return this.WeatherInfoCollections.Contains(item);
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"></see> to an
         ///     <see cref="T:System.Array"></see>, starting at a particular <see cref="T:System.Array"></see> index.
@@ -227,6 +235,7 @@ namespace WeatherDataAnalysis.ViewModel
             this.WeatherInfoCollections.CopyTo(array, arrayIndex);
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     Removes the first occurrence of a specific object from the
         ///     <see cref="T:System.Collections.Generic.ICollection`1"></see>.
@@ -242,6 +251,7 @@ namespace WeatherDataAnalysis.ViewModel
             return this.WeatherInfoCollections.Remove(item);
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     Returns an enumerator that iterates through the collection.
         /// </summary>
@@ -258,7 +268,11 @@ namespace WeatherDataAnalysis.ViewModel
             return this.WeatherInfoCollections.GetEnumerator();
         }
 
-
         #endregion
+        /// <inheritdoc />
+        /// <summary>
+        /// Occurs when the map changes.
+        /// </summary>
+        public event MapChangedEventHandler<string, WeatherInfoCollection> MapChanged;
     }
 }

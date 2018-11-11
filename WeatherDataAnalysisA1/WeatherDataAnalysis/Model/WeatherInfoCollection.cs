@@ -31,20 +31,20 @@ namespace WeatherDataAnalysis.Model
         private KeyValuePair<string, WeatherInfoCollection> NameCollectionPair { get; }
 
         /// <summary>
-        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        ///     Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
         public int Count => this.WeatherInfos.Count;
 
         /// <summary>
-        /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
+        ///     Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
         /// </summary>
         public bool IsReadOnly => this.WeatherInfos.IsReadOnly;
 
         /// <summary>
-        /// Gets or sets the <see cref="WeatherInfo"/> at the specified index.
+        ///     Gets or sets the <see cref="WeatherInfo" /> at the specified index.
         /// </summary>
         /// <value>
-        /// The <see cref="WeatherInfo"/>.
+        ///     The <see cref="WeatherInfo" />.
         /// </value>
         /// <param name="index">The index.</param>
         /// <returns></returns>
@@ -55,35 +55,37 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Gets the highest temperature.
+        ///     Gets the highest temperature.
         /// </summary>
         /// <value>
-        /// The highest temperature.
+        ///     The highest temperature.
         /// </value>
         public int HighestTemp => this.WeatherInfos.Max(temp => temp.HighTemp);
 
         /// <summary>
-        /// Gets the lowest temperature.
+        ///     Gets the lowest temperature.
         /// </summary>
         /// <value>
-        /// The lowest temperature.
+        ///     The lowest temperature.
         /// </value>
         public int LowestTemp => this.WeatherInfos.Min(temp => temp.LowTemp);
 
         /// <summary>
-        /// Gets the highest precipitation.
+        ///     Gets the highest precipitation.
         /// </summary>
         /// <value>
-        /// The highest precipitation.
+        ///     The highest precipitation.
         /// </value>
-        public double? HighestPrecipitation => this.WeatherInfos.Max(precipitation => precipitation.Precipitation);
+        public double? MostPrecipitation => this.WeatherInfos.Max(precipitation => precipitation.Precipitation);
+
         /// <summary>
-        /// Gets the total precipitation.
+        ///     Gets the total precipitation.
         /// </summary>
         /// <value>
-        /// The total precipitation.
+        ///     The total precipitation.
         /// </value>
         public double? TotalPrecipitation => this.WeatherInfos.Sum(precipitation => precipitation.Precipitation);
+
         #endregion
 
         #region Constructors
@@ -112,7 +114,7 @@ namespace WeatherDataAnalysis.Model
         {
             this.WeatherInfos.Add(item);
         }
-        
+
         /// <summary>
         ///     Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
@@ -186,11 +188,11 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"></see>.
+        ///     Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"></see>.
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1"></see>.</param>
         /// <returns>
-        /// The index of item if found in the list; otherwise, -1.
+        ///     The index of item if found in the list; otherwise, -1.
         /// </returns>
         public int IndexOf(WeatherInfo item)
         {
@@ -198,7 +200,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Inserts an item to the <see cref="T:System.Collections.Generic.IList`1"></see> at the specified index.
+        ///     Inserts an item to the <see cref="T:System.Collections.Generic.IList`1"></see> at the specified index.
         /// </summary>
         /// <param name="index">The zero-based index at which item should be inserted.</param>
         /// <param name="item">The object to insert into the <see cref="T:System.Collections.Generic.IList`1"></see>.</param>
@@ -208,7 +210,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Removes the <see cref="T:System.Collections.Generic.IList`1"></see> item at the specified index.
+        ///     Removes the <see cref="T:System.Collections.Generic.IList`1"></see> item at the specified index.
         /// </summary>
         /// <param name="index">The zero-based index of the item to remove.</param>
         public void RemoveAt(int index)
@@ -281,7 +283,7 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Gets the lowest temps.
+        ///     Gets the lowest temps.
         /// </summary>
         /// <returns>List of Weather with the lowest temps.</returns>
         public ICollection<WeatherInfo> FindWithLowestTemp()
@@ -291,17 +293,23 @@ namespace WeatherDataAnalysis.Model
                 this.WeatherInfos.Where(temp => temp.LowTemp == lowest).ToList();
             return lowTemps;
         }
+
         /// <summary>
         ///     Gets the highest precipitation.
         /// </summary>
         /// <returns>List of Weather with the highest temps.</returns>
-        public ICollection<WeatherInfo> FindWithHighestPrecipitation()
+        public ICollection<WeatherInfo> FindWithMostPrecipitation()
         {
             var highest = this.WeatherInfos.Max(weather => weather.Precipitation);
 
-            return this.WeatherInfos.Where(precipitation => precipitation.Precipitation.Equals(highest))
+            return this.WeatherInfos
+                       .Where(precipitation =>
+                           Math.Abs(precipitation.Precipitation - highest) <
+                           0.01)
+                       //Formula to mitigate double conversion on == operator
                        .ToList();
         }
+
         /// <summary>
         ///     Gets the highest low temps.
         /// </summary>
@@ -337,13 +345,13 @@ namespace WeatherDataAnalysis.Model
             double averageHigh;
             try
             {
-               averageHigh  = this.WeatherInfos.Average(weather => weather.HighTemp);
+                averageHigh = this.WeatherInfos.Average(weather => weather.HighTemp);
             }
             catch (Exception)
             {
                 averageHigh = int.MaxValue;
             }
-            
+
             return averageHigh;
         }
 
@@ -418,23 +426,23 @@ namespace WeatherDataAnalysis.Model
         }
 
         /// <summary>
-        /// Finds all above high temperature threshold.
+        ///     Finds all above high temperature threshold.
         /// </summary>
         /// <param name="highThreshold">The high threshold.</param>
         /// <returns></returns>
         public IList<WeatherInfo> FindAllAboveHighTempThreshold(int highThreshold)
         {
-           return this.WeatherInfos.Where(weatherInfo => weatherInfo.HighTemp >= highThreshold).ToList();
+            return this.WeatherInfos.Where(weatherInfo => weatherInfo.HighTemp >= highThreshold).ToList();
         }
 
         /// <summary>
-        /// Finds all below low temperature threshold.
+        ///     Finds all below low temperature threshold.
         /// </summary>
         /// <param name="lowTempThreshold">The low temperature threshold.</param>
         /// <returns></returns>
         public IList<WeatherInfo> FindAllBelowLowTempThreshold(int lowTempThreshold)
         {
-            return  this.WeatherInfos.Where(weatherInfo =>
+            return this.WeatherInfos.Where(weatherInfo =>
                 weatherInfo.LowTemp <= lowTempThreshold).ToList();
         }
 

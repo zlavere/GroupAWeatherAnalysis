@@ -100,27 +100,28 @@
                                      LosingFocus="lostFocus_UpdateLowTempThreshold" Margin="5" />
                             <Grid Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Button Grid.Column="0" x:Name="refreshButton"
                                         Content="Refresh Summary"
                                         HorizontalAlignment="Left" IsEnabled="False"
                                         Click="c_Refresh"
-                                        Margin="5,10,0,0" FontWeight="Bold" >
+                                        Margin="5,10,0,0" FontWeight="Bold">
                                     <Button.Background>
-                                        <SolidColorBrush Color="{ThemeResource SystemChromeDisabledHighColor}"/>
+                                        <SolidColorBrush Color="{ThemeResource SystemChromeDisabledHighColor}" />
                                     </Button.Background>
                                     <Button.Foreground>
-                                        <SolidColorBrush Color="{ThemeResource SystemAltMediumColor}"/>
+                                        <SolidColorBrush Color="{ThemeResource SystemAltMediumColor}" />
                                     </Button.Foreground>
                                 </Button>
-                                <Button Grid.Column="1"  x:Name="clearButton"
+                                <Button Grid.Column="1" x:Name="clearButton"
                                         Content="Clear Data"
                                         HorizontalAlignment="Left" Click="c_ClearData"
-                                        Margin="5,10,0,0" Foreground="#FFFDFBFB" FontWeight="Bold" AutomationProperties.HelpText="Removes any existing data sets." >
+                                        Margin="5,10,0,0" Foreground="#FFFDFBFB" FontWeight="Bold"
+                                        AutomationProperties.HelpText="Removes any existing data sets.">
                                     <Button.Background>
-                                        <SolidColorBrush Color="#FFB00808"/>
+                                        <SolidColorBrush Color="#FFB00808" />
                                     </Button.Background>
                                 </Button>
 

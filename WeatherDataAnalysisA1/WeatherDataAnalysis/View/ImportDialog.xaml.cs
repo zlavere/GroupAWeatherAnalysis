@@ -8,7 +8,7 @@ using WeatherDataAnalysis.Model.Enums;
 namespace WeatherDataAnalysis.View
 {
     /// <summary>
-    /// Dialog to collect user input for the file selected for import.
+    ///     Dialog to collect user input for the file selected for import.
     /// </summary>
     /// <seealso cref="Windows.UI.Xaml.Controls.ContentDialog" />
     /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector" />
@@ -18,27 +18,27 @@ namespace WeatherDataAnalysis.View
         #region Properties
 
         /// <summary>
-        /// Gets the name of the collection.
+        ///     Gets the name of the collection.
         /// </summary>
         /// <value>
-        /// The name of the collection.
+        ///     The name of the collection.
         /// </value>
         public string CollectionName { get; private set; }
+
         /// <summary>
-        /// Gets the type of the import.
+        ///     Gets the type of the import.
         /// </summary>
         /// <value>
-        /// The type of the import.
+        ///     The type of the import.
         /// </value>
         public ImportType ImportType { get; private set; }
-
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImportDialog"/> class.
+        ///     Initializes a new instance of the <see cref="ImportDialog" /> class.
         /// </summary>
         public ImportDialog()
         {
@@ -58,7 +58,6 @@ namespace WeatherDataAnalysis.View
 
         private void setImportType()
         {
-
             if (this.isOverwriteChecked())
             {
                 this.ImportType = ImportType.Overwrite;
@@ -87,6 +86,7 @@ namespace WeatherDataAnalysis.View
             {
                 hasImportType = true;
             }
+
             if (hasName && hasImportType)
             {
                 dataAvailable = true;
