@@ -116,9 +116,9 @@ namespace WeatherDataAnalysis.Format
                 output +=
                     $"Average Low Temperature in {currentYear}: " +
                     $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2):0.00}{Environment.NewLine}";
-                output +=
-                    $"The Highest Temperature in {currentYear} was " +
-                    $"{Math.Round((double) this.WeatherInfoCollection.HighestTemp, 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestTemps()}";
+                //output +=
+                   // $"The Highest Temperature in {currentYear} was " +
+                   // $"{Math.Round((double) this.WeatherInfoCollection.HighestTemp, 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestTemps()}";
                 output +=
                     $"The Lowest Temperature in {currentYear} was " +
                     $"{Math.Round((double) this.WeatherInfoCollection.LowestTemp, 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getLowestTemps()}";
