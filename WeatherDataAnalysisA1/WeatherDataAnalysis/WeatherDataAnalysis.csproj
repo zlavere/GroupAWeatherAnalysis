@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Model\Enums\HistogramBucketSize.cs" />
     <Compile Include="Model\Enums\ImportType.cs" />
+    <Compile Include="Model\Enums\PrecipitationBucketSize.cs" />
     <Compile Include="Model\Enums\Temperature.cs" />
     <Compile Include="Model\FactoryWeatherInfoCollection.cs" />
     <Compile Include="Format\WeatherHistogramGenerator.cs" />

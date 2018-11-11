@@ -193,7 +193,8 @@ namespace WeatherDataAnalysis.Format
                         else
                         {
                             output += $"Total precipitation in {this.WeatherInfoCollection.Name}: " +
-                                      $"{this.WeatherInfoCollection.TotalPrecipitation}{Environment.NewLine}";
+                                      $"{this.WeatherInfoCollection.TotalPrecipitation}{Environment.NewLine}" +
+                            this.HistogramGenerator.CreatePrecipitationHistogram(this.WeatherInfoCollection);
                         }
                         
                         output +=
@@ -392,7 +393,7 @@ namespace WeatherDataAnalysis.Format
         /// <returns>String representation of a histogram for High Temperatures</returns>
         private string createHistograms(IEnumerable<WeatherInfo> weatherInfoCollection)
         {
-            return this.HistogramGenerator.CreateHistogram(weatherInfoCollection);
+            return this.HistogramGenerator.CreateTempHistogram(weatherInfoCollection);
         }
 
         /// <summary>
