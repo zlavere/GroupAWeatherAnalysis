@@ -35,8 +35,17 @@ namespace WeatherDataAnalysis.IO
             var commaSeparatedData = new List<string>();
             foreach (var current in ActiveWeatherInfoCollection.Active)
             {
-                commaSeparatedData.Add(
-                    $"{current.Date.Month}/{current.Date.Day}/{current.Date.Year},{current.HighTemp},{current.LowTemp}");
+                if (current.Precipitation != null)
+                {
+                    commaSeparatedData.Add(
+                        $"{current.Date.Month}/{current.Date.Day}/{current.Date.Year},{current.HighTemp},{current.LowTemp},{current.Precipitation}");
+                }
+                else
+                {
+                    commaSeparatedData.Add(
+                        $"{current.Date.Month}/{current.Date.Day}/{current.Date.Year},{current.HighTemp},{current.LowTemp}");
+                }
+               
             }
 
             return commaSeparatedData;
