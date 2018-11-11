@@ -187,19 +187,27 @@ namespace WeatherDataAnalysis
         {
             var addWeatherInfo = new AddWeatherInfo();
             var successfullyCreated = await addWeatherInfo.StartDialog();
+            try
+            {
+                if (successfullyCreated)
+                {
+                    this.summaryTextBox.Text = $"Created New Weather Information Entry{Environment.NewLine}" +
+                                               $"Date: {addWeatherInfo.CreatedWeatherInfo.Date}{Environment.NewLine}" +
+                                               $"High Temperature: {addWeatherInfo.CreatedWeatherInfo.HighTemp}{Environment.NewLine}" +
+                                               $"Low Temperature: {addWeatherInfo.CreatedWeatherInfo.LowTemp}{Environment.NewLine}";
+                    this.refreshButton.IsEnabled = true;
+                }
+                else
+                {
+                    this.summaryTextBox.Text = "Failed to create a new Weather Information Entry";
+                }
+            }
+            catch(Exception)
+            {
+                this.summaryTextBox.Text = "An unknown error occurred and no Weather Information was added.";
+            }
 
-            if (successfullyCreated)
-            {
-                this.summaryTextBox.Text = $"Created New Weather Information Entry{Environment.NewLine}" +
-                                           $"Date: {addWeatherInfo.CreatedWeatherInfo.Date}{Environment.NewLine}" +
-                                           $"High Temperature: {addWeatherInfo.CreatedWeatherInfo.HighTemp}{Environment.NewLine}" +
-                                           $"Low Temperature: {addWeatherInfo.CreatedWeatherInfo.LowTemp}{Environment.NewLine}";
-                this.refreshButton.IsEnabled = true;
-            }
-            else
-            {
-                this.summaryTextBox.Text = "Failed to create a new Weather Information Entry";
-            }
+
         }
 
         private void c_Refresh(object sender, RoutedEventArgs e)
