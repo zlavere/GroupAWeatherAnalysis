@@ -13,7 +13,7 @@ namespace WeatherDataAnalysis.io
         #region Methods
 
         /// <summary>
-        /// Gets the file lines.
+        ///     Gets the file lines.
         /// </summary>
         /// <param name="file">The file.</param>
         /// <returns></returns>

@@ -8,23 +8,32 @@ using WeatherDataAnalysis.ViewModel;
 namespace WeatherDataAnalysis.Format
 {
     /// <summary>
-    /// Generates high and low temperature histograms based on a collection of weather data.
+    ///     Generates high and low temperature histograms based on a collection of weather data.
     /// </summary>
     public class WeatherHistogramGenerator
     {
+        #region Properties
 
         private HistogramBucketSize BucketSize { get; set; }
 
+        #endregion
+
+        #region Constructors
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="WeatherHistogramGenerator"/> class.
+        ///     Initializes a new instance of the <see cref="WeatherHistogramGenerator" /> class.
         /// </summary>
         public WeatherHistogramGenerator()
         {
             this.BucketSize = HistogramBucketSize.Ten;
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
-        /// Creates the histogram.
+        ///     Creates the histogram.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <returns></returns>
@@ -33,7 +42,7 @@ namespace WeatherDataAnalysis.Format
             var weatherInfos = collection.ToList();
             var highTemps = weatherInfos.Select(temp => temp.HighTemp);
             var lowTemps = weatherInfos.Select(temp => temp.LowTemp);
-            this.BucketSize = (HistogramBucketSize)HistogramSizeComboBoxBindings.ActiveSelection;
+            this.BucketSize = (HistogramBucketSize) HistogramSizeComboBoxBindings.ActiveSelection;
             var output = $"High Temperature Histogram {Environment.NewLine}" +
                          $"{this.evaluateRanges(highTemps)} {Environment.NewLine}" +
                          $"Low Temperature Histogram {Environment.NewLine}" +
@@ -72,6 +81,7 @@ namespace WeatherDataAnalysis.Format
 
             return output;
         }
-        
+
+        #endregion
     }
 }

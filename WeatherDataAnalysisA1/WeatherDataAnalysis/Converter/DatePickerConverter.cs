@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
 namespace WeatherDataAnalysis.Converter
 {
-    public class DatePickerConverter:IValueConverter
+    public class DatePickerConverter : IValueConverter
     {
+        #region Methods
+
         object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
         {
             var dateTime = (DateTime) value;
@@ -20,5 +18,7 @@ namespace WeatherDataAnalysis.Converter
             var dateTimeOffset = (DateTimeOffset) value;
             return dateTimeOffset.DateTime;
         }
+
+        #endregion
     }
 }

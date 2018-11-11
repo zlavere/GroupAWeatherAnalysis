@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Windows.Foundation;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -51,7 +49,7 @@ namespace WeatherDataAnalysis
 
         #region Constructors
 
-        ///  <summary>
+        /// <summary>
         ///     Initializes a new instance of the <see cref="T:WeatherDataAnalysis.MainPage" /> class.
         /// </summary>
         public MainPage()
@@ -116,7 +114,6 @@ namespace WeatherDataAnalysis
         }
         //TODO Move to ViewModel
 
-
         private FileOpenPicker createNewFileOpenPicker()
         {
             var filePicker = new FileOpenPicker();
@@ -138,7 +135,6 @@ namespace WeatherDataAnalysis
             this.FilePicker = this.createNewFileOpenPicker();
             this.File = await this.FilePicker.PickSingleFileAsync();
             StorageApplicationPermissions.FutureAccessList.Add(this.File);
-            
 
             if (this.File != null)
             {
@@ -240,13 +236,11 @@ namespace WeatherDataAnalysis
             }
         }
 
-
-
-        #endregion
-
         private void c_DetailsView(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MasterDetailsWeather));
+            Frame.Navigate(typeof(MasterDetailsWeather));
         }
+
+        #endregion
     }
 }

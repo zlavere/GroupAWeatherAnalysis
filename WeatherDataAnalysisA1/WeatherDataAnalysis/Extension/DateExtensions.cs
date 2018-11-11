@@ -5,6 +5,8 @@ namespace WeatherDataAnalysis.Extension
 {
     public static class DateExtensions
     {
+        #region Methods
+
         public static string OrdinalDateString(this DateTime date)
         {
             return getDateString(date);
@@ -42,7 +44,10 @@ namespace WeatherDataAnalysis.Extension
                         break;
                 }
             }
+
             return ordinalDay;
         }
+
+        #endregion
     }
 }

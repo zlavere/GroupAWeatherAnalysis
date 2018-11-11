@@ -10,10 +10,8 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using WeatherDataAnalysis.Controller;
-using WeatherDataAnalysis.Extension;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.Model.Enums;
-using WeatherDataAnalysis.Utility;
 using WeatherDataAnalysis.View;
 
 namespace WeatherDataAnalysis.ViewModel
@@ -22,14 +20,13 @@ namespace WeatherDataAnalysis.ViewModel
     {
         #region Data members
 
+        public Button RefreshButton;
+
         private string summaryText;
         private string monthFilter;
         private string yearFilter;
         private string highTempThreshold;
         private string lowTempThreshold;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public Button RefreshButton;
         private ObservableCollection<WeatherInfo> activeWeatherInfos;
 
         #endregion
@@ -45,22 +42,12 @@ namespace WeatherDataAnalysis.ViewModel
                 this.OnPropertyChanged();
             }
         }
+
         private FileOpenPicker FilePicker { get; set; }
         private StorageFile File { get; set; }
         private ImportDialog ImportDialog { get; set; }
         private ContentDialogResult ImportDialogResults { get; set; }
         private List<HistogramBucketSize> HistogramBucketSizes { get; set; }
-
-
-        private void DisplayDetailsButton(object obj)
-        {
-            if (ActiveWeatherInfoCollection.Active.Count > 0)
-            {
-                var detailsButton = (AppBarButton) obj;
-                detailsButton.Visibility = Visibility.Visible;
-            }
-        }
-
 
         public string SummaryText
         {
@@ -139,14 +126,22 @@ namespace WeatherDataAnalysis.ViewModel
 
             this.HighTempThreshold = Temperature.HighWarningThreshold.ToString();
             this.LowTempThreshold = Temperature.FreezingFahrenheit.ToString();
-            
         }
 
         #endregion
 
         #region Methods
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        private void DisplayDetailsButton(object obj)
+        {
+            if (ActiveWeatherInfoCollection.Active.Count > 0)
+            {
+                var detailsButton = (AppBarButton) obj;
+                detailsButton.Visibility = Visibility.Visible;
+            }
+        }
 
         private async void loadFile_Click(object sender, RoutedEventArgs e)
         {

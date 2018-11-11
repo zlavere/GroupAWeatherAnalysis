@@ -19,6 +19,7 @@ namespace WeatherDataAnalysis.Model
         ///     The grouped collections.
         /// </value>
         private ICollection<ICollection<WeatherInfo>> GroupedByMonth { get; }
+
         #endregion
 
         #region Constructors

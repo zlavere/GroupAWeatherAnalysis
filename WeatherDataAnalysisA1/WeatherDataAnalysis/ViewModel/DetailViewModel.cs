@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Windows.UI.Xaml.Controls;
 using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.Extension;
 using WeatherDataAnalysis.Model;
@@ -17,7 +15,7 @@ namespace WeatherDataAnalysis.ViewModel
 
         private ObservableCollection<WeatherInfo> weatherInfoMaster;
         private WeatherInfo selectedWeatherInfo;
-        public event PropertyChangedEventHandler PropertyChanged;
+
         #endregion
 
         #region Properties
@@ -46,7 +44,6 @@ namespace WeatherDataAnalysis.ViewModel
         public RelayCommand RemoveWeatherInfo { get; set; }
         public RelayCommand AddWeatherInfo { get; set; }
 
-
         #endregion
 
         #region Constructors
@@ -58,6 +55,12 @@ namespace WeatherDataAnalysis.ViewModel
             this.RemoveWeatherInfo = new RelayCommand(this.removeSelectedWeatherInfo, this.canRemoveWeatherInfo);
             this.AddWeatherInfo = new RelayCommand(this.createWeatherInfo, this.canCreateWeatherInfo);
         }
+
+        #endregion
+
+        #region Methods
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private bool canCreateWeatherInfo(object obj)
         {
@@ -72,7 +75,6 @@ namespace WeatherDataAnalysis.ViewModel
             {
                 this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
             }
-            
         }
 
         //TODO Use this method when moving navigation from View to ViewModel
@@ -80,11 +82,6 @@ namespace WeatherDataAnalysis.ViewModel
         {
             return true;
         }
-
-        #endregion
-
-        #region Methods
-
 
         private bool canRemoveWeatherInfo(object obj)
         {

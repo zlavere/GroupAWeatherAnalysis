@@ -6,7 +6,7 @@ using WeatherDataAnalysis.ViewModel;
 namespace WeatherDataAnalysis.IO
 {
     /// <summary>
-    /// Writes Weather Data to a CSV file to save data.
+    ///     Writes Weather Data to a CSV file to save data.
     /// </summary>
     public class WriteWeatherDataToCsv
     {
