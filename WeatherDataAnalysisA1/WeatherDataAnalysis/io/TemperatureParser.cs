@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using WeatherDataAnalysis.Model;
+using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.io
 {
@@ -66,7 +67,7 @@ namespace WeatherDataAnalysis.io
             }
 
             var newCollection = new WeatherInfoCollection(name, data);
-
+            ActiveWeatherInfoCollection.Active = newCollection;
             return newCollection;
         }
 
@@ -82,6 +83,7 @@ namespace WeatherDataAnalysis.io
         private bool isValidData(IReadOnlyList<string> line, int lineNumber)
         {
             var isValid = false;
+
             var date = line[DateSegment];
             var highTemp = line[HighTempSegment];
             var lowTemp = line[LowTempSegment];

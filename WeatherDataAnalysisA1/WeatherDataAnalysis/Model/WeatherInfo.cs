@@ -64,6 +64,10 @@ namespace WeatherDataAnalysis.Model
             {
                 throw new ArgumentException("Date must be on or before Today.");
             }
+
+            this.Date = date;
+            this.HighTemp = highTemp;
+            this.LowTemp = lowTemp;
         }
 
         /// <summary>Initializes a new instance of the <see cref="WeatherInfo" /> class.</summary>
