@@ -84,7 +84,7 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The total precipitation.
         /// </value>
-        public double? TotalPrecipitation => this.WeatherInfos.Sum(precipitation => precipitation.Precipitation);
+        public double? TotalPrecipitation => this.WeatherInfos.ToList().TrueForAll(weatherInfo => weatherInfo.Precipitation == null) ? null : this.WeatherInfos.Sum(weatherInfo =>weatherInfo.Precipitation );
 
         #endregion
 
@@ -302,12 +302,13 @@ namespace WeatherDataAnalysis.Model
         {
             var highest = this.WeatherInfos.Max(weather => weather.Precipitation);
 
-            return this.WeatherInfos
-                       .Where(precipitation =>
-                           Math.Abs(precipitation.Precipitation - highest) <
-                           0.01)
-                       //Formula to mitigate double conversion on == operator
-                       .ToList();
+            //return this.WeatherInfos
+            //           .Where(precipitation =>
+            //               Math.Abs(precipitation.Precipitation - highest) <
+            //               0.01)
+            //           //Formula to mitigate double conversion on == operator
+            //           .ToList();
+            return null;
         }
 
         /// <summary>
