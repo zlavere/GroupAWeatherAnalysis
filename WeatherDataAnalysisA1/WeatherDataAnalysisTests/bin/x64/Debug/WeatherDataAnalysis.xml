@@ -342,6 +342,25 @@
             </summary>
             <param name="directory">The directory.</param>
         </member>
+        <member name="T:WeatherDataAnalysis.IO.XMLSerializer">
+            <summary>
+            This class contains tools for the serialization, and deserialization of XML files related to weather
+            </summary>
+        </member>
+        <member name="M:WeatherDataAnalysis.IO.XMLSerializer.WriteWeatherCollection(WeatherDataAnalysis.Model.WeatherInfoCollection,Windows.Storage.StorageFile)">
+            <summary>
+            Writes a weather collection to the file specified in an XML format
+            </summary>
+            <param name="collection">The weather collection to be written as XML</param>
+            <param name="file">The file to write the weather collection to</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.IO.XMLSerializer.ReadWeatherCollection(Windows.Storage.StorageFile)">
+            <summary>
+            Reads a weather collection to the file specified in an XML format
+            </summary>
+            <param name="file">The file to read a weather colelction from</param>
+            <returns>A weather collection created from the file specified</returns>
+        </member>
         <member name="T:WeatherDataAnalysis.MainPage">
             <summary>
                 An empty page that can be used on its own or navigated to within a Frame.
@@ -693,7 +712,7 @@
             <summary>
                 Gets the highest precipitation.
             </summary>
-            <returns>List of Weather with the highest temps.</returns>
+            <returns>List of Weather with the highest Precipitation.</returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindHighestLowTemps">
             <summary>

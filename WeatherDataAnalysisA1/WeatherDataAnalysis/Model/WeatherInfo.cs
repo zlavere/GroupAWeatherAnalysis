@@ -39,7 +39,7 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The date.
         /// </value>
-        public double Precipitation { get; set; }
+        public double? Precipitation { get; set; }
 
         #endregion
 

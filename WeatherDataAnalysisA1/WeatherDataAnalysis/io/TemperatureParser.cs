@@ -16,7 +16,7 @@ namespace WeatherDataAnalysis.io
         private const int DateSegment = 0;
         private const int HighTempSegment = 1;
         private const int LowTempSegment = 2;
-
+        private const int PrecipitationSegment = 3;
         #endregion
 
         #region Properties
@@ -73,11 +73,22 @@ namespace WeatherDataAnalysis.io
 
         private WeatherInfo parseLine(IReadOnlyList<string> line)
         {
+            
             var date = DateTime.ParseExact(line[DateSegment], "M/d/yyyy", CultureInfo.InvariantCulture);
             var highTemp = int.Parse(line[HighTempSegment]);
             var lowTemp = int.Parse(line[LowTempSegment]);
-
-            return new WeatherInfo(date, highTemp, lowTemp);
+            //TODO refactor so there is a single return
+            try
+            {
+                var precipitation = double.Parse(line[PrecipitationSegment]);
+                return new WeatherInfo(date, highTemp, lowTemp, precipitation);
+            }
+            catch (Exception e)
+            {
+                return new WeatherInfo(date, highTemp, lowTemp);
+            }
+            
+            
         }
 
         private bool isValidData(IReadOnlyList<string> line, int lineNumber)
@@ -87,7 +98,6 @@ namespace WeatherDataAnalysis.io
             var date = line[DateSegment];
             var highTemp = line[HighTempSegment];
             var lowTemp = line[LowTempSegment];
-
             if (!this.isValidDate(date))
             {
                 var message =
@@ -109,11 +119,36 @@ namespace WeatherDataAnalysis.io
                     $"{lowTemp} is not a valid Low Temperature. Record Skipped.";
                 this.ErrorMessages.Add(message);
             }
-            else
+            else 
             {
-                isValid = true;
+                //TODO refactor out into helper methods to remove code smell
+                try
+                {
+                    var precipitation = line[PrecipitationSegment];
+                    if (!this.isValidPrecipitation(precipitation))
+                    {
+                        var message =
+                            $"Error at ln{lineNumber}: {this.getLineString(date, highTemp, lowTemp, precipitation)}{Environment.NewLine}" +
+                            $"{precipitation} is not a valid precipitation. Record Skipped.";
+                        this.ErrorMessages.Add(message);
+                    }
+                    else
+                    {
+                        isValid = true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    var message =
+                        $"{lineNumber}: {this.getLineString(date, highTemp, lowTemp)}{Environment.NewLine}" +
+                        $"Does not contain precipitation records, it will still be imported";
+                    this.ErrorMessages.Add(message);
+                    isValid = true;
+                }
+                
+                
             }
-
+            
             return isValid;
         }
 
@@ -121,7 +156,10 @@ namespace WeatherDataAnalysis.io
         {
             return $"'{date},{highTemp},{lowTemp}'";
         }
-
+        private string getLineString(string date, string highTemp, string lowTemp, string precipitation)
+        {
+            return $"'{date},{highTemp},{lowTemp},{precipitation}'";
+        }
         //TODO Display this
         private bool isValidDate(string date)
         {
@@ -156,7 +194,22 @@ namespace WeatherDataAnalysis.io
 
             return isValid;
         }
+        private bool isValidPrecipitation(string precipitation)
+        {
+            var isValid = false;
 
+            try
+            {
+                var i = double.Parse(precipitation);
+                isValid = true;
+            }
+            catch (Exception)
+            {
+                //ignored
+            }
+
+            return isValid;
+        }
         #endregion
     }
 }

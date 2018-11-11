@@ -10,9 +10,9 @@ namespace WeatherDataAnalysis.IO
     /// </summary>
     public class WriteWeatherDataToCsv
     {
-        #region Properties
-
-        private StorageFolder Directory { get; set; }
+        #region Fields
+        private StorageFolder directory;
+      
 
         #endregion
 
@@ -24,8 +24,8 @@ namespace WeatherDataAnalysis.IO
         /// <param name="directory">The directory.</param>
         public async void WriteActiveDataToCsv(StorageFolder directory)
         {
-            this.Directory = directory;
-            var file = await this.Directory.CreateFileAsync($"{ActiveWeatherInfoCollection.Active.Name}.csv",
+            this.directory = directory;
+            var file = await this.directory.CreateFileAsync($"{ActiveWeatherInfoCollection.Active.Name}.csv",
                 CreationCollisionOption.GenerateUniqueName);
             await FileIO.WriteLinesAsync(file, this.getSeparatedWeatherInfo());
         }
@@ -35,8 +35,17 @@ namespace WeatherDataAnalysis.IO
             var commaSeparatedData = new List<string>();
             foreach (var current in ActiveWeatherInfoCollection.Active)
             {
-                commaSeparatedData.Add(
-                    $"{current.Date.Month}/{current.Date.Day}/{current.Date.Year},{current.HighTemp},{current.LowTemp}");
+                if (current.Precipitation != null)
+                {
+                    commaSeparatedData.Add(
+                        $"{current.Date.Month}/{current.Date.Day}/{current.Date.Year},{current.HighTemp},{current.LowTemp},{current.Precipitation}");
+                }
+                else
+                {
+                    commaSeparatedData.Add(
+                        $"{current.Date.Month}/{current.Date.Day}/{current.Date.Year},{current.HighTemp},{current.LowTemp}");
+                }
+               
             }
 
             return commaSeparatedData;
