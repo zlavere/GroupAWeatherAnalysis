@@ -1361,7 +1361,6 @@ C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\netstandard.dll
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Microsoft.Graphics.Canvas.dll
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\Microsoft.Graphics.Canvas.winmd
-C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\WeatherDataAnalysis.csprojAssemblyReference.cache
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\App.g.i.cs
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\App.g.cs
 C:\GroupAWeatherAnalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\MainPage.g.i.cs

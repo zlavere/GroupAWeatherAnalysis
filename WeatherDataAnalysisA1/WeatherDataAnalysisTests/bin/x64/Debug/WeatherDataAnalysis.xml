@@ -712,7 +712,7 @@
             <summary>
                 Gets the highest precipitation.
             </summary>
-            <returns>List of Weather with the highest temps.</returns>
+            <returns>List of Weather with the highest Precipitation.</returns>
         </member>
         <member name="M:WeatherDataAnalysis.Model.WeatherInfoCollection.FindHighestLowTemps">
             <summary>
