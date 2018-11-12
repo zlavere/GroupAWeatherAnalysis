@@ -8,10 +8,8 @@
     <RootPropertyPathName Name="HighTempThreshold" />
     <RootPropertyPathName Name="ActiveCollectionGroupedByYear" />
     <RootPropertyPathName Name="GroupByMonth" />
-    <RootPropertyPathName Name="MostPrecipitationDates" />
-    <RootPropertyPathName Name="Date" />
-    <RootPropertyPathName Name="MostPrecipitation" />
     <RootPropertyPathName Name="LowestTempDates" />
+    <RootPropertyPathName Name="Date" />
     <RootPropertyPathName Name="LowestTemp" />
     <RootPropertyPathName Name="HighestTempDates" />
     <RootPropertyPathName Name="HighestTemp" />
@@ -19,6 +17,8 @@
     <RootPropertyPathName Name="AverageLowTemp" />
     <RootPropertyPathName Name="AverageHighTemp" />
     <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="MostPrecipitationDates" />
+    <RootPropertyPathName Name="MostPrecipitation" />
     <RootPropertyPathName Name="ImportWeatherInfo" />
     <RootPropertyPathName Name="SelectedWeatherInfoDetail" />
     <RootPropertyPathName Name="Precipitation" />
