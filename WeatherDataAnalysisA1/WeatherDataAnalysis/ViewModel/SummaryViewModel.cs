@@ -1,8 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.Extension;
+using WeatherDataAnalysis.Format;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.Utility;
 

@@ -40,7 +40,7 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The weather infos.
         /// </value>
-        private IList<WeatherInfo> WeatherInfos { get; }
+        public IList<WeatherInfo> WeatherInfos { get; }
 
         public IList<WeatherInfo> HighestTempDates
         {

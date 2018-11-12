@@ -12,6 +12,7 @@
         <converters:MostPrecipitationConverter x:Key="MostPrecipitationConverter" />
         <converters:CollectionGroupAndDaysInYearDataConverter x:Key="DaysInYearDataConverter" />
         <converters:CollectionGroupAndDaysInMonthDataConverter x:Key="DaysInMonthDataConverter" />
+        <converters:CollectionHistogramGenerator x:Key="HistogramConverter" />
     </Application.Resources>
 
 </Application>
