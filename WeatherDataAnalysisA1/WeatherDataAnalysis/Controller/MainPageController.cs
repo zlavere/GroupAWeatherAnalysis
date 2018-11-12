@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
-using WeatherDataAnalysis.IO;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.View;
 using WeatherDataAnalysis.ViewModel;
@@ -43,9 +42,7 @@ namespace WeatherDataAnalysis.Controller
         /// <param name="directory">The directory.</param>
         public void WriteActiveInfoToFile(StorageFolder directory)
         {
-            //var output = new WriteWeatherDataToCsv();
-            //output.WriteActiveDataToCsv(directory);
-            XMLSerializer.WriteWeatherCollection(directory);
+           
         }
 
 

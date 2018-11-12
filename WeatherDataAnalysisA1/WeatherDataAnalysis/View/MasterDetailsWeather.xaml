@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:WeatherDataAnalysis.ViewModel"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
 
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -95,14 +96,17 @@
                        Margin="10,0,0,0" />
             <TextBox Grid.Row="3" Grid.Column="0"
                      Text="{Binding SelectedWeatherInfoDetail.HighTemp, Mode=TwoWay, Converter={StaticResource StringToInt}}"
-                     Margin="10,0,0,0" HorizontalAlignment="Left" />
+                     Margin="10,0,0,0" HorizontalAlignment="Left" extensions:TextBoxRegex.ValidationMode="Dynamic"
+                     extensions:TextBoxRegex.ValidationType="Number"/>
             <TextBlock Text="Low Temperature" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Margin="10,0,0,0" />
             <TextBox Grid.Row="3" Grid.Column="1"
                      Text="{Binding SelectedWeatherInfoDetail.LowTemp, Mode=TwoWay, Converter={StaticResource StringToInt}}"
-                     Margin="10,0,0,0" HorizontalAlignment="Left" />
+                     Margin="10,0,0,0" HorizontalAlignment="Left" extensions:TextBoxRegex.ValidationMode="Dynamic"
+                     extensions:TextBoxRegex.ValidationType="Number" />
             <TextBlock Text="Precipitation" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="10,0,0,0" />
             <TextBox Grid.Row="5" Grid.Column="0" Text="{Binding SelectedWeatherInfoDetail.Precipitation, Mode=TwoWay}"
-                     Margin="10,0,0,0" HorizontalAlignment="Left" />
+                     Margin="10,0,0,0" HorizontalAlignment="Left" extensions:TextBoxRegex.ValidationMode="Dynamic"
+                     extensions:TextBoxRegex.ValidationType="Decimal" />
         </Grid>
 
     </Grid>

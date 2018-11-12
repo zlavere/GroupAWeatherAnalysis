@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
-using WeatherDataAnalysis.Extension;
-using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.Converter
 {
@@ -24,7 +18,7 @@ namespace WeatherDataAnalysis.Converter
             var collection = (string) value;
 
             var numberOfDays = 0;
-            var parse = int.TryParse(collection, out int year);
+            var parse = int.TryParse(collection, out var year);
 
             if (DateTime.IsLeapYear(year))
             {

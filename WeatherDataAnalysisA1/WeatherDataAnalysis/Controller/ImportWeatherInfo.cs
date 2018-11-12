@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using WeatherDataAnalysis.io;
+using WeatherDataAnalysis.IO;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.View;
 
@@ -67,13 +68,22 @@ namespace WeatherDataAnalysis.Controller
 
         private async Task<WeatherInfoCollection> getData()
         {
-            var fileReader = new FileLineGenerator();
-            var lines = await fileReader.GetFileLines(this.ImportDialog.File);
-            var weatherDataParser = new TemperatureParser();
-            this.NewWeatherInfoCollection =
-                weatherDataParser.GetWeatherInfoCollection(this.ImportDialog.CollectionName, lines);
-            this.ErrorMessageList = weatherDataParser.ErrorMessages.ToList();
+            if (this.ImportDialog.File.FileType == "xml")
+            {
+                this.NewWeatherInfoCollection = await XMLSerializer.ReadWeatherCollection(this.ImportDialog.File);
+            }
+            else
+            {
+                var fileReader = new FileLineGenerator();
 
+                var lines = await fileReader.GetFileLines(this.ImportDialog.File);
+                var weatherDataParser = new TemperatureParser();
+                this.NewWeatherInfoCollection =
+                    weatherDataParser.GetWeatherInfoCollection(this.ImportDialog.CollectionName, lines);
+                this.ErrorMessageList = weatherDataParser.ErrorMessages.ToList();
+
+                
+            }
             return this.NewWeatherInfoCollection;
         }
 
