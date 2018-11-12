@@ -49,7 +49,7 @@ namespace WeatherDataAnalysisTests.WeatherInfoCollectionTest
         {
             var collection = new WeatherInfoCollection("Test1", new List<WeatherInfo>());
 
-            Assert.ThrowsException<InvalidOperationException>(() => collection.FindWithHighestTemp());
+            Assert.ThrowsException<InvalidOperationException>(() => collection.FindWithLowestTemp().First().HighTemp);
 
         }
 

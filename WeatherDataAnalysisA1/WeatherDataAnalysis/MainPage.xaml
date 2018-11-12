@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:WeatherDataAnalysis.ViewModel"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     x:Class="WeatherDataAnalysis.MainPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="Auto" Height="Auto">
@@ -90,15 +91,17 @@
                                        Margin="5" />
 
                             <TextBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" x:Name="highTempInput"
-                                     HorizontalAlignment="Left"
-                                     Text="{Binding HighTempThreshold, Mode=TwoWay, Converter={StaticResource StringToInt}}"
+                                     HorizontalAlignment="Left" extensions:TextBoxRegex.ValidationMode="Dynamic"
+                                     extensions:TextBoxRegex.ValidationType="Number"
+                                     Text="{Binding HighTempThreshold, Mode=TwoWay,  Converter={StaticResource StringToInt}}"
                                      Margin="5" />
 
                             <TextBlock Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" x:Name="lowTempLabel"
                                        Text="Low Temp Below"
                                        Margin="5" />
                             <TextBox Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" x:Name="lowTempInput"
-                                     HorizontalAlignment="Left"
+                                     HorizontalAlignment="Left" extensions:TextBoxRegex.ValidationMode="Dynamic"
+                                     extensions:TextBoxRegex.ValidationType="Number"
                                      Text="{Binding LowTempThreshold, Mode=TwoWay,Converter={StaticResource StringToInt}}"
                                       Margin="5" />
 
@@ -183,12 +186,10 @@
                                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Average High:" />
                                         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding AverageHighTemp}" />
                                         <TextBlock Grid.Row="2" Grid.Column="0" Text="Average Low:" />
-                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding AverageLowTemp}" />
-                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Total Precipitation:" />
-                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TotalPrecipitation}" />
-                                        <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+										<TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding AverageLowTemp}" />
+										<TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                                                    Text="{Binding HighestTemp, Converter={StaticResource HighTempConverter}}" />
-                                        <ListView Height="Auto" ItemsSource="{Binding HighestTempDates}" Grid.Row="5"
+                                        <ListView Height="Auto" ItemsSource="{Binding HighestTempDates}" Grid.Row="4"
                                                   Grid.Column="0" Grid.ColumnSpan="2"
                                                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                                                   IsMultiSelectCheckBoxEnabled="False" SelectionMode="None"
@@ -203,9 +204,9 @@
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
-                                        <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                                        <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                                                    Text="{Binding LowestTemp, Converter={StaticResource LowTempConverter}}" />
-                                        <ListView ItemsSource="{Binding LowestTempDates}" Grid.Row="7" Grid.Column="0"
+                                        <ListView ItemsSource="{Binding LowestTempDates}" Grid.Row="6" Grid.Column="0"
                                                   Grid.ColumnSpan="2"
                                                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                                                   IsMultiSelectCheckBoxEnabled="False" SelectionMode="None"
@@ -221,9 +222,9 @@
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
-                                        <TextBlock Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
+                                        <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
                                                    Text="{Binding MostPrecipitation, Converter={StaticResource MostPrecipitationConverter}}" />
-                                        <ListView Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"
+                                        <ListView Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
                                                   ItemsSource="{Binding MostPrecipitationDates}"
                                                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                                                   IsMultiSelectCheckBoxEnabled="False" SelectionMode="None"
@@ -285,9 +286,9 @@
                                                                        Text="{Binding AverageLowTemp}" />
                                                         <TextBlock Grid.Row="3" Grid.Column="0"
                                                                        Text="Total Precipitation:" />
-                                                        <TextBlock Grid.Row="3" Grid.Column="1"
+														<TextBlock Grid.Row="3" Grid.Column="1"
                                                                        Text="{Binding TotalPrecipitation}" />
-                                                        <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+														<TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                                                                        Text="{Binding HighestTemp, Converter={StaticResource HighTempConverter}}" />
                                                         <ListView Height="Auto"
                                                                       ItemsSource="{Binding HighestTempDates}"
@@ -307,10 +308,10 @@
                                                                 </DataTemplate>
                                                             </ListView.ItemTemplate>
                                                         </ListView>
-                                                        <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                                                        <TextBlock Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"
                                                                        Text="{Binding LowestTemp, Converter={StaticResource LowTempConverter}}" />
                                                         <ListView ItemsSource="{Binding LowestTempDates}"
-                                                                      Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                                                                      Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"
                                                                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                                                                       IsMultiSelectCheckBoxEnabled="False"
                                                                       SelectionMode="None"
@@ -326,25 +327,7 @@
                                                                 </DataTemplate>
                                                             </ListView.ItemTemplate>
                                                         </ListView>
-                                                        <TextBlock Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
-                                                                       Text="{Binding MostPrecipitation, Converter={StaticResource MostPrecipitationConverter}}" />
-                                                        <ListView Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"
-                                                                      ItemsSource="{Binding MostPrecipitationDates}"
-                                                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                                      IsMultiSelectCheckBoxEnabled="False"
-                                                                      SelectionMode="None"
-                                                                      IsSynchronizedWithCurrentItem="False"
-                                                                      Width="Auto" Height="Auto" MaxWidth="720"
-                                                                      MaxHeight="360">
-                                                            <ListView.ItemTemplate>
-                                                                <DataTemplate>
-                                                                    <Grid>
-                                                                        <TextBlock Margin="0" Padding="0"
-                                                                                       Text="{Binding Date, Converter={StaticResource OrdinalDateConverter}}" />
-                                                                    </Grid>
-                                                                </DataTemplate>
-                                                            </ListView.ItemTemplate>
-                                                        </ListView>
+                                                        
                                                     </Grid>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
