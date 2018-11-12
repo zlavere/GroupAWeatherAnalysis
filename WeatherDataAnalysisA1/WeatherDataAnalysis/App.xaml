@@ -10,6 +10,8 @@
         <converters:HighTempConverter x:Key="HighTempConverter" />
         <converters:LowTempConverter x:Key="LowTempConverter" />
         <converters:MostPrecipitationConverter x:Key="MostPrecipitationConverter" />
+        <converters:CollectionGroupAndDaysInYearDataConverter x:Key="DaysInYearDataConverter" />
+        <converters:CollectionGroupAndDaysInMonthDataConverter x:Key="DaysInMonthDataConverter" />
     </Application.Resources>
 
 </Application>

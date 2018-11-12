@@ -180,6 +180,8 @@ namespace WeatherDataAnalysis.ViewModel
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        
+
         #endregion
     }
 }

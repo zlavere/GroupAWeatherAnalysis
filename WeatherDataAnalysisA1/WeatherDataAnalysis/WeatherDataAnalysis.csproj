@@ -100,10 +100,12 @@
     <Compile Include="Controller\AddWeatherInfo.cs" />
     <Compile Include="Controller\ImportWeatherInfo.cs" />
     <Compile Include="Controller\MainPageController.cs" />
+    <Compile Include="Converter\CollectionGroupAndDaysOfDataInYearConverter .cs" />
     <Compile Include="Converter\MostPrecipitationConverter.cs" />
     <Compile Include="Converter\LowTempConverter.cs" />
     <Compile Include="Converter\HighTempConverter.cs" />
     <Compile Include="Converter\DatePickerConverter.cs" />
+    <Compile Include="Converter\CollectionGroupAndDaysOfDataInMonthConverter.cs" />
     <Compile Include="Converter\OrdinalDateConverter.cs" />
     <Compile Include="Converter\StringInputToInt.cs" />
     <Compile Include="IO\FileLineGenerator.cs" />
@@ -126,6 +128,7 @@
     <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="ViewModel\ActiveWeatherInfoCollection.cs" />
     <Compile Include="ViewModel\HistogramSizeComboBoxBindings.cs" />
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="ViewModel\SummaryViewModel.cs" />
     <Compile Include="ViewModel\WeatherInfoCollectionsBinding.cs" />
     <Compile Include="ViewModel\DetailViewModel.cs" />

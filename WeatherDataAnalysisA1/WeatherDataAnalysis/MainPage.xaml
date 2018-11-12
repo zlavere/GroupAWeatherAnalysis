@@ -170,8 +170,16 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                                                   Text="{Binding Name}" FontWeight="Bold" />
+                                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}" FontWeight="Bold" />
+                                            <TextBlock Grid.Column="1" HorizontalAlignment="Right" Text="{Binding Count}" />
+                                            <TextBlock Grid.Column="2" Text="{Binding Name, Converter={StaticResource DaysInYearDataConverter}}"></TextBlock>
+                                        </Grid>
                                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Average High:" />
                                         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding AverageHighTemp}" />
                                         <TextBlock Grid.Row="2" Grid.Column="0" Text="Average Low:" />
@@ -258,8 +266,16 @@
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
-                                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                                                                       Text="{Binding Name}" FontWeight="Bold" />
+                                                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock Grid.Column="0" Text="{Binding Name}" FontWeight="Bold"/>
+                                                            <TextBlock Grid.Column="1" HorizontalAlignment="Right" Text="{Binding Count}" />
+                                                            <TextBlock Grid.Column="2" Text="{Binding Name, Converter={StaticResource DaysInMonthDataConverter}}"></TextBlock>
+                                                        </Grid>
                                                         <TextBlock Grid.Row="1" Grid.Column="0"
                                                                        Text="Average High:" />
                                                         <TextBlock Grid.Row="1" Grid.Column="1"

@@ -19,6 +19,7 @@
     <RootPropertyPathName Name="AverageLowTemp" />
     <RootPropertyPathName Name="AverageHighTemp" />
     <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="Count" />
     <RootPropertyPathName Name="ImportWeatherInfo" />
     <RootPropertyPathName Name="SelectedWeatherInfoDetail" />
     <RootPropertyPathName Name="Precipitation" />
@@ -38,6 +39,8 @@
     <RootType FullName="WeatherDataAnalysis.Converter.HighTempConverter" />
     <RootType FullName="WeatherDataAnalysis.Converter.LowTempConverter" />
     <RootType FullName="WeatherDataAnalysis.Converter.MostPrecipitationConverter" />
+    <RootType FullName="WeatherDataAnalysis.Converter.CollectionGroupAndDaysInYearDataConverter" />
+    <RootType FullName="WeatherDataAnalysis.Converter.CollectionGroupAndDaysInMonthDataConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Width" />
@@ -98,7 +101,6 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="FontWeight" />
       <RootProperty Name="Padding" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
