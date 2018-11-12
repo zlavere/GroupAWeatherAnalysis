@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WeatherDataAnalysis.io;
 using WeatherDataAnalysis.Model;
@@ -11,15 +9,25 @@ namespace WeatherDataAnalysis.Controller
 {
     public class ImportWeatherInfo
     {
+        #region Properties
+
         public IList<string> ErrorMessageList { get; set; }
         public WeatherInfoCollection NewWeatherInfoCollection { get; private set; }
-        
+
         private ImportDialog ImportDialog { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public ImportWeatherInfo()
         {
             this.ErrorMessageList = new List<string>();
         }
+
+        #endregion
+
+        #region Methods
 
         public async Task<WeatherInfoCollection> CreateNewWeatherInfoCollection()
         {
@@ -39,10 +47,13 @@ namespace WeatherDataAnalysis.Controller
             var fileReader = new FileLineGenerator();
             var lines = await fileReader.GetFileLines(this.ImportDialog.File);
             var weatherDataParser = new TemperatureParser();
-            this.NewWeatherInfoCollection = weatherDataParser.GetWeatherInfoCollection(this.ImportDialog.CollectionName, lines);
+            this.NewWeatherInfoCollection =
+                weatherDataParser.GetWeatherInfoCollection(this.ImportDialog.CollectionName, lines);
             this.ErrorMessageList = weatherDataParser.ErrorMessages.ToList();
-            
+
             return this.NewWeatherInfoCollection;
         }
+
+        #endregion
     }
 }

@@ -7,6 +7,9 @@
         <converters:OrdinalDateConverter x:Key="OrdinalDateConverter" />
         <converters:DatePickerConverter x:Key="DatePickerConverter" />
         <converters:StringInputToInt x:Key="StringToInt" />
+        <converters:HighTempConverter x:Key="HighTempConverter" />
+        <converters:LowTempConverter x:Key="LowTempConverter" />
+        <converters:MostPrecipitationConverter x:Key="MostPrecipitationConverter" />
     </Application.Resources>
 
 </Application>

@@ -120,8 +120,8 @@ namespace WeatherDataAnalysis.Format
                     output += $"The highet level of precipitation in {currentYear} was: " +
                               $"{this.WeatherInfoCollection.MostPrecipitation}" +
                               $"{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestPrecipitation()}";
-
                 }
+
                 output +=
                     $"Average High Temperature in {currentYear}: " +
                     $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2):0.00}{Environment.NewLine}";
@@ -129,8 +129,8 @@ namespace WeatherDataAnalysis.Format
                     $"Average Low Temperature in {currentYear}: " +
                     $"{Math.Round(this.WeatherInfoCollection.GetAverageLow(), 2):0.00}{Environment.NewLine}";
                 output +=
-                   $"The Highest Temperature in {currentYear} was " +
-                   $"{Math.Round((double) this.WeatherInfoCollection.HighestTemp, 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestTemps()}";
+                    $"The Highest Temperature in {currentYear} was " +
+                    $"{Math.Round((double) this.WeatherInfoCollection.HighestTemp, 2)}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getHighestTemps()}";
                 output +=
                     $"The Lowest Temperature in {currentYear} was " +
                     $"{this.WeatherInfoCollection.LowestTemp}{Environment.NewLine}Occured on:{Environment.NewLine}{this.getLowestTemps()}";
@@ -185,18 +185,18 @@ namespace WeatherDataAnalysis.Format
                 {
                     try
                     {
-
                         if (totalPrecipitation == null)
                         {
-                            output += $"{this.WeatherInfoCollection.Name} contains no precipitation data.{Environment.NewLine}";
+                            output +=
+                                $"{this.WeatherInfoCollection.Name} contains no precipitation data.{Environment.NewLine}";
                         }
                         else
                         {
                             output += $"Total precipitation in {this.WeatherInfoCollection.Name}: " +
                                       $"{this.WeatherInfoCollection.TotalPrecipitation}{Environment.NewLine}" +
-                            this.HistogramGenerator.CreatePrecipitationHistogram(this.WeatherInfoCollection);
+                                      this.HistogramGenerator.CreatePrecipitationHistogram(this.WeatherInfoCollection);
                         }
-                        
+
                         output +=
                             $"Average High Temperature in {this.WeatherInfoCollection.Name}: " +
                             $"{Math.Round(this.WeatherInfoCollection.GetAverageHigh(), 2):0.00}{Environment.NewLine}";
@@ -229,6 +229,7 @@ namespace WeatherDataAnalysis.Format
 
             return output;
         }
+
         private string getHighestTemps()
         {
             var output = string.Empty;
@@ -239,6 +240,7 @@ namespace WeatherDataAnalysis.Format
 
             return output;
         }
+
         private string getHighestPrecipitation()
         {
             var output = string.Empty;

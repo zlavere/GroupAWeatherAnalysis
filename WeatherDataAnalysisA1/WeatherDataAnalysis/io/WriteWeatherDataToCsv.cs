@@ -10,9 +10,13 @@ namespace WeatherDataAnalysis.IO
     /// </summary>
     public class WriteWeatherDataToCsv
     {
+        #region Data members
+
         #region Fields
+
         private StorageFolder directory;
-      
+
+        #endregion
 
         #endregion
 
@@ -45,7 +49,6 @@ namespace WeatherDataAnalysis.IO
                     commaSeparatedData.Add(
                         $"{current.Date.Month}/{current.Date.Day}/{current.Date.Year},{current.HighTemp},{current.LowTemp}");
                 }
-               
             }
 
             return commaSeparatedData;

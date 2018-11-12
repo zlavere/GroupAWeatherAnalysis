@@ -7,8 +7,17 @@
     <RootPropertyPathName Name="LowTempThreshold" />
     <RootPropertyPathName Name="HighTempThreshold" />
     <RootPropertyPathName Name="ActiveCollectionGroupedByYear" />
-    <RootPropertyPathName Name="WeatherInfos" />
+    <RootPropertyPathName Name="GroupByMonth" />
+    <RootPropertyPathName Name="MostPrecipitationDates" />
     <RootPropertyPathName Name="Date" />
+    <RootPropertyPathName Name="MostPrecipitation" />
+    <RootPropertyPathName Name="LowestTempDates" />
+    <RootPropertyPathName Name="LowestTemp" />
+    <RootPropertyPathName Name="HighestTempDates" />
+    <RootPropertyPathName Name="HighestTemp" />
+    <RootPropertyPathName Name="TotalPrecipitation" />
+    <RootPropertyPathName Name="AverageLowTemp" />
+    <RootPropertyPathName Name="AverageHighTemp" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="ImportWeatherInfo" />
     <RootPropertyPathName Name="SelectedWeatherInfoDetail" />
@@ -27,6 +36,9 @@
     <RootType FullName="WeatherDataAnalysis.Converter.OrdinalDateConverter" />
     <RootType FullName="WeatherDataAnalysis.Converter.DatePickerConverter" />
     <RootType FullName="WeatherDataAnalysis.Converter.StringInputToInt" />
+    <RootType FullName="WeatherDataAnalysis.Converter.HighTempConverter" />
+    <RootType FullName="WeatherDataAnalysis.Converter.LowTempConverter" />
+    <RootType FullName="WeatherDataAnalysis.Converter.MostPrecipitationConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Width" />
@@ -87,6 +99,8 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="TextAlignment" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="Padding" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
@@ -98,12 +112,10 @@
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="Text" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="IsReadOnly" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Width" />
       <RootProperty Name="InputScope" />
+      <RootProperty Name="Height" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="LosingFocus" />
       <RootEvent Name="KeyUp" />
@@ -126,8 +138,6 @@
     <RootType FullName="Windows.UI.Xaml.Automation.AutomationProperties">
       <RootMethod Name="GetHelpText" />
       <RootMethod Name="SetHelpText" />
-      <RootMethod Name="GetName" />
-      <RootMethod Name="SetName" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />
@@ -148,6 +158,7 @@
       <RootEvent Name="LosingFocus" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="IsMultiSelectCheckBoxEnabled" />
@@ -159,7 +170,6 @@
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="SelectedItem" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="Padding" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>

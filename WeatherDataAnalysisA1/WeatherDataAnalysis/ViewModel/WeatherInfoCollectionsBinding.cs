@@ -7,11 +7,17 @@ using WeatherDataAnalysis.Model;
 namespace WeatherDataAnalysis.ViewModel
 {
     /// <summary>
-    ///     Binding for all available collections of weather data and groupings therein. 
+    ///     Binding for all available collections of weather data and groupings therein.
     /// </summary>
-    public class WeatherInfoCollectionsBinding : ICollection<WeatherInfoCollection>, IObservableMap<string, WeatherInfoCollection>
+    public class WeatherInfoCollectionsBinding : ICollection<WeatherInfoCollection>,
+        IObservableMap<string, WeatherInfoCollection>
     {
+        #region Data members
+
         private IList<WeatherInfoCollection> collectionsByYear;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
@@ -31,7 +37,7 @@ namespace WeatherDataAnalysis.ViewModel
                 {
                     years = ActiveWeatherInfoCollection.Active.Select(year => year.Date.Year).Distinct().ToList();
                 }
-                
+
                 foreach (var current in years)
                 {
                     var weatherInfosInYear =
@@ -44,7 +50,6 @@ namespace WeatherDataAnalysis.ViewModel
             }
             private set => this.collectionsByYear = value;
         }
-
 
         /// <inheritdoc />
         /// <summary>
@@ -60,8 +65,6 @@ namespace WeatherDataAnalysis.ViewModel
         /// </summary>
         public ICollection<WeatherInfoCollection> Values => this.WeatherInfoCollections.Values;
 
-        
-
         /// <summary>
         ///     Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
@@ -74,13 +77,14 @@ namespace WeatherDataAnalysis.ViewModel
 
         /// <inheritdoc />
         /// <summary>
-        ///     Gets or sets the <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection" /> with the specified <paramref name="key"/>.
+        ///     Gets or sets the <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection" /> with the specified
+        ///     <paramref name="key" />.
         /// </summary>
         /// <value>
         ///     The <see cref="T:WeatherDataAnalysis.Model.WeatherInfoCollection" />.
         /// </value>
         /// <param name="key">The key.</param>
-        /// <returns>The collection with <paramref name="key"/>.</returns>
+        /// <returns>The collection with <paramref name="key" />.</returns>
         public WeatherInfoCollection this[string key]
         {
             get => this.WeatherInfoCollections[key];
@@ -161,6 +165,19 @@ namespace WeatherDataAnalysis.ViewModel
         }
 
         /// <summary>
+        ///     Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        /// </summary>
+        public void Clear()
+        {
+            this.WeatherInfoCollections.Clear();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.WeatherInfoCollections.GetEnumerator();
+        }
+
+        /// <summary>
         ///     Adds an element with the provided key and value to the
         ///     <see cref="T:System.Collections.Generic.IDictionary`2"></see>.
         /// </summary>
@@ -227,14 +244,6 @@ namespace WeatherDataAnalysis.ViewModel
             this.WeatherInfoCollections.Add(item);
         }
 
-        /// <summary>
-        ///     Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
-        /// </summary>
-        public void Clear()
-        {
-            this.WeatherInfoCollections.Clear();
-        }
-
         /// <inheritdoc />
         /// <summary>
         ///     Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> contains a specific value.
@@ -292,16 +301,12 @@ namespace WeatherDataAnalysis.ViewModel
             return this.WeatherInfoCollections.GetEnumerator();
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.WeatherInfoCollections.GetEnumerator();
-        }
-
-        #endregion
         /// <inheritdoc />
         /// <summary>
-        /// Occurs when the map changes.
+        ///     Occurs when the map changes.
         /// </summary>
         public event MapChangedEventHandler<string, WeatherInfoCollection> MapChanged;
+
+        #endregion
     }
 }

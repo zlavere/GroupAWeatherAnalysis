@@ -9,7 +9,7 @@
     xmlns:viewModel="using:WeatherDataAnalysis.ViewModel"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.DataContext>
-        <viewModel:SummaryViewModel></viewModel:SummaryViewModel>
+        <viewModel:SummaryViewModel />
     </Page.DataContext>
     <Grid>
         <ListView ItemsSource="{Binding DisplayCollection}">
@@ -24,12 +24,12 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                       
+
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

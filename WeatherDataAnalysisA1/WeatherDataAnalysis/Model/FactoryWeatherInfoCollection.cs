@@ -41,7 +41,7 @@ namespace WeatherDataAnalysis.Model
         {
             try
             {
-                var grouped = ActiveWeatherInfoCollection.Active.GroupByMonth();
+                var grouped = ActiveWeatherInfoCollection.Active.GetGroupByMonth();
                 foreach (var current in grouped)
                 {
                     var keyYear = $"{current.Key}";

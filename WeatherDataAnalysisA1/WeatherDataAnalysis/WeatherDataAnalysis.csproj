@@ -100,6 +100,9 @@
     <Compile Include="Controller\AddWeatherInfo.cs" />
     <Compile Include="Controller\ImportWeatherInfo.cs" />
     <Compile Include="Controller\MainPageController.cs" />
+    <Compile Include="Converter\MostPrecipitationConverter.cs" />
+    <Compile Include="Converter\LowTempConverter.cs" />
+    <Compile Include="Converter\HighTempConverter.cs" />
     <Compile Include="Converter\DatePickerConverter.cs" />
     <Compile Include="Converter\OrdinalDateConverter.cs" />
     <Compile Include="Converter\StringInputToInt.cs" />
