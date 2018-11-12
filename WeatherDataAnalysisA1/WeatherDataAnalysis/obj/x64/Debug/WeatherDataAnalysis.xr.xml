@@ -123,6 +123,12 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.TextBoxRegex">
+      <RootMethod Name="GetValidationMode" />
+      <RootMethod Name="SetValidationMode" />
+      <RootMethod Name="GetValidationType" />
+      <RootMethod Name="SetValidationType" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="HorizontalAlignment" />
