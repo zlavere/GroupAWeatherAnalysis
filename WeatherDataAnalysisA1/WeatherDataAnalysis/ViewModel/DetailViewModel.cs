@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -84,7 +85,15 @@ namespace WeatherDataAnalysis.ViewModel
         public DetailViewModel()
         {
             this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
-            this.SelectedWeatherInfoDetail = ActiveWeatherInfoCollection.Active.First();
+            try
+            {
+                this.SelectedWeatherInfoDetail = ActiveWeatherInfoCollection.Active.First();
+            }
+            catch (Exception e)
+            {
+                // ignored
+            }
+
             this.RemoveWeatherInfo = new RelayCommand(this.removeSelectedWeatherInfo, this.canRemoveWeatherInfo);
             this.AddWeatherInfo = new RelayCommand(this.createWeatherInfo, this.canCreateWeatherInfo);
         }
@@ -106,11 +115,18 @@ namespace WeatherDataAnalysis.ViewModel
 
         private async void createWeatherInfo(object obj)
         {
-            var addWeatherInfoController = new AddWeatherInfo();
-            var isCreated = await addWeatherInfoController.StartDialog();
-            if (this.canCreateWeatherInfo(isCreated))
+            try
             {
-                this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
+                var addWeatherInfoController = new AddWeatherInfo();
+                var isCreated = await addWeatherInfoController.StartDialog();
+                if (this.canCreateWeatherInfo(isCreated))
+                {
+                    this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
+                }
+            }
+            catch (Exception e)
+            {
+                // ignored
             }
         }
 

@@ -21,7 +21,7 @@ namespace WeatherDataAnalysis.Converter
             var isValid = int.TryParse((string) value, out var result);
             if (!isValid)
             {
-                throw new FormatException($"The value {value} is not a valid integer.");
+               // throw new FormatException($"The value {value} is not a valid integer.");
             }
 
             return result;

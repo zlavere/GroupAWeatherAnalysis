@@ -77,6 +77,12 @@
             </summary>
             <returns>Returns true if the data element is created successfully.</returns>
         </member>
+        <member name="M:WeatherDataAnalysis.Controller.ExportController.ExportActiveCollection">
+            <summary>
+            Saves the weather info
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WeatherDataAnalysis.Controller.ImportWeatherInfo">
             <summary>
             Controller to handle Import of Weather data from file format
@@ -130,6 +136,27 @@
                 Sets the size of the histogram bucket.
             </summary>
             <param name="size">The size.</param>
+        </member>
+        <member name="M:WeatherDataAnalysis.Converter.CollectionGroupAndDaysInYearDataConverter.Convert(System.Object,System.Type,System.Object,System.String)">
+            <summary>
+                Converts the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="targetType">Type of the target.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="language">The language.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Converter.CollectionGroupAndDaysInYearDataConverter.ConvertBack(System.Object,System.Type,System.Object,System.String)">
+            <summary>
+            Not Implemented, unnecessary
+            </summary>
+            <param name="value">The value.</param>
+            <param name="targetType">Type of the target.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="language">The language.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="T:WeatherDataAnalysis.Converter.MostPrecipitationConverter">
             <summary>
@@ -217,6 +244,27 @@
             Converts Date to DateTimeOffset for DatePicker binding.
             </summary>
             <seealso cref="T:Windows.UI.Xaml.Data.IValueConverter" />
+        </member>
+        <member name="M:WeatherDataAnalysis.Converter.CollectionGroupAndDaysInMonthDataConverter.Convert(System.Object,System.Type,System.Object,System.String)">
+            <summary>
+                Converts the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="targetType">Type of the target.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="language">The language.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WeatherDataAnalysis.Converter.CollectionGroupAndDaysInMonthDataConverter.ConvertBack(System.Object,System.Type,System.Object,System.String)">
+            <summary>
+            Not Implemented, unnecessary
+            </summary>
+            <param name="value">The value.</param>
+            <param name="targetType">Type of the target.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="language">The language.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="T:WeatherDataAnalysis.Converter.OrdinalDateConverter">
             <summary>
@@ -795,6 +843,22 @@
             <seealso cref="T:System.ComponentModel.INotifyPropertyChanged" />
         </member>
         <member name="P:WeatherDataAnalysis.ViewModel.SummaryViewModel.ImportWeatherInfo">
+            <summary>
+            RelayCommand to import weather information.
+            </summary>
+            <value>
+            RelayCommand import weather information.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.SummaryViewModel.ClearWeatherInfo">
+            <summary>
+            RelayCommand to import weather information.
+            </summary>
+            <value>
+            RelayCommand import weather information.
+            </value>
+        </member>
+        <member name="P:WeatherDataAnalysis.ViewModel.SummaryViewModel.SaveWeatherInfo">
             <summary>
             RelayCommand to import weather information.
             </summary>

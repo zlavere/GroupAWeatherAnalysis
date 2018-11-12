@@ -4,6 +4,7 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="ClearWeatherInfo" />
     <RootPropertyPathName Name="LowTempThreshold" />
     <RootPropertyPathName Name="HighTempThreshold" />
     <RootPropertyPathName Name="ActiveCollectionGroupedByYear" />
@@ -21,6 +22,7 @@
     <RootPropertyPathName Name="WeatherInfos" />
     <RootPropertyPathName Name="MostPrecipitationDates" />
     <RootPropertyPathName Name="MostPrecipitation" />
+    <RootPropertyPathName Name="SaveWeatherInfo" />
     <RootPropertyPathName Name="ImportWeatherInfo" />
     <RootPropertyPathName Name="SelectedWeatherInfoDetail" />
     <RootPropertyPathName Name="Precipitation" />
@@ -142,18 +144,18 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Background" />
       <RootProperty Name="Foreground" />
-      <RootEvent Name="Click" />
+      <RootProperty Name="Command" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Automation.AutomationProperties">
       <RootMethod Name="GetHelpText" />
       <RootMethod Name="SetHelpText" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
-      <RootProperty Name="Color" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Mode" />
       <RootProperty Name="Converter" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
+      <RootProperty Name="Color" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
@@ -196,7 +198,6 @@
       <RootProperty Name="Label" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Command" />
-      <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarToggleButton">

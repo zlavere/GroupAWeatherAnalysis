@@ -98,7 +98,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controller\AddWeatherInfo.cs" />
-    <Compile Include="Controller\ExportWeatherInfo.cs" />
+    <Compile Include="View\ExportWeatherInfoDialogGenerator.cs" />
     <Compile Include="Controller\ImportWeatherInfo.cs" />
     <Compile Include="Controller\MainPageController.cs" />
     <Compile Include="Converter\CollectionGroupAndDaysOfDataInYearConverter .cs" />

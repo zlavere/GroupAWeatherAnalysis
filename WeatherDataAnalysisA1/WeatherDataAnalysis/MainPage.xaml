@@ -19,13 +19,13 @@
                 <CommandBar.Content>
                     <Grid />
                 </CommandBar.Content>
-                <AppBarButton HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Top" Command="{Binding ClearWeatherInfo}" />
+				<AppBarButton HorizontalAlignment="Left" Icon="Add" Label="Add New" VerticalAlignment="Top" Command="{Binding ClearWeatherInfo}" />
                 <AppBarButton Icon="OpenFile" Label="Load File" Command="{Binding ImportWeatherInfo}" />
                 <AppBarButton HorizontalAlignment="Left" Icon="Save" Label="Save" VerticalAlignment="Top"
                               Command="{Binding SaveWeatherInfo}" />
                 <AppBarButton x:Name="detailsViewButton" Icon="List" Label="Details" VerticalAlignment="Top"
                               HorizontalAlignment="Left"
-                              Click="c_DetailsView" Visibility="Collapsed" />
+                              Click="c_DetailsView" />
                 <AppBarToggleButton HorizontalAlignment="Left" VerticalAlignment="Top" Icon="Setting" Label="Options" />
             </CommandBar>
             <Grid>
