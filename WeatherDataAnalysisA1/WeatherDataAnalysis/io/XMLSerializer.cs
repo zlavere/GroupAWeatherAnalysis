@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Windows.Storage;
 using WeatherDataAnalysis.Model;
+using WeatherDataAnalysis.ViewModel;
 
 namespace WeatherDataAnalysis.IO
 {
@@ -20,22 +21,24 @@ namespace WeatherDataAnalysis.IO
         /// <summary>
         /// Writes a weather collection to the file specified in an XML format
         /// </summary>
-        /// <param name="collection">The weather collection to be written as XML</param>
-        /// <param name="file">The file to write the weather collection to</param>
-        public static async void WriteWeatherCollection(WeatherInfoCollection collection, StorageFile file)
+        /// <param name="directory">The directory to write the weather collection to</param>
+        public static async void WriteWeatherCollection(StorageFolder directory)
         {
+            
+            var file = await directory.CreateFileAsync($"{ActiveWeatherInfoCollection.Active.Name}.xml",
+                CreationCollisionOption.GenerateUniqueName);
             try
             {
                 var outStream = await file.OpenStreamForWriteAsync();
                 var serializer = new XmlSerializer(typeof(WeatherInfoCollection));
                 using (outStream)
                 {
-                    serializer.Serialize(outStream, collection);
+                    serializer.Serialize(outStream, ActiveWeatherInfoCollection.Active);
                 }
             }
             catch (Exception e)
             {
-                //TODO error handleing
+                throw e;
             }
              
         }
@@ -44,9 +47,8 @@ namespace WeatherDataAnalysis.IO
         /// </summary>
         /// <param name="file">The file to read a weather colelction from</param>
         /// <returns>A weather collection created from the file specified</returns>
-        public static async Task<WeatherInfoCollection> ReadWeatherCollection( StorageFile file)
+        public static async Task<WeatherInfoCollection> ReadWeatherCollection(StorageFile file)
         {
-            
             try
             {
                 var inStream = await file.OpenStreamForReadAsync();

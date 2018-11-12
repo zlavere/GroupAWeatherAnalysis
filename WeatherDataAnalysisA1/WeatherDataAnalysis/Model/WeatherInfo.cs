@@ -48,6 +48,13 @@ namespace WeatherDataAnalysis.Model
         /// <summary>
         ///     Initializes a new instance of the <see cref="WeatherInfo" /> class.
         /// </summary>
+        public WeatherInfo()
+        {
+
+        }
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WeatherInfo" /> class.
+        /// </summary>
         /// <precondition>High Temp Must be >= lowTemp</precondition>
         /// <precondition>Date Must be on or before today.</precondition>
         /// <param name="date">The date.</param>
