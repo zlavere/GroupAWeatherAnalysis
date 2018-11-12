@@ -51,21 +51,11 @@
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="0" Grid.Row="0" x:Name="monthLabel" HorizontalAlignment="Left"
-                                       FontSize="20"
-                                       Text="Month" Grid.ColumnSpan="2"
-                                       Margin="5,10,0,5" />
-                            <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" x:Name="monthInput"
-                                     HorizontalAlignment="Left"
-                                     Margin="5,10,0,5"
-                                     PlaceholderText="Month to Analyze" />
-                            <TextBlock Grid.Column="0" Grid.Row="1" x:Name="yearLabel"
+                            <TextBlock Grid.Column="0" Grid.Row="0" x:Name="yearLabel"
                                        FontSize="20"
                                        Text="Year" TextWrapping="Wrap" Grid.ColumnSpan="2"
                                        Margin="5" />
-                            <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" x:Name="yearInput"
-                                     VerticalContentAlignment="Center" Margin="5"
-                                     PlaceholderText="Year to Analyze" HorizontalAlignment="Left" />
+                            <ComboBox Margin="5" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding YearsAvailable, Mode=TwoWay}" SelectedItem="{Binding YearSelected, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                             <GridViewItem Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Margin="5">
                                 <StackPanel Padding="0">
                                     <TextBlock Text="Temperature Histogram Band Range" FontSize="20" />
@@ -341,5 +331,6 @@
                 </SplitView>
             </Grid>
         </StackPanel>
+        
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.Model.Enums;
 using WeatherDataAnalysis.ViewModel;
@@ -66,6 +67,7 @@ namespace WeatherDataAnalysis.Format
         private string evaluateTempRanges(IEnumerable<int> temps)
         {
             var temperatures = temps.ToList();
+        
             var lowest = temperatures.Min(temp => temp);
             var highest = temperatures.Max(temp => temp);
 

@@ -6,6 +6,8 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="LowTempThreshold" />
     <RootPropertyPathName Name="HighTempThreshold" />
+    <RootPropertyPathName Name="YearsAvailable" />
+    <RootPropertyPathName Name="YearSelected" />
     <RootPropertyPathName Name="ActiveCollectionGroupedByYear" />
     <RootPropertyPathName Name="GroupByMonth" />
     <RootPropertyPathName Name="LowestTempDates" />
@@ -97,12 +99,12 @@
       <RootProperty Name="MaxHeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Text" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="TextAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Padding" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="VerticalAlignment" />
@@ -110,23 +112,29 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Visibility" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.GridViewItem">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Content" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="PlaceholderText" />
-      <RootProperty Name="VerticalContentAlignment" />
       <RootProperty Name="Text" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Width" />
       <RootProperty Name="InputScope" />
       <RootProperty Name="Height" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="KeyUp" />
       <RootEvent Name="LostFocus" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.GridViewItem">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.TextBoxRegex">
       <RootMethod Name="GetValidationMode" />

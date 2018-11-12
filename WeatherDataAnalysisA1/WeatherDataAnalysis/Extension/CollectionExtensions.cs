@@ -27,6 +27,11 @@ namespace WeatherDataAnalysis.Extension
             return new ObservableCollection<WeatherInfoCollection>(collection);
         }
 
+        public static ObservableCollection<int> TObservableCollection(this IList<int> collection)
+        {
+            return new ObservableCollection<int>(collection);
+        }
+
         #endregion
     }
 }
