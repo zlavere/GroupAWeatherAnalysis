@@ -269,6 +269,13 @@ namespace WeatherDataAnalysis.Model
         #region Constructors
 
         /// <summary>
+        ///  Initializes a new, empty instance of the <see cref="Model.WeatherInfoCollection" /> class.
+        /// </summary>
+        public WeatherInfoCollection()
+        {
+            this.WeatherInfos = new List<WeatherInfo>();
+        }
+        /// <summary>
         ///     Initializes a new instance of the <see cref="Model.WeatherInfoCollection" /> class.
         /// </summary>
         /// <param name="name"></param>
