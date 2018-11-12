@@ -8,10 +8,8 @@
     <RootPropertyPathName Name="HighTempThreshold" />
     <RootPropertyPathName Name="ActiveCollectionGroupedByYear" />
     <RootPropertyPathName Name="GroupByMonth" />
-    <RootPropertyPathName Name="MostPrecipitationDates" />
-    <RootPropertyPathName Name="Date" />
-    <RootPropertyPathName Name="MostPrecipitation" />
     <RootPropertyPathName Name="LowestTempDates" />
+    <RootPropertyPathName Name="Date" />
     <RootPropertyPathName Name="LowestTemp" />
     <RootPropertyPathName Name="HighestTempDates" />
     <RootPropertyPathName Name="HighestTemp" />
@@ -20,6 +18,9 @@
     <RootPropertyPathName Name="AverageHighTemp" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Count" />
+    <RootPropertyPathName Name="WeatherInfos" />
+    <RootPropertyPathName Name="MostPrecipitationDates" />
+    <RootPropertyPathName Name="MostPrecipitation" />
     <RootPropertyPathName Name="ImportWeatherInfo" />
     <RootPropertyPathName Name="SelectedWeatherInfoDetail" />
     <RootPropertyPathName Name="Precipitation" />
@@ -41,6 +42,7 @@
     <RootType FullName="WeatherDataAnalysis.Converter.MostPrecipitationConverter" />
     <RootType FullName="WeatherDataAnalysis.Converter.CollectionGroupAndDaysInYearDataConverter" />
     <RootType FullName="WeatherDataAnalysis.Converter.CollectionGroupAndDaysInMonthDataConverter" />
+    <RootType FullName="WeatherDataAnalysis.Converter.CollectionHistogramGenerator" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Width" />
@@ -102,6 +104,7 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Padding" />
+      <RootProperty Name="FontWeight" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
@@ -124,6 +127,12 @@
     <RootType FullName="Windows.UI.Xaml.Controls.GridViewItem">
       <RootProperty Name="Margin" />
       <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.TextBoxRegex">
+      <RootMethod Name="GetValidationMode" />
+      <RootMethod Name="SetValidationMode" />
+      <RootMethod Name="GetValidationType" />
+      <RootMethod Name="SetValidationType" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />

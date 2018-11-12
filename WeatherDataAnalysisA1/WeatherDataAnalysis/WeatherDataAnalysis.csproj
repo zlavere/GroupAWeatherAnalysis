@@ -101,6 +101,7 @@
     <Compile Include="Controller\ImportWeatherInfo.cs" />
     <Compile Include="Controller\MainPageController.cs" />
     <Compile Include="Converter\CollectionGroupAndDaysOfDataInYearConverter .cs" />
+    <Compile Include="Converter\CollectionHistogramGenerator.cs" />
     <Compile Include="Converter\MostPrecipitationConverter.cs" />
     <Compile Include="Converter\LowTempConverter.cs" />
     <Compile Include="Converter\HighTempConverter.cs" />
