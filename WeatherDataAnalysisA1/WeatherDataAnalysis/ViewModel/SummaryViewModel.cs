@@ -177,13 +177,13 @@ namespace WeatherDataAnalysis.ViewModel
         /// <summary>
         ///     Gets or sets the active collection.
         /// </summary>
-        /// <value>
+        /// <value> 
         ///     The active collection.
         /// </value>
         private WeatherInfoCollection ActiveCollection
         {
             get => this.activeCollection;
-            set
+            set 
             {
                 this.activeCollection = value;
                 this.OnPropertyChanged();
