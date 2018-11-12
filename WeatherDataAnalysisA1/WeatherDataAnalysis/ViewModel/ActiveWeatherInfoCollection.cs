@@ -8,7 +8,12 @@ namespace WeatherDataAnalysis.ViewModel
     /// </summary>
     public static class ActiveWeatherInfoCollection
     {
+        #region Data members
+
         private static WeatherInfoCollection active;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
@@ -17,13 +22,13 @@ namespace WeatherDataAnalysis.ViewModel
         /// <value>
         ///     Sets the WeatherInformationCollection used ubiquitously throughout the application.
         /// </value>
-        public static WeatherInfoCollection Active {
+        public static WeatherInfoCollection Active
+        {
             get
             {
                 if (active == null)
                 {
                     active = new WeatherInfoCollection(string.Empty, new List<WeatherInfo>());
-                    
                 }
 
                 return active;
@@ -32,6 +37,5 @@ namespace WeatherDataAnalysis.ViewModel
         }
 
         #endregion
-
     }
 }

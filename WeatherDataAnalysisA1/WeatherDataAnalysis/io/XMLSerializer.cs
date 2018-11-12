@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Windows.Storage;
@@ -11,14 +8,14 @@ using WeatherDataAnalysis.Model;
 namespace WeatherDataAnalysis.IO
 {
     /// <summary>
-    /// This class contains tools for the serialization, and deserialization of XML files related to weather
+    ///     This class contains tools for the serialization, and deserialization of XML files related to weather
     /// </summary>
     public static class XMLSerializer
     {
-
+        #region Methods
 
         /// <summary>
-        /// Writes a weather collection to the file specified in an XML format
+        ///     Writes a weather collection to the file specified in an XML format
         /// </summary>
         /// <param name="collection">The weather collection to be written as XML</param>
         /// <param name="file">The file to write the weather collection to</param>
@@ -37,29 +34,30 @@ namespace WeatherDataAnalysis.IO
             {
                 //TODO error handleing
             }
-             
         }
+
         /// <summary>
-        /// Reads a weather collection to the file specified in an XML format
+        ///     Reads a weather collection to the file specified in an XML format
         /// </summary>
         /// <param name="file">The file to read a weather colelction from</param>
         /// <returns>A weather collection created from the file specified</returns>
-        public static async Task<WeatherInfoCollection> ReadWeatherCollection( StorageFile file)
+        public static async Task<WeatherInfoCollection> ReadWeatherCollection(StorageFile file)
         {
-            
             try
             {
                 var inStream = await file.OpenStreamForReadAsync();
                 var deserializer = new XmlSerializer(typeof(WeatherInfoCollection));
-                return (WeatherInfoCollection)deserializer.Deserialize(inStream);
-                
+                return (WeatherInfoCollection) deserializer.Deserialize(inStream);
             }
             catch (Exception e)
             {
                 //TODO error handleing
             }
+
             //TODO fix method so that there is only a single return statement
             return null;
         }
+
+        #endregion
     }
 }

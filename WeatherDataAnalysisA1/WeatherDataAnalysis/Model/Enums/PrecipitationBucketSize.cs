@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WeatherDataAnalysis.Model.Enums
+﻿namespace WeatherDataAnalysis.Model.Enums
 {
     public struct PrecipitationBucketSize
     {

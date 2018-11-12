@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using Windows.Globalization.DateTimeFormatting;
 
 namespace WeatherDataAnalysis.Model
 {
@@ -12,9 +13,195 @@ namespace WeatherDataAnalysis.Model
     /// </summary>
     public class WeatherInfoCollection : IList<WeatherInfo>
     {
+        #region Data members
+
+        private IList<WeatherInfo> highestTempDates;
+        private IList<WeatherInfo> lowestTempDates;
+        private IList<WeatherInfo> highestLowTempDates;
+        private IList<WeatherInfo> lowestHighTempDates;
+        private IList<WeatherInfo> mostPrecipitationDates;
+        private IList<WeatherInfo> highTempAboveDates;
+        private IList<WeatherInfo> lowTempBelowDates;
+        private int highestTemp;
+        private int lowestTemp;
+        private double? mostPrecipitation;
+        private double? totalPrecipitation;
+        private double averageHighTemp;
+        private double averageLowTemp;
+
+        private IList<WeatherInfoCollection> groupByMonth;
+
+        #endregion
+
         #region Properties
 
+        /// <summary>
+        ///     Gets the weather infos.
+        /// </summary>
+        /// <value>
+        ///     The weather infos.
+        /// </value>
         public IList<WeatherInfo> WeatherInfos { get; }
+
+        public IList<WeatherInfo> HighestTempDates
+        {
+            get
+            {
+                this.highestTempDates = this.FindWithHighestTemp();
+                return this.highestTempDates;
+            }
+            set => this.highestTempDates = value;
+        }
+
+        public IList<WeatherInfo> LowestTempDates
+        {
+            get
+            {
+                this.lowestTempDates = this.FindWithLowestTemp();
+                return this.lowestTempDates;
+            }
+            set => this.lowestTempDates = value;
+        }
+
+        public IList<WeatherInfo> HighestLowTempDates
+        {
+            get
+            {
+                this.highestLowTempDates = this.FindHighestLowTemps();
+                return this.highestLowTempDates;
+            }
+            set => this.highestLowTempDates = value;
+        }
+
+        public IList<WeatherInfo> LowestHighTempDates
+        {
+            get
+            {
+                this.lowestHighTempDates = this.FindLowestHighTemps();
+                return this.lowestHighTempDates;
+            }
+            set => this.lowestHighTempDates = value;
+        }
+
+        public IList<WeatherInfo> MostPrecipitationDates
+        {
+            get
+            {
+                this.mostPrecipitationDates = this.FindWithMostPrecipitation();
+                return this.mostPrecipitationDates;
+            }
+            set => this.mostPrecipitationDates = value;
+        }
+
+        public IList<WeatherInfo> HighTempsAboveDates
+        {
+            get
+            {
+                this.highTempAboveDates = this.FindAllAboveHighTempThreshold(this.HighTempThreshold);
+                return this.highTempAboveDates;
+            }
+            set => this.highestTempDates = value;
+        }
+
+        public IList<WeatherInfo> LowTempsBelowDates
+        {
+            get
+            {
+                this.lowTempBelowDates = this.FindAllBelowLowTempThreshold(this.LowTempThreshold);
+                return this.lowTempBelowDates;
+            }
+            set => this.lowTempBelowDates = value;
+        }
+
+        public int HighestTemp
+        {
+            get
+            {
+                if (this.Count > 0)
+                {
+                    this.highestTemp = this.Max(temp => temp.HighTemp);
+                }
+                
+                return this.highestTemp;
+            }
+        }
+
+        public int LowestTemp
+        {
+            get
+            {
+                if (this.Count > 0)
+                {
+                    this.lowestTemp = this.Min(temp => temp.LowTemp);
+                }
+
+                return this.lowestTemp;
+            }
+        }
+
+        public double AverageHighTemp
+        {
+            get
+            {
+                if (this.Count > 0)
+                {
+                    this.averageHighTemp = this.Average(average => average.HighTemp);
+                }
+                
+                return this.averageHighTemp;
+            }
+        }
+
+        public double AverageLowTemp
+        {
+            get
+            {
+                if (this.Count > 0)
+                {
+                    this.averageLowTemp = this.Average(average => average.LowTemp);
+                }
+                
+                return this.averageLowTemp;
+            }
+        }
+
+        public double? MostPrecipitation
+        {
+            get
+            {
+                if (this.Count > 0)
+                {
+                    this.mostPrecipitation = this.Max(precipitation => precipitation.Precipitation);
+                }
+
+                return this.mostPrecipitation;
+            }
+        }
+
+        public double? TotalPrecipitation
+        {
+            get
+            {
+                if (this.Count > 0)
+                {
+                    this.totalPrecipitation = this.WeatherInfos.ToList()
+                                                  .TrueForAll(weatherInfo => weatherInfo.Precipitation == null)
+                        ? null
+                        : this.WeatherInfos.Sum(weatherInfo => weatherInfo.Precipitation);
+                }
+
+                return this.totalPrecipitation;
+            }
+        }
+
+        public IList<WeatherInfoCollection> GroupByMonth
+        {
+            get
+            {
+                this.groupByMonth = this.GroupingsByMonth();
+                return this.groupByMonth;
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the name.
@@ -23,6 +210,10 @@ namespace WeatherDataAnalysis.Model
         ///     The name.
         /// </value>
         public string Name { get; }
+
+        public int HighTempThreshold { get; set; }
+
+        public int LowTempThreshold { get; set; }
 
         /// <summary>
         ///     Gets or sets the key value pair.
@@ -55,38 +246,6 @@ namespace WeatherDataAnalysis.Model
             get => this.WeatherInfos[index];
             set => this.WeatherInfos[index] = value;
         }
-
-        /// <summary>
-        ///     Gets the highest temperature.
-        /// </summary>
-        /// <value>
-        ///     The highest temperature.
-        /// </value>
-        public int HighestTemp => this.WeatherInfos.Max(temp => temp.HighTemp);
-
-        /// <summary>
-        ///     Gets the lowest temperature.
-        /// </summary>
-        /// <value>
-        ///     The lowest temperature.
-        /// </value>
-        public int LowestTemp => this.WeatherInfos.Min(temp => temp.LowTemp);
-
-        /// <summary>
-        ///     Gets the highest precipitation.
-        /// </summary>
-        /// <value>
-        ///     The highest precipitation.
-        /// </value>
-        public double? MostPrecipitation => this.WeatherInfos.Max(precipitation => precipitation.Precipitation);
-
-        /// <summary>
-        ///     Gets the total precipitation.
-        /// </summary>
-        /// <value>
-        ///     The total precipitation.
-        /// </value>
-        public double? TotalPrecipitation => this.WeatherInfos.ToList().TrueForAll(weatherInfo => weatherInfo.Precipitation == null) ? null : this.WeatherInfos.Sum(weatherInfo =>weatherInfo.Precipitation );
 
         #endregion
 
@@ -219,11 +378,12 @@ namespace WeatherDataAnalysis.Model
         {
             this.WeatherInfos.RemoveAt(index);
         }
+
         /// <summary>
         ///     Groups the by year.
         /// </summary>
         /// <returns></returns>
-        public IDictionary<int, List<WeatherInfo>> groupByYear()
+        public IDictionary<int, List<WeatherInfo>> GetGroupByYear()
         {
             var years = this.WeatherInfos.Select(weather => weather.Date.Year).Distinct().ToList();
             var dictionary = new Dictionary<int, List<WeatherInfo>>();
@@ -240,9 +400,9 @@ namespace WeatherDataAnalysis.Model
         ///     Groups the by month.
         /// </summary>
         /// <returns></returns>
-        public IDictionary<int, IDictionary<int, List<WeatherInfo>>> GroupByMonth()
+        public IDictionary<int, IDictionary<int, List<WeatherInfo>>> GetGroupByMonth()
         {
-            var groupedByYear = (Dictionary<int, List<WeatherInfo>>) this.groupByYear();
+            var groupedByYear = (Dictionary<int, List<WeatherInfo>>) this.GetGroupByYear();
 
             var dictionary = new Dictionary<int, IDictionary<int, List<WeatherInfo>>>();
 
@@ -271,47 +431,78 @@ namespace WeatherDataAnalysis.Model
             return monthDictionary;
         }
 
-        //TODO Remove or change these to return WeatherInfoCollections - duplicated methods?
+        public IList<WeatherInfoCollection> GroupingsByMonth()
+        {
+            
+            var collections = new List<WeatherInfoCollection>();
+
+            for (var month = 1; month <= 12; month++)
+            {
+                var currentMonth = month;
+                var queryInMonth = this.Where(weatherInfo => weatherInfo.Date.Month == currentMonth).ToList();
+                var newCollection = new WeatherInfoCollection($"{DateTimeFormatInfo.CurrentInfo.GetMonthName(currentMonth)} {this.WeatherInfos.First().Date.Year}", queryInMonth);
+                collections.Add(newCollection);
+            }
+
+            return collections;
+        }
+
+    //TODO Remove or change these to return WeatherInfoCollections - duplicated methods?
         /// <summary>
         ///     Gets the highest temps.
         /// </summary>
         /// <returns>List of Weather with the highest temps.</returns>
-        public ICollection<WeatherInfo> FindWithHighestTemp()
+        public IList<WeatherInfo> FindWithHighestTemp()
         {
-            var highest = this.WeatherInfos.Max(weather => weather.HighTemp);
+            int? highest = null;
+            if (this.Count > 0)
+            {
+                 highest = this.WeatherInfos.Max(weather => weather.HighTemp);
+            }
 
-            return this.WeatherInfos.Where(temp => temp.HighTemp == highest)
+            return this.Where(temp => temp.HighTemp == highest)
                        .ToList();
         }
 
         /// <summary>
         ///     Gets the lowest temps.
         /// </summary>
-        /// <returns>List of Weather with the lowest temps.</returns>
-        public ICollection<WeatherInfo> FindWithLowestTemp()
+        /// <returns>
+        ///     List of Weather with the lowest temps.
+        /// </returns>
+        public IList<WeatherInfo> FindWithLowestTemp()
         {
-            var lowest = this.WeatherInfos.Min(weather => weather.LowTemp);
-            var lowTemps =
-                this.WeatherInfos.Where(temp => temp.LowTemp == lowest).ToList();
-            return lowTemps;
+            int? lowest = null;
+            if (this.Count > 0)
+            {
+               lowest = this.WeatherInfos.Min(weather => weather.LowTemp);
+            }
+            return this.Where(temp => temp.LowTemp == lowest).ToList();
         }
 
         /// <summary>
         ///     Gets the highest precipitation.
         /// </summary>
         /// <returns>List of Weather with the highest Precipitation.</returns>
-        public ICollection<WeatherInfo> FindWithMostPrecipitation()
+        public IList<WeatherInfo> FindWithMostPrecipitation()
         {
-            var highest = this.WeatherInfos.Max(weather => weather.Precipitation);
-            var highestPrecipitation = new List<WeatherInfo>();
+            double? highest = null;
+
+            if (this.Count > 0)
+            {
+                highest = this.Max(weather => weather.Precipitation);
+            }
+
+            List<WeatherInfo> highestPrecipitation;
             try
             {
-                highestPrecipitation = this.WeatherInfos.Where(precipitation =>Math.Abs((double)precipitation.Precipitation - (double)highest) <0.01).ToList();
+                highestPrecipitation = this.WeatherInfos.Where(precipitation =>
+                    highest != null && (precipitation.Precipitation != null && Math.Abs((double) precipitation.Precipitation - (double) highest) <
+                                        0.01)).ToList();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 highestPrecipitation = null;
-                
             }
 
             return highestPrecipitation;
@@ -321,9 +512,15 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the highest low temps.
         /// </summary>
         /// <returns>List of Weather with the highest low temps.</returns>
-        public ICollection<WeatherInfo> FindHighestLowTemps()
+        public IList<WeatherInfo> FindHighestLowTemps()
         {
-            var highest = this.WeatherInfos.Max(weather => weather.LowTemp);
+            int? highest = null;
+
+            if (this.Count > 0)
+            {
+                highest = this.WeatherInfos.Max(weather => weather.LowTemp);
+            }
+            
             var highestTemps =
                 this.WeatherInfos.Where(temp => temp.LowTemp == highest).ToList();
 
@@ -334,7 +531,7 @@ namespace WeatherDataAnalysis.Model
         ///     Gets the lowest high temps.
         /// </summary>
         /// <returns>List of Weather with the lowest high temps.</returns>
-        public List<WeatherInfo> FindLowestHighTemps()
+        public IList<WeatherInfo> FindLowestHighTemps()
         {
             var lowest = this.WeatherInfos.Min(weather => weather.HighTemp);
             var lowTemps =
@@ -381,13 +578,14 @@ namespace WeatherDataAnalysis.Model
             return result;
         }
 
+
         //TODO return statements docs
         /// <summary>
         ///     Gets the highest in month.
         /// </summary>
         /// <param name="month">The month.</param>
         /// <returns></returns>
-        public ICollection<WeatherInfo> GetHighestInMonth(int month)
+        public IList<WeatherInfo> GetHighestInMonth(int month)
         {
             var weatherByMonthList = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
             var highInMonth = weatherByMonthList.Max(weather => weather.HighTemp);

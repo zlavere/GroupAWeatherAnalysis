@@ -68,7 +68,7 @@ namespace WeatherDataAnalysis
 
         private async void loadFile_Click(object sender, RoutedEventArgs e)
         {
-            this.summaryTextBox.Text = "Load file was invoked.";
+
 
             try
             {
@@ -87,8 +87,7 @@ namespace WeatherDataAnalysis
             }
             catch (ArgumentException ae)
             {
-                this.summaryTextBox.Text =
-                    $"{ae.Message}{Environment.NewLine}A collection with this name may already exist. Please try again with another name";
+
             }
             catch (Exception)
             {
@@ -110,7 +109,7 @@ namespace WeatherDataAnalysis
                 getImportResults = this.mainPageController.GenerateOutput(int.Parse(this.monthInput.Text));
             }
 
-            this.summaryTextBox.Text = getImportResults;
+
         }
         //TODO Move to ViewModel
 
@@ -175,7 +174,7 @@ namespace WeatherDataAnalysis
 
         private void c_ClearData(object sender, RoutedEventArgs e)
         {
-            this.summaryTextBox.Text = @"Data has been cleared.";
+
 
             if (ActiveWeatherInfoCollection.Active != null)
             {
@@ -183,32 +182,6 @@ namespace WeatherDataAnalysis
             }
         }
 
-        private async void c_CreateWeatherInfo(object sender, RoutedEventArgs e)
-        {
-            var addWeatherInfo = new AddWeatherInfo();
-            var successfullyCreated = await addWeatherInfo.StartDialog();
-            try
-            {
-                if (successfullyCreated)
-                {
-                    this.summaryTextBox.Text = $"Created New Weather Information Entry{Environment.NewLine}" +
-                                               $"Date: {addWeatherInfo.CreatedWeatherInfo.Date}{Environment.NewLine}" +
-                                               $"High Temperature: {addWeatherInfo.CreatedWeatherInfo.HighTemp}{Environment.NewLine}" +
-                                               $"Low Temperature: {addWeatherInfo.CreatedWeatherInfo.LowTemp}{Environment.NewLine}";
-                    this.refreshButton.IsEnabled = true;
-                }
-                else
-                {
-                    this.summaryTextBox.Text = "Failed to create a new Weather Information Entry";
-                }
-            }
-            catch(Exception)
-            {
-                this.summaryTextBox.Text = "An unknown error occurred and no Weather Information was added.";
-            }
-
-
-        }
 
         private void c_Refresh(object sender, RoutedEventArgs e)
         {
@@ -239,8 +212,6 @@ namespace WeatherDataAnalysis
             {
                 StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", directoryResult);
                 this.mainPageController.WriteActiveInfoToFile(directoryResult);
-                this.summaryTextBox.Text =
-                    $"{ActiveWeatherInfoCollection.Active.Name} data has been written to {directoryResult.Name}.";
             }
         }
 

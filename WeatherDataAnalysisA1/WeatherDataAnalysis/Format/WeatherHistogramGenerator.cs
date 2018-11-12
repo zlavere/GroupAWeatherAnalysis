@@ -15,15 +15,16 @@ namespace WeatherDataAnalysis.Format
         #region Properties
 
         private HistogramBucketSize HistogramBucketSize { get; set; }
-        private double precipitationBucketSize { get; set; }
-    #endregion
+        private double precipitationBucketSize { get; }
 
-    #region Constructors
+        #endregion
 
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="WeatherHistogramGenerator" /> class.
-    /// </summary>
-    public WeatherHistogramGenerator()
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WeatherHistogramGenerator" /> class.
+        /// </summary>
+        public WeatherHistogramGenerator()
         {
             this.HistogramBucketSize = HistogramBucketSize.Ten;
             this.precipitationBucketSize = PrecipitationBucketSize.QuarterInch;
@@ -50,27 +51,29 @@ namespace WeatherDataAnalysis.Format
                          $"{this.evaluateTempRanges(lowTemps)}";
             return output;
         }
+
         public string CreatePrecipitationHistogram(IEnumerable<WeatherInfo> collection)
         {
             var weatherInfos = collection.ToList();
             var precipitations = weatherInfos.Select(precipitation => precipitation.Precipitation);
-           
+
             //TODO set range for histogram
             var output = $"High Precipitation Histogram {Environment.NewLine}" +
                          $"{this.evaluatePrecipitationRanges(precipitations)} {Environment.NewLine}";
             return output;
         }
+
         private string evaluateTempRanges(IEnumerable<int> temps)
         {
             var temperatures = temps.ToList();
             var lowest = temperatures.Min(temp => temp);
             var highest = temperatures.Max(temp => temp);
-            
-                if (lowest % (int)this.HistogramBucketSize != 0)
-                {
-                    lowest = lowest - lowest % (int)this.HistogramBucketSize;
-                }
-          
+
+            if (lowest % (int) this.HistogramBucketSize != 0)
+            {
+                lowest = lowest - lowest % (int) this.HistogramBucketSize;
+            }
+
             if (highest % (int) this.HistogramBucketSize != 0)
             {
                 highest = highest + (int) this.HistogramBucketSize - highest % (int) this.HistogramBucketSize;
@@ -91,6 +94,7 @@ namespace WeatherDataAnalysis.Format
 
             return output;
         }
+
         private string evaluatePrecipitationRanges(IEnumerable<double?> precipitation)
         {
             var precipitations = precipitation.ToList();
@@ -114,7 +118,7 @@ namespace WeatherDataAnalysis.Format
             {
                 var upperBound = lowerBound + (this.precipitationBucketSize - .01);
 
-                var count = precipitations.Count(precip=> precip >= lowerBound && precip <= upperBound);
+                var count = precipitations.Count(precip => precip >= lowerBound && precip <= upperBound);
                 output += $"{lowerBound} - {upperBound}: {count}{Environment.NewLine}";
 
                 lowerBound = upperBound + .01;
@@ -122,6 +126,7 @@ namespace WeatherDataAnalysis.Format
 
             return output;
         }
+
         #endregion
     }
 }

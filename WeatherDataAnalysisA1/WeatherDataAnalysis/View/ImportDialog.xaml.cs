@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
@@ -21,9 +20,13 @@ namespace WeatherDataAnalysis.View
     /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
     public sealed partial class ImportDialog
     {
+        #region Data members
 
         public const ContentDialogResult Submit = ContentDialogResult.Primary;
         public const ContentDialogResult Cancel = ContentDialogResult.Secondary;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
@@ -42,15 +45,9 @@ namespace WeatherDataAnalysis.View
         /// </value>
         public ImportType ImportType { get; private set; }
 
-        public ContentDialogResult Result
-        {
-            get;
-            set;
-        }
+        public ContentDialogResult Result { get; set; }
 
         public StorageFile File { get; set; }
-
-//        private FileOpenPicker filePicker { get; set; }
 
         #endregion
 
@@ -64,6 +61,10 @@ namespace WeatherDataAnalysis.View
             this.InitializeComponent();
             IsPrimaryButtonEnabled = false;
         }
+
+        #endregion
+
+        #region Methods
 
         public async Task<bool> StartDialog()
         {
@@ -86,7 +87,7 @@ namespace WeatherDataAnalysis.View
         {
             var isComplete = false;
 
-            this.Result = await this.ShowAsync();
+            this.Result = await ShowAsync();
 
             if (this.Result == Submit)
             {
@@ -95,10 +96,6 @@ namespace WeatherDataAnalysis.View
 
             return isComplete;
         }
-
-        #endregion
-
-        #region Methods
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
@@ -184,5 +181,7 @@ namespace WeatherDataAnalysis.View
         }
 
         #endregion
+
+//        private FileOpenPicker filePicker { get; set; }
     }
 }
