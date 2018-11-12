@@ -72,6 +72,7 @@ namespace WeatherDataAnalysis.View
             var filePicker = new FileOpenPicker();
             filePicker.FileTypeFilter.Add(".csv");
             filePicker.FileTypeFilter.Add(".txt");
+            filePicker.FileTypeFilter.Add(".xml");
             this.File = await filePicker.PickSingleFileAsync();
             StorageApplicationPermissions.FutureAccessList.Add(this.File);
 
