@@ -3,6 +3,10 @@ using Windows.UI.Xaml.Data;
 
 namespace WeatherDataAnalysis.Converter
 {
+    /// <summary>
+    /// Converts string to an int
+    /// </summary>
+    /// <seealso cref="Windows.UI.Xaml.Data.IValueConverter" />
     public class StringInputToInt : IValueConverter
     {
         #region Methods

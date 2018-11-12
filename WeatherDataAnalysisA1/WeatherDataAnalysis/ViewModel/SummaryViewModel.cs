@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using WeatherDataAnalysis.Controller;
 using WeatherDataAnalysis.Extension;
@@ -9,58 +8,45 @@ using WeatherDataAnalysis.Utility;
 
 namespace WeatherDataAnalysis.ViewModel
 {
+    /// <inheritdoc />
     /// <summary>
     ///     Data bindings between summary and relevant data classes.
     /// </summary>
-    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
+    /// <seealso cref="T:System.ComponentModel.INotifyPropertyChanged" />
     public class SummaryViewModel : INotifyPropertyChanged
     {
         #region Data members
 
         private WeatherInfoCollectionsBinding allCollections;
         private WeatherInfoCollection activeCollection;
-        private ObservableCollection<WeatherInfoCollection> importedCollections;
         private ObservableCollection<WeatherInfoCollection> activeCollectionGroupedByYear;
-        private ObservableCollection<WeatherInfo> displayCollection;
-        private ObservableCollection<WeatherInfo> highestTempsInActiveCollection;
-        private ObservableCollection<WeatherInfo> highestLowTempsInActiveCollection;
-        private ObservableCollection<WeatherInfo> lowestTempsInActiveCollection;
-        private ObservableCollection<WeatherInfo> lowestHighTempsInActiveCollection;
-        private ObservableCollection<WeatherInfo> highTempsAboveThresholdInActiveCollection;
-        private ObservableCollection<WeatherInfo> lowTempsBelowThresholdInActiveCollection;
-        private ObservableCollection<WeatherInfo> mostPrecipitationInActiveCollection;
         private int highTempThreshold;
         private int lowTempThreshold;
-        private double averageHighTemp;
-        private double averageLowTemp;
-        private double totalPrecipitation;
 
         #endregion
 
         #region Properties
 
+        /// <summary>
+        /// RelayCommand to import weather information.
+        /// </summary>
+        /// <value>
+        /// RelayCommand import weather information.
+        /// </value>
         public RelayCommand ImportWeatherInfo { get; private set; }
 
+        /// <summary>
+        /// Gets the active collection grouped by year.
+        /// </summary>
+        /// <value>
+        /// The active collection grouped by year.
+        /// </value>
         public ObservableCollection<WeatherInfoCollection> ActiveCollectionGroupedByYear
         {
             get => this.activeCollectionGroupedByYear;
-            set
+            private set
             {
                 this.activeCollectionGroupedByYear = value;
-                this.OnPropertyChanged();
-            }
-        }
-
-        public ObservableCollection<WeatherInfoCollection> ImportedCollections
-        {
-            get
-            {
-                this.importedCollections = this.AllCollections.Values.ToList().ToObservableCollection();
-                return this.importedCollections;
-            }
-            set
-            {
-                this.importedCollections = value;
                 this.OnPropertyChanged();
             }
         }
@@ -71,7 +57,7 @@ namespace WeatherDataAnalysis.ViewModel
         /// <value>
         ///     All collections.
         /// </value>
-        public WeatherInfoCollectionsBinding AllCollections
+        private WeatherInfoCollectionsBinding AllCollections
         {
             get => this.allCollections;
             set
@@ -87,143 +73,13 @@ namespace WeatherDataAnalysis.ViewModel
         /// <value>
         ///     The active collection.
         /// </value>
-        public WeatherInfoCollection ActiveCollection
+        private WeatherInfoCollection ActiveCollection
         {
             get => this.activeCollection;
             set
             {
                 this.activeCollection = value;
-                this.DisplayCollection = this.activeCollection.ToObservableCollection();
                 this.OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the display collection.
-        /// </summary>
-        /// <value>
-        ///     The display collection.
-        /// </value>
-        public ObservableCollection<WeatherInfo> DisplayCollection
-        {
-            get
-            {
-                if (ActiveWeatherInfoCollection.Active != null)
-                {
-                    this.displayCollection = this.activeCollection.ToObservableCollection();
-                }
-
-                return this.displayCollection;
-            }
-            set
-            {
-                this.displayCollection = value;
-                this.OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the highest temps in active collection.
-        /// </summary>
-        /// <value>
-        ///     The highest temps in active collection.
-        /// </value>
-        public ObservableCollection<WeatherInfo> HighestTempDates
-        {
-            get
-            {
-                this.highestTempsInActiveCollection = this.findHighestTempsInActiveCollection();
-                return this.highestTempsInActiveCollection;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the lowest temps in active collection.
-        /// </summary>
-        /// <value>
-        ///     The lowest temps in active collection.
-        /// </value>
-        public ObservableCollection<WeatherInfo> LowestTempDates
-        {
-            get
-            {
-                this.lowestTempsInActiveCollection = this.findLowestTempsInActiveCollection();
-                return this.lowestTempsInActiveCollection;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the dates with the lowest high temp
-        /// </summary>
-        /// <value>
-        ///     The dates with the lowest high temp
-        /// </value>
-        public ObservableCollection<WeatherInfo> LowestHighTempDates
-        {
-            get
-            {
-                this.lowestHighTempsInActiveCollection = this.findLowestHighTempsInActiveCollection();
-                return this.lowestHighTempsInActiveCollection;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the date(s) with highest low temp.
-        /// </summary>
-        /// <value>
-        ///     The date(s) with highest low temp.
-        /// </value>
-        public ObservableCollection<WeatherInfo> HighestLowTempDates
-        {
-            get
-            {
-                this.highestLowTempsInActiveCollection = this.findHighestLowTempsInActiveCollection();
-                return this.highestLowTempsInActiveCollection;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the high temp above threshold dates.
-        /// </summary>
-        /// <value>
-        ///     The high temp above threshold dates.
-        /// </value>
-        public ObservableCollection<WeatherInfo> HighTempAboveThresholdDates
-        {
-            get
-            {
-                this.highTempsAboveThresholdInActiveCollection = this.findAllAboveHighTempThreshold();
-                return this.highTempsAboveThresholdInActiveCollection;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the low temps below threshold dates.
-        /// </summary>
-        /// <value>
-        ///     The low temps below threshold dates.
-        /// </value>
-        public ObservableCollection<WeatherInfo> LowTempBelowThresholdDates
-        {
-            get
-            {
-                this.lowTempsBelowThresholdInActiveCollection = this.findAllBelowLowTempThreshold();
-                return this.lowTempsBelowThresholdInActiveCollection;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the most precipitation dates.
-        /// </summary>
-        /// <value>
-        ///     The most precipitation dates.
-        /// </value>
-        public ObservableCollection<WeatherInfo> MostPrecipitationDates
-        {
-            get
-            {
-                this.mostPrecipitationInActiveCollection = this.findMostPrecipitationInActiveCollection();
-                return this.mostPrecipitationInActiveCollection;
             }
         }
 
@@ -239,6 +95,7 @@ namespace WeatherDataAnalysis.ViewModel
             set
             {
                 this.highTempThreshold = value;
+                ActiveWeatherInfoCollection.Active.HighTempThreshold = value;
                 this.OnPropertyChanged();
             }
         }
@@ -255,52 +112,8 @@ namespace WeatherDataAnalysis.ViewModel
             set
             {
                 this.lowTempThreshold = value;
+                ActiveWeatherInfoCollection.Active.LowTempThreshold = value;
                 this.OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        ///     Gets the average high temperature.
-        /// </summary>
-        /// <value>
-        ///     The average high temperature.
-        /// </value>
-        public double AverageHighTemp
-        {
-            get
-            {
-                this.averageHighTemp = this.ActiveCollection.GetAverageHigh();
-                return this.averageHighTemp;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the average low temperature.
-        /// </summary>
-        /// <value>
-        ///     The average low temperature.
-        /// </value>
-        public double AverageLowTemp
-        {
-            get
-            {
-                this.averageLowTemp = this.ActiveCollection.GetAverageLow();
-                return this.averageLowTemp;
-            }
-        }
-
-        /// <summary>
-        ///     Total precipitation in collection.
-        /// </summary>
-        /// <value>
-        ///     The total precipitation.
-        /// </value>
-        public double TotalPrecipitation
-        {
-            get
-            {
-                this.totalPrecipitation = this.ActiveCollection.TotalPrecipitation ?? 0;
-                return this.totalPrecipitation;
             }
         }
 
@@ -314,14 +127,12 @@ namespace WeatherDataAnalysis.ViewModel
         public SummaryViewModel()
         {
             this.AllCollections = new WeatherInfoCollectionsBinding();
-            this.DisplayCollection = new ObservableCollection<WeatherInfo>();
             this.HighTempThreshold = 90;
             this.LowTempThreshold = 32;
 
             if (ActiveWeatherInfoCollection.Active != null)
             {
                 this.ActiveCollection = ActiveWeatherInfoCollection.Active;
-                this.DisplayCollection = new ObservableCollection<WeatherInfo>();
             }
 
             this.initializeCommands();
@@ -339,7 +150,7 @@ namespace WeatherDataAnalysis.ViewModel
 
         private void initializeCommands()
         {
-            this.ImportWeatherInfo = new RelayCommand(this.executeImport, this.canExecuteImport);
+            this.ImportWeatherInfo = new RelayCommand(this.executeImport, canExecuteImport);
         }
 
         private async void executeImport(object obj)
@@ -350,59 +161,21 @@ namespace WeatherDataAnalysis.ViewModel
             if (newCollection != null)
             {
                 this.allCollections.Add(newCollection.Name, newCollection);
-                this.ImportedCollections = this.AllCollections.Values.ToList().ToObservableCollection();
                 this.ActiveCollectionGroupedByYear = this.AllCollections.CollectionsByYear.ToObservableCollection();
                 ActiveWeatherInfoCollection.Active = newCollection;
             }
         }
 
-        private bool canExecuteImport(object obj)
+        private static bool canExecuteImport(object obj)
         {
             return true;
-        }
-
-        private ObservableCollection<WeatherInfo> findHighestTempsInActiveCollection()
-        {
-            return this.ActiveCollection.FindWithHighestTemp().ToList().ToObservableCollection();
-        }
-
-        private ObservableCollection<WeatherInfo> findLowestTempsInActiveCollection()
-        {
-            return this.ActiveCollection.FindWithLowestTemp().ToList().ToObservableCollection();
-        }
-
-        private ObservableCollection<WeatherInfo> findLowestHighTempsInActiveCollection()
-        {
-            return this.ActiveCollection.FindLowestHighTemps().ToObservableCollection();
-        }
-
-        private ObservableCollection<WeatherInfo> findHighestLowTempsInActiveCollection()
-        {
-            return this.ActiveCollection.FindHighestLowTemps().ToList().ToObservableCollection();
-        }
-
-        private ObservableCollection<WeatherInfo> findMostPrecipitationInActiveCollection()
-        {
-            return this.ActiveCollection.FindWithMostPrecipitation().ToList().ToObservableCollection();
-        }
-
-        private ObservableCollection<WeatherInfo> findAllAboveHighTempThreshold()
-        {
-            return this.ActiveCollection.FindAllAboveHighTempThreshold(this.HighTempThreshold).ToList()
-                       .ToObservableCollection();
-        }
-
-        private ObservableCollection<WeatherInfo> findAllBelowLowTempThreshold()
-        {
-            return this.ActiveCollection.FindAllBelowLowTempThreshold(this.LowTempThreshold).ToList()
-                       .ToObservableCollection();
         }
 
         /// <summary>
         ///     Called when [property changed].
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

@@ -7,12 +7,28 @@ using WeatherDataAnalysis.View;
 
 namespace WeatherDataAnalysis.Controller
 {
+    /// <summary>
+    /// Controller to handle Import of Weather data from file format
+    /// </summary>
     public class ImportWeatherInfo
     {
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the error message list.
+        /// </summary>
+        /// <value>
+        /// The error message list.
+        /// </value>
         public IList<string> ErrorMessageList { get; set; }
-        public WeatherInfoCollection NewWeatherInfoCollection { get; private set; }
+        
+        /// <summary>
+        /// Creates new Weather Data Collection.
+        /// </summary>
+        /// <value>
+        /// The new weather information collection.
+        /// </value>
+        private WeatherInfoCollection NewWeatherInfoCollection { get; set; }
 
         private ImportDialog ImportDialog { get; set; }
 
@@ -20,6 +36,9 @@ namespace WeatherDataAnalysis.Controller
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImportWeatherInfo"/> class.
+        /// </summary>
         public ImportWeatherInfo()
         {
             this.ErrorMessageList = new List<string>();
@@ -29,6 +48,10 @@ namespace WeatherDataAnalysis.Controller
 
         #region Methods
 
+        /// <summary>
+        /// Creates the new weather information collection.
+        /// </summary>
+        /// <returns></returns>
         public async Task<WeatherInfoCollection> CreateNewWeatherInfoCollection()
         {
             this.ImportDialog = new ImportDialog();

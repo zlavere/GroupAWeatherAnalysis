@@ -1177,7 +1177,6 @@ C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\MergeMatchDialog.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\NewWeatherInfoDialog.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\MasterDetailsWeather.xbf
-C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\View\SummaryView.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.xr.xml
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.exe
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\bin\x64\Debug\WeatherDataAnalysis.pdb
@@ -1374,8 +1373,6 @@ C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\NewWeatherInfoDialog.g.cs
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\MasterDetailsWeather.g.i.cs
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\MasterDetailsWeather.g.cs
-C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\SummaryView.g.i.cs
-C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\SummaryView.g.cs
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\XamlTypeInfo.g.cs
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\App.xaml
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\MainPage.xaml
@@ -1383,14 +1380,12 @@ C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\MergeMatchDialog.xaml
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\NewWeatherInfoDialog.xaml
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\MasterDetailsWeather.xaml
-C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\SummaryView.xaml
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\App.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\MainPage.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\ImportDialog.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\MergeMatchDialog.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\NewWeatherInfoDialog.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\MasterDetailsWeather.xbf
-C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\View\SummaryView.xbf
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\XamlSaveStateFile.xml
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\WeatherDataAnalysis.csproj.CoreCompileInputs.cache
 C:\groupaweatheranalysis\WeatherDataAnalysisA1\WeatherDataAnalysis\obj\x64\Debug\WeatherDataAnalysis.csproj.CopyComplete

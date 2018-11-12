@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WeatherDataAnalysis.Model;
@@ -37,14 +36,15 @@ namespace WeatherDataAnalysis.Controller
         {
             this.NewWeatherInfoDialog = new NewWeatherInfoDialog();
             var dialogResult = await this.NewWeatherInfoDialog.ShowDialog();
-            var isSuccessful = false;
+            
+
             if (dialogResult == NewWeatherInfoDialog.Submit)
             {
                 this.CreatedWeatherInfo = new WeatherInfo(this.NewWeatherInfoDialog.Date,
                     this.NewWeatherInfoDialog.HighTemp, this.NewWeatherInfoDialog.LowTemp);
             }
 
-            isSuccessful = this.isCreatedWeatherInfoAdded();
+            var isSuccessful = this.isCreatedWeatherInfoAdded();
 
             return isSuccessful;
         }
@@ -52,12 +52,6 @@ namespace WeatherDataAnalysis.Controller
         private bool isCreatedWeatherInfoAdded()
         {
             var result = false;
-
-            if (ActiveWeatherInfoCollection.Active == null)
-            {
-                this.addCreatedWeatherInfoToNewCollection(this.NewWeatherInfoDialog.CollectionName);
-                result = true;
-            }
 
             if (this.NewWeatherInfoDialog.IsOverwriteAllowed() && this.containsWeatherInfoWithSameDate())
             {
@@ -84,12 +78,6 @@ namespace WeatherDataAnalysis.Controller
         private void addCreatedWeatherInfo()
         {
             ActiveWeatherInfoCollection.Active.Add(this.CreatedWeatherInfo);
-        }
-
-        private void addCreatedWeatherInfoToNewCollection(string name)
-        {
-            ActiveWeatherInfoCollection.Active =
-                new WeatherInfoCollection(name, new List<WeatherInfo> {this.CreatedWeatherInfo});
         }
 
         private bool containsWeatherInfoWithSameDate()

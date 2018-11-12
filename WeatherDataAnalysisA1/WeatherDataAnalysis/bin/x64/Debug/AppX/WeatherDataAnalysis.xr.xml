@@ -27,7 +27,6 @@
     <RootPropertyPathName Name="RemoveWeatherInfo" />
     <RootPropertyPathName Name="AddWeatherInfo" />
     <RootPropertyPathName Name="WeatherInfoMaster" />
-    <RootPropertyPathName Name="DisplayCollection" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -117,7 +116,6 @@
       <RootProperty Name="InputScope" />
       <RootProperty Name="Height" />
       <RootProperty Name="Visibility" />
-      <RootEvent Name="LosingFocus" />
       <RootEvent Name="KeyUp" />
       <RootEvent Name="LostFocus" />
     </RootType>
@@ -143,9 +141,10 @@
       <RootProperty Name="Color" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="Converter" />
       <RootProperty Name="Mode" />
+      <RootProperty Name="Converter" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="Content" />
       <RootProperty Name="Tag" />
@@ -180,7 +179,6 @@
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Icon" />
@@ -231,6 +229,5 @@
       <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="WeatherDataAnalysis.View.MasterDetailsWeather" />
-    <RootType FullName="WeatherDataAnalysis.View.SummaryView" />
   </Roots.RootTypes>
 </Roots>

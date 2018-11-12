@@ -15,7 +15,7 @@ namespace WeatherDataAnalysis.Format
         #region Properties
 
         private HistogramBucketSize HistogramBucketSize { get; set; }
-        private double precipitationBucketSize { get; }
+        private double PrecipitationBucketSize { get; }
 
         #endregion
 
@@ -27,7 +27,7 @@ namespace WeatherDataAnalysis.Format
         public WeatherHistogramGenerator()
         {
             this.HistogramBucketSize = HistogramBucketSize.Ten;
-            this.precipitationBucketSize = PrecipitationBucketSize.QuarterInch;
+            this.PrecipitationBucketSize = Model.Enums.PrecipitationBucketSize.QuarterInch;
         }
 
         #endregion
@@ -101,14 +101,14 @@ namespace WeatherDataAnalysis.Format
             var lowest = precipitations.Min(precip => precip);
             var highest = precipitations.Max(precip => precip);
 
-            if (lowest % this.precipitationBucketSize != 0)
+            if (lowest % this.PrecipitationBucketSize != 0)
             {
-                lowest = lowest - lowest % this.precipitationBucketSize;
+                lowest = lowest - lowest % this.PrecipitationBucketSize;
             }
 
-            if (highest % this.precipitationBucketSize != 0)
+            if (highest % this.PrecipitationBucketSize != 0)
             {
-                highest = highest + this.precipitationBucketSize - highest % this.precipitationBucketSize;
+                highest = highest + this.PrecipitationBucketSize - highest % this.PrecipitationBucketSize;
             }
 
             var lowerBound = lowest;
@@ -116,7 +116,7 @@ namespace WeatherDataAnalysis.Format
 
             while (lowerBound <= highest)
             {
-                var upperBound = lowerBound + (this.precipitationBucketSize - .01);
+                var upperBound = lowerBound + (this.PrecipitationBucketSize - .01);
 
                 var count = precipitations.Count(precip => precip >= lowerBound && precip <= upperBound);
                 output += $"{lowerBound} - {upperBound}: {count}{Environment.NewLine}";

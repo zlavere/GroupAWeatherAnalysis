@@ -6,6 +6,7 @@ using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.ViewModel
 {
+
     /// <summary>
     ///     Binding for all available collections of weather data and groupings therein.
     /// </summary>
@@ -28,27 +29,35 @@ namespace WeatherDataAnalysis.ViewModel
         /// </value>
         private IDictionary<string, WeatherInfoCollection> WeatherInfoCollections { get; }
 
+        /// <summary>
+        /// Gets the collections by year.
+        /// </summary>
+        /// <value>
+        /// The collections by year.
+        /// </value>
         public IList<WeatherInfoCollection> CollectionsByYear
         {
             get
-            {
-                var years = new List<int>();
-                if (ActiveWeatherInfoCollection.Active != null)
-                {
-                    years = ActiveWeatherInfoCollection.Active.Select(year => year.Date.Year).Distinct().ToList();
-                }
-
-                foreach (var current in years)
-                {
-                    var weatherInfosInYear =
-                        ActiveWeatherInfoCollection.Active.Where(weatherInfo => weatherInfo.Date.Year == current);
-                    var newCollection = new WeatherInfoCollection($"{current}", weatherInfosInYear.ToList());
-                    this.collectionsByYear.Add(newCollection);
-                }
-
-                return this.collectionsByYear;
+            { 
+                this.collectionsByYear = this.groupingsByYear(); 
+                return this. collectionsByYear;
             }
             private set => this.collectionsByYear = value;
+        }
+
+        private IList<WeatherInfoCollection> groupingsByYear()
+        {
+            var years = ActiveWeatherInfoCollection.Active.Select(year => year.Date.Year).Distinct().ToList();
+
+            foreach (var current in years)
+            {
+                var weatherInfosInYear =
+                    ActiveWeatherInfoCollection.Active.Where(weatherInfo => weatherInfo.Date.Year == current);
+                var newCollection = new WeatherInfoCollection($"{current}", weatherInfosInYear.ToList());
+                this.collectionsByYear.Add(newCollection);
+            }
+
+            return this.collectionsByYear;
         }
 
         /// <inheritdoc />

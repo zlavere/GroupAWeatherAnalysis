@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
-using Windows.Globalization.DateTimeFormatting;
 
 namespace WeatherDataAnalysis.Model
 {
+    /// <inheritdoc />
     /// <summary>
     ///     Provides analytic functions for collections of WeatherInfo.
     /// </summary>
@@ -41,7 +40,7 @@ namespace WeatherDataAnalysis.Model
         /// <value>
         ///     The weather infos.
         /// </value>
-        public IList<WeatherInfo> WeatherInfos { get; }
+        private IList<WeatherInfo> WeatherInfos { get; }
 
         public IList<WeatherInfo> HighestTempDates
         {
@@ -194,6 +193,12 @@ namespace WeatherDataAnalysis.Model
             }
         }
 
+        /// <summary>
+        /// Gets the group by month.
+        /// </summary>
+        /// <value>
+        /// The group by month.
+        /// </value>
         public IList<WeatherInfoCollection> GroupByMonth
         {
             get
@@ -211,8 +216,20 @@ namespace WeatherDataAnalysis.Model
         /// </value>
         public string Name { get; }
 
+        /// <summary>
+        /// Gets or sets the high temperature threshold.
+        /// </summary>
+        /// <value>
+        /// The high temperature threshold.
+        /// </value>
         public int HighTempThreshold { get; set; }
 
+        /// <summary>
+        /// Gets or sets the low temperature threshold.
+        /// </summary>
+        /// <value>
+        /// The low temperature threshold.
+        /// </value>
         public int LowTempThreshold { get; set; }
 
         /// <summary>
@@ -379,59 +396,7 @@ namespace WeatherDataAnalysis.Model
             this.WeatherInfos.RemoveAt(index);
         }
 
-        /// <summary>
-        ///     Groups the by year.
-        /// </summary>
-        /// <returns></returns>
-        public IDictionary<int, List<WeatherInfo>> GetGroupByYear()
-        {
-            var years = this.WeatherInfos.Select(weather => weather.Date.Year).Distinct().ToList();
-            var dictionary = new Dictionary<int, List<WeatherInfo>>();
-            foreach (var current in years)
-            {
-                var currentList = this.WeatherInfos.Where(weather => weather.Date.Year == current).ToList();
-                dictionary.Add(current, currentList);
-            }
-
-            return dictionary;
-        }
-
-        /// <summary>
-        ///     Groups the by month.
-        /// </summary>
-        /// <returns></returns>
-        public IDictionary<int, IDictionary<int, List<WeatherInfo>>> GetGroupByMonth()
-        {
-            var groupedByYear = (Dictionary<int, List<WeatherInfo>>) this.GetGroupByYear();
-
-            var dictionary = new Dictionary<int, IDictionary<int, List<WeatherInfo>>>();
-
-            foreach (var year in groupedByYear.Keys)
-            {
-                var monthDictionary = this.monthDictionary(year);
-
-                dictionary.Add(year, monthDictionary);
-            }
-
-            return dictionary;
-        }
-
-        private Dictionary<int, List<WeatherInfo>> monthDictionary(int year)
-        {
-            var monthDictionary = new Dictionary<int, List<WeatherInfo>>();
-            for (var month = 1; month <= 12; month++)
-            {
-                var weatherInfoForMonth = this.WeatherInfos
-                                              .Where(weather =>
-                                                  weather.Date.Year == year && weather.Date.Month == month)
-                                              .ToList();
-                monthDictionary.Add(month, weatherInfoForMonth);
-            }
-
-            return monthDictionary;
-        }
-
-        public IList<WeatherInfoCollection> GroupingsByMonth()
+        private IList<WeatherInfoCollection> GroupingsByMonth()
         {
             
             var collections = new List<WeatherInfoCollection>();
@@ -606,29 +571,6 @@ namespace WeatherDataAnalysis.Model
             return weatherByMonthList.Where(weather => weather.LowTemp == lowInMonth).ToList();
         }
 
-        /// <summary>
-        ///     Gets the high average for month.
-        /// </summary>
-        /// <param name="month">The month.</param>
-        /// <returns></returns>
-        public double GetHighAverageForMonth(int month)
-        {
-            var weatherByMonthList = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
-
-            return weatherByMonthList.Average(weather => weather.HighTemp);
-        }
-
-        /// <summary>
-        ///     Gets the low average for month.
-        /// </summary>
-        /// <param name="month">The month.</param>
-        /// <returns></returns>
-        public double GetLowAverageForMonth(int month)
-        {
-            var weatherByMonth = this.WeatherInfos.Where(weather => weather.Date.Month == month).ToList();
-
-            return weatherByMonth.Average(weather => weather.LowTemp);
-        }
 
         /// <summary>
         ///     Finds all above high temperature threshold.

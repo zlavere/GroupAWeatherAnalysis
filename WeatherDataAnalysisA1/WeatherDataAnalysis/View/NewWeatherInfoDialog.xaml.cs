@@ -184,12 +184,7 @@ namespace WeatherDataAnalysis.View
         public bool IsOverwriteAllowed()
         {
             var checkBoxValue = this.overwriteCheckBox.IsChecked;
-            var isAllowed = false;
-
-            if (checkBoxValue != null && checkBoxValue == true)
-            {
-                isAllowed = true;
-            }
+            var isAllowed = checkBoxValue != null && checkBoxValue == true;
 
             return isAllowed;
         }

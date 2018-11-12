@@ -106,7 +106,6 @@
     <Compile Include="Converter\DatePickerConverter.cs" />
     <Compile Include="Converter\OrdinalDateConverter.cs" />
     <Compile Include="Converter\StringInputToInt.cs" />
-    <Compile Include="Format\TemperatureDataFormatter.cs" />
     <Compile Include="IO\FileLineGenerator.cs" />
     <Compile Include="IO\TemperatureParser.cs" />
     <Compile Include="IO\WriteWeatherDataToCsv.cs" />
@@ -118,7 +117,6 @@
     <Compile Include="Model\Enums\ImportType.cs" />
     <Compile Include="Model\Enums\PrecipitationBucketSize.cs" />
     <Compile Include="Model\Enums\Temperature.cs" />
-    <Compile Include="Model\FactoryWeatherInfoCollection.cs" />
     <Compile Include="Format\WeatherHistogramGenerator.cs" />
     <Compile Include="Model\WeatherInfo.cs" />
     <Compile Include="Model\WeatherInfoCollection.cs" />
@@ -128,8 +126,6 @@
     <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="ViewModel\ActiveWeatherInfoCollection.cs" />
     <Compile Include="ViewModel\HistogramSizeComboBoxBindings.cs" />
-    <Compile Include="ViewModel\DataFormatter.cs" />
-    <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="ViewModel\SummaryViewModel.cs" />
     <Compile Include="ViewModel\WeatherInfoCollectionsBinding.cs" />
     <Compile Include="ViewModel\DetailViewModel.cs" />
@@ -144,9 +140,6 @@
     </Compile>
     <Compile Include="View\MasterDetailsWeather.xaml.cs">
       <DependentUpon>MasterDetailsWeather.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SummaryView.xaml.cs">
-      <DependentUpon>SummaryView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -188,10 +181,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MasterDetailsWeather.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\SummaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,6 +9,11 @@ using WeatherDataAnalysis.Utility;
 
 namespace WeatherDataAnalysis.ViewModel
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Data Binding for Master/Details View of Active Collection
+    /// </summary>
+    /// <seealso cref="T:System.ComponentModel.INotifyPropertyChanged" />
     public class DetailViewModel : INotifyPropertyChanged
     {
         #region Data members
@@ -20,6 +25,12 @@ namespace WeatherDataAnalysis.ViewModel
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the weather information master list for Master/Details pattern.
+        /// </summary>
+        /// <value>
+        /// The weather information master.
+        /// </value>
         public ObservableCollection<WeatherInfo> WeatherInfoMaster
         {
             get => this.weatherInfoMaster.OrderBy(weatherInfo => weatherInfo.Date).ToList().ToObservableCollection();
@@ -30,6 +41,12 @@ namespace WeatherDataAnalysis.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected weather information detail.
+        /// </summary>
+        /// <value>
+        /// The selected weather information detail.
+        /// </value>
         public WeatherInfo SelectedWeatherInfoDetail
         {
             get => this.selectedWeatherInfo;
@@ -41,13 +58,29 @@ namespace WeatherDataAnalysis.ViewModel
             }
         }
 
-        public RelayCommand RemoveWeatherInfo { get; set; }
-        public RelayCommand AddWeatherInfo { get; set; }
+        /// <summary>
+        /// RelayCommand to Remove WeatherInfo from active collection.
+        /// </summary>
+        /// <value>
+        /// weather information.
+        /// </value>
+        public RelayCommand RemoveWeatherInfo { get; }
+
+        /// <summary>
+        /// RelayCommand to Add WeatherInfo to active collection.
+        /// </summary>
+        /// <value>
+        /// weather information.
+        /// </value>
+        public RelayCommand AddWeatherInfo { get; }
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DetailViewModel"/> class.
+        /// </summary>
         public DetailViewModel()
         {
             this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
@@ -60,6 +93,10 @@ namespace WeatherDataAnalysis.ViewModel
 
         #region Methods
 
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
+        /// <returns>Returns <see langword="true"/> if an Active Weather Information collection exists.</returns>
         public event PropertyChangedEventHandler PropertyChanged;
 
         private bool canCreateWeatherInfo(object obj)
@@ -77,12 +114,6 @@ namespace WeatherDataAnalysis.ViewModel
             }
         }
 
-        //TODO Use this method when moving navigation from View to ViewModel
-        private bool canNavigateToMainPage(object obj)
-        {
-            return true;
-        }
-
         private bool canRemoveWeatherInfo(object obj)
         {
             return this.selectedWeatherInfo != null;
@@ -94,11 +125,20 @@ namespace WeatherDataAnalysis.ViewModel
             this.WeatherInfoMaster = ActiveWeatherInfoCollection.Active.ToObservableCollection();
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        /// <summary>
+        /// Called when [property changed].
+        /// </summary>
+        /// <param name="propertyName">Name of the property.</param>
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        //TODO Use this method when moving navigation from View to ViewModel
+        //      private bool canNavigateToMainPage(object obj)
+        //      {
+        //          return true;
+        //      }
         #endregion
     }
 }

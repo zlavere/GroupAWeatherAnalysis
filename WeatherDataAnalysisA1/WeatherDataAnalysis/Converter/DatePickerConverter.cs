@@ -3,6 +3,10 @@ using Windows.UI.Xaml.Data;
 
 namespace WeatherDataAnalysis.Converter
 {
+    /// <summary>
+    /// Converts Date to DateTimeOffset for DatePicker binding.
+    /// </summary>
+    /// <seealso cref="Windows.UI.Xaml.Data.IValueConverter" />
     public class DatePickerConverter : IValueConverter
     {
         #region Methods
