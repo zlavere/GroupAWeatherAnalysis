@@ -469,8 +469,8 @@ namespace WeatherDataAnalysis.Model
             try
             {
                 highestPrecipitation = this.WeatherInfos.Where(precipitation =>
-                    highest != null && (precipitation.Precipitation != null && Math.Abs((double) precipitation.Precipitation - (double) highest) <
-                                        0.01)).ToList();
+                    highest != null && precipitation.Precipitation != null && Math.Abs((double) precipitation.Precipitation - (double) highest) <
+                    0.01).ToList();
             }
             catch (Exception)
             {

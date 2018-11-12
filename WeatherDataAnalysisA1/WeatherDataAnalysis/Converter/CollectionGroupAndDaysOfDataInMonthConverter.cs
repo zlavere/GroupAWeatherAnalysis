@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
-using WeatherDataAnalysis.Extension;
-using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.Converter
 {
@@ -25,7 +19,7 @@ namespace WeatherDataAnalysis.Converter
             var name = (string) value;
             var splitName = name.Split(' ');
             var monthInt = DateTime.ParseExact(splitName[0], "MMMM", CultureInfo.CurrentCulture).Month;
-            var parsed = int.TryParse(splitName[1], out int year);
+            var parsed = int.TryParse(splitName[1], out var year);
 
             var totalDaysInMonth = DateTime.DaysInMonth(year, monthInt);
 

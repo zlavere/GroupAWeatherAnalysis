@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.UI.Popups;
 using Microsoft.Graphics.Canvas.Svg;
 using WeatherDataAnalysis.IO;
-using WeatherDataAnalysis.Model;
 
 namespace WeatherDataAnalysis.Controller
 {
-    class ExportController
+    internal class ExportController
     {
         private const int CSV = 0;
         private const int XML = 1;

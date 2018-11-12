@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
-using WeatherDataAnalysis.IO;
 using WeatherDataAnalysis.Model;
 using WeatherDataAnalysis.View;
 using WeatherDataAnalysis.ViewModel;

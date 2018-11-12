@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Windows.Storage;
-using Windows.Storage.AccessCache;
-using Windows.Storage.Pickers;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
 using WeatherDataAnalysis.Controller;
-using WeatherDataAnalysis.Model.Enums;
 using WeatherDataAnalysis.View;
 using WeatherDataAnalysis.ViewModel;
 
