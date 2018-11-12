@@ -21,21 +21,11 @@ namespace WeatherDataAnalysis
     {
         #region Data members
 
-        private const int DefaultBucketSizeIndex = 2;
-
-        private const int DefaultBucketSize = 10;
-
         private readonly MainPageController mainPageController;
 
         #endregion
 
         #region Properties
-
-        
-        private ImportDialog ImportDialog { get; set; }
-        private ContentDialogResult ImportDialogResults { get; set; }
-
-        private List<HistogramBucketSize> HistogramBucketSizes { get; set; }
 
         private HistogramSizeComboBoxBindings HistogramSizeComboBoxBindings { get; }
 
@@ -56,24 +46,6 @@ namespace WeatherDataAnalysis
         #endregion
 
         #region Methods
-
-
-
-        private async void c_Download(object sender, RoutedEventArgs e)
-        {
-            var directoryPicker = new FolderPicker();
-            directoryPicker.FileTypeFilter.Add(".csv");
-            directoryPicker.FileTypeFilter.Add(".txt");
-            directoryPicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
-
-            var directoryResult = await directoryPicker.PickSingleFolderAsync();
-
-            if (directoryResult != null)
-            {
-                StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", directoryResult);
-                this.mainPageController.WriteActiveInfoToFile(directoryResult);
-            }
-        }
 
         private void c_DetailsView(object sender, RoutedEventArgs e)
         {
