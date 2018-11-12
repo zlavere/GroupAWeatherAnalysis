@@ -59,7 +59,7 @@ namespace WeatherDataAnalysis.Controller
                     ActiveWeatherInfoCollection.Active.Where(weatherInfo =>
                         weatherInfo.Date ==
                         this.CreatedWeatherInfo
-                            .Date); //Cannot be null ReSharper says it can.
+                            .Date);
                 ActiveWeatherInfoCollection.Active.Remove(weatherInfoToReplace.First());
                 this.addCreatedWeatherInfo();
                 result = true;

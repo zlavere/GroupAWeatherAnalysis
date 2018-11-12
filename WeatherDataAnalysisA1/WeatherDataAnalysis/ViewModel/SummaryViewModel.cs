@@ -36,6 +36,22 @@ namespace WeatherDataAnalysis.ViewModel
         public RelayCommand ImportWeatherInfo { get; private set; }
 
         /// <summary>
+        /// RelayCommand to import weather information.
+        /// </summary>
+        /// <value>
+        /// RelayCommand import weather information.
+        /// </value>
+        public RelayCommand ClearWeatherInfo { get; private set; }
+
+        /// <summary>
+        /// RelayCommand to import weather information.
+        /// </summary>
+        /// <value>
+        /// RelayCommand import weather information.
+        /// </value>
+        public RelayCommand SaveWeatherInfo { get; private set; }
+
+        /// <summary>
         /// Gets the active collection grouped by year.
         /// </summary>
         /// <value>
@@ -151,6 +167,8 @@ namespace WeatherDataAnalysis.ViewModel
         private void initializeCommands()
         {
             this.ImportWeatherInfo = new RelayCommand(this.executeImport, canExecuteImport);
+            this.ClearWeatherInfo = new RelayCommand(this.ClearInfo, canClearInfo);
+            this.SaveWeatherInfo = new RelayCommand(this.SaveInfo, canSaveInfo);
         }
 
         private async void executeImport(object obj)
@@ -170,6 +188,41 @@ namespace WeatherDataAnalysis.ViewModel
         {
             return true;
         }
+        private async void ClearInfo(object obj)
+        {
+          
+                ActiveWeatherInfoCollection.Active.Clear();
+            
+        }
+
+        private static bool canClearInfo(object obj)
+        {
+            return ActiveWeatherInfoCollection.Active != null;
+
+           
+        }
+
+        private async void SaveInfo(object obj)
+        {
+
+            var exportController = new ExportController();
+            await exportController.ExportActiveCollection();
+
+        }
+
+        private static bool canSaveInfo(object obj)
+        {
+            return ActiveWeatherInfoCollection.Active != null;
+
+
+        }
+
+
+
+
+
+
+
 
         /// <summary>
         ///     Called when [property changed].
@@ -179,6 +232,8 @@ namespace WeatherDataAnalysis.ViewModel
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        
 
         #endregion
     }

@@ -31,8 +31,7 @@ namespace WeatherDataAnalysis
 
         #region Properties
 
-        private FileOpenPicker FilePicker { get; set; }
-        private StorageFile File { get; set; }
+        
         private ImportDialog ImportDialog { get; set; }
         private ContentDialogResult ImportDialogResults { get; set; }
 
@@ -58,25 +57,7 @@ namespace WeatherDataAnalysis
 
         #region Methods
 
-        private void c_ClearData(object sender, RoutedEventArgs e)
-        {
 
-
-            if (ActiveWeatherInfoCollection.Active != null)
-            {
-                ActiveWeatherInfoCollection.Active.Clear();
-            }
-        }
-
-        private void change_BucketSize(object sender, SelectionChangedEventArgs e)
-        {
-            var selection = this.HistogramSizeComboBoxBindings.Sizes[DefaultBucketSizeIndex];
-            this.mainPageController.SetHistogramBucketSize(selection);
-            if (ActiveWeatherInfoCollection.Active != null)
-            {
-                this.refreshButton.IsEnabled = true;
-            }
-        }
 
         private async void c_Download(object sender, RoutedEventArgs e)
         {

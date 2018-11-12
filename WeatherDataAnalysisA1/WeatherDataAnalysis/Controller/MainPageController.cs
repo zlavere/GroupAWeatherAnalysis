@@ -43,9 +43,7 @@ namespace WeatherDataAnalysis.Controller
         /// <param name="directory">The directory.</param>
         public void WriteActiveInfoToFile(StorageFolder directory)
         {
-            //var output = new WriteWeatherDataToCsv();
-            //output.WriteActiveDataToCsv(directory);
-            XMLSerializer.WriteWeatherCollection(directory);
+           
         }
 
 
