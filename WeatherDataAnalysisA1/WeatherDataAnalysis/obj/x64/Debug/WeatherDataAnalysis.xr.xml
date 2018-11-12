@@ -4,13 +4,14 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="ClearWeatherInfo" />
     <RootPropertyPathName Name="LowTempThreshold" />
     <RootPropertyPathName Name="HighTempThreshold" />
     <RootPropertyPathName Name="ActiveCollectionGroupedByYear" />
     <RootPropertyPathName Name="GroupByMonth" />
-    <RootPropertyPathName Name="LowestTempDates" />
+    <RootPropertyPathName Name="MostPrecipitationDates" />
     <RootPropertyPathName Name="Date" />
+    <RootPropertyPathName Name="MostPrecipitation" />
+    <RootPropertyPathName Name="LowestTempDates" />
     <RootPropertyPathName Name="LowestTemp" />
     <RootPropertyPathName Name="HighestTempDates" />
     <RootPropertyPathName Name="HighestTemp" />
@@ -19,9 +20,6 @@
     <RootPropertyPathName Name="AverageHighTemp" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Count" />
-    <RootPropertyPathName Name="MostPrecipitationDates" />
-    <RootPropertyPathName Name="MostPrecipitation" />
-    <RootPropertyPathName Name="SaveWeatherInfo" />
     <RootPropertyPathName Name="ImportWeatherInfo" />
     <RootPropertyPathName Name="SelectedWeatherInfoDetail" />
     <RootPropertyPathName Name="Precipitation" />
@@ -104,7 +102,6 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="FontWeight" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
@@ -128,12 +125,6 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.TextBoxRegex">
-      <RootMethod Name="GetValidationMode" />
-      <RootMethod Name="SetValidationMode" />
-      <RootMethod Name="GetValidationType" />
-      <RootMethod Name="SetValidationType" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="HorizontalAlignment" />
@@ -142,18 +133,18 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Background" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="Command" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Automation.AutomationProperties">
       <RootMethod Name="GetHelpText" />
       <RootMethod Name="SetHelpText" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
+      <RootProperty Name="Color" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Mode" />
       <RootProperty Name="Converter" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
-      <RootProperty Name="Color" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
